@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: Repina
   productName: Tray
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -335,7 +335,7 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: Used to scan QR codes
+  cameraUsageDescription: AR
   locationUsageDescription: 
   microphoneUsageDescription: 
   switchNetLibKey: 
