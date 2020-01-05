@@ -49,7 +49,15 @@ namespace Logic
                                               "header: " + Guid.NewGuid().ToString(),
                                               DateTime.Now.ToString());
             notifications.Add(n);
+            //addNotificationToScene();
             Debug.Log(n);
+        }
+
+        private void addNotificationToScene()
+        {
+            Vector3 position = new Vector3((float)random.NextDouble(), (float)random.NextDouble(), (float)random.NextDouble());
+            Quaternion rotation = new Quaternion(1, 1, 1, 1);
+            GameObject trayObject = Instantiate(Resources.Load("Assets/Prefabs/TrayObject.prefab"), position, rotation) as GameObject;
         }
 
         public ArrayList Notifications
