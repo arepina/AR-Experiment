@@ -9,7 +9,7 @@
     }
   ],
   "dependencies": {
-    "com.ptc.vuforia.engine": "8.6.7",
+    "com.ptc.vuforia.engine": "file:/Users/anastasia/Downloads/New Unity Project/Library/PackageCache/com.ptc.vuforia.engine@8.3.9",
     "com.unity.collab-proxy": "1.2.16",
     "com.unity.ext.nunit": "1.0.0",
     "com.unity.ide.rider": "1.1.0",
@@ -20,6 +20,7 @@
     "com.unity.timeline": "1.1.0",
     "com.unity.ugui": "1.0.0",
     "com.unity.xr.googlevr.ios": "1.18.5",
+    "com.unity.xr.management": "3.0.3",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",

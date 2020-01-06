@@ -14,28 +14,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vuforia:
     vuforiaLicenseKey: AR7xzyT/////AAABmbJLj+7WEkF8iWSYNt/NMR5sXIdwnIO6lzfqwxRM2mIwacfT7pMlP91T1ArXQU0dpXAz5St6l6ofLDuL35QfNqDj4q0RkEL+FzuWwAhKMTFMbrt3LkCzk8e7FGY8gzeuRvlQGGGWRlwv9k4vACHb/nyH7dGG9uVQVRVpstCmL1qI9tjP5ETqsib2U4QaD0aijh4bYl2nk+7jPUsaoUu1VQhUtYlM5bC83YzzHdFDprSp22rzeDwDTDYHxiFZkGkbd2zX2GcQ4WDeg/LnWDCTN4K6m/Xpni1oiMTKVrZ7zu5LjfaLG7kg9LjUAGcUETwn0GjB8gdzIjq3sgUOBn97vCHKpJj5cawjdDfoQvUh7M6S
-    ufoLicenseKey: QVNJZnlIZi8vLy8vQUFBQUtEQ2dSdmdCS1VHZXNuQ2x6K2N4N1BFZmJNN0hVM3ljd3d1YkN1aXdBSWpKLytpVVVJZmNKNm9DYkNqN3FiVmJ1YTJrVklUTWp2U3dZRWNJQ1MxblpzckcyOTQ1UUIzWitoQW9SNzFVeXhhNWxmcFZ4NlhHK3hpNmJWVldvQ00xa05GTFVBUHRuMVB2Q3hmam5rVTFNV1dCcjk0dnpEQ0NmcmIyTTY5OXEwVmlTNm9MRnRzME1FN3VsNUdacEZORlQ1Uk5Nd2ZhckJKeVdKalV6NnJZUFpSbjJ6OXk0WVhLUVdvL0N1SytxbmtBYkVBNDVMb1pQMm9RL3A1RjkwbzBRVUh1UUdkMjlnRDAwM1hkaEJKcE9Zd0U4aGtrQkQ3OHBsOXk0QTY3RXJzV0RkN1V0eVBFVzN0em9zbDR5TjU0aUdGQVJTQXF1UVFxeEFtQ1FPRlAzcldlRGRQUDBFK25qdGtzV2h2c1pBUkI=
+    ufoLicenseKey: QWYzamNTdi8vLy8vQUFBQUtBZVhjRXVBTDBvVm5NODBtWkIzTmJBVTlMOTZJWWQ5SVRIMDAxbUw3MG1qNE42SnE4UlZxYVhiZDc4dmIrbTlSR2tYSFovaFkvZkk5d0VVckhIb2NJTFUydFZWVEdBcXdTY3A5RWFFQkd4a0IwaWp3UElTYkpkQlBlMVV1eDI0U3cxcm9IdFJCRlYwZm52UDlGTWhsRkkvTEdRSUFWN2NQM3BTUEhXTGw0VktIaDlUSFc2K3huSTVYQ3VOT0pHU0tJL24vZEtiNE5uTmFHVVIrc3o5RUJ0TXdEY0w3R1Q4L2ZUbncvNFJxaGkzQ3ZmOGd1bkJpVmh0STU4N0hNSVQ3L1hwT1ZzN2xENkVRbE1MY0wxNWdtaXltVDhUUkFrb3Ywc1FlTkUrQU5DcFpKMVpJOVFZcWpVcHpYN0tJZTEzVjdTWlc2NkZTMVFLVjE4bUZMSEs2dml5NGNzZmowYUNocGxlbVhsL2N6VG0=
     delayedInitialization: 0
     cameraDeviceModeSetting: -1
     maxSimultaneousImageTargets: 1
     maxSimultaneousObjectTargets: 1
     useDelayedLoadingObjectTargets: 0
     modelTargetRecoWhileExtendedTracked: 1
-    version: 8.6.7
-    eulaAcceptedVersions: '{"Values":["8.5","8.6"]}'
-    modelTargetMode: 0
+    version: 8.3.8
+    eulaAcceptedVersions: '{"Values":["8.5","8.6","8.3"]}'
+  digitalEyewear:
+    cameraOffset: 0.06
+    distortionRenderingLayer: 31
+    eyewearType: 2
+    stereoFramework: 0
+    seeThroughConfiguration: 0
+    viewerName: VR ONE
+    viewerManufacturer: Zeiss
+    useCustomViewer: 0
+    customViewer:
+      Version: 0
+      Name: 
+      Manufacturer: 
+      ButtonType: 0
+      ScreenToLensDistance: 0
+      InterLensDistance: 0
+      TrayAlignment: 0
+      LensCenterToTrayDistance: 0
+      DistortionCoefficients: {x: 0, y: 0}
+      FieldOfView: {x: 0, y: 0, z: 0, w: 0}
+      ContainsMagnet: 0
   database:
     disableModelExtraction: 0
   videoBackground:
+    clippingMode: 0
     numDivisions: 2
     videoBackgroundShader: {fileID: 4800000, guid: f40623b353e2f1943b1b3ba42975db7a,
       type: 3}
+    matteShader: {fileID: 4800000, guid: 66d0d78a3000021448b598bb54a3bfdf, type: 3}
     videoBackgroundEnabled: 1
   deviceTracker:
-    autoInitTracker: 0
-    autoStartTracker: 0
+    autoInitTracker: 1
+    autoStartTracker: 1
     arcoreRequirement: 1
-    autoImportArcore: 1
+    trackingMode: 1
+    posePrediction: 0
+    modelCorrectionMode: 0
+    modelTransformEnabled: 0
+    modelTransform: {x: 0, y: 0.1, z: -0.1}
   smartTerrain:
     autoInitTracker: 0
     autoStartTracker: 0

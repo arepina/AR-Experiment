@@ -46,7 +46,7 @@ namespace Logic
         private void createNotification()
         {
             var sourceImage = Guid.NewGuid().ToString();
-            var sourceName = Guid.NewGuid().ToString();
+            var sourceName = ((char)((int)'a' + random.Next(0, 3))).ToString();
             var author = Guid.NewGuid().ToString();
             var text = Guid.NewGuid().ToString();
             var header = Guid.NewGuid().ToString();
@@ -58,17 +58,16 @@ namespace Logic
                                               "header: " + header,
                                               timestamp);
             Stack<Notification> sourceNotifications;
-            if (notifications[sourceName] != null)
+            try
             {
                 sourceNotifications = notifications[sourceName].Storage;
             }
-            else
-            {
+            catch(KeyNotFoundException e){
                 sourceNotifications = new Stack<Notification>();
-            }            
+            }          
             sourceNotifications.Push(notification);
             NotificationsStorage newNotificationsStorage = new NotificationsStorage(sourceNotifications, timestamp);
-            notifications.Add(sourceName, newNotificationsStorage);
+            notifications[sourceName] = newNotificationsStorage;
             var orderedNotifications = notifications.OrderByDescending(x => x.Value.LatestTimestamp);
             Debug.Log(orderedNotifications);
             //addNotificationToScene();
