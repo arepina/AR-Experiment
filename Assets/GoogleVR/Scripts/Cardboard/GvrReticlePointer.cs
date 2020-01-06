@@ -119,11 +119,13 @@ public class GvrReticlePointer : GvrBasePointer
     /// <inheritdoc/>
     public override void OnPointerClickDown()
     {
+        Debug.Log("OnPointerClickDown");
     }
 
     /// <inheritdoc/>
     public override void OnPointerClickUp()
     {
+        Debug.Log("OnPointerClickUp");
     }
 
     /// <inheritdoc/>

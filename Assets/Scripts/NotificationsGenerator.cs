@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Logic
 {
+
     public class NotificationsGenerator : MonoBehaviour
     {
 
         private System.Random random = new System.Random();
-        private ArrayList notifications = new ArrayList();
+        private Dictionary<string, NotificationsStorage> notifications = new Dictionary<string, NotificationsStorage>();
         public bool isRunning;
         public int secondsRange;
+        public GameObject prefabToCreate;
 
         public void Update()
         {
@@ -24,7 +28,6 @@ namespace Logic
         {
             isRunning = false;
             int pause = random.Next(1, secondsRange + 1);
-            Debug.Log("pause: " + pause);
             createNotification();
             yield return new WaitForSeconds(pause);
             isRunning = true;
@@ -42,30 +45,44 @@ namespace Logic
 
         private void createNotification()
         {
-            Notification n = new Notification("sourceImage: " + Guid.NewGuid().ToString(),
-                                              "sourceName: " + Guid.NewGuid().ToString(),
-                                              "author: " + Guid.NewGuid().ToString(),
-                                              "text: " + Guid.NewGuid().ToString(),
-                                              "header: " + Guid.NewGuid().ToString(),
-                                              DateTime.Now.ToString());
-            notifications.Add(n);
+            var sourceImage = Guid.NewGuid().ToString();
+            var sourceName = Guid.NewGuid().ToString();
+            var author = Guid.NewGuid().ToString();
+            var text = Guid.NewGuid().ToString();
+            var header = Guid.NewGuid().ToString();
+            var timestamp = DateTime.Now.Ticks;
+            Notification notification = new Notification("sourceImage: " + sourceImage,
+                                              "sourceName: " + sourceName,
+                                              "author: " + author,
+                                              "text: " + text,
+                                              "header: " + header,
+                                              timestamp);
+            Stack<Notification> sourceNotifications;
+            if (notifications[sourceName] != null)
+            {
+                sourceNotifications = notifications[sourceName].Storage;
+            }
+            else
+            {
+                sourceNotifications = new Stack<Notification>();
+            }            
+            sourceNotifications.Push(notification);
+            NotificationsStorage newNotificationsStorage = new NotificationsStorage(sourceNotifications, timestamp);
+            notifications.Add(sourceName, newNotificationsStorage);
+            var orderedNotifications = notifications.OrderByDescending(x => x.Value.LatestTimestamp);
+            Debug.Log(orderedNotifications);
             //addNotificationToScene();
-            Debug.Log(n);
         }
 
         private void addNotificationToScene()
         {
-            Vector3 position = new Vector3((float)random.NextDouble(), (float)random.NextDouble(), (float)random.NextDouble());
-            Quaternion rotation = new Quaternion(1, 1, 1, 1);
-            GameObject trayObject = Instantiate(Resources.Load("Assets/Prefabs/TrayObject.prefab"), position, rotation) as GameObject;
-        }
-
-        public ArrayList Notifications
-        {
-            get
-            {
-                return notifications;
-            }
+            var maxNumber = 1;
+            var minNumber = -1;
+            Vector3 position = new Vector3((float)random.NextDouble() * (maxNumber - minNumber) + minNumber,
+                (float)random.NextDouble() * (maxNumber - minNumber) + minNumber,
+                1);
+            // prefabToCreate.transform.Find("Text").text = position;
+            GameObject trayNotification = Instantiate(prefabToCreate, position, Quaternion.identity) as GameObject;
         }
     }
 

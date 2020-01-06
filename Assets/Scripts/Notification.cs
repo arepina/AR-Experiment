@@ -7,9 +7,9 @@
         private string author;
         private string text;
         private string header;
-        private string timestamp;
+        private long timestamp;
 
-        public Notification(string sourceImage, string sourceName, string author, string text, string header, string timestamp)
+        public Notification(string sourceImage, string sourceName, string author, string text, string header, long timestamp)
         {
             this.sourceImage = sourceImage;
             this.sourceName = sourceName;
@@ -68,7 +68,7 @@
             }
         }
 
-        public string Timestamp
+        public long Timestamp
         {
             get
             {
