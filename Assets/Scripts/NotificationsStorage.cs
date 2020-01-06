@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Logic
 {
@@ -7,11 +8,13 @@ namespace Logic
     {
         private Stack<Notification> notificationsStorage;
         private long latestTimestamp;
+        private Color sourceColor;
 
-        public NotificationsStorage(Stack<Notification> notificationsStorage, long latestTimestamp)
+        public NotificationsStorage(Stack<Notification> notificationsStorage, long latestTimestamp, Color sourceColor)
         {
             this.notificationsStorage = notificationsStorage;
             this.latestTimestamp = latestTimestamp;
+            this.sourceColor = sourceColor;
         }
 
         public Stack<Notification> Storage
@@ -30,5 +33,12 @@ namespace Logic
             }
         }
 
+        public Color SourceColor
+        {
+            get
+            {
+                return sourceColor;
+            }
+        }
     }
 }

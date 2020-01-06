@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 
 namespace Logic
 {
@@ -58,29 +59,33 @@ namespace Logic
                                               "header: " + header,
                                               timestamp);
             Stack<Notification> sourceNotifications;
+            Color sourceColor;
             try
             {
                 sourceNotifications = notifications[sourceName].Storage;
+                sourceColor = notifications[sourceName].SourceColor;
             }
-            catch(KeyNotFoundException e){
+            catch (KeyNotFoundException e){
                 sourceNotifications = new Stack<Notification>();
-            }          
+                sourceColor = new Color(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256));
+            }
             sourceNotifications.Push(notification);
-            NotificationsStorage newNotificationsStorage = new NotificationsStorage(sourceNotifications, timestamp);
+            NotificationsStorage newNotificationsStorage = new NotificationsStorage(sourceNotifications, timestamp, sourceColor);
             notifications[sourceName] = newNotificationsStorage;
             var orderedNotifications = notifications.OrderByDescending(x => x.Value.LatestTimestamp);
-            Debug.Log(orderedNotifications);
-            //addNotificationToScene();
+            addNotificationToScene(sourceColor);
         }
 
-        private void addNotificationToScene()
+        private void addNotificationToScene(Color sourceColor)
         {
             var maxNumber = 1;
             var minNumber = -1;
             Vector3 position = new Vector3((float)random.NextDouble() * (maxNumber - minNumber) + minNumber,
                 (float)random.NextDouble() * (maxNumber - minNumber) + minNumber,
                 1);
-            // prefabToCreate.transform.Find("Text").text = position;
+            prefabToCreate.transform.Find("Cube").GetComponent<Renderer>().sharedMaterial.SetColor("_SpecColor", sourceColor);
+            //prefabToCreate.transform.Find("Text").GetComponent<Text>().text = position.ToString();
+            Debug.Log(position);
             GameObject trayNotification = Instantiate(prefabToCreate, position, Quaternion.identity) as GameObject;
         }
     }
