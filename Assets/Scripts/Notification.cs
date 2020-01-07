@@ -8,8 +8,9 @@
         private string text;
         private string header;
         private long timestamp;
+        private bool silent;
 
-        public Notification(string sourceImage, string sourceName, string author, string text, string header, long timestamp)
+        public Notification(string sourceImage, string sourceName, string author, string text, string header, long timestamp, bool silent)
         {
             this.sourceImage = sourceImage;
             this.sourceName = sourceName;
@@ -17,6 +18,7 @@
             this.text = text;
             this.header = header;
             this.timestamp = timestamp;
+            this.silent = silent;
         }
 
         public override string ToString()
@@ -25,7 +27,9 @@
                     " sourceName: " + sourceName +
                     " author: " + author +
                     " text: " + text +
-                    " header: " + header + " time: " + timestamp;
+                    " header: " + header +
+                    " time: " + timestamp +
+                    " isSilent: " + silent;
         }
 
         public string SourceImage
@@ -73,6 +77,14 @@
             get
             {
                 return timestamp;
+            }
+        }
+
+        public bool isSilent
+        {
+            get
+            {
+                return silent;
             }
         }
     }
