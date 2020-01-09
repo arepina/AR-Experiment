@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UnityEngine.UI;
 
 namespace Logic
 {
@@ -60,22 +61,23 @@ namespace Logic
                                               timestamp, false);
             Stack<Notification> sourceNotifications;
             Color sourceColor;
-            try
-            {
+            Image sourceIcon;
+            try{
                 sourceNotifications = notifications[sourceName].Storage;
                 sourceColor = notifications[sourceName].SourceColor;
+                sourceIcon = notifications[sourceName].SourceIcon;
             }
-            catch (KeyNotFoundException e)
-            {
+            catch (KeyNotFoundException e){
                 sourceNotifications = new Stack<Notification>();
                 sourceColor = new Color(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256));
+                sourceIcon = null;
+                //todo set sourceIcon here
             }
             sourceNotifications.Push(notification);
-            NotificationsStorage newNotificationsStorage = new NotificationsStorage(sourceNotifications, timestamp, sourceColor);
+            NotificationsStorage newNotificationsStorage = new NotificationsStorage(sourceNotifications, timestamp, sourceColor, sourceIcon);
             notifications[sourceName] = newNotificationsStorage;
             Dictionary<string, NotificationsStorage> orderedNotifications = notifications.OrderByDescending(x => x.Value.LatestTimestamp)
                                                                                          .ToDictionary(d => d.Key, d => d.Value);
-
             addNotificationToScene(orderedNotifications);
         }
 
@@ -91,14 +93,45 @@ namespace Logic
         private List<Coordinates> formCoordinatesArray()
         {
             List<Coordinates> coordinates = new List<Coordinates>();
-            coordinates.Add(new Coordinates(new Triple(-0.21f, 0, 1.3f), new Triple(180, 90, 180))); // center
+            coordinates.Add(new Coordinates(new Triple(-0.21f, 0.341f, 1.3f), new Triple(180, 90, 180))); // center 
+            coordinates.Add(new Coordinates(new Triple(-0.21f, 0, 1.3f), new Triple(180, 90, 180))); // center 
+            coordinates.Add(new Coordinates(new Triple(-0.21f, -0.337f, 1.3f), new Triple(180, 90, 180))); // center 
+            coordinates.Add(new Coordinates(new Triple(-0.21f, -0.676f, 1.3f), new Triple(180, 90, 180))); // center 
+
+            coordinates.Add(new Coordinates(new Triple(-1.1f, 0.341f, 0.9f), new Triple(180, 45, 180))); // left
             coordinates.Add(new Coordinates(new Triple(-1.1f, 0, 0.9f), new Triple(180, 45, 180))); // left
+            coordinates.Add(new Coordinates(new Triple(-1.1f, -0.337f, 0.9f), new Triple(180, 45, 180))); // left
+            coordinates.Add(new Coordinates(new Triple(-1.1f, -0.676f, 0.9f), new Triple(180, 45, 180))); // left
+
+            coordinates.Add(new Coordinates(new Triple(0.7f, 0.341f, 0.9f), new Triple(180, 135, 180))); // right
             coordinates.Add(new Coordinates(new Triple(0.7f, 0, 0.9f), new Triple(180, 135, 180))); // right
+            coordinates.Add(new Coordinates(new Triple(0.7f, -0.337f, 0.9f), new Triple(180, 135, 180))); // right
+            coordinates.Add(new Coordinates(new Triple(0.7f, -0.676f, 0.9f), new Triple(180, 135, 180))); // right
+
+            coordinates.Add(new Coordinates(new Triple(-1.5f, 0.341f, 0), new Triple(180, 0, 180))); // left
             coordinates.Add(new Coordinates(new Triple(-1.5f, 0, 0), new Triple(180, 0, 180))); // left
+            coordinates.Add(new Coordinates(new Triple(-1.5f, -0.337f, 0), new Triple(180, 0, 180))); // left
+            coordinates.Add(new Coordinates(new Triple(-1.5f, -0.676f, 0), new Triple(180, 0, 180))); // left
+
+            coordinates.Add(new Coordinates(new Triple(1.1f, 0.341f, 0), new Triple(180, 180, 180))); // right
             coordinates.Add(new Coordinates(new Triple(1.1f, 0, 0), new Triple(180, 180, 180))); // right
+            coordinates.Add(new Coordinates(new Triple(1.1f, -0.337f, 0), new Triple(180, 180, 180))); // right
+            coordinates.Add(new Coordinates(new Triple(1.1f, -0.676f, 0), new Triple(180, 180, 180))); // right
+
+            coordinates.Add(new Coordinates(new Triple(-1.1f, 0.341f, -0.9f), new Triple(180, 315, 180))); // left
             coordinates.Add(new Coordinates(new Triple(-1.1f, 0, -0.9f), new Triple(180, 315, 180))); // left
+            coordinates.Add(new Coordinates(new Triple(-1.1f, -0.337f, -0.9f), new Triple(180, 315, 180))); // left
+            coordinates.Add(new Coordinates(new Triple(-1.1f, -0.676f, -0.9f), new Triple(180, 315, 180))); // left
+
+            coordinates.Add(new Coordinates(new Triple(0.7f, 0.341f, -0.9f), new Triple(180, 225, 180))); // right
             coordinates.Add(new Coordinates(new Triple(0.7f, 0, -0.9f), new Triple(180, 225, 180))); // right
+            coordinates.Add(new Coordinates(new Triple(0.7f, -0.337f, -0.9f), new Triple(180, 225, 180))); // right
+            coordinates.Add(new Coordinates(new Triple(0.7f, -0.676f, -0.9f), new Triple(180, 225, 180))); // right
+
+            coordinates.Add(new Coordinates(new Triple(-0.21f, 0.341f, -1.3f), new Triple(180, 270, 180))); // opposite
             coordinates.Add(new Coordinates(new Triple(-0.21f, 0, -1.3f), new Triple(180, 270, 180))); // opposite
+            coordinates.Add(new Coordinates(new Triple(-0.21f, -0.337f, -1.3f), new Triple(180, 270, 180))); // opposite
+            coordinates.Add(new Coordinates(new Triple(-0.21f, -0.676f, -1.3f), new Triple(180, 270, 180))); // opposite
             return coordinates;
         }
 
@@ -106,31 +139,45 @@ namespace Logic
         {
             clearScene();
             var coordinates = formCoordinatesArray();
-            int maxNotificationsInTray = 8;
-            int currentGroupIndex = 0;
+            int maxNotificationsInTray = 4 * 8;
+            int indexPosition = 0;
             foreach (var notificationGroup in orderedNotifications)
             {
                 string groupName = notificationGroup.Key;
                 Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
                 Color groupColor = notificationGroup.Value.SourceColor;
+                Image groupIcon = notificationGroup.Value.SourceIcon;
+                bool isFirstInGroup = true;
                 foreach (var notification in groupNotifications)
                 {
-                    if (currentGroupIndex < maxNotificationsInTray) // can display only 8
+                    if (indexPosition < maxNotificationsInTray) // can display only 32
                     {
                         Vector3 position;
                         Quaternion rotation;
+                        if (isFirstInGroup)
+                        {
+                            prefabToCreate.transform.Find("GroupIcon").localScale = new Vector3(0.05f, 0.07f, 0.2f);
+                            //todo set the GroupIcon
+                            //icon.transform.Find("Icon").GetComponent<Renderer>().sharedMaterial = groupIcon;
+                            isFirstInGroup = false;
+                        }
+                        else
+                        {
+                            prefabToCreate.transform.Find("GroupIcon").localScale = new Vector3(0, 0, 0);
+                        }
                         prefabToCreate.transform.Find("Cube").GetComponent<Renderer>().sharedMaterial.color = groupColor;
                         prefabToCreate.transform.Find("Text").GetComponent<TextMeshPro>().text = notification.Text;
                         prefabToCreate.transform.Find("Author").GetComponent<TextMeshPro>().text = notification.Author;
                         prefabToCreate.transform.Find("Source").GetComponent<TextMeshPro>().text = notification.SourceName;
                         prefabToCreate.transform.Find("Header").GetComponent<TextMeshPro>().text = notification.Header;
                         prefabToCreate.transform.Find("Timestamp").GetComponent<TextMeshPro>().text = new DateTime(notification.Timestamp).ToString();
-                        //todo set the Image
-                        //prefabToCreate.transform.Find("Icon").GetComponent<Renderer>().sharedMaterial = notification.SourceImage;                        
-                        int i = currentGroupIndex;
-                        position = new Vector3(coordinates[i].Position.X, coordinates[i].Position.Y, coordinates[i].Position.Z);
-                        rotation = Quaternion.Euler(coordinates[i].Rotation.X, coordinates[i].Rotation.Y, coordinates[i].Rotation.Z);
-                        currentGroupIndex++;
+                        //todo set the SourceImage
+                        //prefabToCreate.transform.Find("Icon").GetComponent<Renderer>().sharedMaterial = notification.SourceImage; 
+                        position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
+                        rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
+                        Debug.Log(indexPosition);
+                        Debug.Log(position);
+                        indexPosition = indexPosition + 1;
                         GameObject trayNotification = Instantiate(prefabToCreate, position, rotation) as GameObject;
                     }
                 }
