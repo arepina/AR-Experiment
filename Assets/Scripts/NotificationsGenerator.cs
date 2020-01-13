@@ -174,6 +174,7 @@ namespace Logic
 
         private void addNotificationToScene(Dictionary<string, NotificationsStorage> orderedNotifications)
         {
+            Debug.Log("____________________________________");
             clearScene();
             List<Coordinates> coordinates = formCoordinatesArray();
             int maxNotificationsInTray = 4 * 8;
@@ -183,7 +184,6 @@ namespace Logic
                 string groupName = notificationGroup.Key;
                 Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
                 Color groupColor = notificationGroup.Value.SourceColor;
-                Debug.Log(groupColor);
                 Image groupIcon = notificationGroup.Value.SourceIcon;
                 bool isFirstInGroup = true;
                 foreach (Notification notification in groupNotifications)
@@ -194,7 +194,7 @@ namespace Logic
                         Quaternion rotation;
                         if (isFirstInGroup)
                         {
-                            prefabToCreate.transform.Find("GroupIcon").localScale = new Vector3(0.05f, 0.1f, 0.1f);
+                            prefabToCreate.transform.Find("GroupIcon").localScale = new Vector3(0.06f, 0.1f, 0.1f);
                             //todo set the GroupIcon
                             //icon.transform.Find("Icon").GetComponent<Renderer>().sharedMaterial = groupIcon;
                             isFirstInGroup = false;
@@ -215,6 +215,7 @@ namespace Logic
                         position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
                         rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
                         indexPosition = indexPosition + 1;
+                        Debug.Log(groupColor);
                         GameObject trayNotification = Instantiate(prefabToCreate, position, rotation) as GameObject;
                     }
                 }
