@@ -315,6 +315,11 @@ PlayerSettings:
     - Oculus
     - OpenVR
     - Vuforia
+  - m_BuildTarget: iPhone
+    m_Enabled: 1
+    m_Devices:
+    - Vuforia
+    - cardboard
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
