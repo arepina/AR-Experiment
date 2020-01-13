@@ -399,10 +399,7 @@ GameObject:
   - component: {fileID: 1509463016}
   - component: {fileID: 1509463015}
   - component: {fileID: 1509463014}
-  - component: {fileID: 1509463013}
-  - component: {fileID: 1509463012}
   - component: {fileID: 1509463017}
-  - component: {fileID: 1509463018}
   - component: {fileID: 1509463019}
   m_Layer: 0
   m_Name: ARCamera
@@ -411,32 +408,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1509463012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509463011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c47f92041efbb4b429a4eafca855ebe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1509463013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509463011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1826476478, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mWorldCenterMode: 2
-  mWorldCenter: {fileID: 0}
 --- !u!81 &1509463014
 AudioListener:
   m_ObjectHideFlags: 0
@@ -519,18 +490,6 @@ MonoBehaviour:
   secondsRange: 5
   prefabToCreate: {fileID: 6458541884227280155, guid: 426728455e0444e30bf095440088b16f,
     type: 3}
---- !u!114 &1509463018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509463011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5de377d5b211a4906aaa6d8fedb885c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1509463019
 MonoBehaviour:
   m_ObjectHideFlags: 0

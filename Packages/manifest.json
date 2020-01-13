@@ -9,7 +9,7 @@
     }
   ],
   "dependencies": {
-    "com.ptc.vuforia.engine": "file:/Users/anastasia/Downloads/New Unity Project/Library/PackageCache/com.ptc.vuforia.engine@8.3.9",
+    "com.ptc.vuforia.engine": "file:/Users/anastasia/Downloads/Tray/Library/PackageCache/com.ptc.vuforia.engine@8.3.9",
     "com.unity.collab-proxy": "1.2.16",
     "com.unity.ext.nunit": "1.0.0",
     "com.unity.ide.rider": "1.1.0",

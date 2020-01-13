@@ -6,7 +6,6 @@
         private string sourceName;
         private string author;
         private string text;
-        private string header;
         private long timestamp;
         private bool silent;
 
@@ -64,14 +63,6 @@
             }
         }
 
-        public string Header
-        {
-            get
-            {
-                return header;
-            }
-        }
-
         public long Timestamp
         {
             get
@@ -86,6 +77,11 @@
             {
                 return silent;
             }
+        }
+
+        public string header
+        {
+            get; internal set;
         }
     }
 }
