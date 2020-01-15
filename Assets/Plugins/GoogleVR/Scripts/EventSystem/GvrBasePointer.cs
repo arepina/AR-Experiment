@@ -848,9 +848,7 @@ public abstract class GvrBasePointer : MonoBehaviour, IGvrControllerInputDeviceR
             }
 
             if (Input.GetMouseButtonUp(0) || Input.GetButtonUp("Jump"))
-            {
                 buttonUp |= GvrControllerButton.TouchPadButton;
-            }
 
             if (ControllerInputDevice != null)
             {

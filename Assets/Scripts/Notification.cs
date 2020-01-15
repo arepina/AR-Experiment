@@ -1,15 +1,19 @@
-﻿namespace Logic
+﻿using UnityEngine;
+
+namespace Logic
 {
     public class Notification
     {
         private string sourceImage;
         private string sourceName;
         private string author;
+        private string icon;
         private string text;
         private long timestamp;
         private bool silent;
+        private Color color;
 
-        public Notification(string sourceImage, string sourceName, string author, string text, string header, long timestamp, bool silent)
+        public Notification(string sourceImage, string sourceName, string author, string icon, string text, string header, long timestamp, bool silent, Color color)
         {
             this.sourceImage = sourceImage;
             this.sourceName = sourceName;
@@ -18,17 +22,8 @@
             this.header = header;
             this.timestamp = timestamp;
             this.silent = silent;
-        }
-
-        public override string ToString()
-        {
-            return "sourceImage: " + sourceImage +
-                    " sourceName: " + sourceName +
-                    " author: " + author +
-                    " text: " + text +
-                    " header: " + header +
-                    " time: " + timestamp +
-                    " isSilent: " + silent;
+            this.color = color;
+            this.icon = icon;
         }
 
         public string SourceImage
@@ -36,6 +31,14 @@
             get
             {
                 return sourceImage;
+            }
+        }
+
+        public string Icon
+        {
+            get
+            {
+                return icon;
             }
         }
 
@@ -52,6 +55,14 @@
             get
             {
                 return author;
+            }
+        }
+
+        public Color Color
+        {
+            get
+            {
+                return color;
             }
         }
 
