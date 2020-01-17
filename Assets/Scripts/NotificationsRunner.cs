@@ -4,7 +4,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using UnityEngine.UI;
 
 namespace Logic
 {
@@ -89,58 +88,12 @@ namespace Logic
             {
                 Destroy(notification);
             }
-        }
-
-        private List<Coordinates> formCoordinatesArray()
-        {
-            // todo change to new
-            List<Coordinates> coordinates = new List<Coordinates>();
-            coordinates.Add(new Coordinates(new Triple(-0.21f, 0.341f, 1.3f), new Triple(180, 0, 180))); // center 
-            coordinates.Add(new Coordinates(new Triple(-0.21f, 0, 1.3f), new Triple(180, 0, 180))); // center 
-            coordinates.Add(new Coordinates(new Triple(-0.21f, -0.337f, 1.3f), new Triple(180, 0, 180))); // center 
-            coordinates.Add(new Coordinates(new Triple(-0.21f, -0.676f, 1.3f), new Triple(180, 0, 180))); // center 
-
-            coordinates.Add(new Coordinates(new Triple(-1.1f, 0.341f, 0.9f), new Triple(180, 45, 180))); // left
-            coordinates.Add(new Coordinates(new Triple(-1.1f, 0, 0.9f), new Triple(180, 45, 180))); // left
-            coordinates.Add(new Coordinates(new Triple(-1.1f, -0.337f, 0.9f), new Triple(180, 45, 180))); // left
-            coordinates.Add(new Coordinates(new Triple(-1.1f, -0.676f, 0.9f), new Triple(180, 45, 180))); // left
-
-            coordinates.Add(new Coordinates(new Triple(0.7f, 0.341f, 0.9f), new Triple(180, 135, 180))); // right
-            coordinates.Add(new Coordinates(new Triple(0.7f, 0, 0.9f), new Triple(180, 135, 180))); // right
-            coordinates.Add(new Coordinates(new Triple(0.7f, -0.337f, 0.9f), new Triple(180, 135, 180))); // right
-            coordinates.Add(new Coordinates(new Triple(0.7f, -0.676f, 0.9f), new Triple(180, 135, 180))); // right
-
-            coordinates.Add(new Coordinates(new Triple(-1.5f, 0.341f, 0), new Triple(180, 0, 180))); // left
-            coordinates.Add(new Coordinates(new Triple(-1.5f, 0, 0), new Triple(180, 0, 180))); // left
-            coordinates.Add(new Coordinates(new Triple(-1.5f, -0.337f, 0), new Triple(180, 0, 180))); // left
-            coordinates.Add(new Coordinates(new Triple(-1.5f, -0.676f, 0), new Triple(180, 0, 180))); // left
-
-            coordinates.Add(new Coordinates(new Triple(1.1f, 0.341f, 0), new Triple(180, 180, 180))); // right
-            coordinates.Add(new Coordinates(new Triple(1.1f, 0, 0), new Triple(180, 180, 180))); // right
-            coordinates.Add(new Coordinates(new Triple(1.1f, -0.337f, 0), new Triple(180, 180, 180))); // right
-            coordinates.Add(new Coordinates(new Triple(1.1f, -0.676f, 0), new Triple(180, 180, 180))); // right
-
-            coordinates.Add(new Coordinates(new Triple(-1.1f, 0.341f, -0.9f), new Triple(180, 315, 180))); // left
-            coordinates.Add(new Coordinates(new Triple(-1.1f, 0, -0.9f), new Triple(180, 315, 180))); // left
-            coordinates.Add(new Coordinates(new Triple(-1.1f, -0.337f, -0.9f), new Triple(180, 315, 180))); // left
-            coordinates.Add(new Coordinates(new Triple(-1.1f, -0.676f, -0.9f), new Triple(180, 315, 180))); // left
-
-            coordinates.Add(new Coordinates(new Triple(0.7f, 0.341f, -0.9f), new Triple(180, 225, 180))); // right
-            coordinates.Add(new Coordinates(new Triple(0.7f, 0, -0.9f), new Triple(180, 225, 180))); // right
-            coordinates.Add(new Coordinates(new Triple(0.7f, -0.337f, -0.9f), new Triple(180, 225, 180))); // right
-            coordinates.Add(new Coordinates(new Triple(0.7f, -0.676f, -0.9f), new Triple(180, 225, 180))); // right
-
-            coordinates.Add(new Coordinates(new Triple(-0.21f, 0.341f, -1.3f), new Triple(180, 270, 180))); // opposite
-            coordinates.Add(new Coordinates(new Triple(-0.21f, 0, -1.3f), new Triple(180, 270, 180))); // opposite
-            coordinates.Add(new Coordinates(new Triple(-0.21f, -0.337f, -1.3f), new Triple(180, 270, 180))); // opposite
-            coordinates.Add(new Coordinates(new Triple(-0.21f, -0.676f, -1.3f), new Triple(180, 270, 180))); // opposite
-            return coordinates;
-        }
+        }       
 
         private void addNotificationToScene(Dictionary<string, NotificationsStorage> orderedNotifications)
         {
             clearScene(); // todo change to reposition with animation
-            List<Coordinates> coordinates = formCoordinatesArray();
+            List<Coordinates> coordinates = NotificationCoordinates.formCoordinatesArray();
             int maxNotificationsInTray = notificationsInColumn * notificationColumns;
             int indexPosition = 0;
             foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
@@ -156,7 +109,7 @@ namespace Logic
                         Quaternion rotation;
                         if (isFirstInGroup)
                         {
-                            prefabToCreate.transform.Find("GroupIcon").localScale = new Vector3(0.1f, 0.06f, 0.1f);
+                            prefabToCreate.transform.Find("GroupIcon").localScale = new Vector3(0.3f, 0.2f, 0.2f);
                             prefabToCreate.transform.Find("GroupIcon")
                                           .transform.Find("Icon")
                                           .GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(notification.SourceImage);
