@@ -12,8 +12,9 @@ namespace Logic
         private long timestamp;
         private bool silent;
         private Color color;
+        private string id;
 
-        public Notification(string sourceImage, string sourceName, string author, string icon, string text, string header, long timestamp, bool silent, Color color)
+        public Notification(string id, string sourceImage, string sourceName, string author, string icon, string text, string header, long timestamp, bool silent, Color color)
         {
             this.sourceImage = sourceImage;
             this.sourceName = sourceName;
@@ -24,6 +25,15 @@ namespace Logic
             this.silent = silent;
             this.color = color;
             this.icon = icon;
+            this.id = id;
+        }
+
+        public string Id
+        {
+            get
+            {
+                return id;
+            }
         }
 
         public string SourceImage

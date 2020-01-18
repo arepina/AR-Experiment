@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Logic
 {
-    public class NotificationsRunner : MonoBehaviour
+    public class Runner : MonoBehaviour
     {
         private NotificationsGenerator notificationsGenerator = new NotificationsGenerator();
         private StorageEditor storageEditor = new StorageEditor();
@@ -27,11 +27,12 @@ namespace Logic
         public IEnumerator Wait()
         {
             isRunning = false;
-            int pause = random.Next(1, secondsRange + 1);
+            int pause = 5; //random.Next(1, secondsRange + 1);
+            Global.maxNotificationsInTray = notificationsInColumn * notificationColumns;
+            Global.prefabToCreate = prefabToCreate;
             Notification notification = notificationsGenerator.getNotification();
             Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.addToStorage(notification);
-            int maxNotificationsInTray = notificationsInColumn * notificationColumns;
-            sceneEditor.addNotificationToScene(orderedNotifications, prefabToCreate, maxNotificationsInTray);
+            sceneEditor.rebuildScene(orderedNotifications);
             yield return new WaitForSeconds(pause);
             isRunning = true;
         }

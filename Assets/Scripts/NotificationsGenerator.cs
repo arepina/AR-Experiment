@@ -13,6 +13,7 @@ namespace Logic
             int sourceIndex = random.Next(0, sourcesNumber);
             long timestamp = DateTime.Now.Ticks;
             bool isSilent = random.Next(0, 2) == 0;
+            string id = Guid.NewGuid().ToString();
             NotificationSource notificationSource = (NotificationSource)Enum.GetValues(typeof(NotificationSource)).GetValue(sourceIndex);
             string sourceName = EnumDescription.getDescription(notificationSource);
             NotificationImage notificationImage = (NotificationImage)Enum.GetValues(typeof(NotificationImage)).GetValue(sourceIndex);
@@ -36,7 +37,7 @@ namespace Logic
                 sourceColor = EnumDescription.getColor(EnumDescription.getDescription(NotificationColor.Silent));
                 header = "Silent: " + header;
             }
-            Notification notification = new Notification(sourceImage, sourceName, author, icon, text, header, timestamp, isSilent, sourceColor);            
+            Notification notification = new Notification(id, sourceImage, sourceName, author, icon, text, header, timestamp, isSilent, sourceColor);            
             return notification;
         }
     }

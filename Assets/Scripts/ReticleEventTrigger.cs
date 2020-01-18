@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Logic {
@@ -7,6 +9,7 @@ namespace Logic {
         private long startTime;
         private long durationConstant = 3;
         private StorageEditor storageEditor = new StorageEditor();
+        private SceneEditor sceneEditor = new SceneEditor();
 
         public void OnPointerEnter()
         {
@@ -16,18 +19,19 @@ namespace Logic {
         public void OnPointerExit(GameObject notification)
         {
             double duration = TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
+            string id = notification.transform.Find("Id").GetComponent<TextMeshPro>().text;
+            string sourceName = notification.transform.Find("Source").GetComponent<TextMeshPro>().text;
             string name = "";
             if (duration >= durationConstant && name.Equals("Hide"))
             {
-                //todo
-                Notification toRemove = null;
-                storageEditor.removeFromStorage(toRemove);
-                //todo remove notification from scene 
-
+                Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.removeFromStorage(id, sourceName);
+                sceneEditor.rebuildScene(orderedNotifications);
             }   
             if (duration >= durationConstant && name.Equals("MarkAsRead"))
             {
-                //todo remove notification from scene
+                Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.removeFromStorage(id, sourceName);
+                sceneEditor.rebuildScene(orderedNotifications);
+                //todo open application
             }
         }
     }

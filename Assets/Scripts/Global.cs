@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Logic
 {
     internal class Global
     {
         public static Dictionary<string, NotificationsStorage> notifications = new Dictionary<string, NotificationsStorage>();
+        public static GameObject prefabToCreate;
+        public static int maxNotificationsInTray;
     }
 }
