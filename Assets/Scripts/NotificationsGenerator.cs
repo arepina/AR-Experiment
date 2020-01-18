@@ -35,6 +35,7 @@ namespace Logic
             if (isSilent)
             {
                 sourceColor = EnumDescription.getColor(EnumDescription.getDescription(NotificationColor.Silent));
+                sourceImage = "_silent_";
                 header = "Silent: " + header;
             }
             Notification notification = new Notification(id, sourceImage, sourceName, author, icon, text, header, timestamp, isSilent, sourceColor);            

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8826759309082242292}
   - component: {fileID: 7940143672359098253}
   - component: {fileID: 9070824852812945376}
-  - component: {fileID: 5023662196848144915}
-  - component: {fileID: 3530221965422884791}
+  - component: {fileID: 4989302575372598670}
+  - component: {fileID: 7337169237448528359}
   m_Layer: 0
   m_Name: MarkAsRead
   m_TagString: Untagged
@@ -95,7 +95,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5023662196848144915
+--- !u!114 &4989302575372598670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38070715712369226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266ca840ab1a143f485eebdb38534734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7337169237448528359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,12 +124,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3530221965422884791}
-          m_MethodName: OnPointerEnter
+        - m_Target: {fileID: 38070715712369226}
+          m_MethodName: 
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgumentAssemblyTypeName: 
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -127,29 +139,17 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3530221965422884791}
-          m_MethodName: OnPointerExit
-          m_Mode: 2
+        - m_Target: {fileID: 38070715712369226}
+          m_MethodName: 
+          m_Mode: 1
           m_Arguments:
-            m_ObjectArgument: {fileID: 6458541884227280155}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &3530221965422884791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38070715712369226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 266ca840ab1a143f485eebdb38534734, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &119217108732360720
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u042F\u043D\u0434\u0435\u043A\u0441.\u041F\u043E\u0447\u0442\u0430"
+  m_text: YouTube
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -331,14 +331,14 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3495486114289354084}
-    characterCount: 12
+    characterCount: 8
     spriteCount: 0
     spaceCount: 0
-    wordCount: 2
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
-    materialCount: 2
+    materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -623,7 +623,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 84632bd3291074441aa307724ee6027f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 03a7ecc743b06404abf1e47585005754, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -646,8 +646,8 @@ GameObject:
   - component: {fileID: 1799964962094189835}
   - component: {fileID: 8048409237881936877}
   - component: {fileID: 8091896141165086205}
-  - component: {fileID: 7743272567615775960}
-  - component: {fileID: 6367429215826526771}
+  - component: {fileID: 5198728315090542786}
+  - component: {fileID: 5118954203439275944}
   m_Layer: 0
   m_Name: Hide
   m_TagString: Untagged
@@ -729,7 +729,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7743272567615775960
+--- !u!114 &5198728315090542786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2222944922785488217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266ca840ab1a143f485eebdb38534734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5118954203439275944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -746,12 +758,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6367429215826526771}
-          m_MethodName: OnPointerEnter
+        - m_Target: {fileID: 2222944922785488217}
+          m_MethodName: 
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgumentAssemblyTypeName: 
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -761,29 +773,17 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6367429215826526771}
-          m_MethodName: OnPointerExit
-          m_Mode: 2
+        - m_Target: {fileID: 2222944922785488217}
+          m_MethodName: 
+          m_Mode: 1
           m_Arguments:
-            m_ObjectArgument: {fileID: 6458541884227280155}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &6367429215826526771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2222944922785488217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 266ca840ab1a143f485eebdb38534734, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2428669277843019579
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +892,7 @@ Transform:
   m_GameObject: {fileID: 3326713891321402744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.42, z: -0.013}
-  m_LocalScale: {x: 0.3, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1512462128074168934}
   m_Father: {fileID: 6458541884227280154}
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0410\u043D\u0442\u043E\u043D"
+  m_text: "\u0412\u0430\u0441\u0438\u043B\u0438\u0439"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 6973684195316246571}
-    characterCount: 5
+    characterCount: 6
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -1310,7 +1310,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 84632bd3291074441aa307724ee6027f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f998b74cf47f421b91a3534e3b5aa72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1533,7 +1533,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0427\u0442\u043E \u0434\u0435\u043B\u0430\u0435\u0448\u044C?"
+  m_text: "\u0425\u043E\u0447\u0443 \u0441\u0445\u043E\u0434\u0438\u0442\u044C \u0432
+    \u043A\u0438\u043D\u043E. \u041F\u0440\u0438\u0441\u043E\u0435\u0434\u0438\u043D\u0438\u0448\u044C\u0441\u044F?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1602,10 +1603,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 6458541882923956752}
-    characterCount: 12
+    characterCount: 23
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 3
+    wordCount: 4
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -1884,7 +1885,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Silent: \u041E\u0442\u0432\u0435\u0442"
+  m_text: "Silent: \u0410 \u0432\u044B \u0437\u043D\u0430\u043B\u0438?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1953,14 +1954,14 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8213743459458004148}
-    characterCount: 13
+    characterCount: 8
     spriteCount: 0
     spaceCount: 1
-    wordCount: 2
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
-    materialCount: 2
+    materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -2087,7 +2088,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Notification Id
+  m_text: b0701895-ab83-49cd-972f-dc2dc1bf6021
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2156,12 +2157,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8874952953839653605}
-    characterCount: 15
+    characterCount: 36
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
-    lineCount: 14
+    lineCount: 36
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -2290,7 +2291,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1/18/2020 1:31:05 PM
+  m_text: 1/19/2020 12:01:38 AM
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2359,7 +2360,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 147549439728325358}
-    characterCount: 20
+    characterCount: 21
     spriteCount: 0
     spaceCount: 2
     wordCount: 7

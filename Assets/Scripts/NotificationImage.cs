@@ -11,7 +11,9 @@ namespace Logic
         [Description("yandexpost")]
         YandexPost,
         [Description("youtube")]
-        YouTube
+        YouTube,
+        [Description("_silent_")]
+        Silent
     }
 }
 
