@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
 namespace Logic
 {
-
-    class NotificationsStorage
+    public class NotificationsStorage
     {
         private Stack<Notification> notificationsStorage;
         private long latestTimestamp;
