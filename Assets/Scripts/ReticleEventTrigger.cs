@@ -14,6 +14,7 @@ namespace Logic {
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            //todo fix the real joystick usage
             startTime = DateTime.Now.Ticks;
         }
 
@@ -35,30 +36,56 @@ namespace Logic {
             string sourceName = header.Contains("Silent:") ? Global.silentGroupKey :
                 eventData.pointerEnter.transform.parent.Find("Source").GetComponent<TextMeshPro>().text;
             string name = eventData.pointerEnter.tag;
-            if (duration >= durationConstant && name.Equals("Hide"))
+            if (duration >= durationConstant)
             {
-                Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.removeFromStorage(id, sourceName);
-                sceneEditor.rebuildScene(orderedNotifications);
+                //todo fix the behaviour for different buttons
+                if(name.Equals("Hide")) processHide(id, sourceName);
+                if (name.Equals("MarkAsRead")) processMarkAsRead(id, sourceName);
+                if (name.Equals("HideAll")) processHideAll(sourceName);
+                if (name.Equals("MarkAsReadAll")) processMarkAsReadAll(sourceName);
             }
-            if (duration >= durationConstant && name.Equals("MarkAsRead"))
+        }
+
+        private void processHide(string id, string sourceName)
+        {
+            Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.removeFromStorage(id, sourceName);
+            sceneEditor.rebuildScene(orderedNotifications);
+        }
+
+        private void processHideAll(string sourceName)
+        {
+            Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.removeAllFromStorage(sourceName);
+            sceneEditor.rebuildScene(orderedNotifications);
+        }
+
+        private void processMarkAsRead(string id, string sourceName)
+        {
+            processMarkAsRead(id, sourceName);
+            openApp(sourceName);
+        }
+
+        private void processMarkAsReadAll(string sourceName)
+        {
+            processHideAll(sourceName);
+            openApp(sourceName);
+        }
+
+        private void openApp(string sourceName)
+        {
+            switch (sourceName)
             {
-                Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.removeFromStorage(id, sourceName);
-                sceneEditor.rebuildScene(orderedNotifications);
-                //switch (sourceName)
-                //{
-                //    case "Telegram":
-                //        Application.OpenURL("tg://");
-                //        break;
-                //    case "WhatsApp":
-                //        Application.OpenURL("whatsapp://");
-                //        break;
-                //    case "Яндекс.Почта":
-                //        Application.OpenURL("yandexmail://");
-                //        break;
-                //    case "YouTube":
-                //        Application.OpenURL("youtube://");
-                //        break;
-                //}
+                case "Telegram":
+                    Application.OpenURL("tg://");
+                    break;
+                case "WhatsApp":
+                    Application.OpenURL("whatsapp://");
+                    break;
+                case "Яндекс.Почта":
+                    Application.OpenURL("yandexmail://");
+                    break;
+                case "YouTube":
+                    Application.OpenURL("youtube://");
+                    break;
             }
         }
     }

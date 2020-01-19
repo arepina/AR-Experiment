@@ -18,6 +18,7 @@ namespace Logic
 
         public void Update()
         {
+            //todo fix the lights on the scene
             if (isRunning) StartCoroutine(Wait());
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Logic
@@ -17,10 +18,9 @@ namespace Logic
             return createOrderedStorage(sourceName);           
         }
 
-        public Dictionary<string, NotificationsStorage> removeFromStorage(string id, string sourceName)
+        internal Dictionary<string, NotificationsStorage> removeFromStorage(string id, string sourceName)
         {
-            Dictionary<string, NotificationsStorage> notifications = Global.notifications;
-            NotificationsStorage newStorage = notifications[sourceName];
+            NotificationsStorage newStorage = Global.notifications[sourceName];
             Stack<Notification> newNotificationsStorage = new Stack<Notification>();
             foreach (Notification notification in newStorage.Storage)
             {
@@ -30,7 +30,13 @@ namespace Logic
                 }
             }
             newStorage.Storage = newNotificationsStorage;
-            notifications[sourceName] = newStorage;
+            Global.notifications[sourceName] = newStorage;
+            return createOrderedStorage(sourceName);
+        }
+
+        internal Dictionary<string, NotificationsStorage> removeAllFromStorage(string sourceName)
+        {
+            Global.notifications.Remove(sourceName);
             return createOrderedStorage(sourceName);
         }
 

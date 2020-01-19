@@ -55,8 +55,9 @@ namespace Logic
             {
                 prefabToCreate.transform.Find("GroupIcon").localScale = new Vector3(0, 0, 0);
             }
-            Renderer render = prefabToCreate.transform.Find("Cube").GetComponent<Renderer>();
-            render.sharedMaterial.color = notification.Color;
+            //todo fix change color
+            //GameObject cube = prefabToCreate.transform.Find("Cube").gameObject;
+            //cube.GetComponentInChildren<MeshRenderer>().material.SetColor("_Color", notification.Color);
             prefabToCreate.transform.Find("Text").GetComponent<TextMeshPro>().text = notification.Text;
             prefabToCreate.transform.Find("Author").GetComponent<TextMeshPro>().text = notification.Author;
             prefabToCreate.transform.Find("Source").GetComponent<TextMeshPro>().text = notification.SourceName;
@@ -65,6 +66,9 @@ namespace Logic
             prefabToCreate.transform.Find("Timestamp").GetComponent<TextMeshPro>().text = new DateTime(notification.Timestamp).ToString();
             prefabToCreate.transform.Find("Icon")
                           .GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/" + notification.Icon);
+            //todo how to show hide and mark as read
+            //prefabToCreate.transform.Find("Hide").gameObject.SetActive(false);
+            //prefabToCreate.transform.Find("MarkAsRead").gameObject.SetActive(false);
             position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
             rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
             _ = Instantiate(prefabToCreate, position, rotation) as GameObject;

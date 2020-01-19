@@ -8,6 +8,8 @@ TagManager:
   - Hide
   - MarkAsRead
   - GroupIcon
+  - MarkAsReadAll
+  - HideAll
   layers:
   - Default
   - TransparentFX
