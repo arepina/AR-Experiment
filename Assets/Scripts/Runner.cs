@@ -15,35 +15,23 @@ namespace Logic
         public int secondsRange;
         public int notificationsInColumn;
         public int notificationColumns;
-        private int count = 0;
 
         public void Update()
         {
-            //if (isRunning)
-            //{
-            //    StartCoroutine(Wait());
-            //}
-            Wait();
+            if (isRunning) StartCoroutine(Wait());
         }
 
-        //public IEnumerator Wait()
-        void Wait()
+        public IEnumerator Wait()
         {
-            if (count <= 7)
-            {
-
-                Application.OpenURL("tg://");
-                //isRunning = false;
-                //int pause = random.Next(1, secondsRange + 1);
-                Global.maxNotificationsInTray = notificationsInColumn * notificationColumns;
-                Global.prefabToCreate = prefabToCreate;
-                Notification notification = notificationsGenerator.getNotification();
-                Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.addToStorage(notification);
-                sceneEditor.rebuildScene(orderedNotifications);
-                count++;
-                //yield return new WaitForSeconds(pause);
-                //isRunning = true;
-            }
+            isRunning = false;
+            int pause = random.Next(1, secondsRange + 1);
+            Global.maxNotificationsInTray = notificationsInColumn * notificationColumns;
+            Global.prefabToCreate = prefabToCreate;
+            Notification notification = notificationsGenerator.getNotification();
+            Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.addToStorage(notification);
+            sceneEditor.rebuildScene(orderedNotifications);
+            yield return new WaitForSeconds(pause);
+            isRunning = true;
         }
 
         public void Start()

@@ -5,13 +5,11 @@ namespace Logic
 {
     public class StorageEditor
     {
-        private string silentGroupKey = "_silent_";
-
         public Dictionary<string, NotificationsStorage> addToStorage(Notification notification)
         {
             Stack<Notification> sourceNotifications = new Stack<Notification>();
             string sourceName = notification.SourceName;
-            if (notification.isSilent) sourceName = silentGroupKey;
+            if (notification.isSilent) sourceName = Global.silentGroupKey;
             if (Global.notifications.ContainsKey(sourceName)) sourceNotifications = Global.notifications[sourceName].Storage;
             sourceNotifications.Push(notification);
             NotificationsStorage newNotificationsStorage = new NotificationsStorage(sourceNotifications, notification.Timestamp);
@@ -39,17 +37,17 @@ namespace Logic
         private Dictionary<string, NotificationsStorage> createOrderedStorage(string sourceName)
         {
             NotificationsStorage silentGroup = null;
-            if (Global.notifications.ContainsKey(silentGroupKey))
+            if (Global.notifications.ContainsKey(Global.silentGroupKey))
             {
-                silentGroup = Global.notifications[silentGroupKey];
-                Global.notifications.Remove(silentGroupKey);
+                silentGroup = Global.notifications[Global.silentGroupKey];
+                Global.notifications.Remove(Global.silentGroupKey);
             }
             Dictionary<string, NotificationsStorage> orderedNotifications = Global.notifications.OrderByDescending(x => x.Value.LatestTimestamp)
                                                                                          .ToDictionary(d => d.Key, d => d.Value);
-            if (silentGroup != null || sourceName == silentGroupKey)
+            if (silentGroup != null || sourceName == Global.silentGroupKey)
             {
-                orderedNotifications.Add(silentGroupKey, silentGroup); // silent are always the last
-                Global.notifications.Add(silentGroupKey, silentGroup);
+                orderedNotifications.Add(Global.silentGroupKey, silentGroup); // silent are always the last
+                Global.notifications.Add(Global.silentGroupKey, silentGroup);
             }
             return orderedNotifications;
         }

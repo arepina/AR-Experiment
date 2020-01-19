@@ -8,5 +8,6 @@ namespace Logic
         public static Dictionary<string, NotificationsStorage> notifications = new Dictionary<string, NotificationsStorage>();
         public static GameObject prefabToCreate;
         public static int maxNotificationsInTray;
+        public static string silentGroupKey = "_silent_";
     }
 }

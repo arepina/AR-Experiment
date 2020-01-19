@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Logic {
-    public class ReticleEventTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class ReticleEventTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         private long startTime;
         private long durationConstant = 3;
@@ -15,24 +15,35 @@ namespace Logic {
         public void OnPointerEnter(PointerEventData eventData)
         {
             startTime = DateTime.Now.Ticks;
-            //todo pointer hover
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            //double duration = TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
-            //string id = notification.transform.Find("Id").GetComponent<TextMeshPro>().text;
-            //string sourceName = notification.transform.Find("Source").GetComponent<TextMeshPro>().text;
-            //string name = "";
-            //if (duration >= durationConstant && name.Equals("Hide"))
-            //{
-            //    Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.removeFromStorage(id, sourceName);
-            //    sceneEditor.rebuildScene(orderedNotifications);
-            //}   
-            //if (duration >= durationConstant && name.Equals("MarkAsRead"))
-            //{
-            //    Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.removeFromStorage(id, sourceName);
-            //    sceneEditor.rebuildScene(orderedNotifications);
+            long duration = (long)TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
+            processReticleEvent(eventData, duration);
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            processReticleEvent(eventData, durationConstant);
+        }
+
+        private void processReticleEvent(PointerEventData eventData, long duration)
+        {
+            string id = eventData.pointerEnter.transform.parent.Find("Id").GetComponent<TextMeshPro>().text;
+            string header = eventData.pointerEnter.transform.parent.Find("Header").GetComponent<TextMeshPro>().text;
+            string sourceName = header.Contains("Silent:") ? Global.silentGroupKey :
+                eventData.pointerEnter.transform.parent.Find("Source").GetComponent<TextMeshPro>().text;
+            string name = eventData.pointerEnter.tag;
+            if (duration >= durationConstant && name.Equals("Hide"))
+            {
+                Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.removeFromStorage(id, sourceName);
+                sceneEditor.rebuildScene(orderedNotifications);
+            }
+            if (duration >= durationConstant && name.Equals("MarkAsRead"))
+            {
+                Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.removeFromStorage(id, sourceName);
+                sceneEditor.rebuildScene(orderedNotifications);
                 //switch (sourceName)
                 //{
                 //    case "Telegram":
@@ -48,7 +59,7 @@ namespace Logic {
                 //        Application.OpenURL("youtube://");
                 //        break;
                 //}
-            //}
+            }
         }
     }
 }
