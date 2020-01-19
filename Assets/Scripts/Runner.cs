@@ -25,7 +25,8 @@ namespace Logic
         {
             isRunning = false;
             int pause = random.Next(1, secondsRange + 1);
-            Global.maxNotificationsInTray = notificationsInColumn * notificationColumns;
+            Global.notificationColumns = notificationColumns;
+            Global.notificationsInColumn = notificationsInColumn;
             Global.prefabToCreate = prefabToCreate;
             Notification notification = notificationsGenerator.getNotification();
             Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.addToStorage(notification);

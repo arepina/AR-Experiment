@@ -22,7 +22,7 @@ namespace Logic
             Dictionary<string, NotificationsStorage> notifications = Global.notifications;
             NotificationsStorage newStorage = notifications[sourceName];
             Stack<Notification> newNotificationsStorage = new Stack<Notification>();
-            foreach (Notification notification in newStorage.Storage) //todo check that order is the same
+            foreach (Notification notification in newStorage.Storage)
             {
                 if (!notification.Id.Equals(id))
                 {

@@ -21,33 +21,35 @@ namespace Logic
             clearScene(); // todo change to reposition with animation
             List<Coordinates> coordinates = NotificationCoordinates.formCoordinatesArray();
             int indexPosition = 0;
+            int maxNotificationsInTray = Global.notificationsInColumn * Global.notificationColumns;
             foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
             {
                 string groupName = notificationGroup.Key;
                 Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
-                bool isFirstInGroup = true;
-                foreach (Notification notification in groupNotifications)
+                for (int i = 0; i < groupNotifications.Count; i++)
                 {
-                    if (indexPosition < Global.maxNotificationsInTray)
+                    Notification notification = groupNotifications.ToArray()[i];
+                    bool doesHaveGroupIcon = i == groupNotifications.Count - 1 ||
+                        indexPosition % Global.notificationsInColumn == (Global.notificationsInColumn - 1);
+                    if (indexPosition < maxNotificationsInTray)
                     {
-                        isFirstInGroup = addNotification(Global.prefabToCreate, notification, coordinates, indexPosition, isFirstInGroup);
+                        addNotification(Global.prefabToCreate, notification, coordinates, indexPosition, doesHaveGroupIcon);
                         indexPosition += 1;
                     }
                 }
             }
         }
 
-        private bool addNotification(GameObject prefabToCreate, Notification notification, List<Coordinates> coordinates, int indexPosition, bool isFirstInGroup)
+        private void addNotification(GameObject prefabToCreate, Notification notification, List<Coordinates> coordinates, int indexPosition, bool doesHaveGroupIcon)
         {
             Vector3 position;
             Quaternion rotation;
-            if (isFirstInGroup)
+            if (doesHaveGroupIcon)
             {
                 prefabToCreate.transform.Find("GroupIcon").localScale = new Vector3(0.3f, 0.2f, 0.2f);
                 prefabToCreate.transform.Find("GroupIcon")
                               .transform.Find("Icon")
                               .GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/" + notification.SourceImage);
-                isFirstInGroup = false;
             }
             else
             {
@@ -66,7 +68,6 @@ namespace Logic
             position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
             rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
             _ = Instantiate(prefabToCreate, position, rotation) as GameObject;
-            return isFirstInGroup;
         }
     }
 }
