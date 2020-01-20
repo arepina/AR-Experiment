@@ -55,9 +55,6 @@ namespace Logic
             {
                 prefabToCreate.transform.Find("GroupIcon").localScale = new Vector3(0, 0, 0);
             }
-            //todo fix change color
-            //GameObject cube = prefabToCreate.transform.Find("Cube").gameObject;
-            //cube.GetComponentInChildren<MeshRenderer>().material.SetColor("_Color", notification.Color);
             prefabToCreate.transform.Find("Text").GetComponent<TextMeshPro>().text = notification.Text;
             prefabToCreate.transform.Find("Author").GetComponent<TextMeshPro>().text = notification.Author;
             prefabToCreate.transform.Find("Source").GetComponent<TextMeshPro>().text = notification.SourceName;
@@ -71,7 +68,8 @@ namespace Logic
             //prefabToCreate.transform.Find("MarkAsRead").gameObject.SetActive(false);
             position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
             rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
-            _ = Instantiate(prefabToCreate, position, rotation) as GameObject;
+            GameObject notificationObject = Instantiate(prefabToCreate, position, rotation) as GameObject;
+            notificationObject.transform.Find("Cube").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
         }
     }
 }
