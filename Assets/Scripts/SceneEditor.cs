@@ -50,10 +50,14 @@ namespace Logic
                 prefabToCreate.transform.Find("GroupIcon")
                               .transform.Find("Icon")
                               .GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/" + notification.SourceImage);
+                prefabToCreate.transform.Find("HideGroup").localScale = new Vector3(0.3f, 0.2f, 0.2f);
+                prefabToCreate.transform.Find("MarkAsReadGroup").localScale = new Vector3(0.3f, 0.2f, 0.2f);
             }
             else
             {
                 prefabToCreate.transform.Find("GroupIcon").localScale = new Vector3(0, 0, 0);
+                prefabToCreate.transform.Find("HideGroup").localScale = new Vector3(0, 0, 0);
+                prefabToCreate.transform.Find("MarkAsReadGroup").localScale = new Vector3(0, 0, 0);
             }
             prefabToCreate.transform.Find("Text").GetComponent<TextMeshPro>().text = notification.Text;
             prefabToCreate.transform.Find("Author").GetComponent<TextMeshPro>().text = notification.Author;
