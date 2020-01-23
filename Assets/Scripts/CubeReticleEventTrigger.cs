@@ -5,16 +5,24 @@ namespace Logic
 {
     public class CubeReticleEventTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        public void OnPointerEnter(PointerEventData eventData)
+        public virtual void OnPointerEnter(PointerEventData eventData)
         {
-            eventData.pointerEnter.transform.parent.Find("Hide").gameObject.SetActive(true);
-            eventData.pointerEnter.transform.parent.Find("MarkAsRead").gameObject.SetActive(true);
+            //eventData.pointerEnter.transform.Find("Hide").gameObject.SetActive(true);
+            //eventData.pointerEnter.transform.Find("MarkAsRead").gameObject.SetActive(true);
+            if(transform.parent != null)
+            {
+                ExecuteEvents.ExecuteHierarchy(transform.parent.gameObject, eventData, ExecuteEvents.pointerEnterHandler);
+            }
         }
 
-        public void OnPointerExit(PointerEventData eventData)
+        public virtual void OnPointerExit(PointerEventData eventData)
         {
-            eventData.pointerEnter.transform.parent.Find("Hide").gameObject.SetActive(false);
-            eventData.pointerEnter.transform.parent.Find("MarkAsRead").gameObject.SetActive(false);
+            //eventData.pointerEnter.transform.Find("Hide").gameObject.SetActive(false);
+            //eventData.pointerEnter.transform.Find("MarkAsRead").gameObject.SetActive(false);
+            if (transform.parent != null)
+            {
+                ExecuteEvents.ExecuteHierarchy(transform.parent.gameObject, eventData, ExecuteEvents.pointerExitHandler);
+            }
         }
     }
 }

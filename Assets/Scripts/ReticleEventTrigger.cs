@@ -4,7 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Logic {
+namespace Logic
+{
     public class ReticleEventTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         private long startTime;
@@ -12,16 +13,24 @@ namespace Logic {
         private StorageEditor storageEditor = new StorageEditor();
         private SceneEditor sceneEditor = new SceneEditor();
 
-        public void OnPointerEnter(PointerEventData eventData)
+        public virtual void OnPointerEnter(PointerEventData eventData)
         {
             //todo fix the real joystick usage
             startTime = DateTime.Now.Ticks;
+            if (transform.parent != null)
+            {
+                ExecuteEvents.ExecuteHierarchy(transform.parent.gameObject, eventData, ExecuteEvents.pointerEnterHandler);
+            }
         }
 
-        public void OnPointerExit(PointerEventData eventData)
+        public virtual void OnPointerExit(PointerEventData eventData)
         {
             long duration = (long)TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
             processReticleEvent(eventData, duration);
+            if (transform.parent != null)
+            {
+                ExecuteEvents.ExecuteHierarchy(transform.parent.gameObject, eventData, ExecuteEvents.pointerExitHandler);
+            }
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -72,6 +81,7 @@ namespace Logic {
 
         private void openApp(string sourceName)
         {
+            //todo check
             switch (sourceName)
             {
                 case "Telegram":

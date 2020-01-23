@@ -68,8 +68,8 @@ namespace Logic
             prefabToCreate.transform.Find("Icon")
                           .GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/" + notification.Icon);
             //todo how to show hide and mark as read
-            //prefabToCreate.transform.Find("Hide").gameObject.SetActive(false);
-            //prefabToCreate.transform.Find("MarkAsRead").gameObject.SetActive(false);
+            prefabToCreate.transform.Find("Hide").gameObject.SetActive(false);
+            prefabToCreate.transform.Find("MarkAsRead").gameObject.SetActive(false);
             position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
             rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
             GameObject notificationObject = Instantiate(prefabToCreate, position, rotation) as GameObject;
