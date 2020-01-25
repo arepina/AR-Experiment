@@ -73,7 +73,7 @@ namespace Logic
             string name = eventData.pointerEnter.tag;
             if (duration >= durationConstant)
             {
-                if (name.Equals("Tray")) processHideTray();
+                if (name.Equals("Notification")) processHideTray();
                 else
                 {
                     if(name.Equals("Hide") || name.Equals("MarkAsRead"))

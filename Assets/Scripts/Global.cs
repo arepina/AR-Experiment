@@ -10,5 +10,6 @@ namespace Logic
         public static int notificationsInColumn;
         public static int notificationColumns;
         public static string silentGroupKey = "_silent_";
+        public static bool isTrayOpened = false;
     }
 }

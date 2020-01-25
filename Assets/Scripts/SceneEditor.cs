@@ -59,7 +59,12 @@ namespace Logic
             prefabToCreate.transform.Find("Author").GetComponent<TextMeshPro>().text = notification.Author;
             prefabToCreate.transform.Find("Source").GetComponent<TextMeshPro>().text = notification.SourceName;
             prefabToCreate.transform.Find("Id").GetComponent<TextMeshPro>().text = notification.Id;
-            prefabToCreate.transform.Find("Timestamp").GetComponent<TextMeshPro>().text = new DateTime(notification.Timestamp).ToString();
+            DateTime currentTime = DateTime.Now;
+            double minutes = currentTime.Subtract(new DateTime(notification.Timestamp)).TotalMinutes;
+            double seconds = currentTime.Subtract(new DateTime(notification.Timestamp)).TotalSeconds;
+            prefabToCreate.transform.Find("Timestamp").GetComponent<TextMeshPro>().text = minutes < 1 ? seconds < 1 ? "Just now" :
+                                                                                                                      string.Format("{0:00}s ago", seconds) :
+                                                                                                        string.Format("{0:00}m ago", minutes);
             prefabToCreate.transform.Find("Icon")
                           .GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/" + notification.Icon);
             position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);

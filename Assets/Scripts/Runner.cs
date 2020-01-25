@@ -16,13 +16,17 @@ namespace Logic
 
         public void Update()
         {
+            if (Input.GetMouseButtonDown(0) && !Global.isTrayOpened)
+            {
+                Global.isTrayOpened = true;
+            }
             if (isRunning) StartCoroutine(Wait());
         }
 
         public IEnumerator Wait()
         {
             isRunning = false;
-            int pause = random.Next(1, secondsRange + 1);
+            int pause = 10;//random.Next(1, secondsRange + 1);
             Global.notificationColumns = notificationColumns;
             Global.notificationsInColumn = notificationsInColumn;
             Global.prefabToCreate = prefabToCreate;

@@ -17,12 +17,13 @@ namespace Logic
             NotificationsStorage newNotificationsStorage = new NotificationsStorage(sourceNotifications, notification.Timestamp);
             Global.notifications[sourceName] = newNotificationsStorage;
             Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
-            sceneEditor.rebuildScene(orderedNotifications);
+            if (Global.isTrayOpened) sceneEditor.rebuildScene(orderedNotifications);
         }
 
         internal void closeTray()
         {
-            sceneEditor.rebuildScene(new Dictionary<string, NotificationsStorage>());
+            Global.isTrayOpened = false;
+            sceneEditor.rebuildScene(new Dictionary<string, NotificationsStorage>());            
         }
 
         internal void removeFromStorage(string id, string sourceName)
@@ -39,7 +40,7 @@ namespace Logic
             newStorage.Storage = newNotificationsStorage;
             Global.notifications[sourceName] = newStorage;
             Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
-            sceneEditor.rebuildScene(orderedNotifications);
+            if (Global.isTrayOpened) sceneEditor.rebuildScene(orderedNotifications);
         }
 
         internal void removeAllFromStorage(string sourceName)
@@ -47,7 +48,7 @@ namespace Logic
             Global.notifications.Remove(sourceName);
             sourceName = null;
             Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
-            sceneEditor.rebuildScene(orderedNotifications);
+            if (Global.isTrayOpened) sceneEditor.rebuildScene(orderedNotifications);
         }
 
         private Dictionary<string, NotificationsStorage> createOrderedStorage(string sourceName)
