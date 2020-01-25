@@ -46,34 +46,30 @@ namespace Logic
             Quaternion rotation;
             if (doesHaveGroupIcon)
             {
-                prefabToCreate.transform.Find("GroupIcon").localScale = new Vector3(0.3f, 0.2f, 0.2f);
+                prefabToCreate.transform.Find("GroupIcon").localScale = new Vector3(0.5f, 0.05f, 0.5f);
                 prefabToCreate.transform.Find("GroupIcon")
                               .transform.Find("Icon")
                               .GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/" + notification.SourceImage);
-                prefabToCreate.transform.Find("HideGroup").localScale = new Vector3(0.3f, 0.2f, 0.2f);
-                prefabToCreate.transform.Find("MarkAsReadGroup").localScale = new Vector3(0.3f, 0.2f, 0.2f);
             }
             else
             {
                 prefabToCreate.transform.Find("GroupIcon").localScale = new Vector3(0, 0, 0);
-                prefabToCreate.transform.Find("HideGroup").localScale = new Vector3(0, 0, 0);
-                prefabToCreate.transform.Find("MarkAsReadGroup").localScale = new Vector3(0, 0, 0);
             }
             prefabToCreate.transform.Find("Text").GetComponent<TextMeshPro>().text = notification.Text;
             prefabToCreate.transform.Find("Author").GetComponent<TextMeshPro>().text = notification.Author;
             prefabToCreate.transform.Find("Source").GetComponent<TextMeshPro>().text = notification.SourceName;
-            prefabToCreate.transform.Find("Header").GetComponent<TextMeshPro>().text = notification.header;
             prefabToCreate.transform.Find("Id").GetComponent<TextMeshPro>().text = notification.Id;
             prefabToCreate.transform.Find("Timestamp").GetComponent<TextMeshPro>().text = new DateTime(notification.Timestamp).ToString();
             prefabToCreate.transform.Find("Icon")
                           .GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/" + notification.Icon);
-            //todo how to show hide and mark as read
-            prefabToCreate.transform.Find("Hide").gameObject.SetActive(false);
-            prefabToCreate.transform.Find("MarkAsRead").gameObject.SetActive(false);
             position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
             rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
             GameObject notificationObject = Instantiate(prefabToCreate, position, rotation) as GameObject;
-            notificationObject.transform.Find("Cube").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
+            notificationObject.transform.Find("GroupIcon").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color); 
+            notificationObject.transform.Find("Hide").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.red); 
+            notificationObject.transform.Find("MarkAsRead").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.blue); 
+            notificationObject.transform.Find("GroupIcon").transform.Find("HideGroup").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.red); 
+            notificationObject.transform.Find("GroupIcon").transform.Find("MarkAsReadGroup").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.blue); 
         }
     }
 }

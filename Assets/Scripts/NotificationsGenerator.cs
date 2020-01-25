@@ -21,24 +21,31 @@ namespace Logic
 			NotificationColor notificationColor = (NotificationColor)Enum.GetValues(typeof(NotificationColor)).GetValue(sourceIndex);
             Color sourceColor = EnumDescription.getColor(EnumDescription.getDescription(notificationColor));
             Array values = Enum.GetValues(typeof(NotificationAuthor));
-            NotificationAuthor notificationAuthor = (NotificationAuthor)values.GetValue(random.Next(values.Length));
+            int authorIndex = random.Next(values.Length);
+            NotificationAuthor notificationAuthor = (NotificationAuthor)values.GetValue(authorIndex);
             string author = EnumDescription.getDescription(notificationAuthor);
-            values = Enum.GetValues(typeof(NotificationText));
-            NotificationText notificationText = (NotificationText)values.GetValue(random.Next(values.Length));
-            string text = EnumDescription.getDescription(notificationText);
             values = Enum.GetValues(typeof(NotificationIcon));
-            NotificationIcon notificationIcon = (NotificationIcon)values.GetValue(random.Next(values.Length));
+            NotificationIcon notificationIcon = (NotificationIcon)values.GetValue(authorIndex);
             string icon = EnumDescription.getDescription(notificationIcon);
-            values = Enum.GetValues(typeof(NotificationHeader));
-            NotificationHeader notificationHeader = (NotificationHeader)values.GetValue(random.Next(values.Length));
-            string header = EnumDescription.getDescription(notificationHeader);
+            string text;
+            if(sourceIndex == 2 || sourceIndex == 3) // post or youtube
+            {
+                values = Enum.GetValues(typeof(NotificationHeader));
+                NotificationHeader notificationHeader = (NotificationHeader)values.GetValue(random.Next(values.Length));
+                text = EnumDescription.getDescription(notificationHeader);
+            }
+            else // messengers
+            {
+                values = Enum.GetValues(typeof(NotificationText));
+                NotificationText notificationText = (NotificationText)values.GetValue(random.Next(values.Length));
+                text = EnumDescription.getDescription(notificationText);
+            }
             if (isSilent)
             {
                 sourceColor = EnumDescription.getColor(EnumDescription.getDescription(NotificationColor.Silent));
                 sourceImage = "_silent_";
-                header = "Silent: " + header;
             }
-            Notification notification = new Notification(id, sourceImage, sourceName, author, icon, text, header, timestamp, isSilent, sourceColor);            
+            Notification notification = new Notification(id, sourceImage, sourceName, author, icon, text, timestamp, isSilent, sourceColor);            
             return notification;
         }
     }

@@ -22,7 +22,7 @@ namespace Logic
         header8,    
         [Description("Ты не поверишь!")]
         header9,
-        [Description("")]
+        [Description("Супер интересно")]
         header10, 
     }
 }

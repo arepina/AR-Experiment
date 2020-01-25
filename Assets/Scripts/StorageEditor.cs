@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Logic
 {
     public class StorageEditor
     {
-        public Dictionary<string, NotificationsStorage> addToStorage(Notification notification)
+        private SceneEditor sceneEditor = new SceneEditor();
+
+        internal void addToStorage(Notification notification)
         {
             Stack<Notification> sourceNotifications = new Stack<Notification>();
             string sourceName = notification.SourceName;
@@ -15,10 +16,16 @@ namespace Logic
             sourceNotifications.Push(notification);
             NotificationsStorage newNotificationsStorage = new NotificationsStorage(sourceNotifications, notification.Timestamp);
             Global.notifications[sourceName] = newNotificationsStorage;
-            return createOrderedStorage(sourceName);           
+            Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
+            sceneEditor.rebuildScene(orderedNotifications);
         }
 
-        internal Dictionary<string, NotificationsStorage> removeFromStorage(string id, string sourceName)
+        internal void closeTray()
+        {
+            sceneEditor.rebuildScene(new Dictionary<string, NotificationsStorage>());
+        }
+
+        internal void removeFromStorage(string id, string sourceName)
         {
             NotificationsStorage newStorage = Global.notifications[sourceName];
             Stack<Notification> newNotificationsStorage = new Stack<Notification>();
@@ -31,13 +38,16 @@ namespace Logic
             }
             newStorage.Storage = newNotificationsStorage;
             Global.notifications[sourceName] = newStorage;
-            return createOrderedStorage(sourceName);
+            Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
+            sceneEditor.rebuildScene(orderedNotifications);
         }
 
-        internal Dictionary<string, NotificationsStorage> removeAllFromStorage(string sourceName)
+        internal void removeAllFromStorage(string sourceName)
         {
             Global.notifications.Remove(sourceName);
-            return createOrderedStorage(sourceName);
+            sourceName = null;
+            Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
+            sceneEditor.rebuildScene(orderedNotifications);
         }
 
         private Dictionary<string, NotificationsStorage> createOrderedStorage(string sourceName)

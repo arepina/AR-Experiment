@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace Logic
 {
@@ -8,7 +7,6 @@ namespace Logic
     {
         private NotificationsGenerator notificationsGenerator = new NotificationsGenerator();
         private StorageEditor storageEditor = new StorageEditor();
-        private SceneEditor sceneEditor = new SceneEditor();
         private System.Random random = new System.Random();
         public GameObject prefabToCreate;
         public bool isRunning;
@@ -18,7 +16,6 @@ namespace Logic
 
         public void Update()
         {
-            //todo fix the lights on the scene
             if (isRunning) StartCoroutine(Wait());
         }
 
@@ -30,8 +27,7 @@ namespace Logic
             Global.notificationsInColumn = notificationsInColumn;
             Global.prefabToCreate = prefabToCreate;
             Notification notification = notificationsGenerator.getNotification();
-            Dictionary<string, NotificationsStorage> orderedNotifications = storageEditor.addToStorage(notification);
-            sceneEditor.rebuildScene(orderedNotifications);
+            storageEditor.addToStorage(notification);
             yield return new WaitForSeconds(pause);
             isRunning = true;
         }

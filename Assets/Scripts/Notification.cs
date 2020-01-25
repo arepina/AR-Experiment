@@ -14,13 +14,12 @@ namespace Logic
         private Color color;
         private string id;
 
-        public Notification(string id, string sourceImage, string sourceName, string author, string icon, string text, string header, long timestamp, bool silent, Color color)
+        public Notification(string id, string sourceImage, string sourceName, string author, string icon, string text, long timestamp, bool silent, Color color)
         {
             this.sourceImage = sourceImage;
             this.sourceName = sourceName;
             this.author = author;
             this.text = text;
-            this.header = header;
             this.timestamp = timestamp;
             this.silent = silent;
             this.color = color;
@@ -98,11 +97,6 @@ namespace Logic
             {
                 return silent;
             }
-        }
-
-        public string header
-        {
-            get; internal set;
         }
     }
 }

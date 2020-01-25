@@ -12,7 +12,7 @@ namespace Logic
         YandexPost,
         [Description("Red")]
         YouTube,
-		[Description("White")]
-		Silent,
+		[Description("Gray")]
+		Silent
 	}
 }
