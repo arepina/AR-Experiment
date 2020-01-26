@@ -14,7 +14,6 @@ namespace Logic
 
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
-            //todo fix the real joystick usage
             startTime = DateTime.Now.Ticks;
             if (eventData.pointerEnter.tag.Equals("GroupIcon"))
             {
