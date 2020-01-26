@@ -10,6 +10,7 @@ namespace Logic
         private long startTime;
         private long durationConstant = 3;
         private StorageEditor storageEditor = new StorageEditor();
+        private Logger myLogger = new Logger(new LogHandler());
 
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
@@ -70,13 +71,24 @@ namespace Logic
 
         private void processReticleEvent(PointerEventData eventData, long duration)
         {
-            string name = eventData.pointerEnter.tag;
+            string tag = eventData.pointerEnter.tag;
             if (duration >= durationConstant)
             {
-                if (name.Equals("Notification")) processHideTray();
+                if (tag.Equals("Notification"))
+                {
+                    try
+                    {
+                        string id = eventData.pointerEnter.transform.Find("Id").GetComponent<TextMeshPro>().text;
+                        Color groupColor = eventData.pointerEnter.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
+                        string sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
+                            eventData.pointerEnter.transform.Find("Source").GetComponent<TextMeshPro>().text;
+                        processHideTray(id, sourceName);
+                    }
+                    catch (NullReferenceException e) { }
+                }
                 else
                 {
-                    if(name.Equals("Hide") || name.Equals("MarkAsRead"))
+                    if (tag.Equals("Hide") || tag.Equals("MarkAsRead"))
                     {
                         try
                         {
@@ -84,18 +96,18 @@ namespace Logic
                             Color groupColor = eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
                             string sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
                                 eventData.pointerEnter.transform.parent.Find("Source").GetComponent<TextMeshPro>().text;
-                            processHideAndMarkAsRead(id, sourceName);
+                            processHideAndMarkAsRead(id, sourceName, tag);
                         }
                         catch (NullReferenceException e) { }
                     }
-                    else
+                    else // for all at once
                     {
                         try
                         {
-                            Color groupColor = eventData.pointerEnter.transform.parent.GetComponent<MeshRenderer>().material.color;
+                            Color groupColor = eventData.pointerEnter.GetComponent<MeshRenderer>().material.color;
                             string sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
                                 eventData.pointerEnter.transform.parent.transform.parent.Find("Source").GetComponent<TextMeshPro>().text;
-                            processHideAndMarkAsReadAll(sourceName);
+                            processHideAndMarkAsReadAll(sourceName, tag);
                         }
                         catch (NullReferenceException e) { }
                     }
@@ -103,18 +115,21 @@ namespace Logic
             }
         }
 
-        private void processHideTray()
+        private void processHideTray(string id, string sourceName)
         {
+            myLogger.Log(string.Format("Notification {0} from {1} was clicked", id, sourceName));
             storageEditor.closeTray();
         }
 
-        private void processHideAndMarkAsRead(string id, string sourceName)
+        private void processHideAndMarkAsRead(string id, string sourceName, string tag)
         {
+            myLogger.Log(string.Format("Notification {0} from {1} was chosen to {2}", id, sourceName, tag));
             storageEditor.removeFromStorage(id, sourceName);
         }
 
-        private void processHideAndMarkAsReadAll(string sourceName)
+        private void processHideAndMarkAsReadAll(string sourceName, string tag)
         {
+            myLogger.Log(string.Format("Notifications from {0} was chosen to {1}", sourceName, tag));
             storageEditor.removeAllFromStorage(sourceName);
         }
     }

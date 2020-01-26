@@ -15,6 +15,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Gvr.Internal;
 using UnityEngine;

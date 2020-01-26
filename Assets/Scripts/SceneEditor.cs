@@ -70,11 +70,13 @@ namespace Logic
             position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
             rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
             GameObject notificationObject = Instantiate(prefabToCreate, position, rotation) as GameObject;
-            notificationObject.transform.Find("GroupIcon").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color); 
-            notificationObject.transform.Find("Hide").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.red); 
-            notificationObject.transform.Find("MarkAsRead").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.blue); 
-            notificationObject.transform.Find("GroupIcon").transform.Find("HideGroup").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.red); 
-            notificationObject.transform.Find("GroupIcon").transform.Find("MarkAsReadGroup").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.blue); 
+            notificationObject.transform.Find("GroupIcon").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
+            Color32 red = new Color32(255, 50, 50, 1);
+            Color32 blue = new Color32(50, 50, 255, 1);
+            notificationObject.transform.Find("Hide").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", red); 
+            notificationObject.transform.Find("MarkAsRead").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", blue); 
+            notificationObject.transform.Find("GroupIcon").transform.Find("HideGroup").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", red); 
+            notificationObject.transform.Find("GroupIcon").transform.Find("MarkAsReadGroup").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", blue); 
         }
     }
 }

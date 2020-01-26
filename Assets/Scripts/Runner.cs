@@ -8,6 +8,7 @@ namespace Logic
         private NotificationsGenerator notificationsGenerator = new NotificationsGenerator();
         private StorageEditor storageEditor = new StorageEditor();
         private System.Random random = new System.Random();
+        private Logger myLogger = new Logger(new LogHandler());
         public GameObject prefabToCreate;
         public bool isRunning;
         public int secondsRange;
@@ -16,17 +17,17 @@ namespace Logic
 
         public void Update()
         {
-            if (Input.GetMouseButtonDown(0) && !Global.isTrayOpened)
-            {
-                Global.isTrayOpened = true;
-            }
+            //if (Input.GetMouseButtonDown(0) && !Global.isTrayOpened)
+            //{
+            //    Global.isTrayOpened = true;
+            //}
             if (isRunning) StartCoroutine(Wait());
         }
 
         public IEnumerator Wait()
         {
             isRunning = false;
-            int pause = 10;//random.Next(1, secondsRange + 1);
+            int pause = random.Next(1, secondsRange + 1);
             Global.notificationColumns = notificationColumns;
             Global.notificationsInColumn = notificationsInColumn;
             Global.prefabToCreate = prefabToCreate;
@@ -39,11 +40,13 @@ namespace Logic
         public void Start()
         {
             isRunning = true;
+            myLogger.Log("Started");
         }
 
         public void Stop()
         {
             isRunning = false;
+            myLogger.Log("Stopped");
         }   
     }
 }
