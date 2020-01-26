@@ -22,10 +22,10 @@ public class EnumDescription
 
     public static Color getColor(string name)
     {
-        var color_props = typeof(Color).GetProperties();
-        foreach (var c in color_props)
-            if (name.Equals(c.Name, StringComparison.OrdinalIgnoreCase))
-                return (Color)c.GetValue(new Color(), null);
+        var colorProps = typeof(Color).GetProperties();
+        foreach (var color in colorProps)
+            if (name.Equals(color.Name, StringComparison.OrdinalIgnoreCase))
+                return (Color)color.GetValue(new Color(), null);
         return Color.white;
     }
 }
