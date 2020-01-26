@@ -27,6 +27,12 @@ namespace Logic
             this.id = id;
         }
 
+        public override string ToString()
+        {
+            return string.Format("id: {0}, sourceImage: {1}, sourceName: {2}, author: {3}, icon: {4}, text : {5}, timestamp: {6}, silent: {7}, color: {8}",
+                                                                                id, sourceImage, sourceName, author, icon, text, timestamp, silent, color);
+        }
+
         public string Id
         {
             get

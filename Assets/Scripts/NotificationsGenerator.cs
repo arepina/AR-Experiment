@@ -6,6 +6,7 @@ namespace Logic
     public class NotificationsGenerator
     {
         private System.Random random = new System.Random();
+        private Logger myLogger = new Logger(new LogHandler());
         private const int sourcesNumber = 4;
 
         public Notification getNotification()
@@ -45,7 +46,8 @@ namespace Logic
                 sourceColor = EnumDescription.getColor(EnumDescription.getDescription(NotificationColor.Silent));
                 sourceImage = "_silent_";
             }
-            Notification notification = new Notification(id, sourceImage, sourceName, author, icon, text, timestamp, isSilent, sourceColor);            
+            Notification notification = new Notification(id, sourceImage, sourceName, author, icon, text, timestamp, isSilent, sourceColor);
+            myLogger.Log(string.Format("Notification {0} was created", notification));
             return notification;
         }
     }

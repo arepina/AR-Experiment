@@ -104,7 +104,7 @@ namespace Logic
                     {
                         try
                         {
-                            Color groupColor = eventData.pointerEnter.GetComponent<MeshRenderer>().material.color;
+                            Color groupColor = eventData.pointerEnter.transform.parent.GetComponent<MeshRenderer>().material.color;
                             string sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
                                 eventData.pointerEnter.transform.parent.transform.parent.Find("Source").GetComponent<TextMeshPro>().text;
                             processHideAndMarkAsReadAll(sourceName, tag);
@@ -117,19 +117,19 @@ namespace Logic
 
         private void processHideTray(string id, string sourceName)
         {
-            myLogger.Log(string.Format("Notification {0} from {1} was clicked", id, sourceName));
+            myLogger.Log(string.Format("Notification with id {0} from source {1} was clicked", id, sourceName));
             storageEditor.closeTray();
         }
 
         private void processHideAndMarkAsRead(string id, string sourceName, string tag)
         {
-            myLogger.Log(string.Format("Notification {0} from {1} was chosen to {2}", id, sourceName, tag));
+            myLogger.Log(string.Format("Notification with id {0} from source {1} was chosen to {2}", id, sourceName, tag));
             storageEditor.removeFromStorage(id, sourceName);
         }
 
         private void processHideAndMarkAsReadAll(string sourceName, string tag)
         {
-            myLogger.Log(string.Format("Notifications from {0} was chosen to {1}", sourceName, tag));
+            myLogger.Log(string.Format("Notifications from source {0} were chosen to {1}", sourceName, tag));
             storageEditor.removeAllFromStorage(sourceName);
         }
     }
