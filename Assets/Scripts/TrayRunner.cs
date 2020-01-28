@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Logic
 {
-    public class Runner : MonoBehaviour
+    public class TrayRunner : MonoBehaviour
     {
         private NotificationsGenerator notificationsGenerator = new NotificationsGenerator();
         private StorageEditor storageEditor = new StorageEditor();

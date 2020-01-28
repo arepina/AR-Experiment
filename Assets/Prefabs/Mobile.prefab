@@ -623,7 +623,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a6d751dc3884e41ef9f339c5bd46a87b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db995c725f5564e2599b04bfcc0d3395, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1167,7 +1167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0412\u0430\u043B\u0435\u043D\u0442\u0438\u043D\u0430"
+  m_text: "\u0414\u0435\u043D\u0438\u0441"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1804,7 +1804,7 @@ GameObject:
   - component: {fileID: 8445887324184527078}
   - component: {fileID: 8622948116091695215}
   m_Layer: 5
-  m_Name: TrayObject
+  m_Name: Mobile
   m_TagString: Notification
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2129,7 +2129,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: cb755177-6f5a-466e-98ba-3381039b4e83
+  m_text: eae582a0-f906-486f-bf47-a967c80f6581
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2414,8 +2414,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0423\u043B\u0435\u0442\u0430\u044E \u0432 \u043A\u043E\u043C\u0430\u043D\u0434\u0438\u0440\u043E\u0432\u043A\u0443,
-    \u043F\u043E\u043B\u044C\u0435\u0448\u044C \u0446\u0432\u0435\u0442\u044B?"
+  m_text: "\u0425\u043E\u0447\u0443 \u0441\u0445\u043E\u0434\u0438\u0442\u044C \u0432
+    \u043A\u0438\u043D\u043E. \u041F\u0440\u0438\u0441\u043E\u0435\u0434\u0438\u043D\u0438\u0448\u044C\u0441\u044F?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2618,7 +2618,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Just now
+  m_text: 11s ago
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
