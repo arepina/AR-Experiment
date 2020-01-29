@@ -251,6 +251,7 @@ MonoBehaviour:
   secondsRange: 5
   notificationsInColumn: -1
   notificationColumns: -1
+  typeName: HiddenWaves
 --- !u!1001 &289756517
 PrefabInstance:
   m_ObjectHideFlags: 0

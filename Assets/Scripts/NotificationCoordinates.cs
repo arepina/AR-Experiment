@@ -4,7 +4,18 @@ namespace Logic
 {
     public class NotificationCoordinates
     {
-        public static List<Coordinates> formCoordinatesArray()
+        public static List<Coordinates> formInFrontOfMobileCoordinatesArray()
+        {
+            List<Coordinates> coordinates = new List<Coordinates>();
+            coordinates.Add(new Coordinates(new Triple(0f, -2.2f, 6f), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, -1.1f, 6f), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 0f, 6f), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 1.1f, 6f), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 2.2f, 6f), new Triple(0, 0, 0)));
+            return coordinates;
+        }
+
+        public static List<Coordinates> formTrayCoordinatesArray()
         {
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Triple(0f, -2.2f, 6f), new Triple(0, 0, 0)));

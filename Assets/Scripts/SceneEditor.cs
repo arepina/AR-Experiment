@@ -16,10 +16,68 @@ namespace Logic
             }
         }
 
-        public void rebuildScene(Dictionary<string, NotificationsStorage> orderedNotifications)
+        public void rebuildScene(string type, Dictionary<string, NotificationsStorage> orderedNotifications)
         {
-            clearScene(); // todo change to reposition with animation
-            List<Coordinates> coordinates = NotificationCoordinates.formCoordinatesArray();
+            switch (type)
+            {
+                case "InFrontOfStickers": { buildInFrontOfStickers(orderedNotifications); break; }
+                case "Tray": { buildTray(orderedNotifications); break; }
+                case "InFrontOfMobile": { buildInFrontOfMobile(orderedNotifications); break; }
+                case "HiddenWaves": { buildHiddenWaves(); break; }
+                case "AroundStickers": { buildAroundStickers(orderedNotifications); break; }
+                case "AroundMobile": { buildAroundMobile(orderedNotifications); break; }
+            }
+        }
+
+        public void buildInFrontOfStickers(Dictionary<string, NotificationsStorage> orderedNotifications)
+        {
+            clearScene();
+        }
+
+        public void buildHiddenWaves()
+        {
+            clearScene();
+        }
+
+        public void buildAroundStickers(Dictionary<string, NotificationsStorage> orderedNotifications)
+        {
+            clearScene();
+        }
+
+        public void buildAroundMobile(Dictionary<string, NotificationsStorage> orderedNotifications)
+        {
+            clearScene();
+        }
+
+        public void buildInFrontOfMobile(Dictionary<string, NotificationsStorage> orderedNotifications)
+        {
+            clearScene();
+            List<Coordinates> coordinates = NotificationCoordinates.formInFrontOfMobileCoordinatesArray();
+            int indexPosition = 0;
+            int maxNotificationsInTray = Global.notificationsInColumn * Global.notificationColumns;
+            //todo change view of notifications and add scroll
+            foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
+            {
+                string groupName = notificationGroup.Key;
+                Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
+                for (int i = 0; i < groupNotifications.Count; i++)
+                {
+                    Notification notification = groupNotifications.ToArray()[i];
+                    bool doesHaveGroupIcon = i == groupNotifications.Count - 1 ||
+                        indexPosition % Global.notificationsInColumn == (Global.notificationsInColumn - 1);
+                    if (indexPosition < maxNotificationsInTray)
+                    {
+                        addMobileNotification(Global.prefabToCreate, notification, coordinates, indexPosition, doesHaveGroupIcon);
+                        indexPosition += 1;
+                    }
+                }
+            }
+        }
+
+        public void buildTray(Dictionary<string, NotificationsStorage> orderedNotifications)
+        {
+            clearScene(); 
+            List<Coordinates> coordinates = NotificationCoordinates.formTrayCoordinatesArray();
             int indexPosition = 0;
             int maxNotificationsInTray = Global.notificationsInColumn * Global.notificationColumns;
             foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
@@ -33,14 +91,14 @@ namespace Logic
                         indexPosition % Global.notificationsInColumn == (Global.notificationsInColumn - 1);
                     if (indexPosition < maxNotificationsInTray)
                     {
-                        addNotification(Global.prefabToCreate, notification, coordinates, indexPosition, doesHaveGroupIcon);
+                        addMobileNotification(Global.prefabToCreate, notification, coordinates, indexPosition, doesHaveGroupIcon);
                         indexPosition += 1;
                     }
                 }
             }
         }
 
-        private void addNotification(GameObject prefabToCreate, Notification notification, List<Coordinates> coordinates, int indexPosition, bool doesHaveGroupIcon)
+        private void addMobileNotification(GameObject prefabToCreate, Notification notification, List<Coordinates> coordinates, int indexPosition, bool doesHaveGroupIcon)
         {
             Vector3 position;
             Quaternion rotation;
@@ -74,16 +132,6 @@ namespace Logic
             notificationObject.transform.Find("GroupIcon").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
             notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
             notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
-            Color32 red = new Color32(255, 50, 50, 1);
-            Color32 blue = new Color32(50, 50, 255, 1);
-            //notificationObject.transform.Find("Hide").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", red);
-            //notificationObject.transform.Find("Hide").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
-            //notificationObject.transform.Find("MarkAsRead").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", blue);
-            //notificationObject.transform.Find("MarkAsRead").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
-            //notificationObject.transform.Find("GroupIcon").transform.Find("HideGroup").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", red);
-            //notificationObject.transform.Find("GroupIcon").transform.Find("HideGroup").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
-            //notificationObject.transform.Find("GroupIcon").transform.Find("MarkAsReadGroup").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", blue);
-            //notificationObject.transform.Find("GroupIcon").transform.Find("MarkAsReadGroup").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
         }
     }
 }

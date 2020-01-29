@@ -463,6 +463,7 @@ MonoBehaviour:
   secondsRange: 5
   notificationsInColumn: -1
   notificationColumns: -1
+  typeName: AroundStickers
 --- !u!1001 &1744096547
 PrefabInstance:
   m_ObjectHideFlags: 0

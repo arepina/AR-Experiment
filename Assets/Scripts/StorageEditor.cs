@@ -7,7 +7,7 @@ namespace Logic
     {
         private SceneEditor sceneEditor = new SceneEditor();
 
-        internal void addToStorage(Notification notification)
+        internal void addToStorage(Notification notification, string type)
         {
             Stack<Notification> sourceNotifications = new Stack<Notification>();
             string sourceName = notification.SourceName;
@@ -17,13 +17,14 @@ namespace Logic
             NotificationsStorage newNotificationsStorage = new NotificationsStorage(sourceNotifications, notification.Timestamp);
             Global.notifications[sourceName] = newNotificationsStorage;
             Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
-            if (Global.isTrayOpened) sceneEditor.rebuildScene(orderedNotifications);
+            if (Global.isTrayOpened) sceneEditor.buildTray(orderedNotifications);
+            else sceneEditor.rebuildScene(type, orderedNotifications);
         }
 
         internal void closeTray()
         {
             Global.isTrayOpened = false;
-            sceneEditor.rebuildScene(new Dictionary<string, NotificationsStorage>());            
+            sceneEditor.buildTray(new Dictionary<string, NotificationsStorage>());            
         }
 
         internal void removeFromStorage(string id, string sourceName)
@@ -40,7 +41,7 @@ namespace Logic
             newStorage.Storage = newNotificationsStorage;
             Global.notifications[sourceName] = newStorage;
             Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
-            if (Global.isTrayOpened) sceneEditor.rebuildScene(orderedNotifications);
+            if (Global.isTrayOpened) sceneEditor.buildTray(orderedNotifications);
         }
 
         internal void removeAllFromStorage(string sourceName)
@@ -48,7 +49,7 @@ namespace Logic
             Global.notifications.Remove(sourceName);
             sourceName = null;
             Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
-            if (Global.isTrayOpened) sceneEditor.rebuildScene(orderedNotifications);
+            if (Global.isTrayOpened) sceneEditor.buildTray(orderedNotifications);
         }
 
         private Dictionary<string, NotificationsStorage> createOrderedStorage(string sourceName)

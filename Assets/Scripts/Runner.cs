@@ -14,6 +14,7 @@ namespace Logic
         public int secondsRange;
         public int notificationsInColumn;
         public int notificationColumns;
+        public string typeName;
 
         public void Update()
         {
@@ -32,7 +33,7 @@ namespace Logic
             Global.notificationsInColumn = notificationsInColumn;
             Global.prefabToCreate = prefabToCreate;
             Notification notification = notificationsGenerator.getNotification();
-            storageEditor.addToStorage(notification);
+            storageEditor.addToStorage(notification, typeName);
             yield return new WaitForSeconds(pause);
             isRunning = true;
         }

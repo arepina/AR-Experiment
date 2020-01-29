@@ -465,7 +465,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1462586722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f08aab261486d44aa99c0cdb1ec29f90, type: 3}
+  m_Script: {fileID: 11500000, guid: b3f8cef449c7148d8b3b4fba2054493b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefabToCreate: {fileID: 6458541884227280155, guid: 426728455e0444e30bf095440088b16f,
@@ -474,6 +474,7 @@ MonoBehaviour:
   secondsRange: 5
   notificationsInColumn: 5
   notificationColumns: 8
+  typeName: Tray
 --- !u!1001 &1625230988
 PrefabInstance:
   m_ObjectHideFlags: 0

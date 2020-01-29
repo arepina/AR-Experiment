@@ -366,6 +366,7 @@ MonoBehaviour:
   secondsRange: 5
   notificationsInColumn: -1
   notificationColumns: -1
+  typeName: AroundMobile
 --- !u!1 &1486680059
 GameObject:
   m_ObjectHideFlags: 0

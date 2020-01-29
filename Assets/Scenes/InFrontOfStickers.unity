@@ -252,6 +252,7 @@ MonoBehaviour:
   secondsRange: 5
   notificationsInColumn: -1
   notificationColumns: -1
+  typeName: InFrontOfStickers
 --- !u!1001 &1240778305
 PrefabInstance:
   m_ObjectHideFlags: 0

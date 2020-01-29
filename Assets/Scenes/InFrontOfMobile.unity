@@ -307,8 +307,9 @@ MonoBehaviour:
     type: 3}
   isRunning: 1
   secondsRange: 5
-  notificationsInColumn: -1
-  notificationColumns: -1
+  notificationsInColumn: 5
+  notificationColumns: 1
+  typeName: InFrontOfMobile
 --- !u!1001 &900256050
 PrefabInstance:
   m_ObjectHideFlags: 0
