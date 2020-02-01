@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -23,7 +25,7 @@ namespace Logic
                 case "InFrontOfStickers": { buildInFrontOfStickers(orderedNotifications); break; }
                 case "Tray": { buildTray(orderedNotifications); break; }
                 case "InFrontOfMobile": { buildInFrontOfMobile(orderedNotifications); break; }
-                case "HiddenWaves": { buildHiddenWaves(); break; }
+                case "HiddenWaves": { buildHiddenWaves(orderedNotifications); break; }
                 case "AroundStickers": { buildAroundStickers(orderedNotifications); break; }
                 case "AroundMobile": { buildAroundMobile(orderedNotifications); break; }
             }
@@ -34,9 +36,26 @@ namespace Logic
             clearScene();
         }
 
-        public void buildHiddenWaves()
+        public void buildHiddenWaves(Dictionary<string, NotificationsStorage> orderedNotifications)
         {
             clearScene();
+            NotificationsStorage storage = orderedNotifications.Values.First();
+            Notification notification = storage.Storage.Peek();
+            if (!notification.isSilent)
+            {
+                Vector3 position = new Vector3(0, 1.2f, 5f);
+                Quaternion rotation = Quaternion.Euler(0, 0, 90);
+                GameObject prefabToCreate = Global.prefabToCreate;
+                GameObject waves = Instantiate(prefabToCreate, position, rotation) as GameObject;
+                waves.transform.Find("WaveL").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
+                waves.transform.Find("WaveL").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
+                waves.transform.Find("WaveM").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
+                waves.transform.Find("WaveM").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
+                waves.transform.Find("WaveS").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
+                waves.transform.Find("WaveS").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
+                waves.transform.Find("WaveXS").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
+                waves.transform.Find("WaveXS").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
+            }
         }
 
         public void buildAroundStickers(Dictionary<string, NotificationsStorage> orderedNotifications)

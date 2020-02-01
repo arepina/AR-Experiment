@@ -246,11 +246,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f8cef449c7148d8b3b4fba2054493b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToCreate: {fileID: 0}
+  prefabToCreate: {fileID: 3867933328541127428, guid: 7bb494b4bbd2741f3806acc883cdc7ab,
+    type: 3}
   isRunning: 1
   secondsRange: 5
-  notificationsInColumn: -1
-  notificationColumns: -1
+  notificationsInColumn: 5
+  notificationColumns: 8
   typeName: HiddenWaves
 --- !u!1001 &289756517
 PrefabInstance:
