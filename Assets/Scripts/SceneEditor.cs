@@ -70,27 +70,16 @@ namespace Logic
 
         public void buildInFrontOfMobile(Dictionary<string, NotificationsStorage> orderedNotifications)
         {
-            clearScene();
-            List<Coordinates> coordinates = NotificationCoordinates.formInFrontOfMobileCoordinatesArray();
-            int indexPosition = 0;
-            int maxNotificationsInTray = Global.notificationsInColumn * Global.notificationColumns;
-            //todo change view of notifications and add scroll
-            foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
-            {
-                string groupName = notificationGroup.Key;
-                Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
-                for (int i = 0; i < groupNotifications.Count; i++)
-                {
-                    Notification notification = groupNotifications.ToArray()[i];
-                    bool doesHaveGroupIcon = i == groupNotifications.Count - 1 ||
-                        indexPosition % Global.notificationsInColumn == (Global.notificationsInColumn - 1);
-                    if (indexPosition < maxNotificationsInTray)
-                    {
-                        addMobileNotification(Global.prefabToCreate, notification, coordinates, indexPosition, doesHaveGroupIcon);
-                        indexPosition += 1;
-                    }
-                }
-            }
+            NotificationsStorage storage = orderedNotifications.Values.First();
+            Notification notification = storage.Storage.Peek();
+            bool doesHaveGroupIcon = false;
+            int notificationsNumber = GameObject.FindGameObjectsWithTag("Notification").Length;
+            Vector3 position = new Vector3(0f, notificationsNumber * (-220), 0);
+            Quaternion rotation = Quaternion.Euler(0, 0, 0);
+            Vector3 scale = new Vector3(3f, 3f, 0);
+            GameObject notificationObject = addMobileNotification(Global.prefabToCreate, notification, position, scale, rotation, doesHaveGroupIcon);
+            GameObject scrollView = GameObject.Find("Panel");
+            notificationObject.transform.SetParent(scrollView.transform);
         }
 
         public void buildTray(Dictionary<string, NotificationsStorage> orderedNotifications)
@@ -101,7 +90,6 @@ namespace Logic
             int maxNotificationsInTray = Global.notificationsInColumn * Global.notificationColumns;
             foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
             {
-                string groupName = notificationGroup.Key;
                 Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
                 for (int i = 0; i < groupNotifications.Count; i++)
                 {
@@ -110,17 +98,20 @@ namespace Logic
                         indexPosition % Global.notificationsInColumn == (Global.notificationsInColumn - 1);
                     if (indexPosition < maxNotificationsInTray)
                     {
-                        addMobileNotification(Global.prefabToCreate, notification, coordinates, indexPosition, doesHaveGroupIcon);
+                        Vector3 position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
+                        Quaternion rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
+                        Vector3 scale = new Vector3(1, 1, 1);
+                        addMobileNotification(Global.prefabToCreate, notification, position, scale, rotation, doesHaveGroupIcon);
                         indexPosition += 1;
                     }
                 }
             }
         }
 
-        private void addMobileNotification(GameObject prefabToCreate, Notification notification, List<Coordinates> coordinates, int indexPosition, bool doesHaveGroupIcon)
-        {
-            Vector3 position;
-            Quaternion rotation;
+        private GameObject addMobileNotification(GameObject prefabToCreate, Notification notification,
+                                            Vector3 position, Vector3 scale, Quaternion rotation,
+                                            bool doesHaveGroupIcon)
+        {            
             if (doesHaveGroupIcon)
             {
                 prefabToCreate.transform.Find("GroupIcon").localScale = new Vector3(0.5f, 0.05f, 0.5f);
@@ -144,13 +135,13 @@ namespace Logic
                                                                                                         string.Format("{0:00}m ago", minutes);
             prefabToCreate.transform.Find("Icon")
                           .GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/" + notification.Icon);
-            position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
-            rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
             GameObject notificationObject = Instantiate(prefabToCreate, position, rotation) as GameObject;
+            notificationObject.transform.localScale = scale;
             notificationObject.transform.Find("GroupIcon").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
             notificationObject.transform.Find("GroupIcon").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
             notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
             notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
+            return notificationObject;
         }
     }
 }

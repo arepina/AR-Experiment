@@ -21,7 +21,7 @@ namespace Logic
         void Update()
         {
 
-            ySpeed = Input.GetAxis("VerticalScroller");
+            ySpeed = Input.GetAxis("Vertical");
 
             hPos = horizontalNormalizedPosition + xSpeed * speedMultiplier;
             vPos = verticalNormalizedPosition + ySpeed * speedMultiplier;
