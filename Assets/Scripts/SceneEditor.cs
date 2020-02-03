@@ -74,7 +74,7 @@ namespace Logic
             Notification notification = storage.Storage.Peek();
             bool doesHaveGroupIcon = false;
             int notificationsNumber = GameObject.FindGameObjectsWithTag("Notification").Length;
-            Vector3 position = new Vector3(0f, notificationsNumber * (-220), 0);
+            Vector3 position = new Vector3(0, notificationsNumber, 0);
             Quaternion rotation = Quaternion.Euler(0, 0, 0);
             Vector3 scale = new Vector3(3f, 3f, 0);
             GameObject notificationObject = addMobileNotification(Global.prefabToCreate, notification, position, scale, rotation, doesHaveGroupIcon);
