@@ -10,6 +10,7 @@ namespace Logic
         private System.Random random = new System.Random();
         private Logger myLogger = new Logger(new LogHandler());
         public GameObject prefabToCreate;
+        public GameObject trayPrefab;
         public bool isRunning;
         public int secondsRange;
         public int notificationsInColumn;
@@ -18,10 +19,11 @@ namespace Logic
 
         public void Update()
         {
-            //if (Input.GetMouseButtonDown(0) && !Global.isTrayOpened)
-            //{
-            //    Global.isTrayOpened = true;
-            //}
+            if (Input.GetMouseButtonDown(0) && !Global.isTrayOpened)
+            {
+                prefabToCreate = trayPrefab;
+                Global.isTrayOpened = true;
+            }
             if (isRunning) StartCoroutine(Wait());
         }
 

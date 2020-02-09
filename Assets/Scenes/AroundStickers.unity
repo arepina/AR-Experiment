@@ -459,6 +459,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabToCreate: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
     type: 3}
+  trayPrefab: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
+    type: 3}
   isRunning: 1
   secondsRange: 5
   notificationsInColumn: -1
