@@ -44,18 +44,12 @@ namespace Logic
             Notification notification = storage.Storage.Peek();
             if (!notification.isSilent)
             {
-                Vector3 position = new Vector3(0, 1.2f, 5f);
-                Quaternion rotation = Quaternion.Euler(0, 0, 90);
+                Vector3 position = new Vector3(0, 0, 5f);
+                Quaternion rotation = Quaternion.Euler(0, 0, 0);
                 GameObject prefabToCreate = Global.prefabToCreate;
                 GameObject waves = Instantiate(prefabToCreate, position, rotation) as GameObject;
-                waves.transform.Find("WaveL").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
-                waves.transform.Find("WaveL").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
-                waves.transform.Find("WaveM").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
-                waves.transform.Find("WaveM").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
-                waves.transform.Find("WaveS").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
-                waves.transform.Find("WaveS").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
-                waves.transform.Find("WaveXS").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
-                waves.transform.Find("WaveXS").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
+                waves.transform.Find("Image").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
+                waves.transform.Find("Image").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
             }
         }
 
