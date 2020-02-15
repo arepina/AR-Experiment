@@ -9,9 +9,11 @@ namespace Logic
     public class SceneEditor : MonoBehaviour
     {
 
-        public delegate GameObject NotificationGenerator(GameObject prefabToCreate, Notification notification,
+        public delegate GameObject Generator(GameObject prefabToCreate, Notification notification,
                                             Vector3 position, Vector3 scale, Quaternion rotation,
                                             bool doesHaveGroupIcon);
+
+        public delegate List<Coordinates> Coordinate();        
 
         private void clearScene()
         {
@@ -26,9 +28,9 @@ namespace Logic
         {
             switch (type)
             {
-                case "InFrontOfStickers": { buildInFrontOf(orderedNotifications, addStickerNotification); break; }
+                case "InFrontOfStickers": { buildInFrontOf(orderedNotifications, addStickerNotification, NotificationCoordinates.formInFrontOfStickerCoordinatesArray); break; }
                 case "Tray": { buildTray(orderedNotifications); break; }
-                case "InFrontOfMobile": { buildInFrontOf(orderedNotifications, addMobileNotification); break; }
+                case "InFrontOfMobile": { buildInFrontOf(orderedNotifications, addMobileNotification, NotificationCoordinates.formTrayCoordinatesArray); break; }
                 case "HiddenWaves": { buildHiddenWaves(orderedNotifications); break; }
                 case "AroundStickers": { buildAroundStickers(orderedNotifications); break; }
                 case "AroundMobile": { buildAroundMobile(orderedNotifications); break; }
@@ -67,10 +69,11 @@ namespace Logic
             clearScene();
         }
 
-        public void buildInFrontOf(Dictionary<string, NotificationsStorage> orderedNotifications, NotificationGenerator generator)
+        public void buildInFrontOf(Dictionary<string, NotificationsStorage> orderedNotifications,
+            Generator notificationGenerator, Coordinate notificationCoordinates)
         {
             clearScene();
-            List<Coordinates> coordinates = NotificationCoordinates.formInFrontOfCoordinatesArray();
+            List<Coordinates> coordinates = notificationCoordinates();
             int indexPosition = 0;
             int maxNotificationsInTray = Global.notificationsInColumn * Global.notificationColumns;
             foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
@@ -86,13 +89,17 @@ namespace Logic
                         Vector3 position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
                         Quaternion rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
                         Vector3 scale = new Vector3(1, 1, 1);
-                        generator(Global.prefabToCreate,
+                        notificationGenerator(Global.prefabToCreate,
                                               notification,
                                               position,
                                               scale,
                                               rotation,
                                               doesHaveGroupIcon);
                         indexPosition += 1;
+                    }
+                    else
+                    {
+                        break;
                     }
                 }
             }
@@ -120,6 +127,10 @@ namespace Logic
                         //todo think about case with stickers tray?
                         addMobileNotification(Global.prefabToCreate, notification, position, scale, rotation, doesHaveGroupIcon);
                         indexPosition += 1;
+                    }
+                    else
+                    {
+                        break;
                     }
                 }
             }
