@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 1605672053}
   - component: {fileID: 1605672052}
   - component: {fileID: 1605672057}
+  - component: {fileID: 1605672058}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: MainCamera
@@ -443,7 +444,7 @@ Transform:
   - {fileID: 926678251}
   - {fileID: 1093711294}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1605672057
 MonoBehaviour:
@@ -466,6 +467,22 @@ MonoBehaviour:
   notificationsInColumn: -1
   notificationColumns: -1
   typeName: AroundStickers
+--- !u!114 &1605672058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605672051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5dd43baba2d4dc1bab789615567e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycasterEventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  maxRaycastHits: 64
 --- !u!1001 &1744096547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -507,7 +524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 766346198, guid: 463285ecd6702471a909ba810832bf0e, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 766346198, guid: 463285ecd6702471a909ba810832bf0e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
