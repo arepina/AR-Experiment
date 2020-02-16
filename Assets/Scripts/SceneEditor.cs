@@ -39,17 +39,16 @@ namespace Logic
 
         public void buildHiddenWaves(Dictionary<string, NotificationsStorage> orderedNotifications)
         {
-            clearScene();
             NotificationsStorage storage = orderedNotifications.Values.First();
             Notification notification = storage.Storage.Peek();
             if (!notification.isSilent)
             {
-                Vector3 position = new Vector3(0, 0, 5f);
+                Vector3 position = new Vector3(-15, 18.5f, 65);
                 Quaternion rotation = Quaternion.Euler(0, 0, 0);
                 GameObject prefabToCreate = Global.prefabToCreate;
-                GameObject waves = Instantiate(prefabToCreate, position, rotation) as GameObject;
-                waves.transform.Find("Image").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
-                waves.transform.Find("Image").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
+                GameObject wave = Instantiate(prefabToCreate, position, rotation) as GameObject;
+                wave.transform.Find("Image").gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", notification.Color);
+                wave.transform.Find("Image").gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_Glossiness", 1f);
             }
         }
 
@@ -163,6 +162,10 @@ namespace Logic
             notificationObject.transform.Find("GroupIcon").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
             notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
             notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
+            notificationObject.transform.Find("MarkAsRead").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.blue);
+            notificationObject.transform.Find("Hide").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.red);
+            notificationObject.transform.Find("GroupIcon").Find("MarkAsReadGroup").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.blue);
+            notificationObject.transform.Find("GroupIcon").Find("HideGroup").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.red);
             return notificationObject;
         }
 
@@ -186,6 +189,10 @@ namespace Logic
             notificationObject.transform.localScale = scale;
             notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
             notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
+            notificationObject.transform.Find("MarkAsRead").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.blue);
+            notificationObject.transform.Find("Hide").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.red);
+            notificationObject.transform.Find("GroupIcon").Find("MarkAsReadGroup").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.blue);
+            notificationObject.transform.Find("GroupIcon").Find("HideGroup").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.red);
             return notificationObject;
         }
     }

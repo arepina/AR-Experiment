@@ -13,7 +13,7 @@ namespace Logic
         {
             int sourceIndex = random.Next(0, sourcesNumber);
             long timestamp = DateTime.Now.Ticks;
-            bool isSilent = random.Next(0, 2) == 0;
+            bool isSilent = false;//random.Next(0, 2) == 0;
             string id = Guid.NewGuid().ToString();
             NotificationSource notificationSource = (NotificationSource)Enum.GetValues(typeof(NotificationSource)).GetValue(sourceIndex);
             string sourceName = EnumDescription.getDescription(notificationSource);
