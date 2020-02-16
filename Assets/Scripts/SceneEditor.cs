@@ -8,6 +8,8 @@ namespace Logic
 {
     public class SceneEditor : MonoBehaviour
     {
+        private Color markAsReadColor = new Color32(0, 0, 194, 255);
+        private Color hideColor = new Color32(255, 36, 0, 255);
 
         public delegate GameObject Generator(GameObject prefabToCreate, Notification notification,
                                             Vector3 position, Vector3 scale, Quaternion rotation,
@@ -24,9 +26,9 @@ namespace Logic
             }
         }
 
-        public void rebuildScene(string type, Dictionary<string, NotificationsStorage> orderedNotifications)
+        public void rebuildScene(Dictionary<string, NotificationsStorage> orderedNotifications)
         {
-            switch (type)
+            switch (Global.typeName)
             {
                 case "InFrontOfStickers": { buildInFrontOf(orderedNotifications, addStickerNotification, NotificationCoordinates.formInFrontOfStickerCoordinatesArray); break; }
                 case "Tray": { buildTray(orderedNotifications); break; }
@@ -162,10 +164,10 @@ namespace Logic
             notificationObject.transform.Find("GroupIcon").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
             notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
             notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
-            notificationObject.transform.Find("MarkAsRead").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.blue);
-            notificationObject.transform.Find("Hide").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.red);
-            notificationObject.transform.Find("GroupIcon").Find("MarkAsReadGroup").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.blue);
-            notificationObject.transform.Find("GroupIcon").Find("HideGroup").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.red);
+            notificationObject.transform.Find("MarkAsRead").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", markAsReadColor);
+            notificationObject.transform.Find("Hide").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", hideColor);
+            notificationObject.transform.Find("GroupIcon").Find("MarkAsReadGroup").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", markAsReadColor);
+            notificationObject.transform.Find("GroupIcon").Find("HideGroup").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", hideColor);
             return notificationObject;
         }
 
@@ -189,10 +191,9 @@ namespace Logic
             notificationObject.transform.localScale = scale;
             notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
             notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
-            notificationObject.transform.Find("MarkAsRead").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.blue);
-            notificationObject.transform.Find("Hide").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.red);
-            notificationObject.transform.Find("GroupIcon").Find("MarkAsReadGroup").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.blue);
-            notificationObject.transform.Find("GroupIcon").Find("HideGroup").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.red);
+            notificationObject.transform.Find("MarkAsRead").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", markAsReadColor);
+            notificationObject.transform.Find("Hide").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", hideColor);
+            notificationObject.transform.Find("Cube").Find("Box").GetComponent<SpriteRenderer>().material.SetColor("_Color", notification.Color);
             return notificationObject;
         }
     }

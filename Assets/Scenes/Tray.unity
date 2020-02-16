@@ -470,8 +470,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabToCreate: {fileID: 6458541884227280155, guid: 426728455e0444e30bf095440088b16f,
     type: 3}
+  trayPrefab: {fileID: 0}
   isRunning: 1
-  secondsRange: 5
+  startRange: 5
+  endRange: 10
   notificationsInColumn: 5
   notificationColumns: 8
   typeName: Tray

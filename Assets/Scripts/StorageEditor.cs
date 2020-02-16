@@ -7,7 +7,7 @@ namespace Logic
     {
         private SceneEditor sceneEditor = new SceneEditor();
 
-        internal void addToStorage(Notification notification, string type)
+        internal void addToStorage(Notification notification)
         {
             Stack<Notification> sourceNotifications = new Stack<Notification>();
             string sourceName = notification.SourceName;
@@ -18,7 +18,7 @@ namespace Logic
             Global.notifications[sourceName] = newNotificationsStorage;
             Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
             if (Global.isTrayOpened) sceneEditor.buildTray(orderedNotifications);
-            else sceneEditor.rebuildScene(type, orderedNotifications);
+            else sceneEditor.rebuildScene(orderedNotifications);
         }
 
         internal void closeTray()
@@ -42,6 +42,7 @@ namespace Logic
             Global.notifications[sourceName] = newStorage;
             Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
             if (Global.isTrayOpened) sceneEditor.buildTray(orderedNotifications);
+            else sceneEditor.rebuildScene(orderedNotifications);
         }
 
         internal void removeAllFromStorage(string sourceName)
@@ -50,6 +51,7 @@ namespace Logic
             sourceName = null;
             Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
             if (Global.isTrayOpened) sceneEditor.buildTray(orderedNotifications);
+            else sceneEditor.rebuildScene(orderedNotifications);
         }
 
         private Dictionary<string, NotificationsStorage> createOrderedStorage(string sourceName)

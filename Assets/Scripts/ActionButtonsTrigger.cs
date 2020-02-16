@@ -30,8 +30,11 @@ namespace Logic
             {
                 try
                 {
-                    eventData.pointerEnter.transform.Find("GroupIcon").transform.Find("HideGroup").gameObject.SetActive(false);
-                    eventData.pointerEnter.transform.Find("GroupIcon").transform.Find("MarkAsReadGroup").gameObject.SetActive(false);
+                    if (!Global.typeName.Contains("Sticker") || Global.typeName.Equals("Tray"))
+                    {
+                        eventData.pointerEnter.transform.Find("GroupIcon").transform.Find("HideGroup").gameObject.SetActive(false);
+                        eventData.pointerEnter.transform.Find("GroupIcon").transform.Find("MarkAsReadGroup").gameObject.SetActive(false);
+                    }
                     eventData.pointerEnter.transform.Find("Hide").gameObject.SetActive(true);
                     eventData.pointerEnter.transform.Find("MarkAsRead").gameObject.SetActive(true);
                 }
@@ -78,7 +81,15 @@ namespace Logic
                     try
                     {
                         string id = eventData.pointerEnter.transform.Find("Id").GetComponent<TextMeshPro>().text;
-                        Color groupColor = eventData.pointerEnter.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
+                        Color groupColor;
+                        if (!Global.typeName.Contains("Sticker") || Global.typeName.Equals("Tray"))
+                        {
+                            groupColor = eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
+                        }
+                        else
+                        {
+                            groupColor = eventData.pointerEnter.transform.parent.transform.Find("Cube").Find("Box").GetComponent<SpriteRenderer>().material.color;
+                        }
                         string sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
                             eventData.pointerEnter.transform.Find("Source").GetComponent<TextMeshPro>().text;
                         processHideTray(id, sourceName);
@@ -92,7 +103,15 @@ namespace Logic
                         try
                         {
                             string id = eventData.pointerEnter.transform.parent.transform.Find("Id").GetComponent<TextMeshPro>().text;
-                            Color groupColor = eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
+                            Color groupColor;
+                            if (!Global.typeName.Contains("Sticker") || Global.typeName.Equals("Tray"))
+                            {
+                                groupColor = eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
+                            }
+                            else
+                            {
+                                groupColor = eventData.pointerEnter.transform.parent.transform.Find("Cube").Find("Box").GetComponent<SpriteRenderer>().material.color;
+                            }
                             string sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
                                 eventData.pointerEnter.transform.parent.Find("Source").GetComponent<TextMeshPro>().text;
                             processHideAndMarkAsRead(id, sourceName, tag);

@@ -12,30 +12,32 @@ namespace Logic
         public GameObject prefabToCreate;
         public GameObject trayPrefab;
         public bool isRunning;
-        public int secondsRange;
+        public int startRange;
+        public int endRange;
         public int notificationsInColumn;
         public int notificationColumns;
         public string typeName;
 
         public void Update()
         {
-            if (Input.GetMouseButtonDown(0) && !Global.isTrayOpened)
-            {
-                prefabToCreate = trayPrefab;
-                Global.isTrayOpened = true;
-            }
+            //if (Input.GetMouseButtonDown(0) && !Global.isTrayOpened)
+            //{
+            //    prefabToCreate = trayPrefab;
+            //    Global.isTrayOpened = true;
+            //}
             if (isRunning) StartCoroutine(Wait());
         }
 
         public IEnumerator Wait()
         {
             isRunning = false;
-            int pause = random.Next(1, secondsRange + 1);
+            int pause = random.Next(startRange, endRange + 1);
             Global.notificationColumns = notificationColumns;
             Global.notificationsInColumn = notificationsInColumn;
+            Global.typeName = typeName;
             Global.prefabToCreate = prefabToCreate;
             Notification notification = notificationsGenerator.getNotification();
-            storageEditor.addToStorage(notification, typeName);
+            storageEditor.addToStorage(notification);
             yield return new WaitForSeconds(pause);
             isRunning = true;
         }
