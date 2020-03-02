@@ -34,8 +34,8 @@ namespace Logic
                 case "Tray": { buildTray(orderedNotifications); break; }
                 case "InFrontOfMobile": { buildInFrontOf(orderedNotifications, addMobileNotification, NotificationCoordinates.formTrayCoordinatesArray); break; }
                 case "HiddenWaves": { buildHiddenWaves(orderedNotifications); break; }
-                case "AroundStickers": { buildAroundStickers(orderedNotifications); break; }
-                case "AroundMobile": { buildAroundMobile(orderedNotifications); break; }
+                case "AroundStickers": { buildAround(orderedNotifications, addStickerNotification); break; }
+                case "AroundMobile": { buildAround(orderedNotifications, addMobileNotification); break; }
             }
         }
 
@@ -54,14 +54,28 @@ namespace Logic
             }
         }
 
-        public void buildAroundStickers(Dictionary<string, NotificationsStorage> orderedNotifications)
+        public void buildAround(Dictionary<string, NotificationsStorage> orderedNotifications, Generator notificationGenerator)
         {
             clearScene();
-        }
-
-        public void buildAroundMobile(Dictionary<string, NotificationsStorage> orderedNotifications)
-        {
-            clearScene();
+            Triple notificationCoordinates = Global.aroundCoordinatesCenter;
+            foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
+            {
+                Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
+                for (int i = 0; i < groupNotifications.Count; i++)
+                {
+                    Notification notification = groupNotifications.ToArray()[i];
+                    bool doesHaveGroupIcon = true;
+                    Vector3 position = new Vector3(notificationCoordinates.X, notificationCoordinates.Y, notificationCoordinates.Z);
+                    Quaternion rotation = Quaternion.Euler(90, 0, 0);
+                    Vector3 scale = new Vector3(1, 1, 1);
+                    notificationGenerator(Global.prefabToCreate,
+                                            notification,
+                                            position,
+                                            scale,
+                                            rotation,
+                                            doesHaveGroupIcon);
+                }
+            }
         }
 
         public void buildInFrontOf(Dictionary<string, NotificationsStorage> orderedNotifications,

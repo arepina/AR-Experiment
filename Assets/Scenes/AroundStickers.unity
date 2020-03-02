@@ -465,9 +465,12 @@ MonoBehaviour:
   isRunning: 1
   startRange: 5
   endRange: 10
-  notificationsInColumn: -1
-  notificationColumns: -1
+  notificationsInColumn: 5
+  notificationColumns: 1
   typeName: AroundStickers
+  X: -1.5
+  Y: -2
+  Z: 10
 --- !u!114 &1605672058
 MonoBehaviour:
   m_ObjectHideFlags: 0

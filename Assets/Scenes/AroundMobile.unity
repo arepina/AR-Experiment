@@ -368,9 +368,12 @@ MonoBehaviour:
   isRunning: 1
   startRange: 5
   endRange: 10
-  notificationsInColumn: 3
+  notificationsInColumn: 5
   notificationColumns: 1
   typeName: AroundMobile
+  X: -1.5
+  Y: -2
+  Z: 10
 --- !u!114 &1468220548
 MonoBehaviour:
   m_ObjectHideFlags: 0

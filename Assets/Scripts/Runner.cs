@@ -17,6 +17,10 @@ namespace Logic
         public int notificationsInColumn;
         public int notificationColumns;
         public string typeName;
+        //for around staff only
+        public float X;
+        public float Y;
+        public float Z;
 
         public void Update()
         {
@@ -36,6 +40,7 @@ namespace Logic
             Global.notificationsInColumn = notificationsInColumn;
             Global.typeName = typeName;
             Global.prefabToCreate = prefabToCreate;
+            Global.aroundCoordinatesCenter = new Triple(X, Y, Z);
             Notification notification = notificationsGenerator.getNotification();
             storageEditor.addToStorage(notification);
             yield return new WaitForSeconds(pause);
