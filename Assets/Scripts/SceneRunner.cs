@@ -42,7 +42,7 @@ namespace Logic
                 Global.aroundCoordinatesCenter = new Triple(X, Y, Z);
                 Global.distanceFromCamera = distanceFromCamera;
                 Global.angle = angle;
-                var scene = gameObject.GetComponent<Scene>();
+                var scene = FindObjectOfType<Scene>();
                 if (Global.isTrayOpened) scene.buildTray();
                 else scene.rebuildScene();
             }

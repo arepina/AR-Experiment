@@ -83,7 +83,7 @@ namespace Logic
                         Color groupColor;
                         if (!Global.typeName.Contains("Sticker") || Global.typeName.Equals("Tray"))
                         {
-                            groupColor = eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
+                            groupColor = eventData.pointerEnter.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
                         }
                         else
                         {
@@ -137,7 +137,7 @@ namespace Logic
             myLogger.Log(string.Format("Notification with id {0} from source {1} was chosen to {2}", id, sourceName, tag));
             var storage = FindObjectOfType<Storage>();
             storage.removeFromStorage(id, sourceName);
-            var scene = gameObject.GetComponent<Scene>();
+            var scene = FindObjectOfType<Scene>();
             scene.rebuildScene();
         }
 
@@ -146,7 +146,7 @@ namespace Logic
             myLogger.Log(string.Format("Notifications from source {0} were chosen to {1}", sourceName, tag));
             var storage = FindObjectOfType<Storage>();
             storage.removeAllFromStorage(sourceName);
-            var scene = gameObject.GetComponent<Scene>();
+            var scene = FindObjectOfType<Scene>();
             scene.rebuildScene();
         }
     }
