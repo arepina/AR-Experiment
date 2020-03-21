@@ -29,7 +29,7 @@ namespace Logic
             {
                 try
                 {
-                    if (!Global.typeName.Contains("Sticker") || Global.typeName.Equals("Tray"))
+                    if (!FindObjectOfType<Global>().typeName.Contains("Sticker") || FindObjectOfType<Global>().typeName.Equals("Tray"))
                     {
                         eventData.pointerEnter.transform.Find("GroupIcon").transform.Find("HideGroup").gameObject.SetActive(false);
                         eventData.pointerEnter.transform.Find("GroupIcon").transform.Find("MarkAsReadGroup").gameObject.SetActive(false);
@@ -81,7 +81,7 @@ namespace Logic
                     {
                         string id = eventData.pointerEnter.transform.Find("Id").GetComponent<TextMeshPro>().text;
                         Color groupColor;
-                        if (!Global.typeName.Contains("Sticker") || Global.typeName.Equals("Tray"))
+                        if (!FindObjectOfType<Global>().typeName.Contains("Sticker") || FindObjectOfType<Global>().typeName.Equals("Tray"))
                         {
                             groupColor = eventData.pointerEnter.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
                         }
@@ -103,7 +103,7 @@ namespace Logic
                         {
                             string id = eventData.pointerEnter.transform.parent.transform.Find("Id").GetComponent<TextMeshPro>().text;
                             Color groupColor;
-                            if (!Global.typeName.Contains("Sticker") || Global.typeName.Equals("Tray"))
+                            if (!FindObjectOfType<Global>().typeName.Contains("Sticker") || FindObjectOfType<Global>().typeName.Equals("Tray"))
                             {
                                 groupColor = eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
                             }

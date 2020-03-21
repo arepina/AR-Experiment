@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Logic
 {
-    public class NotificationCoordinates
+    public class NotificationCoordinates : MonoBehaviour
     {
         public static List<Coordinates> formInFrontOfMobileCoordinatesArray()
         {
-            float distanceFromCamera = Global.distanceFromCamera;
+            float distanceFromCamera = FindObjectOfType<Global>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Triple(0f, -1.1f, distanceFromCamera), new Triple(0, 0, 0)));
             coordinates.Add(new Coordinates(new Triple(0f, 0f, distanceFromCamera), new Triple(0, 0, 0)));
@@ -16,7 +17,7 @@ namespace Logic
 
         public static List<Coordinates> formInFrontOfStickerCoordinatesArray()
         {
-            float distanceFromCamera = Global.distanceFromCamera;
+            float distanceFromCamera = FindObjectOfType<Global>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Triple(0f, -1.6f, distanceFromCamera), new Triple(0, 0, 0)));
             coordinates.Add(new Coordinates(new Triple(0f, 0f, distanceFromCamera), new Triple(0, 0, 0)));
@@ -26,8 +27,8 @@ namespace Logic
 
         public static List<Coordinates> formAroundMobileCoordinatesArray()
         {
-            Triple center = Global.aroundCoordinatesCenter;
-            float distanceFromCamera = Global.distanceFromCamera;
+            Triple center = FindObjectOfType<Global>().aroundCoordinatesCenter;
+            float distanceFromCamera = FindObjectOfType<Global>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             float xDist = -2.4f;
             float zDist = -1.2f;
@@ -55,8 +56,8 @@ namespace Logic
 
         public static List<Coordinates> formAroundStickerCoordinatesArray()
         {
-            Triple center = Global.aroundCoordinatesCenter;
-            float distanceFromCamera = Global.distanceFromCamera;
+            Triple center = FindObjectOfType<Global>().aroundCoordinatesCenter;
+            float distanceFromCamera = FindObjectOfType<Global>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             float xDist = -1.7f;
             float zDist = -2f;
@@ -84,7 +85,7 @@ namespace Logic
 
         public static List<Coordinates> formTrayCoordinatesArray()
         {
-            float distanceFromCamera = Global.distanceFromCamera;
+            float distanceFromCamera = FindObjectOfType<Global>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Triple(0f, -2.2f, 6f), new Triple(0, 0, 0)));
             coordinates.Add(new Coordinates(new Triple(0f, -1.1f, 6f), new Triple(0, 0, 0)));

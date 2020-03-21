@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 710828795}
   - component: {fileID: 710828794}
   - component: {fileID: 710828792}
+  - component: {fileID: 710828797}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: MainCamera
@@ -310,8 +311,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb899351e3de4aeb95ca0c1f98f95a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notificationsHolder: {fileID: 52981605}
   trayHolder: {fileID: 600461539}
+  notificationsHolder: {fileID: 52981605}
 --- !u!114 &710828793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,19 +353,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af196ab1b591e473cab8134ba8040d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToCreate: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
-    type: 3}
-  trayPrefab: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
-    type: 3}
-  notificationsInColumn: 3
-  notificationColumns: 1
-  typeName: InFrontOfStickers
-  distanceFromCamera: 6
-  angle: 0
-  X: 0
-  Y: 0
-  Z: 0
   isRunning: 1
+  trayHolder: {fileID: 600461539}
+  notificationsHolder: {fileID: 52981605}
 --- !u!114 &710828796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +371,27 @@ MonoBehaviour:
   startRange: 0
   endRange: 5
   isRunning: 1
+--- !u!114 &710828797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710828786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590e5141d32f14090828601481c69a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notification: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
+    type: 3}
+  trayNotification: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
+    type: 3}
+  typeName: InFrontOfStickers
+  notificationsInColumn: 3
+  notificationColumns: 1
+  distanceFromCamera: 6
+  angle: 0
 --- !u!1001 &1240778305
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,19 +1,17 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Logic
 {
-    internal class Global
+    public class Global : MonoBehaviour
     {
-        public static Dictionary<string, NotificationsStorage> notifications = new Dictionary<string, NotificationsStorage>();
-        public static GameObject prefabToCreate;
-        public static string typeName;
-        public static int notificationsInColumn;
-        public static int notificationColumns;
+        public GameObject notification;
+        public GameObject trayNotification;
+        public string typeName;
+        public int notificationsInColumn;
+        public int notificationColumns;
         public static string silentGroupKey = "_silent_";
-        public static bool isTrayOpened = false;
-        public static Triple aroundCoordinatesCenter;
-        public static float distanceFromCamera;
-        public static float angle;
+        public Triple aroundCoordinatesCenter;
+        public float distanceFromCamera;
+        public float angle;
     }
 }

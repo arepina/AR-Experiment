@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 1071713890}
   - component: {fileID: 1071713889}
   - component: {fileID: 1071713888}
+  - component: {fileID: 1071713898}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: MainCamera
@@ -335,8 +336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb899351e3de4aeb95ca0c1f98f95a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notificationsHolder: {fileID: 1012981945}
   trayHolder: {fileID: 1197410376}
+  notificationsHolder: {fileID: 1012981945}
 --- !u!114 &1071713889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,19 +362,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af196ab1b591e473cab8134ba8040d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToCreate: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
-    type: 3}
-  trayPrefab: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
-    type: 3}
-  notificationsInColumn: 3
-  notificationColumns: 5
-  typeName: AroundStickers
-  distanceFromCamera: 10
-  angle: 0
-  X: -0.3
-  Y: -4
-  Z: 0
   isRunning: 1
+  trayHolder: {fileID: 1197410376}
+  notificationsHolder: {fileID: 1012981945}
 --- !u!114 &1071713891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +489,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1071713898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071713887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590e5141d32f14090828601481c69a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notification: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
+    type: 3}
+  trayNotification: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
+    type: 3}
+  typeName: AroundStickers
+  notificationsInColumn: 0
+  notificationColumns: 0
+  distanceFromCamera: 10
+  angle: 0
 --- !u!1001 &1166146757
 PrefabInstance:
   m_ObjectHideFlags: 0

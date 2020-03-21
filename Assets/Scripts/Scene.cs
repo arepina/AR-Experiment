@@ -8,10 +8,10 @@ namespace Logic
 {
     public class Scene : MonoBehaviour
     {
-        public GameObject notificationsHolder;
-        public GameObject trayHolder;
         private Color markAsReadColor = new Color32(0, 0, 194, 255);
         private Color hideColor = new Color32(255, 36, 0, 255);
+        public GameObject trayHolder;
+        public GameObject notificationsHolder;
 
         public delegate GameObject Generator(GameObject prefabToCreate, Notification notification,
                                             Vector3 position, Vector3 scale, Quaternion rotation,
@@ -34,7 +34,7 @@ namespace Logic
 
         public void rebuildScene()
         {
-            switch (Global.typeName)
+            switch (FindObjectOfType<Global>().typeName)
             {
                 case "InFrontOfStickers": { buildInFrontOf(addStickerNotification, NotificationCoordinates.formInFrontOfStickerCoordinatesArray); break; }
                 case "Tray": { buildTray(); break; }
@@ -52,9 +52,9 @@ namespace Logic
             Notification notification = orderedNotifications.Values.First().Storage.Peek();
             if (!notification.isSilent)
             {
-                Vector3 position = new Vector3(-15, 18.5f, Global.distanceFromCamera);
+                Vector3 position = new Vector3(-15, 18.5f, FindObjectOfType<Global>().distanceFromCamera);
                 Quaternion rotation = Quaternion.Euler(0, 0, 0);
-                GameObject prefabToCreate = Global.prefabToCreate;
+                GameObject prefabToCreate = FindObjectOfType<Global>().notification;
                 GameObject wave = Instantiate(prefabToCreate, position, rotation) as GameObject;
                 Color c = notification.Color;
                 c.a = 0.5f;
@@ -73,17 +73,17 @@ namespace Logic
             foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
             {
                 Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
-                int indexPosition = groupIndex * Global.notificationsInColumn;
+                int indexPosition = groupIndex * FindObjectOfType<Global>().notificationsInColumn;
                 for (int i = 0; i < groupNotifications.Count; i++)
                 {
                     Notification notification = groupNotifications.ToArray()[i];
                     bool doesHaveGroupIcon = i == 0;
-                    if (i < Global.notificationsInColumn)
+                    if (i < FindObjectOfType<Global>().notificationsInColumn)
                     {
                         Vector3 position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
                         Quaternion rotation = Quaternion.Euler(90, 0, 0);
                         Vector3 scale = new Vector3(1, 1, 1);
-                        GameObject n = notificationGenerator(Global.prefabToCreate,
+                        GameObject n = notificationGenerator(FindObjectOfType<Global>().notification,
                                               notification,
                                               position,
                                               scale,
@@ -110,7 +110,7 @@ namespace Logic
             clearScene();
             List<Coordinates> coordinates = notificationCoordinates();
             int indexPosition = 0;
-            int maxNotificationsInTray = Global.notificationsInColumn * Global.notificationColumns;
+            int maxNotificationsInTray = FindObjectOfType<Global>().notificationsInColumn * FindObjectOfType<Global>().notificationColumns;
             foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
             {
                 Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
@@ -118,13 +118,13 @@ namespace Logic
                 {
                     Notification notification = groupNotifications.ToArray()[i];
                     bool doesHaveGroupIcon = i == groupNotifications.Count - 1 ||
-                        indexPosition == Global.notificationsInColumn - 1;
+                        indexPosition == FindObjectOfType<Global>().notificationsInColumn - 1;
                     if (indexPosition < maxNotificationsInTray)
                     {
                         Vector3 position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
                         Quaternion rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
                         Vector3 scale = new Vector3(1, 1, 1);
-                        GameObject n = notificationGenerator(Global.prefabToCreate,
+                        GameObject n = notificationGenerator(FindObjectOfType<Global>().notification,
                                               notification,
                                               position,
                                               scale,
@@ -150,7 +150,7 @@ namespace Logic
             clearScene(); 
             List<Coordinates> coordinates = NotificationCoordinates.formTrayCoordinatesArray();
             int indexPosition = 0;
-            int maxNotificationsInTray = Global.notificationsInColumn * Global.notificationColumns;
+            int maxNotificationsInTray = FindObjectOfType<Global>().notificationsInColumn * FindObjectOfType<Global>().notificationColumns;
             foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
             {
                 Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
@@ -158,13 +158,13 @@ namespace Logic
                 {
                     Notification notification = groupNotifications.ToArray()[i];
                     bool doesHaveGroupIcon = i == groupNotifications.Count - 1 ||
-                        indexPosition % Global.notificationsInColumn == (Global.notificationsInColumn - 1);
+                        indexPosition % FindObjectOfType<Global>().notificationsInColumn == (FindObjectOfType<Global>().notificationsInColumn - 1);
                     if (indexPosition < maxNotificationsInTray)
                     {
                         Vector3 position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
                         Quaternion rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
                         Vector3 scale = new Vector3(1, 1, 1);
-                        GameObject n = addMobileNotification(Global.prefabToCreate, notification, position, scale, rotation, doesHaveGroupIcon);
+                        GameObject n = addMobileNotification(FindObjectOfType<Global>().trayNotification, notification, position, scale, rotation, doesHaveGroupIcon);
                         GameObject trayN = Instantiate(n);
                         n.transform.parent = notificationsHolder.transform;
                         trayN.transform.parent = trayHolder.transform;

@@ -18,16 +18,16 @@ namespace Logic
             Stack<Notification> sourceNotifications = new Stack<Notification>();
             string sourceName = notification.SourceName;
             if (notification.isSilent) sourceName = Global.silentGroupKey;
-            if (Global.notifications.ContainsKey(sourceName)) sourceNotifications = Global.notifications[sourceName].Storage;
+            if (orderedNotifications.ContainsKey(sourceName)) sourceNotifications = orderedNotifications[sourceName].Storage;
             sourceNotifications.Push(notification);
             NotificationsStorage newNotificationsStorage = new NotificationsStorage(sourceNotifications, notification.Timestamp);
-            Global.notifications[sourceName] = newNotificationsStorage;
-            orderedNotifications = createOrderedStorage(sourceName);
+            orderedNotifications[sourceName] = newNotificationsStorage;
+            createOrderedStorage(sourceName);
         }
 
         internal void removeFromStorage(string id, string sourceName)
         {
-            NotificationsStorage newStorage = Global.notifications[sourceName];
+            NotificationsStorage newStorage = orderedNotifications[sourceName];
             Stack<Notification> newNotificationsStorage = new Stack<Notification>();
             foreach (Notification notification in newStorage.Storage)
             {
@@ -37,33 +37,31 @@ namespace Logic
                 }
             }
             newStorage.Storage = newNotificationsStorage;
-            Global.notifications[sourceName] = newStorage;
-            orderedNotifications = createOrderedStorage(sourceName);
+            orderedNotifications[sourceName] = newStorage;
+            createOrderedStorage(sourceName);
         }
 
         internal void removeAllFromStorage(string sourceName)
         {
-            Global.notifications.Remove(sourceName);
+            orderedNotifications.Remove(sourceName);
             sourceName = null;
-            orderedNotifications = createOrderedStorage(sourceName);
+            createOrderedStorage(sourceName);
         }
 
-        private Dictionary<string, NotificationsStorage> createOrderedStorage(string sourceName)
+        private void createOrderedStorage(string sourceName)
         {
             NotificationsStorage silentGroup = null;
-            if (Global.notifications.ContainsKey(Global.silentGroupKey))
+            if (orderedNotifications.ContainsKey(Global.silentGroupKey))
             {
-                silentGroup = Global.notifications[Global.silentGroupKey];
-                Global.notifications.Remove(Global.silentGroupKey);
+                silentGroup = orderedNotifications[Global.silentGroupKey];
+                orderedNotifications.Remove(Global.silentGroupKey);
             }
-            Dictionary<string, NotificationsStorage> orderedNotifications = Global.notifications.OrderByDescending(x => x.Value.LatestTimestamp)
+            orderedNotifications = orderedNotifications.OrderByDescending(x => x.Value.LatestTimestamp)
                                                                                          .ToDictionary(d => d.Key, d => d.Value);
             if (silentGroup != null || sourceName == Global.silentGroupKey)
             {
                 orderedNotifications.Add(Global.silentGroupKey, silentGroup); // silent are always the last
-                Global.notifications.Add(Global.silentGroupKey, silentGroup);
             }
-            return orderedNotifications;
         }
     }
 }

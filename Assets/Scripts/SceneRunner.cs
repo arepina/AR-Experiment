@@ -5,18 +5,9 @@ namespace Logic
     public class SceneRunner : MonoBehaviour
     {
         private Logger myLogger = new Logger(new LogHandler());
-        public GameObject prefabToCreate;
-        public GameObject trayPrefab;
-        public int notificationsInColumn;
-        public int notificationColumns;
-        public string typeName;
-        public float distanceFromCamera;
-        public float angle;
-        //for around staff only
-        public float X;
-        public float Y;
-        public float Z;
         public bool isRunning;
+        public GameObject trayHolder;
+        public GameObject notificationsHolder;
 
         public void Start()
         {
@@ -31,20 +22,21 @@ namespace Logic
             myLogger.Log("Stopped");
         }
 
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                notificationsHolder.SetActive(!notificationsHolder.activeSelf);
+                trayHolder.SetActive(!trayHolder.activeSelf);
+                FindObjectOfType<Scene>().buildTray();
+            }
+        }
+
         public void UpdateScene()
         {
             if (isRunning)
             {
-                Global.notificationColumns = notificationColumns;
-                Global.notificationsInColumn = notificationsInColumn;
-                Global.typeName = typeName;
-                Global.prefabToCreate = prefabToCreate;
-                Global.aroundCoordinatesCenter = new Triple(X, Y, Z);
-                Global.distanceFromCamera = distanceFromCamera;
-                Global.angle = angle;
-                var scene = FindObjectOfType<Scene>();
-                if (Global.isTrayOpened) scene.buildTray();
-                else scene.rebuildScene();
+                FindObjectOfType<Scene>().rebuildScene();
             }
         }       
     }
