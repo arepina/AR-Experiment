@@ -105,7 +105,6 @@ GameObject:
   - component: {fileID: 6380617491597505004}
   - component: {fileID: 6161853736075432255}
   - component: {fileID: 5293997291494283746}
-  - component: {fileID: 7101060886180263062}
   m_Layer: 0
   m_Name: Wave
   m_TagString: Notification
@@ -160,22 +159,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   duration: 10
---- !u!114 &7101060886180263062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3867933328541127428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba530191e87a84180973e13836dcd4d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Camera: {fileID: 0}
-  DistanceFromCamera: 1.5
-  SimulateInertia: 1
-  AllowMotionAlongZAxis: 0
-  PositionLerpSpeed: 5
-  RotationLerpSpeed: 5
-  ParallelToTheGround: 1

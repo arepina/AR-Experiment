@@ -6,8 +6,10 @@ using UnityEngine;
 
 namespace Logic
 {
-    public class SceneEditor : MonoBehaviour
+    public class Scene : MonoBehaviour
     {
+        public GameObject notificationsHolder;
+        public GameObject trayHolder;
         private Color markAsReadColor = new Color32(0, 0, 194, 255);
         private Color hideColor = new Color32(255, 36, 0, 255);
 
@@ -24,38 +26,47 @@ namespace Logic
             {
                 Destroy(notification);
             }
-        }
-
-        public void rebuildScene(Dictionary<string, NotificationsStorage> orderedNotifications)
-        {
-            switch (Global.typeName)
+            foreach (Transform childTransform in trayHolder.transform)
             {
-                case "InFrontOfStickers": { buildInFrontOf(orderedNotifications, addStickerNotification, NotificationCoordinates.formInFrontOfStickerCoordinatesArray); break; }
-                case "Tray": { buildTray(orderedNotifications); break; }
-                case "InFrontOfMobile": { buildInFrontOf(orderedNotifications, addMobileNotification, NotificationCoordinates.formTrayCoordinatesArray); break; }
-                case "HiddenWaves": { buildHiddenWaves(orderedNotifications); break; }
-                case "AroundStickers": { buildAround(orderedNotifications, addStickerNotification); break; }
-                case "AroundMobile": { buildAround(orderedNotifications, addMobileNotification); break; }
+                Destroy(childTransform.gameObject);
             }
         }
 
-        public void buildHiddenWaves(Dictionary<string, NotificationsStorage> orderedNotifications)
+        public void rebuildScene()
         {
-            NotificationsStorage storage = orderedNotifications.Values.First();
-            Notification notification = storage.Storage.Peek();
+            switch (Global.typeName)
+            {
+                case "InFrontOfStickers": { buildInFrontOf(addStickerNotification, NotificationCoordinates.formInFrontOfStickerCoordinatesArray); break; }
+                case "Tray": { buildTray(); break; }
+                case "InFrontOfMobile": { buildInFrontOf(addMobileNotification, NotificationCoordinates.formTrayCoordinatesArray); break; }
+                case "HiddenWaves": { buildHiddenWaves(); break; }
+                case "AroundStickers": { buildAround(addStickerNotification); break; }
+                case "AroundMobile": { buildAround(addMobileNotification); break; }
+            }
+        }
+
+        public void buildHiddenWaves()
+        {
+            var storage = gameObject.GetComponent<Storage>();
+            Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
+            Notification notification = orderedNotifications.Values.First().Storage.Peek();
             if (!notification.isSilent)
             {
                 Vector3 position = new Vector3(-15, 18.5f, 65);
                 Quaternion rotation = Quaternion.Euler(0, 0, 0);
                 GameObject prefabToCreate = Global.prefabToCreate;
                 GameObject wave = Instantiate(prefabToCreate, position, rotation) as GameObject;
-                wave.transform.Find("Image").gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", notification.Color);
+                Color c = notification.Color;
+                c.a = 0.5f;
+                wave.transform.Find("Image").gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", c);
                 wave.transform.Find("Image").gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_Glossiness", 1f);
             }
         }
 
-        public void buildAround(Dictionary<string, NotificationsStorage> orderedNotifications, Generator notificationGenerator)
+        public void buildAround(Generator notificationGenerator)
         {
+            var storage = gameObject.GetComponent<Storage>();
+            Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
             clearScene();
             Triple notificationCoordinates = Global.aroundCoordinatesCenter;
             foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
@@ -68,19 +79,23 @@ namespace Logic
                     Vector3 position = new Vector3(notificationCoordinates.X, notificationCoordinates.Y, notificationCoordinates.Z);
                     Quaternion rotation = Quaternion.Euler(90, 0, 0);
                     Vector3 scale = new Vector3(1, 1, 1);
-                    notificationGenerator(Global.prefabToCreate,
+                    GameObject n = notificationGenerator(Global.prefabToCreate,
                                             notification,
                                             position,
                                             scale,
                                             rotation,
                                             doesHaveGroupIcon);
+                    GameObject trayN = Instantiate(n);
+                    n.transform.parent = notificationsHolder.transform;
+                    trayN.transform.parent = trayHolder.transform;
                 }
             }
         }
 
-        public void buildInFrontOf(Dictionary<string, NotificationsStorage> orderedNotifications,
-            Generator notificationGenerator, Coordinate notificationCoordinates)
+        public void buildInFrontOf(Generator notificationGenerator, Coordinate notificationCoordinates)
         {
+            var storage = gameObject.GetComponent<Storage>();
+            Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
             clearScene();
             List<Coordinates> coordinates = notificationCoordinates();
             int indexPosition = 0;
@@ -91,19 +106,22 @@ namespace Logic
                 for (int i = 0; i < groupNotifications.Count; i++)
                 {
                     Notification notification = groupNotifications.ToArray()[i];
-                    bool doesHaveGroupIcon = i == 0 ||
-                        indexPosition % Global.notificationsInColumn == 0;
+                    bool doesHaveGroupIcon = i == groupNotifications.Count - 1 ||
+                        indexPosition == Global.notificationsInColumn - 1;
                     if (indexPosition < maxNotificationsInTray)
                     {
                         Vector3 position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
                         Quaternion rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
                         Vector3 scale = new Vector3(1, 1, 1);
-                        notificationGenerator(Global.prefabToCreate,
+                        GameObject n = notificationGenerator(Global.prefabToCreate,
                                               notification,
                                               position,
                                               scale,
                                               rotation,
                                               doesHaveGroupIcon);
+                        GameObject trayN = Instantiate(n);
+                        n.transform.parent = notificationsHolder.transform;
+                        trayN.transform.parent = trayHolder.transform;
                         indexPosition += 1;
                     }
                     else
@@ -114,8 +132,10 @@ namespace Logic
             }
         }
 
-        public void buildTray(Dictionary<string, NotificationsStorage> orderedNotifications)
+        public void buildTray()
         {
+            var storage = gameObject.GetComponent<Storage>();
+            Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
             clearScene(); 
             List<Coordinates> coordinates = NotificationCoordinates.formTrayCoordinatesArray();
             int indexPosition = 0;
@@ -133,8 +153,10 @@ namespace Logic
                         Vector3 position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
                         Quaternion rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
                         Vector3 scale = new Vector3(1, 1, 1);
-                        //todo think about case with stickers tray?
-                        addMobileNotification(Global.prefabToCreate, notification, position, scale, rotation, doesHaveGroupIcon);
+                        GameObject n = addMobileNotification(Global.prefabToCreate, notification, position, scale, rotation, doesHaveGroupIcon);
+                        GameObject trayN = Instantiate(n);
+                        n.transform.parent = notificationsHolder.transform;
+                        trayN.transform.parent = trayHolder.transform;
                         indexPosition += 1;
                     }
                     else
@@ -170,8 +192,7 @@ namespace Logic
             prefabToCreate.transform.Find("Timestamp").GetComponent<TextMeshPro>().text = minutes < 1 ? seconds < 1 ? "Just now" :
                                                                                                                       string.Format("{0:00}s ago", seconds) :
                                                                                                         string.Format("{0:00}m ago", minutes);
-            prefabToCreate.transform.Find("Icon")
-                          .GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/" + notification.Icon);
+            prefabToCreate.transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/" + notification.Icon);
             GameObject notificationObject = Instantiate(prefabToCreate, position, rotation) as GameObject;
             notificationObject.transform.localScale = scale;
             notificationObject.transform.Find("GroupIcon").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);

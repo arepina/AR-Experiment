@@ -1,11 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Logic
 {
-    public class StorageEditor
+    public class Storage : MonoBehaviour
     {
-        private SceneEditor sceneEditor = new SceneEditor();
+        private Dictionary<string, NotificationsStorage> orderedNotifications = new Dictionary<string, NotificationsStorage>();
+
+        internal Dictionary<string, NotificationsStorage> getStorage()
+        {
+            return orderedNotifications;
+        }
 
         internal void addToStorage(Notification notification)
         {
@@ -16,15 +22,7 @@ namespace Logic
             sourceNotifications.Push(notification);
             NotificationsStorage newNotificationsStorage = new NotificationsStorage(sourceNotifications, notification.Timestamp);
             Global.notifications[sourceName] = newNotificationsStorage;
-            Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
-            if (Global.isTrayOpened) sceneEditor.buildTray(orderedNotifications);
-            else sceneEditor.rebuildScene(orderedNotifications);
-        }
-
-        internal void closeTray()
-        {
-            Global.isTrayOpened = false;
-            sceneEditor.buildTray(new Dictionary<string, NotificationsStorage>());            
+            orderedNotifications = createOrderedStorage(sourceName);
         }
 
         internal void removeFromStorage(string id, string sourceName)
@@ -40,18 +38,14 @@ namespace Logic
             }
             newStorage.Storage = newNotificationsStorage;
             Global.notifications[sourceName] = newStorage;
-            Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
-            if (Global.isTrayOpened) sceneEditor.buildTray(orderedNotifications);
-            else sceneEditor.rebuildScene(orderedNotifications);
+            orderedNotifications = createOrderedStorage(sourceName);
         }
 
         internal void removeAllFromStorage(string sourceName)
         {
             Global.notifications.Remove(sourceName);
             sourceName = null;
-            Dictionary<string, NotificationsStorage> orderedNotifications = createOrderedStorage(sourceName);
-            if (Global.isTrayOpened) sceneEditor.buildTray(orderedNotifications);
-            else sceneEditor.rebuildScene(orderedNotifications);
+            orderedNotifications = createOrderedStorage(sourceName);
         }
 
         private Dictionary<string, NotificationsStorage> createOrderedStorage(string sourceName)

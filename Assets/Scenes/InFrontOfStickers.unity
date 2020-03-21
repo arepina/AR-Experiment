@@ -120,6 +120,66 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &52981605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 52981606}
+  m_Layer: 0
+  m_Name: NotificationsHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &52981606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52981605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2899992, y: -0.000000059604645, z: 10.178499}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &600461539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 600461540}
+  m_Layer: 0
+  m_Name: TrayHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &600461540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600461539}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2899992, y: -0.000000059604645, z: 10.178499}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &710828786
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,8 +193,11 @@ GameObject:
   - component: {fileID: 710828789}
   - component: {fileID: 710828788}
   - component: {fileID: 710828787}
-  - component: {fileID: 710828792}
   - component: {fileID: 710828793}
+  - component: {fileID: 710828796}
+  - component: {fileID: 710828795}
+  - component: {fileID: 710828794}
+  - component: {fileID: 710828792}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: MainCamera
@@ -244,19 +307,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 710828786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3f8cef449c7148d8b3b4fba2054493b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6cb899351e3de4aeb95ca0c1f98f95a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToCreate: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
-    type: 3}
-  trayPrefab: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
-    type: 3}
-  isRunning: 1
-  startRange: 5
-  endRange: 10
-  notificationsInColumn: 3
-  notificationColumns: 1
-  typeName: InFrontOfStickers
+  notificationsHolder: {fileID: 52981605}
+  trayHolder: {fileID: 600461539}
 --- !u!114 &710828793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +328,58 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   maxRaycastHits: 64
+--- !u!114 &710828794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710828786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b62b7f57c19f461d96d077336a5e83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &710828795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710828786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af196ab1b591e473cab8134ba8040d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToCreate: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
+    type: 3}
+  trayPrefab: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
+    type: 3}
+  notificationsInColumn: 3
+  notificationColumns: 1
+  typeName: InFrontOfStickers
+  distanceFromCamera: 0
+  angle: 0
+  X: 0
+  Y: 0
+  Z: 0
+  isRunning: 1
+--- !u!114 &710828796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710828786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9a5660d20324da9b4e35783d6b0aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startRange: 0
+  endRange: 5
+  isRunning: 1
 --- !u!1001 &1240778305
 PrefabInstance:
   m_ObjectHideFlags: 0

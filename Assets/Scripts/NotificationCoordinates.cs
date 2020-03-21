@@ -16,9 +16,9 @@ namespace Logic
         public static List<Coordinates> formInFrontOfStickerCoordinatesArray()
         {
             List<Coordinates> coordinates = new List<Coordinates>();
-            coordinates.Add(new Coordinates(new Triple(0f, 1.6f, 6f), new Triple(0, 0, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, 0f, 6f), new Triple(0, 0, 0)));
             coordinates.Add(new Coordinates(new Triple(0f, -1.6f, 6f), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 0f, 6f), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 1.6f, 6f), new Triple(0, 0, 0)));
             return coordinates;
         }
 

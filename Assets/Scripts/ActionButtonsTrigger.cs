@@ -9,7 +9,6 @@ namespace Logic
     {
         private long startTime;
         private long durationConstant = 3;
-        private StorageEditor storageEditor = new StorageEditor();
         private Logger myLogger = new Logger(new LogHandler());
 
         public virtual void OnPointerEnter(PointerEventData eventData)
@@ -56,12 +55,12 @@ namespace Logic
             else
             {
                 try
-                {                
+                {
                     eventData.pointerEnter.transform.Find("Hide").gameObject.SetActive(false);
                     eventData.pointerEnter.transform.Find("MarkAsRead").gameObject.SetActive(false);
                 }
-                catch (NullReferenceException e){}
-        }
+                catch (NullReferenceException e) { }
+            }
             long duration = (long)TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
             processReticleEvent(eventData, duration);
         }
@@ -92,7 +91,7 @@ namespace Logic
                         }
                         string sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
                             eventData.pointerEnter.transform.Find("Source").GetComponent<TextMeshPro>().text;
-                        processHideTray(id, sourceName);
+                        processHideAndMarkAsRead(id, sourceName, tag);
                     }
                     catch (NullReferenceException e) { }
                 }
@@ -133,22 +132,22 @@ namespace Logic
             }
         }
 
-        private void processHideTray(string id, string sourceName)
-        {
-            myLogger.Log(string.Format("Notification with id {0} from source {1} was clicked", id, sourceName));
-            storageEditor.closeTray();
-        }
-
         private void processHideAndMarkAsRead(string id, string sourceName, string tag)
         {
             myLogger.Log(string.Format("Notification with id {0} from source {1} was chosen to {2}", id, sourceName, tag));
-            storageEditor.removeFromStorage(id, sourceName);
+            var storage = FindObjectOfType<Storage>();
+            storage.removeFromStorage(id, sourceName);
+            var scene = gameObject.GetComponent<Scene>();
+            scene.rebuildScene();
         }
 
         private void processHideAndMarkAsReadAll(string sourceName, string tag)
         {
             myLogger.Log(string.Format("Notifications from source {0} were chosen to {1}", sourceName, tag));
-            storageEditor.removeAllFromStorage(sourceName);
+            var storage = FindObjectOfType<Storage>();
+            storage.removeAllFromStorage(sourceName);
+            var scene = gameObject.GetComponent<Scene>();
+            scene.rebuildScene();
         }
     }
 }
