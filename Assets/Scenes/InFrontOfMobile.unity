@@ -190,7 +190,7 @@ MonoBehaviour:
   notificationsInColumn: 3
   notificationColumns: 1
   typeName: InFrontOfMobile
-  distanceFromCamera: 0
+  distanceFromCamera: 6
   angle: 0
   X: 0
   Y: 0

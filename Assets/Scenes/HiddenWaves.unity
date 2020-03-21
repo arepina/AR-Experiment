@@ -190,7 +190,7 @@ MonoBehaviour:
   notificationsInColumn: 5
   notificationColumns: 8
   typeName: HiddenWaves
-  distanceFromCamera: 0
+  distanceFromCamera: 65
   angle: 0
   X: 0
   Y: 0

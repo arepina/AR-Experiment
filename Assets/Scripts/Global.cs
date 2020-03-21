@@ -13,5 +13,7 @@ namespace Logic
         public static string silentGroupKey = "_silent_";
         public static bool isTrayOpened = false;
         public static Triple aroundCoordinatesCenter;
+        public static float distanceFromCamera;
+        public static float angle;
     }
 }

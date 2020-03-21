@@ -38,7 +38,7 @@ namespace Logic
             {
                 case "InFrontOfStickers": { buildInFrontOf(addStickerNotification, NotificationCoordinates.formInFrontOfStickerCoordinatesArray); break; }
                 case "Tray": { buildTray(); break; }
-                case "InFrontOfMobile": { buildInFrontOf(addMobileNotification, NotificationCoordinates.formTrayCoordinatesArray); break; }
+                case "InFrontOfMobile": { buildInFrontOf(addMobileNotification, NotificationCoordinates.formInFrontOfMobileCoordinatesArray); break; }
                 case "HiddenWaves": { buildHiddenWaves(); break; }
                 case "AroundStickers": { buildAround(addStickerNotification); break; }
                 case "AroundMobile": { buildAround(addMobileNotification); break; }
@@ -52,7 +52,7 @@ namespace Logic
             Notification notification = orderedNotifications.Values.First().Storage.Peek();
             if (!notification.isSilent)
             {
-                Vector3 position = new Vector3(-15, 18.5f, 65);
+                Vector3 position = new Vector3(-15, 18.5f, Global.distanceFromCamera);
                 Quaternion rotation = Quaternion.Euler(0, 0, 0);
                 GameObject prefabToCreate = Global.prefabToCreate;
                 GameObject wave = Instantiate(prefabToCreate, position, rotation) as GameObject;

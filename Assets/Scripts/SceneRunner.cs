@@ -40,6 +40,8 @@ namespace Logic
                 Global.typeName = typeName;
                 Global.prefabToCreate = prefabToCreate;
                 Global.aroundCoordinatesCenter = new Triple(X, Y, Z);
+                Global.distanceFromCamera = distanceFromCamera;
+                Global.angle = angle;
                 var scene = gameObject.GetComponent<Scene>();
                 if (Global.isTrayOpened) scene.buildTray();
                 else scene.rebuildScene();
