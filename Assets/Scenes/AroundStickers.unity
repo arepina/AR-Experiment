@@ -365,13 +365,13 @@ MonoBehaviour:
     type: 3}
   trayPrefab: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
     type: 3}
-  notificationsInColumn: 0
-  notificationColumns: 0
+  notificationsInColumn: 3
+  notificationColumns: 5
   typeName: AroundStickers
-  distanceFromCamera: 0
+  distanceFromCamera: 10
   angle: 0
-  X: 0
-  Y: 0
+  X: -0.3
+  Y: -4
   Z: 0
   isRunning: 1
 --- !u!114 &1071713891

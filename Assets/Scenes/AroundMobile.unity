@@ -274,13 +274,13 @@ MonoBehaviour:
     type: 3}
   trayPrefab: {fileID: 6458541884227280155, guid: 426728455e0444e30bf095440088b16f,
     type: 3}
-  notificationsInColumn: 0
-  notificationColumns: 0
+  notificationsInColumn: 3
+  notificationColumns: 5
   typeName: AroundMobile
-  distanceFromCamera: 0
+  distanceFromCamera: 10
   angle: 0
-  X: 0
-  Y: 0
+  X: -0.3
+  Y: -4
   Z: 0
   isRunning: 1
 --- !u!114 &468268829

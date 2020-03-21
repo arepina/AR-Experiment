@@ -24,6 +24,64 @@ namespace Logic
             return coordinates;
         }
 
+        public static List<Coordinates> formAroundMobileCoordinatesArray()
+        {
+            Triple center = Global.aroundCoordinatesCenter;
+            float distanceFromCamera = Global.distanceFromCamera;
+            List<Coordinates> coordinates = new List<Coordinates>();
+            float xDist = -2.4f;
+            float zDist = -1.2f;
+            coordinates.Add(new Coordinates(new Triple(center.X, center.Y, center.Z + distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X, center.Y, center.Z + distanceFromCamera + zDist), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X, center.Y, center.Z + distanceFromCamera + zDist * 2), new Triple(0, 0, 0)));
+
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist, center.Y, center.Z + distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist, center.Y, center.Z + distanceFromCamera + zDist), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist, center.Y, center.Z + distanceFromCamera + zDist * 2), new Triple(0, 0, 0)));
+
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 2, center.Y, center.Z + distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 2, center.Y, center.Z + distanceFromCamera + zDist), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 2, center.Y, center.Z + distanceFromCamera + zDist * 2), new Triple(0, 0, 0)));
+
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 3, center.Y, center.Z + distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 3, center.Y, center.Z + distanceFromCamera + zDist), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 3, center.Y, center.Z + distanceFromCamera + zDist * 2), new Triple(0, 0, 0)));
+
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 4, center.Y, center.Z + distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 4, center.Y, center.Z + distanceFromCamera + zDist), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 4, center.Y, center.Z + distanceFromCamera + zDist * 2), new Triple(0, 0, 0)));
+            return coordinates;
+        }
+
+        public static List<Coordinates> formAroundStickerCoordinatesArray()
+        {
+            Triple center = Global.aroundCoordinatesCenter;
+            float distanceFromCamera = Global.distanceFromCamera;
+            List<Coordinates> coordinates = new List<Coordinates>();
+            float xDist = -1.7f;
+            float zDist = -2f;
+            coordinates.Add(new Coordinates(new Triple(center.X, center.Y, center.Z + distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X, center.Y, center.Z + distanceFromCamera + zDist), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X, center.Y, center.Z + distanceFromCamera + zDist * 2), new Triple(0, 0, 0)));
+
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist, center.Y, center.Z + distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist, center.Y, center.Z + distanceFromCamera + zDist), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist, center.Y, center.Z + distanceFromCamera + zDist * 2), new Triple(0, 0, 0)));
+
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 2, center.Y, center.Z + distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 2, center.Y, center.Z + distanceFromCamera + zDist), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 2, center.Y, center.Z + distanceFromCamera + zDist * 2), new Triple(0, 0, 0)));
+
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 3, center.Y, center.Z + distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 3, center.Y, center.Z + distanceFromCamera + zDist), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 3, center.Y, center.Z + distanceFromCamera + zDist * 2), new Triple(0, 0, 0)));
+
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 4, center.Y, center.Z + distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 4, center.Y, center.Z + distanceFromCamera + zDist), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(center.X + xDist * 4, center.Y, center.Z + distanceFromCamera + zDist * 2), new Triple(0, 0, 0)));
+            return coordinates;
+        }
+
         public static List<Coordinates> formTrayCoordinatesArray()
         {
             float distanceFromCamera = Global.distanceFromCamera;

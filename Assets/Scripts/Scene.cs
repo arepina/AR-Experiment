@@ -40,8 +40,8 @@ namespace Logic
                 case "Tray": { buildTray(); break; }
                 case "InFrontOfMobile": { buildInFrontOf(addMobileNotification, NotificationCoordinates.formInFrontOfMobileCoordinatesArray); break; }
                 case "HiddenWaves": { buildHiddenWaves(); break; }
-                case "AroundStickers": { buildAround(addStickerNotification); break; }
-                case "AroundMobile": { buildAround(addMobileNotification); break; }
+                case "AroundStickers": { buildAround(addStickerNotification, NotificationCoordinates.formAroundStickerCoordinatesArray); break; }
+                case "AroundMobile": { buildAround(addMobileNotification, NotificationCoordinates.formAroundMobileCoordinatesArray); break; }
             }
         }
 
@@ -63,32 +63,43 @@ namespace Logic
             }
         }
 
-        public void buildAround(Generator notificationGenerator)
+        public void buildAround(Generator notificationGenerator, Coordinate notificationCoordinates)
         {
             var storage = gameObject.GetComponent<Storage>();
             Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
             clearScene();
-            Triple notificationCoordinates = Global.aroundCoordinatesCenter;
+            List<Coordinates> coordinates = notificationCoordinates();
+            int groupIndex = 0;
             foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
             {
                 Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
+                int indexPosition = groupIndex * Global.notificationsInColumn;
                 for (int i = 0; i < groupNotifications.Count; i++)
                 {
                     Notification notification = groupNotifications.ToArray()[i];
-                    bool doesHaveGroupIcon = true;
-                    Vector3 position = new Vector3(notificationCoordinates.X, notificationCoordinates.Y, notificationCoordinates.Z);
-                    Quaternion rotation = Quaternion.Euler(90, 0, 0);
-                    Vector3 scale = new Vector3(1, 1, 1);
-                    GameObject n = notificationGenerator(Global.prefabToCreate,
-                                            notification,
-                                            position,
-                                            scale,
-                                            rotation,
-                                            doesHaveGroupIcon);
-                    GameObject trayN = Instantiate(n);
-                    n.transform.parent = notificationsHolder.transform;
-                    trayN.transform.parent = trayHolder.transform;
+                    bool doesHaveGroupIcon = i == 0;
+                    if (i < Global.notificationsInColumn)
+                    {
+                        Vector3 position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
+                        Quaternion rotation = Quaternion.Euler(90, 0, 0);
+                        Vector3 scale = new Vector3(1, 1, 1);
+                        GameObject n = notificationGenerator(Global.prefabToCreate,
+                                              notification,
+                                              position,
+                                              scale,
+                                              rotation,
+                                              doesHaveGroupIcon);
+                        GameObject trayN = Instantiate(n);
+                        n.transform.parent = notificationsHolder.transform;
+                        trayN.transform.parent = trayHolder.transform;
+                        indexPosition += 1;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
+                groupIndex += 1;
             }
         }
 
