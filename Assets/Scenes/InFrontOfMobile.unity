@@ -330,6 +330,8 @@ MonoBehaviour:
   typeName: InFrontOfMobile
   notificationsInColumn: 3
   notificationColumns: 1
+  notificationsInColumnTray: 5
+  notificationColumnsTray: 8
   distanceFromCamera: 6
   angle: 0
 --- !u!1001 &56755482

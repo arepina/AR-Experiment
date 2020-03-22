@@ -24,11 +24,11 @@ namespace Logic
 
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.A) && !FindObjectOfType<Global>().typeName.Equals("Tray"))
             {
                 notificationsHolder.SetActive(!notificationsHolder.activeSelf);
                 trayHolder.SetActive(!trayHolder.activeSelf);
-                FindObjectOfType<Scene>().buildTray();
+                FindObjectOfType<Scene>().rebuildScene();
             }
         }
 

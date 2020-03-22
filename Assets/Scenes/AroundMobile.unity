@@ -415,8 +415,13 @@ MonoBehaviour:
   trayNotification: {fileID: 6458541884227280155, guid: 426728455e0444e30bf095440088b16f,
     type: 3}
   typeName: AroundMobile
-  notificationsInColumn: 0
-  notificationColumns: 0
+  notificationsInColumn: 3
+  notificationColumns: 5
+  notificationsInColumnTray: 5
+  notificationColumnsTray: 8
+  X: -0.3
+  Y: -4
+  Z: 10
   distanceFromCamera: 10
   angle: 0
 --- !u!1 &483587986
