@@ -52,7 +52,7 @@ namespace Logic
             Notification n = orderedNotifications.Values.First().Storage.Peek();
             if (!n.isSilent && !trayHolder.activeSelf)
             {
-                Vector3 position = new Vector3(-15, 18.5f, FindObjectOfType<Global>().distanceFromCamera);
+                Vector3 position = new Vector3(FindObjectOfType<Global>().leftX, FindObjectOfType<Global>().waveY, FindObjectOfType<Global>().distanceFromCamera);
                 Quaternion rotation = Quaternion.Euler(0, 0, 0);
                 GameObject prefabToCreate = FindObjectOfType<Global>().notification;
                 GameObject wave = Instantiate(prefabToCreate, position, rotation) as GameObject;

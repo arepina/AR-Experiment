@@ -24,7 +24,7 @@ namespace Logic
 
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.A) && !FindObjectOfType<Global>().typeName.Equals("Tray"))
+            if (Input.GetKeyDown(KeyCode.O) && !FindObjectOfType<Global>().typeName.Equals("Tray"))
             {
                 if (notificationsHolder != null)
                 {

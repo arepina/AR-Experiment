@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startRange: 0
-  endRange: 5
+  endRange: 10
   isRunning: 1
 --- !u!114 &468268830
 MonoBehaviour:
@@ -433,11 +433,17 @@ MonoBehaviour:
   notificationColumns: 5
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
+  distanceFromCamera: 10
+  angle: 0
+  waitForActionToBeAcceptedPeriod: 2
   X: -0.3
   Y: -4
   Z: 10
-  distanceFromCamera: 10
-  angle: 0
+  speed: 0
+  duration: 0
+  leftX: 0
+  rightX: 0
+  waveY: 0
 --- !u!1 &483587986
 GameObject:
   m_ObjectHideFlags: 0

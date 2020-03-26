@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startRange: 0
-  endRange: 5
+  endRange: 10
   isRunning: 1
 --- !u!114 &48691097
 MonoBehaviour:
@@ -332,11 +332,17 @@ MonoBehaviour:
   notificationColumns: 1
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
+  distanceFromCamera: 6
+  angle: 0
+  waitForActionToBeAcceptedPeriod: 2
   X: 0
   Y: 0
   Z: 0
-  distanceFromCamera: 6
-  angle: 0
+  speed: 0
+  duration: 0
+  leftX: 0
+  rightX: 0
+  waveY: 0
 --- !u!1001 &56755482
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6380617491597505004}
   - component: {fileID: 6161853736075432255}
-  - component: {fileID: 5293997291494283746}
+  - component: {fileID: 5785140782159547263}
   m_Layer: 0
   m_Name: Wave
   m_TagString: Notification
@@ -145,7 +145,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 30, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5293997291494283746
+--- !u!114 &5785140782159547263
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,5 +157,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d95fe9e08a994d6fad1936c9a4a17e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  duration: 10
+  speed: 0
+  duration: 0

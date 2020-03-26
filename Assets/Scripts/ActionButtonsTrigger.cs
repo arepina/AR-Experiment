@@ -8,7 +8,6 @@ namespace Logic
     public class ActionButtonsTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         private long startTime;
-        private long durationConstant = 3;
         private Logger myLogger = new Logger(new LogHandler());
 
         public virtual void OnPointerEnter(PointerEventData eventData)
@@ -67,13 +66,13 @@ namespace Logic
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            processReticleEvent(eventData, durationConstant);
+            processReticleEvent(eventData, FindObjectOfType<Global>().waitForActionToBeAcceptedPeriod);
         }
 
-        private void processReticleEvent(PointerEventData eventData, long duration)
+        private void processReticleEvent(PointerEventData eventData, float duration)
         {
             string tag = eventData.pointerEnter.tag;
-            if (duration >= durationConstant)
+            if (duration >= FindObjectOfType<Global>().waitForActionToBeAcceptedPeriod)
             {
                 if (tag.Equals("Notification"))
                 {
