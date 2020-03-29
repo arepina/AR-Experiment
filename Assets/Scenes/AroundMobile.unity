@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 468268826}
   - component: {fileID: 468268837}
   - component: {fileID: 468268836}
+  - component: {fileID: 468268838}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: MainCamera
@@ -301,8 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9a5660d20324da9b4e35783d6b0aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startRange: 0
-  endRange: 10
+  notificationsToGenerateNumber: 0
+  experimentDurationInSeconds: 0
   isRunning: 1
 --- !u!114 &468268830
 MonoBehaviour:
@@ -452,6 +453,21 @@ MonoBehaviour:
   XAroundOnly: 0
   YAroundOnly: 0
   ZAroundOnly: 0
+--- !u!114 &468268838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468268825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6aa362bd46964d7b8cd07bbb1c24de0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subjectNumber: 0
+  trialNumber: 0
+  note: 
 --- !u!1 &483587986
 GameObject:
   m_ObjectHideFlags: 0
