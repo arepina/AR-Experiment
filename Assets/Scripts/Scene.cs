@@ -37,7 +37,6 @@ namespace Logic
             switch (FindObjectOfType<Global>().typeName)
             {
                 case "InFrontOfStickers": { buildInFrontOf(addStickerNotification, NotificationCoordinates.formInFrontOfStickerCoordinatesArray, NotificationCoordinates.formTrayCoordinatesArraySticker); break; }
-                case "Tray": { buildTray(addMobileNotification, NotificationCoordinates.formTrayCoordinatesArrayMobile); break; }
                 case "InFrontOfMobile": { buildInFrontOf(addMobileNotification, NotificationCoordinates.formInFrontOfMobileCoordinatesArray, NotificationCoordinates.formTrayCoordinatesArrayMobile); break; }
                 case "HiddenWaves": { buildHiddenWaves(addMobileNotification, NotificationCoordinates.formTrayCoordinatesArrayMobile); break; }
                 case "AroundStickers": { buildAround(addStickerNotification, NotificationCoordinates.formAroundStickerCoordinatesArray, NotificationCoordinates.formTrayCoordinatesArraySticker); break; }
@@ -196,41 +195,7 @@ namespace Logic
                     }
                 }
             }
-        }
-
-        public void buildTray(Generator notificationGenerator, Coordinate traysCoordinates)
-        {
-            var storage = gameObject.GetComponent<Storage>();
-            Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
-            clearScene(); 
-            List<Coordinates> coordinates = traysCoordinates();
-            int indexPosition = 0;
-            trayHolder.SetActive(true);
-            int maxNotificationsInTray = FindObjectOfType<Global>().notificationsInColumnTray * FindObjectOfType<Global>().notificationColumnsTray;
-            foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
-            {
-                Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
-                for (int i = 0; i < groupNotifications.Count; i++)
-                {
-                    Notification notification = groupNotifications.ToArray()[i];
-                    bool doesHaveGroupIcon = i == groupNotifications.Count - 1 ||
-                        indexPosition % FindObjectOfType<Global>().notificationsInColumn == (FindObjectOfType<Global>().notificationsInColumn - 1);
-                    if (indexPosition < maxNotificationsInTray)
-                    {
-                        Vector3 position = new Vector3(coordinates[indexPosition].Position.X, coordinates[indexPosition].Position.Y, coordinates[indexPosition].Position.Z);
-                        Quaternion rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.X, coordinates[indexPosition].Rotation.Y, coordinates[indexPosition].Rotation.Z);
-                        Vector3 scale = new Vector3(1, 1, 1);
-                        GameObject trayN = notificationGenerator(FindObjectOfType<Global>().trayNotification, notification, position, scale, rotation, doesHaveGroupIcon);
-                        trayN.transform.parent = trayHolder.transform;
-                        indexPosition += 1;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-        }
+        }        
 
         private GameObject addMobileNotification(GameObject prefabToCreate, Notification notification,
                                             Vector3 position, Vector3 scale, Quaternion rotation,
@@ -293,7 +258,7 @@ namespace Logic
             notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
             notificationObject.transform.Find("MarkAsRead").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", markAsReadColor);
             notificationObject.transform.Find("Hide").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", hideColor);
-            notificationObject.transform.Find("Cube").Find("Box").GetComponent<SpriteRenderer>().material.SetColor("_Color", notification.Color);
+            notificationObject.transform.Find("Box").GetComponent<SpriteRenderer>().material.SetColor("_Color", notification.Color);
             return notificationObject;
         }
     }

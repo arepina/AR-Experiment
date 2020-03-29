@@ -13,6 +13,7 @@ namespace Logic
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
             startTime = DateTime.Now.Ticks;
+            myLogger.Log("In");
             if (eventData.pointerEnter.tag.Equals("GroupIcon"))
             {
                 try
@@ -22,26 +23,33 @@ namespace Logic
                     eventData.pointerEnter.transform.Find("HideGroup").gameObject.SetActive(true);
                     eventData.pointerEnter.transform.Find("MarkAsReadGroup").gameObject.SetActive(true);
                 }
-                catch (NullReferenceException e) { }
+                catch (NullReferenceException e)
+                {
+                    myLogger.LogError("Error", e);
+                }
             }
             else
             {
                 try
                 {
-                    if (!FindObjectOfType<Global>().typeName.Contains("Sticker") || FindObjectOfType<Global>().typeName.Equals("Tray"))
+                    if (!FindObjectOfType<Global>().typeName.Contains("Sticker"))
                     {
-                        eventData.pointerEnter.transform.Find("GroupIcon").transform.Find("HideGroup").gameObject.SetActive(false);
-                        eventData.pointerEnter.transform.Find("GroupIcon").transform.Find("MarkAsReadGroup").gameObject.SetActive(false);
+                        eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").transform.Find("HideGroup").gameObject.SetActive(false);
+                        eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").transform.Find("MarkAsReadGroup").gameObject.SetActive(false);
                     }
-                    eventData.pointerEnter.transform.Find("Hide").gameObject.SetActive(true);
-                    eventData.pointerEnter.transform.Find("MarkAsRead").gameObject.SetActive(true);
+                    eventData.pointerEnter.transform.parent.transform.Find("Hide").gameObject.SetActive(true);
+                    eventData.pointerEnter.transform.parent.transform.Find("MarkAsRead").gameObject.SetActive(true);
                 }
-                catch (NullReferenceException e) { }
+                catch (NullReferenceException e)
+                {
+                    myLogger.LogError("Error", e);
+                }
             }
         }
 
         public virtual void OnPointerExit(PointerEventData eventData)
         {
+            myLogger.Log("Out");
             if (eventData.pointerEnter.tag.Equals("GroupIcon"))
             {
                 try
@@ -49,16 +57,22 @@ namespace Logic
                     eventData.pointerEnter.transform.Find("HideGroup").gameObject.SetActive(false);
                     eventData.pointerEnter.transform.Find("MarkAsReadGroup").gameObject.SetActive(false);
                 }
-                catch (NullReferenceException e) { }
+                catch (NullReferenceException e)
+                {
+                    myLogger.LogError("Error", e);
+                }
             }
             else
             {
                 try
                 {
-                    eventData.pointerEnter.transform.Find("Hide").gameObject.SetActive(false);
-                    eventData.pointerEnter.transform.Find("MarkAsRead").gameObject.SetActive(false);
+                    eventData.pointerEnter.transform.parent.transform.Find("Hide").gameObject.SetActive(false);
+                    eventData.pointerEnter.transform.parent.transform.Find("MarkAsRead").gameObject.SetActive(false);
                 }
-                catch (NullReferenceException e) { }
+                catch (NullReferenceException e)
+                {
+                    myLogger.LogError("Error", e);
+                }
             }
             long duration = (long)TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
             processReticleEvent(eventData, duration);
@@ -78,21 +92,27 @@ namespace Logic
                 {
                     try
                     {
-                        string id = eventData.pointerEnter.transform.Find("Id").GetComponent<TextMeshPro>().text;
+                        string id = eventData.pointerEnter.transform.parent.transform.Find("Id").GetComponent<TextMeshPro>().text;
                         Color groupColor;
-                        if (!FindObjectOfType<Global>().typeName.Contains("Sticker") || FindObjectOfType<Global>().typeName.Equals("Tray"))
+                        string sourceName;
+                        if (!FindObjectOfType<Global>().typeName.Contains("Sticker"))
                         {
-                            groupColor = eventData.pointerEnter.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
+                            groupColor = eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
+                            sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
+                                eventData.pointerEnter.transform.parent.transform.Find("Source").GetComponent<TextMeshPro>().text;
                         }
                         else
                         {
-                            groupColor = eventData.pointerEnter.transform.parent.transform.Find("Cube").Find("Box").GetComponent<SpriteRenderer>().material.color;
+                            groupColor = eventData.pointerEnter.transform.parent.transform.Find("Box").GetComponent<SpriteRenderer>().material.color;
+                            sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
+                                eventData.pointerEnter.transform.parent.transform.Find("Source").GetComponent<TextMeshPro>().text;
                         }
-                        string sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
-                            eventData.pointerEnter.transform.Find("Source").GetComponent<TextMeshPro>().text;
                         processHideAndMarkAsRead(id, sourceName, tag);
                     }
-                    catch (NullReferenceException e) { }
+                    catch (NullReferenceException e)
+                    {
+                        myLogger.LogError("Error", e);
+                    }
                 }
                 else
                 {
@@ -102,19 +122,22 @@ namespace Logic
                         {
                             string id = eventData.pointerEnter.transform.parent.transform.Find("Id").GetComponent<TextMeshPro>().text;
                             Color groupColor;
-                            if (!FindObjectOfType<Global>().typeName.Contains("Sticker") || FindObjectOfType<Global>().typeName.Equals("Tray"))
+                            if (!FindObjectOfType<Global>().typeName.Contains("Sticker"))
                             {
                                 groupColor = eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
                             }
                             else
                             {
-                                groupColor = eventData.pointerEnter.transform.parent.transform.Find("Cube").Find("Box").GetComponent<SpriteRenderer>().material.color;
+                                groupColor = eventData.pointerEnter.transform.parent.transform.Find("Box").GetComponent<SpriteRenderer>().material.color;
                             }
                             string sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
                                 eventData.pointerEnter.transform.parent.Find("Source").GetComponent<TextMeshPro>().text;
                             processHideAndMarkAsRead(id, sourceName, tag);
                         }
-                        catch (NullReferenceException e) { }
+                        catch (NullReferenceException e)
+                        {
+                            myLogger.LogError("Error", e);
+                        }
                     }
                     else // for all at once
                     {
@@ -125,7 +148,10 @@ namespace Logic
                                 eventData.pointerEnter.transform.parent.transform.parent.Find("Source").GetComponent<TextMeshPro>().text;
                             processHideAndMarkAsReadAll(sourceName, tag);
                         }
-                        catch (NullReferenceException e) { }
+                        catch (NullReferenceException e)
+                        {
+                            myLogger.LogError("Error", e);
+                        }
                     }
                 }
             }
