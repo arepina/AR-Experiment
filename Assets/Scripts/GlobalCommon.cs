@@ -2,7 +2,7 @@
 
 namespace Logic
 {
-    public class Global : MonoBehaviour
+    public class GlobalCommon : MonoBehaviour
     {
         public GameObject notification;
         public GameObject trayNotification;
@@ -14,17 +14,6 @@ namespace Logic
         public static string silentGroupKey = "_silent_";
         public float distanceFromCamera;
         public float angle;
-        //for actions
         public float waitForActionToBeAcceptedPeriod;
-        //for around
-        public float X;
-        public float Y;
-        public float Z;
-        //for wave
-        public float speed;
-        public float duration;
-        public float leftX;
-        public float rightX;
-        public float waveY;
     }
 }

@@ -135,10 +135,10 @@ GameObject:
   - component: {fileID: 48691098}
   - component: {fileID: 48691097}
   - component: {fileID: 48691096}
+  - component: {fileID: 48691104}
   - component: {fileID: 48691095}
   - component: {fileID: 48691094}
   - component: {fileID: 48691093}
-  - component: {fileID: 48691103}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: MainCamera
@@ -311,7 +311,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &48691103
+--- !u!114 &48691104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 48691092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 590e5141d32f14090828601481c69a6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 34bbcf2dd24c7460b8b26a5f8926a680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   notification: {fileID: 6458541884227280155, guid: 426728455e0444e30bf095440088b16f,
@@ -335,14 +335,6 @@ MonoBehaviour:
   distanceFromCamera: 6
   angle: 0
   waitForActionToBeAcceptedPeriod: 2
-  X: 0
-  Y: 0
-  Z: 0
-  speed: 0
-  duration: 0
-  leftX: 0
-  rightX: 0
-  waveY: 0
 --- !u!1001 &56755482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -536,7 +528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1051663580
 Transform:
   m_ObjectHideFlags: 0
@@ -671,7 +663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1889803568
 Transform:
   m_ObjectHideFlags: 0

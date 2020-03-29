@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Logic
 {
@@ -24,7 +25,15 @@ namespace Logic
 
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.O) && !FindObjectOfType<Global>().typeName.Equals("Tray"))
+            foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+            {
+                if (Input.GetKey(kcode))
+                {
+                    Debug.Log("KeyCode down: " + kcode);
+                    myLogger.Log("KeyCode down: " + kcode);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.O))
             {
                 if (notificationsHolder != null)
                 {

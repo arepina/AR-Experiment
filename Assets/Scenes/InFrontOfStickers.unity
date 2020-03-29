@@ -195,7 +195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600461539}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2899992, y: -0.000000059604645, z: 10.178499}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 710828786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 590e5141d32f14090828601481c69a6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 34bbcf2dd24c7460b8b26a5f8926a680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   notification: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
@@ -429,14 +429,6 @@ MonoBehaviour:
   distanceFromCamera: 6
   angle: 0
   waitForActionToBeAcceptedPeriod: 2
-  X: 0
-  Y: 0
-  Z: 0
-  speed: 0
-  duration: 0
-  leftX: 0
-  rightX: 0
-  waveY: 0
 --- !u!1001 &1240778305
 PrefabInstance:
   m_ObjectHideFlags: 0

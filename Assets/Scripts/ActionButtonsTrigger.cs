@@ -13,7 +13,6 @@ namespace Logic
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
             startTime = DateTime.Now.Ticks;
-            myLogger.Log("In");
             if (eventData.pointerEnter.tag.Equals("GroupIcon"))
             {
                 try
@@ -32,7 +31,7 @@ namespace Logic
             {
                 try
                 {
-                    if (!FindObjectOfType<Global>().typeName.Contains("Sticker"))
+                    if (!FindObjectOfType<GlobalCommon>().typeName.Contains("Sticker"))
                     {
                         eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").transform.Find("HideGroup").gameObject.SetActive(false);
                         eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").transform.Find("MarkAsReadGroup").gameObject.SetActive(false);
@@ -49,7 +48,6 @@ namespace Logic
 
         public virtual void OnPointerExit(PointerEventData eventData)
         {
-            myLogger.Log("Out");
             if (eventData.pointerEnter.tag.Equals("GroupIcon"))
             {
                 try
@@ -80,13 +78,13 @@ namespace Logic
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            processReticleEvent(eventData, FindObjectOfType<Global>().waitForActionToBeAcceptedPeriod);
+            processReticleEvent(eventData, FindObjectOfType<GlobalCommon>().waitForActionToBeAcceptedPeriod);
         }
 
         private void processReticleEvent(PointerEventData eventData, float duration)
         {
             string tag = eventData.pointerEnter.tag;
-            if (duration >= FindObjectOfType<Global>().waitForActionToBeAcceptedPeriod)
+            if (duration >= FindObjectOfType<GlobalCommon>().waitForActionToBeAcceptedPeriod)
             {
                 if (tag.Equals("Notification"))
                 {
@@ -95,16 +93,16 @@ namespace Logic
                         string id = eventData.pointerEnter.transform.parent.transform.Find("Id").GetComponent<TextMeshPro>().text;
                         Color groupColor;
                         string sourceName;
-                        if (!FindObjectOfType<Global>().typeName.Contains("Sticker"))
+                        if (!FindObjectOfType<GlobalCommon>().typeName.Contains("Sticker"))
                         {
                             groupColor = eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
-                            sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
+                            sourceName = groupColor.Equals(Color.gray) ? GlobalCommon.silentGroupKey :
                                 eventData.pointerEnter.transform.parent.transform.Find("Source").GetComponent<TextMeshPro>().text;
                         }
                         else
                         {
                             groupColor = eventData.pointerEnter.transform.parent.transform.Find("Box").GetComponent<SpriteRenderer>().material.color;
-                            sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
+                            sourceName = groupColor.Equals(Color.gray) ? GlobalCommon.silentGroupKey :
                                 eventData.pointerEnter.transform.parent.transform.Find("Source").GetComponent<TextMeshPro>().text;
                         }
                         processHideAndMarkAsRead(id, sourceName, tag);
@@ -122,7 +120,7 @@ namespace Logic
                         {
                             string id = eventData.pointerEnter.transform.parent.transform.Find("Id").GetComponent<TextMeshPro>().text;
                             Color groupColor;
-                            if (!FindObjectOfType<Global>().typeName.Contains("Sticker"))
+                            if (!FindObjectOfType<GlobalCommon>().typeName.Contains("Sticker"))
                             {
                                 groupColor = eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
                             }
@@ -130,7 +128,7 @@ namespace Logic
                             {
                                 groupColor = eventData.pointerEnter.transform.parent.transform.Find("Box").GetComponent<SpriteRenderer>().material.color;
                             }
-                            string sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
+                            string sourceName = groupColor.Equals(Color.gray) ? GlobalCommon.silentGroupKey :
                                 eventData.pointerEnter.transform.parent.Find("Source").GetComponent<TextMeshPro>().text;
                             processHideAndMarkAsRead(id, sourceName, tag);
                         }
@@ -144,7 +142,7 @@ namespace Logic
                         try
                         {
                             Color groupColor = eventData.pointerEnter.transform.parent.GetComponent<MeshRenderer>().material.color;
-                            string sourceName = groupColor.Equals(Color.gray) ? Global.silentGroupKey :
+                            string sourceName = groupColor.Equals(Color.gray) ? GlobalCommon.silentGroupKey :
                                 eventData.pointerEnter.transform.parent.transform.parent.Find("Source").GetComponent<TextMeshPro>().text;
                             processHideAndMarkAsReadAll(sourceName, tag);
                         }

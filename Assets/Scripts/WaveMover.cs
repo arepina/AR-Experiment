@@ -6,9 +6,9 @@ public class WaveMover : MonoBehaviour
 {
     void Start()
     {
-        Vector3 startPos = new Vector3(FindObjectOfType<Global>().leftX, FindObjectOfType<Global>().waveY, FindObjectOfType<Global>().distanceFromCamera);
-        Vector3 finishPos = new Vector3(FindObjectOfType<Global>().rightX, FindObjectOfType<Global>().waveY, FindObjectOfType<Global>().distanceFromCamera);
-        StartCoroutine(DeleteObject(gameObject, FindObjectOfType<Global>().duration));
+        Vector3 startPos = new Vector3(FindObjectOfType<GlobalWave>().leftXWave, FindObjectOfType<GlobalWave>().YWave, FindObjectOfType<GlobalCommon>().distanceFromCamera);
+        Vector3 finishPos = new Vector3(FindObjectOfType<GlobalWave>().rightXWave, FindObjectOfType<GlobalWave>().YWave, FindObjectOfType<GlobalCommon>().distanceFromCamera);
+        StartCoroutine(DeleteObject(gameObject, FindObjectOfType<GlobalWave>().durationWave));
         StartCoroutine(PingPong(transform, startPos, finishPos));
     }
 
@@ -48,7 +48,7 @@ public class WaveMover : MonoBehaviour
         while (true)
         {
             // Distance moved = time * speed.
-            float distCovered = (Time.time - startTime) * FindObjectOfType<Global>().speed;
+            float distCovered = (Time.time - startTime) * FindObjectOfType<GlobalWave>().speedWave;
 
             // Fraction of journey completed = current distance divided by total distance.
             float fracJourney = distCovered / journeyLength;

@@ -7,7 +7,7 @@ namespace Logic
     {
         public static List<Coordinates> formInFrontOfMobileCoordinatesArray()
         {
-            float distanceFromCamera = FindObjectOfType<Global>().distanceFromCamera;
+            float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Triple(0f, -1.1f, distanceFromCamera), new Triple(0, 0, 0)));
             coordinates.Add(new Coordinates(new Triple(0f, 0f, distanceFromCamera), new Triple(0, 0, 0)));
@@ -17,7 +17,7 @@ namespace Logic
 
         public static List<Coordinates> formInFrontOfStickerCoordinatesArray()
         {
-            float distanceFromCamera = FindObjectOfType<Global>().distanceFromCamera;
+            float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Triple(0f, -1.6f, distanceFromCamera), new Triple(0, 0, 0)));
             coordinates.Add(new Coordinates(new Triple(0f, 0f, distanceFromCamera), new Triple(0, 0, 0)));
@@ -27,8 +27,9 @@ namespace Logic
 
         public static List<Coordinates> formAroundMobileCoordinatesArray()
         {
-            Global global = FindObjectOfType<Global>();
-            Triple center = new Triple(global.X, global.Y, global.Z);
+            GlobalAround globalAround = FindObjectOfType<GlobalAround>();
+            Triple center = new Triple(globalAround.XAroundOnly, globalAround.YAroundOnly, globalAround.ZAroundOnly);
+            GlobalCommon global = FindObjectOfType<GlobalCommon>();
             float distanceFromCamera = global.distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             float xDist = -2.4f;
@@ -57,8 +58,9 @@ namespace Logic
 
         public static List<Coordinates> formAroundStickerCoordinatesArray()
         {
-            Global global = FindObjectOfType<Global>();
-            Triple center = new Triple(global.X, global.Y, global.Z);
+            GlobalAround globalAround = FindObjectOfType<GlobalAround>();
+            Triple center = new Triple(globalAround.XAroundOnly, globalAround.YAroundOnly, globalAround.ZAroundOnly);
+            GlobalCommon global = FindObjectOfType<GlobalCommon>();
             float distanceFromCamera = global.distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             float xDist = -1.7f;
@@ -87,25 +89,25 @@ namespace Logic
 
         public static List<Coordinates> formTrayCoordinatesArrayMobile()
         {
-            float distanceFromCamera = FindObjectOfType<Global>().distanceFromCamera;
+            float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
-            coordinates.Add(new Coordinates(new Triple(0f, -2.2f, 6f), new Triple(0, 0, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, -1.1f, 6f), new Triple(0, 0, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, 0f, 6f), new Triple(0, 0, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, 1.1f, 6f), new Triple(0, 0, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, 2.2f, 6f), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, -2.2f, distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, -1.1f, distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 0f, distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 1.1f, distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 2.2f, distanceFromCamera), new Triple(0, 0, 0)));
 
-            coordinates.Add(new Coordinates(new Triple(-3.5f, -2.2f, 4f), new Triple(0, 315, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, -1.1f, 4f), new Triple(0, 315, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, 0f, 4f), new Triple(0, 315, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, 1.1f, 4f), new Triple(0, 315, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, 2.2f, 4f), new Triple(0, 315, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, -2.2f, distanceFromCamera), new Triple(0, 315, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, -1.1f, distanceFromCamera), new Triple(0, 315, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, 0f, distanceFromCamera), new Triple(0, 315, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, 1.1f, distanceFromCamera), new Triple(0, 315, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, 2.2f, distanceFromCamera), new Triple(0, 315, 0)));
 
-            coordinates.Add(new Coordinates(new Triple(3.5f, -2.2f, 4f), new Triple(0, 45, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, -1.1f, 4f), new Triple(0, 45, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, 0f, 4f), new Triple(0, 45, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, 1.1f, 4f), new Triple(0, 45, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, 2.2f, 4f), new Triple(0, 45, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, -2.2f, distanceFromCamera), new Triple(0, 45, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, -1.1f, distanceFromCamera), new Triple(0, 45, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, 0f, distanceFromCamera), new Triple(0, 45, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, 1.1f, distanceFromCamera), new Triple(0, 45, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, 2.2f, distanceFromCamera), new Triple(0, 45, 0)));
 
             coordinates.Add(new Coordinates(new Triple(-5f, -2.2f, 0), new Triple(0, 270, 0)));
             coordinates.Add(new Coordinates(new Triple(-5f, -1.1f, 0), new Triple(0, 270, 0)));
@@ -119,47 +121,47 @@ namespace Logic
             coordinates.Add(new Coordinates(new Triple(5f, 1.1f, 0), new Triple(0, 90, 0)));
             coordinates.Add(new Coordinates(new Triple(5f, 2.2f, 0), new Triple(0, 90, 0)));
 
-            coordinates.Add(new Coordinates(new Triple(-3.5f, -2.2f, -4f), new Triple(0, 225, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, -1.1f, -4f), new Triple(0, 225, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, 0f, -4f), new Triple(0, 225, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, 1.1f, -4f), new Triple(0, 225, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, 2.2f, -4f), new Triple(0, 225, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, -2.2f, -distanceFromCamera), new Triple(0, 225, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, -1.1f, -distanceFromCamera), new Triple(0, 225, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, 0f, -distanceFromCamera), new Triple(0, 225, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, 1.1f, -distanceFromCamera), new Triple(0, 225, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, 2.2f, -distanceFromCamera), new Triple(0, 225, 0)));
 
-            coordinates.Add(new Coordinates(new Triple(3.5f, -2.2f, -4f), new Triple(0, 135, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, -1.1f, -4f), new Triple(0, 135, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, 0f, -4f), new Triple(0, 135, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, 1.1f, -4f), new Triple(0, 135, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, 2.2f, -4f), new Triple(0, 135, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, -2.2f, -distanceFromCamera), new Triple(0, 135, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, -1.1f, -distanceFromCamera), new Triple(0, 135, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, 0f, -distanceFromCamera), new Triple(0, 135, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, 1.1f, -distanceFromCamera), new Triple(0, 135, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, 2.2f, -distanceFromCamera), new Triple(0, 135, 0)));
 
-            coordinates.Add(new Coordinates(new Triple(0f, -2.2f, -6f), new Triple(0, 180, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, -1.1f, -6f), new Triple(0, 180, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, 0f, -6f), new Triple(0, 180, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, 1.1f, -6f), new Triple(0, 180, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, 2.2f, -6f), new Triple(0, 180, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, -2.2f, -distanceFromCamera), new Triple(0, 180, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, -1.1f, -distanceFromCamera), new Triple(0, 180, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 0f, -distanceFromCamera), new Triple(0, 180, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 1.1f, -distanceFromCamera), new Triple(0, 180, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 2.2f, -distanceFromCamera), new Triple(0, 180, 0)));
             return coordinates;
         }
 
         public static List<Coordinates> formTrayCoordinatesArraySticker()
         {
-            float distanceFromCamera = FindObjectOfType<Global>().distanceFromCamera;
+            float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
-            coordinates.Add(new Coordinates(new Triple(0f, -3.2f, 6f), new Triple(0, 0, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, -1.6f, 6f), new Triple(0, 0, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, 0f, 6f), new Triple(0, 0, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, 1.6f, 6f), new Triple(0, 0, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, 3.2f, 6f), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, -3.2f, distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, -1.6f, distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 0f, distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 1.6f, distanceFromCamera), new Triple(0, 0, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 3.2f, distanceFromCamera), new Triple(0, 0, 0)));
 
-            coordinates.Add(new Coordinates(new Triple(-3.5f, -3.2f, 4f), new Triple(0, 315, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, -1.6f, 4f), new Triple(0, 315, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, 0f, 4f), new Triple(0, 315, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, 1.6f, 4f), new Triple(0, 315, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, 3.2f, 4f), new Triple(0, 315, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, -3.2f, distanceFromCamera), new Triple(0, 315, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, -1.6f, distanceFromCamera), new Triple(0, 315, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, 0f, distanceFromCamera), new Triple(0, 315, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, 1.6f, distanceFromCamera), new Triple(0, 315, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, 3.2f, distanceFromCamera), new Triple(0, 315, 0)));
 
-            coordinates.Add(new Coordinates(new Triple(3.5f, -3.2f, 4f), new Triple(0, 45, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, -1.6f, 4f), new Triple(0, 45, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, 0f, 4f), new Triple(0, 45, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, 1.6f, 4f), new Triple(0, 45, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, 3.2f, 4f), new Triple(0, 45, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, -3.2f, distanceFromCamera), new Triple(0, 45, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, -1.6f, distanceFromCamera), new Triple(0, 45, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, 0f, distanceFromCamera), new Triple(0, 45, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, 1.6f, distanceFromCamera), new Triple(0, 45, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, 3.2f, distanceFromCamera), new Triple(0, 45, 0)));
 
             coordinates.Add(new Coordinates(new Triple(-5f, -3.2f, 0), new Triple(0, 270, 0)));
             coordinates.Add(new Coordinates(new Triple(-5f, -1.6f, 0), new Triple(0, 270, 0)));
@@ -173,23 +175,23 @@ namespace Logic
             coordinates.Add(new Coordinates(new Triple(5f, 1.6f, 0), new Triple(0, 90, 0)));
             coordinates.Add(new Coordinates(new Triple(5f, 3.2f, 0), new Triple(0, 90, 0)));
 
-            coordinates.Add(new Coordinates(new Triple(-3.5f, -3.2f, -4f), new Triple(0, 225, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, -1.6f, -4f), new Triple(0, 225, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, 0f, -4f), new Triple(0, 225, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, 1.6f, -4f), new Triple(0, 225, 0)));
-            coordinates.Add(new Coordinates(new Triple(-3.5f, 3.2f, -4f), new Triple(0, 225, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, -3.2f, -distanceFromCamera), new Triple(0, 225, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, -1.6f, -distanceFromCamera), new Triple(0, 225, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, 0f, -distanceFromCamera), new Triple(0, 225, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, 1.6f, -distanceFromCamera), new Triple(0, 225, 0)));
+            coordinates.Add(new Coordinates(new Triple(-3.5f, 3.2f, -distanceFromCamera), new Triple(0, 225, 0)));
 
-            coordinates.Add(new Coordinates(new Triple(3.5f, -3.2f, -4f), new Triple(0, 135, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, -1.6f, -4f), new Triple(0, 135, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, 0f, -4f), new Triple(0, 135, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, 1.6f, -4f), new Triple(0, 135, 0)));
-            coordinates.Add(new Coordinates(new Triple(3.5f, 3.2f, -4f), new Triple(0, 135, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, -3.2f, -distanceFromCamera), new Triple(0, 135, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, -1.6f, -distanceFromCamera), new Triple(0, 135, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, 0f, -distanceFromCamera), new Triple(0, 135, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, 1.6f, -distanceFromCamera), new Triple(0, 135, 0)));
+            coordinates.Add(new Coordinates(new Triple(3.5f, 3.2f, -distanceFromCamera), new Triple(0, 135, 0)));
 
-            coordinates.Add(new Coordinates(new Triple(0f, -3.2f, -6f), new Triple(0, 180, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, -1.6f, -6f), new Triple(0, 180, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, 0f, -6f), new Triple(0, 180, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, 1.6f, -6f), new Triple(0, 180, 0)));
-            coordinates.Add(new Coordinates(new Triple(0f, 3.2f, -6f), new Triple(0, 180, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, -3.2f, -distanceFromCamera), new Triple(0, 180, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, -1.6f, -distanceFromCamera), new Triple(0, 180, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 0f, -distanceFromCamera), new Triple(0, 180, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 1.6f, -distanceFromCamera), new Triple(0, 180, 0)));
+            coordinates.Add(new Coordinates(new Triple(0f, 3.2f, -distanceFromCamera), new Triple(0, 180, 0)));
             return coordinates;
         }
     }

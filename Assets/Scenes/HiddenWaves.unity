@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 70485784}
   - component: {fileID: 70485783}
   - component: {fileID: 70485793}
+  - component: {fileID: 70485794}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: MainCamera
@@ -320,7 +321,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 70485782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 590e5141d32f14090828601481c69a6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 34bbcf2dd24c7460b8b26a5f8926a680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   notification: {fileID: 3867933328541127428, guid: 7bb494b4bbd2741f3806acc883cdc7ab,
@@ -328,21 +329,30 @@ MonoBehaviour:
   trayNotification: {fileID: 6458541884227280155, guid: 426728455e0444e30bf095440088b16f,
     type: 3}
   typeName: HiddenWaves
-  notificationsInColumn: 5
-  notificationColumns: 8
+  notificationsInColumn: 0
+  notificationColumns: 0
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
-  distanceFromCamera: 35
+  distanceFromCamera: 20
   angle: 0
   waitForActionToBeAcceptedPeriod: 2
-  X: 0
-  Y: 0
-  Z: 0
-  speed: 15
-  duration: 10
-  leftX: -20
-  rightX: 20
-  waveY: 9.5
+--- !u!114 &70485794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70485782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f763c930e496a417bb24b7b095ee2564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedWave: 10
+  durationWave: 10
+  leftXWave: -7
+  rightXWave: 7
+  YWave: 5.5
 --- !u!1 &1320142537
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +646,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059424572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.7155735, y: -4.3606524, z: 6.7354455}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

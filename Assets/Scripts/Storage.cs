@@ -17,7 +17,7 @@ namespace Logic
         {
             Stack<Notification> sourceNotifications = new Stack<Notification>();
             string sourceName = notification.SourceName;
-            if (notification.isSilent) sourceName = Global.silentGroupKey;
+            if (notification.isSilent) sourceName = GlobalCommon.silentGroupKey;
             if (orderedNotifications.ContainsKey(sourceName)) sourceNotifications = orderedNotifications[sourceName].Storage;
             sourceNotifications.Push(notification);
             NotificationsStorage newNotificationsStorage = new NotificationsStorage(sourceNotifications, notification.Timestamp);
@@ -51,16 +51,16 @@ namespace Logic
         private void createOrderedStorage(string sourceName)
         {
             NotificationsStorage silentGroup = null;
-            if (orderedNotifications.ContainsKey(Global.silentGroupKey))
+            if (orderedNotifications.ContainsKey(GlobalCommon.silentGroupKey))
             {
-                silentGroup = orderedNotifications[Global.silentGroupKey];
-                orderedNotifications.Remove(Global.silentGroupKey);
+                silentGroup = orderedNotifications[GlobalCommon.silentGroupKey];
+                orderedNotifications.Remove(GlobalCommon.silentGroupKey);
             }
             orderedNotifications = orderedNotifications.OrderByDescending(x => x.Value.LatestTimestamp)
                                                                                          .ToDictionary(d => d.Key, d => d.Value);
-            if (silentGroup != null || sourceName == Global.silentGroupKey)
+            if (silentGroup != null || sourceName == GlobalCommon.silentGroupKey)
             {
-                orderedNotifications.Add(Global.silentGroupKey, silentGroup); // silent are always the last
+                orderedNotifications.Add(GlobalCommon.silentGroupKey, silentGroup); // silent are always the last
             }
         }
     }

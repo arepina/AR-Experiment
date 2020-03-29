@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 1071713890}
   - component: {fileID: 1071713889}
   - component: {fileID: 1071713888}
+  - component: {fileID: 1071713899}
   - component: {fileID: 1071713898}
   m_Layer: 0
   m_Name: ARCamera
@@ -498,7 +499,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1071713887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 590e5141d32f14090828601481c69a6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 34bbcf2dd24c7460b8b26a5f8926a680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   notification: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
@@ -510,17 +511,24 @@ MonoBehaviour:
   notificationColumns: 5
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
-  distanceFromCamera: 10
+  distanceFromCamera: 6
   angle: 0
   waitForActionToBeAcceptedPeriod: 2
-  X: -0.3
-  Y: -4
-  Z: 10
-  speed: 0
-  duration: 0
-  leftX: 0
-  rightX: 0
-  waveY: 0
+--- !u!114 &1071713899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071713887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbaa7a5c8d43f4f429839e388125bf62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XAroundOnly: 0
+  YAroundOnly: 0
+  ZAroundOnly: 0
 --- !u!1001 &1166146757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -609,7 +617,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197410376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2899992, y: 0, z: 10.178499}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
