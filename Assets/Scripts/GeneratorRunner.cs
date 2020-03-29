@@ -6,9 +6,8 @@ public class GeneratorRunner : MonoBehaviour
 {
     private NotificationsGenerator notificationsGenerator = new NotificationsGenerator();
     private Logger myLogger = new Logger(new LogHandler());
-    private System.Random random = new System.Random();
-    public int startRange;
-    public int endRange;
+    public int notificationsToGenerateNumber;
+    public int experimentDurationInSeconds;
     public bool isRunning;
 
     public void Start()
@@ -31,11 +30,14 @@ public class GeneratorRunner : MonoBehaviour
     public IEnumerator Wait()
     {
         isRunning = false;
-        int pause = random.Next(startRange, endRange + 1);
-        Notification notification = notificationsGenerator.getNotification();
-        var storage = FindObjectOfType<Storage>();
-        storage.addToStorage(notification);
-        EventManager.Broadcast(EVENT.NotificationCreated);
+        int pause = experimentDurationInSeconds / notificationsToGenerateNumber;
+        if (notificationsToGenerateNumber > 0)
+        {
+            Notification notification = notificationsGenerator.getNotification();
+            var storage = FindObjectOfType<Storage>();
+            storage.addToStorage(notification);
+            EventManager.Broadcast(EVENT.NotificationCreated);
+        }
         yield return new WaitForSeconds(pause);
         isRunning = true;
     }
