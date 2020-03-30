@@ -14,35 +14,15 @@ namespace Logic
         text4,
         [Description("Антон")]
         text5,
-        [Description("Арсений")]
-        text6,	
-        [Description("Артем")]
-        text7,
-        [Description("Борис")]
-        text8,
-        [Description("Василий")]
-        text9,
-        [Description("Денис")]
-        text10,
-        [Description("Алла")]
-        text11,
         [Description("Анастасия")]
-        text12,
+        text6,
         [Description("Елена")]
-        text13,
+        text7,
         [Description("Елизавета")]
-        text14,
+        text8,
         [Description("Зинаида")]
-        text15,
+        text9,
         [Description("Виктория")]
-        text16,
-        [Description("Диана")]
-        text17,
-        [Description("Валентина")]
-        text18,
-        [Description("Дарья")]
-        text19,
-        [Description("Галина")]
-        text20
+        text10
     }
 }

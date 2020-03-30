@@ -5,26 +5,23 @@ namespace Logic
     public class ExperimentData : MonoBehaviour
     {
         public int subjectNumber;
-        private string design = "";
+        internal string design = FindObjectOfType<GlobalCommon>().typeName;
         public int trialNumber;
-        private float time = 0;
-        private int notificationsNumber = 0;
-        private float selectedCorrectAnswersPercentage = 0;
-        private float reactionTimeForCorrectAnswers = 0;
-        private float lostCorrectAnswersPercentage = 0;
-        private float selectedIncorrectAnswersPercentage = 0;
-        public string note;
-        private int correctAnswers = 0;
-        private int wrongAnswers = 0;
+        public int timeInSeconds = 0;
+        public int notificationsNumber = 0;
+        public string notificationSource;
+        public string notificationAuthor;
+        public int numberOfHaveToActNotifications;
 
-        public void sendData() {
-            design = FindObjectOfType<GlobalCommon>().typeName;
-            time = FindObjectOfType<GeneratorRunner>().experimentDurationInSeconds;
-            notificationsNumber = FindObjectOfType<GeneratorRunner>().notificationsToGenerateNumber;
-            selectedCorrectAnswersPercentage = correctAnswers / FindObjectOfType<GeneratorRunner>().notificationsToGenerateNumber * 100;
-            reactionTimeForCorrectAnswers = 0; // todo
-            lostCorrectAnswersPercentage = 0; // todo
-            selectedIncorrectAnswersPercentage = wrongAnswers / FindObjectOfType<GeneratorRunner>().notificationsToGenerateNumber * 100;
+        internal int numberOfNonIgnoredHaveToActNotifications = 0;
+        internal float sumOfReactionTimeToNonIgnoredHaveToActNotifications = 0;
+
+        internal int numberOfInCorrectlyActedNotifications = 0;
+
+        public static void sendData() {
+             
+
+            //todo send data here
         }
 
     }

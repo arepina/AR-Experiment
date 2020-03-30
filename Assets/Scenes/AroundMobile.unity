@@ -302,9 +302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9a5660d20324da9b4e35783d6b0aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notificationsToGenerateNumber: 0
-  experimentDurationInSeconds: 0
-  isRunning: 1
 --- !u!114 &468268830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,7 +464,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subjectNumber: 0
   trialNumber: 0
-  note: 
+  timeInSeconds: 120
+  notificationsNumber: 10
+  notificationSource: YouTube
+  notificationAuthor: "\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440"
+  numberOfHaveToActNotifications: 3
 --- !u!1 &483587986
 GameObject:
   m_ObjectHideFlags: 0
