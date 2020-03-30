@@ -30,6 +30,7 @@ namespace Lgic
         {
             try
             {
+                EventManager.AddHandler(EVENT.NotificationCreated, SaveLog);
                 StreamReader reader = new StreamReader(Application.persistentDataPath + FILE_NAME, System.Text.Encoding.UTF8);
                 string json = reader.ReadToEnd();
                 if (json.Length > 0)
@@ -82,7 +83,13 @@ namespace Lgic
             _currentTrialData.Note = Note;
         }
 
-        public void Save()
+        public void SaveLog()
+        {
+            //todo
+            int f = 2;
+        }
+
+        public void SaveExperimentData()
         {
             if (_currentTrialData != null)
             {

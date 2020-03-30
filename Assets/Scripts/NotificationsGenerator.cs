@@ -3,17 +3,55 @@ using UnityEngine;
 
 namespace Logic
 {
-    public class NotificationsGenerator
+    public class NotificationsGenerator : MonoBehaviour
     {
         private System.Random random = new System.Random();
         private Logger myLogger = new Logger(new LogHandler());
         private const int sourcesNumber = 4;
 
-        public Notification getNotification()
+        private int mapNameToIndex()
+        {
+            string source = FindObjectOfType<ExperimentData>().notificationSource;
+            int index = 0;
+            var eType = typeof(NotificationSource);
+            foreach (NotificationSource notificationSource in Enum.GetValues(eType))
+            {
+                var name = EnumDescription.getDescription(notificationSource);
+                if (name.Equals(source))
+                {
+                    return index;
+                }
+                index += 1;
+            }
+            return index;
+        }
+
+        private int mapAuthorToIndex()
+        {
+            string author = FindObjectOfType<ExperimentData>().notificationAuthor;
+            int index = 0;
+            var eType = typeof(NotificationAuthor);
+            foreach (NotificationAuthor notificationAuthor in Enum.GetValues(eType))
+            {
+                var name = EnumDescription.getDescription(notificationAuthor);
+                if (name.Equals(author))
+                {
+                    return index;
+                }
+                index += 1;
+            }
+            return index;
+        }    
+
+        public Notification getNotification(bool generateHaveToAct)
         {
             int sourceIndex = random.Next(0, sourcesNumber);
-            long timestamp = DateTime.Now.Ticks;
             bool isSilent = random.Next(0, 2) == 0;
+            if (generateHaveToAct)
+            {
+                sourceIndex = mapNameToIndex();
+                isSilent = false;
+            }
             string id = Guid.NewGuid().ToString();
             NotificationSource notificationSource = (NotificationSource)Enum.GetValues(typeof(NotificationSource)).GetValue(sourceIndex);
             string sourceName = EnumDescription.getDescription(notificationSource);
@@ -23,6 +61,10 @@ namespace Logic
             Color sourceColor = EnumDescription.getColor(EnumDescription.getDescription(notificationColor));
             Array values = Enum.GetValues(typeof(NotificationAuthor));
             int authorIndex = random.Next(values.Length);
+            if (generateHaveToAct)
+            {
+                authorIndex = mapAuthorToIndex();
+            }
             NotificationAuthor notificationAuthor = (NotificationAuthor)values.GetValue(authorIndex);
             string author = EnumDescription.getDescription(notificationAuthor);
             values = Enum.GetValues(typeof(NotificationIcon));
@@ -46,8 +88,9 @@ namespace Logic
                 sourceColor = EnumDescription.getColor(EnumDescription.getDescription(NotificationColor.Silent));
                 sourceImage = "_silent_";
             }
+            long timestamp = DateTime.Now.Ticks;
             Notification notification = new Notification(id, sourceImage, sourceName, author, icon, text, timestamp, isSilent, sourceColor);
-            myLogger.Log(string.Format("Notification {0} was created", notification));
+            myLogger.Log(string.Format("Notification which is {0} and has the following data: {1} was created", generateHaveToAct ? "correct" : "incorrect", notification));
             return notification;
         }
     }

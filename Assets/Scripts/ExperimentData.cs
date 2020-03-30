@@ -5,7 +5,7 @@ namespace Logic
     public class ExperimentData : MonoBehaviour
     {
         public int subjectNumber;
-        internal string design = FindObjectOfType<GlobalCommon>().typeName;
+        internal string design;
         public int trialNumber;
         public int timeInSeconds = 0;
         public int notificationsNumber = 0;
@@ -18,8 +18,8 @@ namespace Logic
 
         internal int numberOfInCorrectlyActedNotifications = 0;
 
-        public static void sendData() {
-             
+        public void sendData() {
+            design = FindObjectOfType<GlobalCommon>().typeName;
 
             //todo send data here
         }
