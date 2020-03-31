@@ -30,7 +30,6 @@ namespace Lgic
         {
             try
             {
-                EventManager.AddHandler(EVENT.NotificationCreated, SaveLog);
                 StreamReader reader = new StreamReader(Application.persistentDataPath + FILE_NAME, System.Text.Encoding.UTF8);
                 string json = reader.ReadToEnd();
                 if (json.Length > 0)
@@ -65,8 +64,9 @@ namespace Lgic
             return (_storedTrialData.Count > 0);
         }
 
-        public void NextTrial(uint SubjectNumber, uint Design, uint TrialNumber, float Time,
-            uint NotificationsNumber, uint CorrectAnswers, uint IncorrectAnswers, string Note)
+        public void NextTrialExperiment(uint SubjectNumber, string Design, uint TrialNumber, float Time,
+            uint NotificationsNumber, uint NumberOfHaveToActNotifications, uint NumberOfNonIgnoredHaveToActNotifications,
+            float SumOfReactionTimeToNonIgnoredHaveToActNotifications, uint NumberOfInCorrectlyActedNotifications)
         {
             // Fool proffing
             if (_currentTrialData != null)
@@ -78,15 +78,10 @@ namespace Lgic
             _currentTrialData.TrialNumber = TrialNumber;
             _currentTrialData.Time = Time;
             _currentTrialData.NotificationsNumber = NotificationsNumber;
-            _currentTrialData.CorrectAnswers = CorrectAnswers;
-            _currentTrialData.IncorrectAnswers = IncorrectAnswers;
-            _currentTrialData.Note = Note;
-        }
-
-        public void SaveLog()
-        {
-            //todo
-            int f = 2;
+            _currentTrialData.NumberOfHaveToActNotifications = NumberOfHaveToActNotifications;
+            _currentTrialData.NumberOfNonIgnoredHaveToActNotifications = NumberOfNonIgnoredHaveToActNotifications;
+            _currentTrialData.SumOfReactionTimeToNonIgnoredHaveToActNotifications = SumOfReactionTimeToNonIgnoredHaveToActNotifications;
+            _currentTrialData.NumberOfInCorrectlyActedNotifications = NumberOfInCorrectlyActedNotifications;
         }
 
         public void SaveExperimentData()

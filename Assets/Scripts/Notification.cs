@@ -13,9 +13,9 @@ namespace Logic
         private bool silent;
         private Color color;
         private string id;
+        private bool isCorrect;
 
-        public Notification(string id, string sourceImage, string sourceName, string author, string icon, string text, long timestamp, bool silent, Color color)
-        {
+        public Notification(string id, string sourceImage, string sourceName, string author, string icon, string text, long timestamp, bool silent, Color color, bool isCorrect) { 
             this.sourceImage = sourceImage;
             this.sourceName = sourceName;
             this.author = author;
@@ -25,12 +25,19 @@ namespace Logic
             this.color = color;
             this.icon = icon;
             this.id = id;
+            this.isCorrect = isCorrect;
         }
 
         public override string ToString()
         {
             return string.Format("id: {0}, sourceImage: {1}, sourceName: {2}, author: {3}, icon: {4}, text : {5}, timestamp: {6}, silent: {7}, color: {8}",
-                                                                                id, sourceImage, sourceName, author, icon, text, timestamp, silent, color);
+                                                                              id, sourceImage, sourceName, author, icon, text, timestamp, silent, color);
+        }
+
+        public string getLogString(ExperimentData experiment, string reactionTime)
+        {
+            return string.Format("subjectNumber: {0}, design: {1}, trialNumber: {2}, creationTime: {3}, isCorrect: {4}, reactionTime: {5}",
+                                                                                experiment.subjectNumber, experiment.design, experiment.transform, timestamp, isCorrect, reactionTime);
         }
 
         public string Id

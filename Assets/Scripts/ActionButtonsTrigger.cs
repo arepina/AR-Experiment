@@ -9,6 +9,7 @@ namespace Logic
     {
         private long startTime;
         private Logger myLogger = new Logger(new LogHandler());
+        private LogDataStorage logDataStorage = new LogDataStorage();
 
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
@@ -218,6 +219,9 @@ namespace Logic
             {
                 FindObjectOfType<ExperimentData>().numberOfInCorrectlyActedNotifications += 1;
             }
+            string logInfo = ""; // todo use getLogString
+            logDataStorage.NextLog(logInfo);
+            logDataStorage.SaveLogData();
         }
 
         private void processHideAndMarkAsRead(string id, string sourceName, string tag)

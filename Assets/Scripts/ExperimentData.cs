@@ -4,25 +4,18 @@ namespace Logic
 {
     public class ExperimentData : MonoBehaviour
     {
-        public int subjectNumber;
-        internal string design;
-        public int trialNumber;
-        public int timeInSeconds = 0;
-        public int notificationsNumber = 0;
+        public uint subjectNumber;
+        internal string design = FindObjectOfType<GlobalCommon>().typeName;
+        public uint trialNumber;
+        public uint timeInSeconds = 0;
+        public uint notificationsNumber = 0;
         public string notificationSource;
         public string notificationAuthor;
-        public int numberOfHaveToActNotifications;
+        public uint numberOfHaveToActNotifications;
 
-        internal int numberOfNonIgnoredHaveToActNotifications = 0;
+        internal uint numberOfNonIgnoredHaveToActNotifications = 0;
         internal float sumOfReactionTimeToNonIgnoredHaveToActNotifications = 0;
 
-        internal int numberOfInCorrectlyActedNotifications = 0;
-
-        public void sendData() {
-            design = FindObjectOfType<GlobalCommon>().typeName;
-
-            //todo send data here
-        }
-
+        internal uint numberOfInCorrectlyActedNotifications = 0;
     }
 }

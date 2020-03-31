@@ -89,7 +89,7 @@ namespace Logic
                 sourceImage = "_silent_";
             }
             long timestamp = DateTime.Now.Ticks;
-            Notification notification = new Notification(id, sourceImage, sourceName, author, icon, text, timestamp, isSilent, sourceColor);
+            Notification notification = new Notification(id, sourceImage, sourceName, author, icon, text, timestamp, isSilent, sourceColor, generateHaveToAct);
             myLogger.Log(string.Format("Notification which is {0} and has the following data: {1} was created", generateHaveToAct ? "correct" : "incorrect", notification));
             return notification;
         }
