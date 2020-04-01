@@ -2,11 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Logic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Lgic
+namespace Logic
 {
     public class TrialDataStorage : MonoBehaviour
     {
@@ -88,6 +87,10 @@ namespace Lgic
         {
             if (_currentTrialData != null)
             {
+                if (_storedTrialData == null)
+                {
+                    _storedTrialData = new Queue<TrialData>();
+                }
                 _storedTrialData.Enqueue(_currentTrialData);
                 _currentTrialData = null;
             }
@@ -96,7 +99,7 @@ namespace Lgic
                 StartCoroutine(TryToSaveToGoogleSheets());
         }
 
-        private IEnumerator TryToSaveToGoogleSheets()
+        public IEnumerator TryToSaveToGoogleSheets()
         {
             TrialData earliestData = _storedTrialData.Peek();
 

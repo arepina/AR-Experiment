@@ -5,17 +5,22 @@ namespace Logic
     public class ExperimentData : MonoBehaviour
     {
         public uint subjectNumber;
-        internal string design = FindObjectOfType<GlobalCommon>().typeName;
         public uint trialNumber;
-        public uint timeInSeconds = 0;
-        public uint notificationsNumber = 0;
+        public uint timeInSeconds;
+        public uint notificationsNumber;
         public string notificationSource;
         public string notificationAuthor;
         public uint numberOfHaveToActNotifications;
 
-        internal uint numberOfNonIgnoredHaveToActNotifications = 0;
-        internal float sumOfReactionTimeToNonIgnoredHaveToActNotifications = 0;
+        internal uint numberOfNonIgnoredHaveToActNotifications;
+        internal float sumOfReactionTimeToNonIgnoredHaveToActNotifications;
 
-        internal uint numberOfInCorrectlyActedNotifications = 0;
+        internal uint numberOfInCorrectlyActedNotifications;
+
+        public string getLogString(string status, string reactionTime, string design, string timestamp, bool isCorrect)
+        {
+            return string.Format("subjectNumber: {0}, design: {1}, trialNumber: {2}, creationTime: {3}, isCorrect: {4}, status: {5}, reactionTime: {6}",
+                                                                                subjectNumber, design, transform, timestamp, isCorrect, status, reactionTime);
+        }
     }
 }

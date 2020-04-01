@@ -77,6 +77,10 @@ namespace Logic
         {
             if (_currentLogData != null)
             {
+                if(_storedLogData == null)
+                {
+                    _storedLogData = new Queue<LogData>();
+                }
                 _storedLogData.Enqueue(_currentLogData);
                 _currentLogData = null;
             }
@@ -84,8 +88,8 @@ namespace Logic
             if (IsThereUnsavedData())
                 StartCoroutine(TryToSaveToGoogleSheets());
         }
-
-        private IEnumerator TryToSaveToGoogleSheets()
+       
+        public IEnumerator TryToSaveToGoogleSheets()
         {
             LogData earliestData = _storedLogData.Peek();
 

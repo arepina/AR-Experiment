@@ -1,12 +1,10 @@
 ﻿using System.Collections;
-using Lgic;
 using Logic;
 using UnityEngine;
 
 public class GeneratorRunner : MonoBehaviour
 {
     private NotificationsGenerator notificationsGenerator = new NotificationsGenerator();
-    private TrialDataStorage trialDataStorage = new TrialDataStorage();
     private Logger myLogger = new Logger(new LogHandler());
     public bool isRunning;
     private uint atWhichToGenerateHaveToActNotification = 0;
@@ -48,17 +46,20 @@ public class GeneratorRunner : MonoBehaviour
             var storage = FindObjectOfType<Storage>();
             storage.addToStorage(notification);
             EventManager.Broadcast(EVENT.NotificationCreated);
+            string logInfo = FindObjectOfType<ExperimentData>().getLogString("CREATED", "-", FindObjectOfType<GlobalCommon>().typeName, notification.Timestamp.ToString(), notification.isCorrect);
+            FindObjectOfType<GlobalCommon>().logDataStorage.NextLog(logInfo);
+            FindObjectOfType<GlobalCommon>().logDataStorage.SaveLogData();
             notificationIndex += 1;
             yield return new WaitForSeconds(pause);
             isRunning = true;
         }
         else
         {
-            trialDataStorage.NextTrialExperiment(experiment.subjectNumber, experiment.design, experiment.trialNumber,
+            FindObjectOfType<GlobalCommon>().trialDataStorage.NextTrialExperiment(experiment.subjectNumber, FindObjectOfType<GlobalCommon>().typeName, experiment.trialNumber,
                 experiment.timeInSeconds, experiment.notificationsNumber,
                 experiment.numberOfHaveToActNotifications, experiment.numberOfNonIgnoredHaveToActNotifications,
                 experiment.sumOfReactionTimeToNonIgnoredHaveToActNotifications, experiment.numberOfInCorrectlyActedNotifications);
-            trialDataStorage.SaveExperimentData();
+            FindObjectOfType<GlobalCommon>().trialDataStorage.SaveExperimentData();
             yield return new WaitForSeconds(pause);
             Stop();
         }

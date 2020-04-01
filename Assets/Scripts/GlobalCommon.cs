@@ -15,5 +15,8 @@ namespace Logic
         public float distanceFromCamera;
         public float angle;
         public float waitForActionToBeAcceptedPeriod;
+
+        internal TrialDataStorage trialDataStorage = new TrialDataStorage();
+        internal LogDataStorage logDataStorage = new LogDataStorage();
     }
 }

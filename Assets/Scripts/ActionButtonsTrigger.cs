@@ -9,7 +9,6 @@ namespace Logic
     {
         private long startTime;
         private Logger myLogger = new Logger(new LogHandler());
-        private LogDataStorage logDataStorage = new LogDataStorage();
 
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
@@ -206,22 +205,24 @@ namespace Logic
 
         private void processExperimentData(string sourceName, string author, string creationTime)
         {
+            long creationTimeTicks;
+            long.TryParse(creationTime, out creationTimeTicks);
+            long reactionDuration = DateTime.Now.Ticks - creationTimeTicks;
+            bool isCorrect = false;
             if (sourceName.Equals(FindObjectOfType<ExperimentData>().notificationSource)
                    && author.Equals(FindObjectOfType<ExperimentData>().notificationAuthor))
             {
                 FindObjectOfType<ExperimentData>().numberOfNonIgnoredHaveToActNotifications += 1;
-                long creationTimeTicks;
-                long.TryParse(creationTime, out creationTimeTicks);
-                long reactionDuration = DateTime.Now.Ticks - creationTimeTicks;
                 FindObjectOfType<ExperimentData>().sumOfReactionTimeToNonIgnoredHaveToActNotifications += reactionDuration;
+                isCorrect = true;
             }
             else
             {
                 FindObjectOfType<ExperimentData>().numberOfInCorrectlyActedNotifications += 1;
             }
-            string logInfo = ""; // todo use getLogString
-            logDataStorage.NextLog(logInfo);
-            logDataStorage.SaveLogData();
+            string logInfo = FindObjectOfType<ExperimentData>().getLogString("REACTED", reactionDuration.ToString(), FindObjectOfType<GlobalCommon>().typeName, creationTime, isCorrect);
+            FindObjectOfType<GlobalCommon>().logDataStorage.NextLog(logInfo);
+            FindObjectOfType<GlobalCommon>().logDataStorage.SaveLogData();
         }
 
         private void processHideAndMarkAsRead(string id, string sourceName, string tag)

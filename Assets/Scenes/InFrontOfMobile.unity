@@ -140,6 +140,8 @@ GameObject:
   - component: {fileID: 48691094}
   - component: {fileID: 48691093}
   - component: {fileID: 48691103}
+  - component: {fileID: 48691106}
+  - component: {fileID: 48691105}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: MainCamera
@@ -353,6 +355,30 @@ MonoBehaviour:
   distanceFromCamera: 6
   angle: 0
   waitForActionToBeAcceptedPeriod: 2
+--- !u!114 &48691105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48691092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165c6df5ba1874e5d94f489f627f09fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &48691106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48691092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d0bc5eb886d45b6a9ba3c6ceeb09ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &56755482
 PrefabInstance:
   m_ObjectHideFlags: 0
