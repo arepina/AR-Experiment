@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.iOS;
+using Logic;
 
 public class WorldMapManager : MonoBehaviour
 {
@@ -74,6 +75,7 @@ public class WorldMapManager : MonoBehaviour
 			Debug.Log("Restarting session with worldMap");
 			session.RunWithConfigAndOptions(config, runOption);
 
+            startExperiment();
         }
     }
 
@@ -112,7 +114,18 @@ public class WorldMapManager : MonoBehaviour
 
 			Debug.Log("Restarting session with worldMap");
 			session.RunWithConfigAndOptions(config, runOption);
+
+            startExperiment();
 		}
 
 	}
+
+    private void startExperiment()
+    {
+        GameObject.Find("HitCubeParent").gameObject.SetActive(false);
+        GameObject.Find("GeneratePlanes").gameObject.SetActive(false);
+        GameObject.Find("Canvas").gameObject.SetActive(false);
+        GameObject.Find("PointCloudParticleExample").gameObject.SetActive(false);
+        FindObjectOfType<GeneratorRunner>().isRunning = true;
+    }
 }

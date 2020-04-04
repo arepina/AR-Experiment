@@ -13,7 +13,6 @@ public class GeneratorRunner : MonoBehaviour
 
     public void Start()
     {
-        isRunning = true;
         atWhichToGenerateHaveToActNotification = FindObjectOfType<ExperimentData>().notificationsNumber / FindObjectOfType<ExperimentData>().numberOfHaveToActNotifications; // 0 - correct, 1 - incorrect
         notificationIndex = 0;
         myLogger.Log("Started");
@@ -27,7 +26,10 @@ public class GeneratorRunner : MonoBehaviour
 
     public void Update()
     {
-        if (isRunning) StartCoroutine(Wait());
+        if (isRunning)
+        {
+            StartCoroutine(Wait());
+        }
     }
 
     public IEnumerator Wait()

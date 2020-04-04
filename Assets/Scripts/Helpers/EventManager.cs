@@ -20,7 +20,7 @@ namespace Logic
         // Fires the event
         public static void Broadcast(EVENT evnt)
         {
-            if (eventTable[evnt] != null) eventTable[evnt]();
+            if (eventTable.Count != 0 && eventTable[evnt] != null) eventTable[evnt]();
         }
     }
 }
