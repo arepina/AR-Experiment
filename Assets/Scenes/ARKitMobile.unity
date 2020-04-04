@@ -138,6 +138,11 @@ GameObject:
   - component: {fileID: 19}
   - component: {fileID: 18}
   - component: {fileID: 15}
+  - component: {fileID: 21}
+  - component: {fileID: 22}
+  - component: {fileID: 23}
+  - component: {fileID: 25}
+  - component: {fileID: 24}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -338,6 +343,84 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &21
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9a5660d20324da9b4e35783d6b0aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRunning: 1
+--- !u!114 &22
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbaa7a5c8d43f4f429839e388125bf62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XAroundOnly: 0
+  YAroundOnly: 0
+  ZAroundOnly: 0
+--- !u!114 &23
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34bbcf2dd24c7460b8b26a5f8926a680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notification: {fileID: 6458541884227280155, guid: 426728455e0444e30bf095440088b16f,
+    type: 3}
+  trayNotification: {fileID: 6458541884227280155, guid: 426728455e0444e30bf095440088b16f,
+    type: 3}
+  typeName: AroundMobile
+  notificationsInColumn: 3
+  notificationColumns: 5
+  notificationsInColumnTray: 5
+  notificationColumnsTray: 8
+  distanceFromCamera: 6
+  angle: 0
+  waitForActionToBeAcceptedPeriod: 2
+--- !u!114 &24
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb899351e3de4aeb95ca0c1f98f95a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trayHolder: {fileID: 0}
+  notificationsHolder: {fileID: 0}
+--- !u!114 &25
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b62b7f57c19f461d96d077336a5e83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!108 &29
 Light:
   m_ObjectHideFlags: 0
