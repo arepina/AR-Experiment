@@ -41,6 +41,18 @@ namespace Logic
             createOrderedStorage(sourceName);
         }
 
+        internal Notification getFromStorage(string id, string sourceName)
+        {
+            foreach (Notification notification in orderedNotifications[sourceName].Storage)
+            {
+                if (notification.Id.Equals(id))
+                {
+                    return notification;
+                }
+            }
+            return null;
+        }
+
         internal void removeAllFromStorage(string sourceName)
         {
             orderedNotifications.Remove(sourceName);

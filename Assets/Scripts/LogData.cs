@@ -9,7 +9,7 @@ namespace Logic
         public string Notification;
 
         // Instructions were taken from here: https://youtu.be/z9b5aRfrz7M
-        private static readonly string _formURI = "https://docs.google.com/forms/d/e/1FAIpQLSczrBh7HKVPPm1FaDm3dVtxaHN4t-TbGtYpNOEkHO2lNg8g3g/viewform?usp=sf_link";
+        private static readonly string _formURI = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSczrBh7HKVPPm1FaDm3dVtxaHN4t-TbGtYpNOEkHO2lNg8g3g/formResponse";
 
         public static string GetFormURI()
         {

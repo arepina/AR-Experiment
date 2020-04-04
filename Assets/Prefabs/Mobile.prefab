@@ -623,7 +623,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2469764c5aca54702a0a9f2396411447, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ae9abb2e91e94a07806beeda56c26b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0410\u043B\u0435\u043A\u0441\u0435\u0439"
+  m_text: "\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2175,7 +2175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 994b1c65-0b2f-4c7e-a2f9-14a82b36d6b5
+  m_text: 142ba1f2-766a-4e91-bd7a-e273577b3bb7
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2460,9 +2460,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u0440\u0438\u0433\u043B\u0430\u0448\u0430\u044E \u043D\u0430 \u0434\u0435\u043D\u044C
-    \u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F. \u0412\u0441\u0442\u0440\u0435\u0447\u0430\u0435\u043C\u0441\u044F
-    \u0437\u0430\u0432\u0442\u0440\u0430 \u0432 \u0431\u0430\u0440\u0435"
+  m_text: "\u042F \u0442\u0435\u0431\u044F \u043B\u044E\u0431\u043B\u044E"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

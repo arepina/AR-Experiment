@@ -46,22 +46,32 @@ public class GeneratorRunner : MonoBehaviour
             var storage = FindObjectOfType<Storage>();
             storage.addToStorage(notification);
             EventManager.Broadcast(EVENT.NotificationCreated);
-            string logInfo = FindObjectOfType<ExperimentData>().getLogString("CREATED", "-", FindObjectOfType<GlobalCommon>().typeName, notification.Timestamp.ToString(), notification.isCorrect);
-            FindObjectOfType<GlobalCommon>().logDataStorage.NextLog(logInfo);
-            FindObjectOfType<GlobalCommon>().logDataStorage.SaveLogData();
+            saveLogData(notification);
             notificationIndex += 1;
             yield return new WaitForSeconds(pause);
             isRunning = true;
         }
         else
         {
-            FindObjectOfType<GlobalCommon>().trialDataStorage.NextTrialExperiment(experiment.subjectNumber, FindObjectOfType<GlobalCommon>().typeName, experiment.trialNumber,
-                experiment.timeInSeconds, experiment.notificationsNumber,
-                experiment.numberOfHaveToActNotifications, experiment.numberOfNonIgnoredHaveToActNotifications,
-                experiment.sumOfReactionTimeToNonIgnoredHaveToActNotifications, experiment.numberOfInCorrectlyActedNotifications);
-            FindObjectOfType<GlobalCommon>().trialDataStorage.SaveExperimentData();
+            saveTrialData(experiment);
             yield return new WaitForSeconds(pause);
             Stop();
         }
+    }
+
+    private void saveLogData(Notification notification)
+    {
+        string logInfo = notification.ToString(FindObjectOfType<ExperimentData>(), FindObjectOfType<GlobalCommon>().typeName, "CREATED", "-");
+        FindObjectOfType<LogDataStorage>().NextLog(logInfo);
+        FindObjectOfType<LogDataStorage>().SaveLogData();
+    }
+
+    private void saveTrialData(ExperimentData experiment)
+    {
+        FindObjectOfType<TrialDataStorage>().NextTrialExperiment(experiment.subjectNumber, FindObjectOfType<GlobalCommon>().typeName, experiment.trialNumber,
+                experiment.timeInSeconds, experiment.notificationsNumber,
+                experiment.numberOfHaveToActNotifications, experiment.numberOfNonIgnoredHaveToActNotifications,
+                experiment.sumOfReactionTimeToNonIgnoredHaveToActNotifications, experiment.numberOfInCorrectlyActedNotifications);
+        FindObjectOfType<TrialDataStorage>().SaveExperimentData();
     }
 }

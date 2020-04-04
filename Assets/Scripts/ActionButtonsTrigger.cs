@@ -149,7 +149,7 @@ namespace Logic
                     author = eventData.pointerEnter.transform.parent.transform.Find("Author").GetComponent<TextMeshPro>().text;
                     creationTime = eventData.pointerEnter.transform.parent.transform.Find("Timestamp").GetComponent<TextMeshPro>().text;
                 }
-                processExperimentData(sourceName, author, creationTime);
+                processExperimentData(id, sourceName);
                 processHideAndMarkAsRead(id, sourceName, tag);
             }
             catch (NullReferenceException e)
@@ -174,9 +174,8 @@ namespace Logic
                 }
                 string sourceName = groupColor.Equals(Color.gray) ? GlobalCommon.silentGroupKey :
                     eventData.pointerEnter.transform.parent.Find("Source").GetComponent<TextMeshPro>().text;
-                string author = eventData.pointerEnter.transform.parent.Find("Author").GetComponent<TextMeshPro>().text;
                 string creationTime = eventData.pointerEnter.transform.parent.Find("Timestamp").GetComponent<TextMeshPro>().text;
-                processExperimentData(sourceName, author, creationTime);
+                processExperimentData(id, sourceName);
                 processHideAndMarkAsRead(id, sourceName, tag);
             }
             catch (NullReferenceException e)
@@ -192,9 +191,9 @@ namespace Logic
                 Color groupColor = eventData.pointerEnter.transform.parent.GetComponent<MeshRenderer>().material.color;
                 string sourceName = groupColor.Equals(Color.gray) ? GlobalCommon.silentGroupKey :
                     eventData.pointerEnter.transform.parent.transform.parent.Find("Source").GetComponent<TextMeshPro>().text;
-                string author = eventData.pointerEnter.transform.parent.transform.parent.Find("Author").GetComponent<TextMeshPro>().text;
                 string creationTime = eventData.pointerEnter.transform.parent.transform.parent.Find("Timestamp").GetComponent<TextMeshPro>().text;
-                processExperimentData(sourceName, author, creationTime);
+                string id = eventData.pointerEnter.transform.parent.transform.parent.Find("Id").GetComponent<TextMeshPro>().text;
+                processExperimentData(id, sourceName);
                 processHideAndMarkAsReadAll(sourceName, tag);
             }
             catch (NullReferenceException e)
@@ -203,26 +202,23 @@ namespace Logic
             }
         }
 
-        private void processExperimentData(string sourceName, string author, string creationTime)
+        private void processExperimentData(string id, string sourceName)
         {
-            long creationTimeTicks;
-            long.TryParse(creationTime, out creationTimeTicks);
-            long reactionDuration = DateTime.Now.Ticks - creationTimeTicks;
-            bool isCorrect = false;
-            if (sourceName.Equals(FindObjectOfType<ExperimentData>().notificationSource)
-                   && author.Equals(FindObjectOfType<ExperimentData>().notificationAuthor))
+            var storage = FindObjectOfType<Storage>();
+            Notification notification = storage.getFromStorage(id, sourceName);
+            long reactionDuration = DateTime.Now.Ticks - notification.Timestamp;
+            if (notification.isCorrect)
             {
                 FindObjectOfType<ExperimentData>().numberOfNonIgnoredHaveToActNotifications += 1;
                 FindObjectOfType<ExperimentData>().sumOfReactionTimeToNonIgnoredHaveToActNotifications += reactionDuration;
-                isCorrect = true;
             }
             else
             {
                 FindObjectOfType<ExperimentData>().numberOfInCorrectlyActedNotifications += 1;
             }
-            string logInfo = FindObjectOfType<ExperimentData>().getLogString("REACTED", reactionDuration.ToString(), FindObjectOfType<GlobalCommon>().typeName, creationTime, isCorrect);
-            FindObjectOfType<GlobalCommon>().logDataStorage.NextLog(logInfo);
-            FindObjectOfType<GlobalCommon>().logDataStorage.SaveLogData();
+            string logInfo = notification.ToString(FindObjectOfType<ExperimentData>(), FindObjectOfType<GlobalCommon>().typeName, "REACTED", reactionDuration.ToString());
+            FindObjectOfType<LogDataStorage>().NextLog(logInfo);
+            FindObjectOfType<LogDataStorage>().SaveLogData();
         }
 
         private void processHideAndMarkAsRead(string id, string sourceName, string tag)

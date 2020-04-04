@@ -324,8 +324,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6aa362bd46964d7b8cd07bbb1c24de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subjectNumber: 0
-  trialNumber: 0
+  subjectNumber: 1
+  trialNumber: 1
   timeInSeconds: 15
   notificationsNumber: 5
   notificationSource: YouTube
