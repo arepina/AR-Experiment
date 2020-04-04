@@ -25,14 +25,14 @@ namespace Logic
 
         public void Update()
         {
-            foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
-            {
-                if (Input.GetKey(kcode))
-                {
-                    Debug.Log("KeyCode down: " + kcode);
-                    myLogger.Log("KeyCode down: " + kcode);
-                }
-            }
+            //foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+            //{
+            //    if (Input.GetKey(kcode))
+            //    {
+            //        Debug.Log("KeyCode down: " + kcode);
+            //        myLogger.Log("KeyCode down: " + kcode);
+            //    }
+            //}
             if (Input.GetKeyDown(KeyCode.O))
             {
                 if (notificationsHolder != null)

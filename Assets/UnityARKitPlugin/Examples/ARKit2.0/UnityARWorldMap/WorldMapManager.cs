@@ -1,9 +1,6 @@
 ﻿using System.IO;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.iOS;
-using Logic;
 
 public class WorldMapManager : MonoBehaviour
 {
@@ -121,11 +118,14 @@ public class WorldMapManager : MonoBehaviour
 	}
 
     private void startExperiment()
-    {
-        GameObject.Find("HitCubeParent").gameObject.SetActive(false);
+    { 
+        GameObject.Find("HitCube").GetComponent<UnityARHitTestExample>().enabled = false;
         GameObject.Find("GeneratePlanes").gameObject.SetActive(false);
-        GameObject.Find("Canvas").gameObject.SetActive(false);
-        GameObject.Find("PointCloudParticleExample").gameObject.SetActive(false);
+        GameObject.Find("Canvas").SetActive(false);
+        GameObject.Find("PointCloudParticleExample").SetActive(false);
+        UnityARSessionNativeInterface.ARAnchorAddedEvent -= FindObjectOfType<UnityARGeneratePlane>().unityARAnchorManager.AddAnchor;
+        UnityARSessionNativeInterface.ARAnchorUpdatedEvent -= FindObjectOfType<UnityARGeneratePlane>().unityARAnchorManager.UpdateAnchor;
+        UnityARSessionNativeInterface.ARAnchorRemovedEvent -= FindObjectOfType<UnityARGeneratePlane>().unityARAnchorManager.RemoveAnchor;
         FindObjectOfType<GeneratorRunner>().isRunning = true;
     }
 }

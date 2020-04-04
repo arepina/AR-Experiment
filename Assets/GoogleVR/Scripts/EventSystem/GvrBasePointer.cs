@@ -843,15 +843,15 @@ public abstract class GvrBasePointer : MonoBehaviour, IGvrControllerInputDeviceR
 
             // Cardboard button events come through as mouse button 0 and are
             // mapped to TouchPadButton.
-            foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
-            {
-                if (Input.GetKey(kcode))
-                {
-                    Debug.Log("GVR KeyCode down: " + kcode);
-                }
-            }
+            //foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+            //{
+            //    if (Input.GetKey(kcode))
+            //    {
+            //        Debug.Log("GVR KeyCode down: " + kcode);
+            //    }
+            //}
 
-                    if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.L))
+            if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.L))
             {
                 buttonDown |= GvrControllerButton.TouchPadButton;
             }
