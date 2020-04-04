@@ -6,6 +6,8 @@ public class WorldMapManager : MonoBehaviour
 {
     [SerializeField]
     UnityARCameraManager m_ARCameraManager;
+    public Material planesMaterial;
+    public Material particlesMaterial;
 
     ARWorldMap m_LoadedMap;
 
@@ -118,7 +120,13 @@ public class WorldMapManager : MonoBehaviour
 	}
 
     private void startExperiment()
-    { 
+    {
+        Color color = planesMaterial.color;
+        color.a = 0;
+        planesMaterial.color = color;
+        color = particlesMaterial.color;
+        color.a = 0;
+        particlesMaterial.color = color;
         GameObject.Find("HitCube").GetComponent<UnityARHitTestExample>().enabled = false;
         GameObject.Find("GeneratePlanes").gameObject.SetActive(false);
         GameObject.Find("Canvas").SetActive(false);

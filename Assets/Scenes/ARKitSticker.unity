@@ -838,6 +838,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ARCameraManager: {fileID: 1121666030}
+  planesMaterial: {fileID: 2100000, guid: b90f9c045d1d24d7c8f22ef769394021, type: 2}
+  particlesMaterial: {fileID: 2100000, guid: f7cffc03fadd142ea81401e16399833e, type: 2}
 --- !u!4 &744986761
 Transform:
   m_ObjectHideFlags: 0
