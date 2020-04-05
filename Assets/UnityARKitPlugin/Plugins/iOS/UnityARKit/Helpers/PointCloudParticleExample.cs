@@ -8,20 +8,29 @@ public class PointCloudParticleExample : MonoBehaviour
     public float particleSize = 1.0f;
     Vector3[] m_PointCloudData;
     bool frameUpdated = false;
-    ParticleSystem currentPS;
+    internal ParticleSystem currentPS;
     ParticleSystem.Particle [] particles;
 
     // Use this for initialization
     void Start () 
     {
+        Debug.Log("PointCloudParticleExample Start");
         UnityARSessionNativeInterface.ARFrameUpdatedEvent += ARFrameUpdated;
+        UnityARSessionNativeInterface.ARSessionInterruptedEvent += OnARInterrupted;
         currentPS = Instantiate (pointCloudParticlePrefab);
         m_PointCloudData = null;
         frameUpdated = false;
     }
-    
+
+    public void OnARInterrupted()
+    {
+        Debug.Log("PointCloudParticleExample Interrupted");
+        UnityARSessionNativeInterface.ARFrameUpdatedEvent -= ARFrameUpdated;
+    }
+
     public void ARFrameUpdated(UnityARCamera camera)
     {
+        Debug.Log("PointCloudParticleExample Update");
         if (camera.pointCloud != null)
         {
            m_PointCloudData = camera.pointCloud.Points;

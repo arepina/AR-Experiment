@@ -8,6 +8,8 @@ public class WorldMapManager : MonoBehaviour
     UnityARCameraManager m_ARCameraManager;
     public Material planesMaterial;
     public Material particlesMaterial;
+    public GameObject cube;
+    public GameObject particles;
 
     ARWorldMap m_LoadedMap;
 
@@ -17,9 +19,28 @@ public class WorldMapManager : MonoBehaviour
     void Start ()
     {
         UnityARSessionNativeInterface.ARFrameUpdatedEvent += OnFrameUpdate;
+        UnityARSessionNativeInterface.ARSessionInterruptedEvent += OnARInterrupted;
     }
 
     ARTrackingStateReason m_LastReason;
+
+    void OnARInterrupted()
+    {
+        Debug.Log("OnARInterrupted");
+        FindObjectOfType<UnityARGeneratePlane>().unityARAnchorManager.Destroy();
+        Color color = planesMaterial.color;
+        color.a = 0;
+        planesMaterial.color = color;
+        color = particlesMaterial.color;
+        color.a = 0;
+        particlesMaterial.color = color;
+        cube.SetActive(false);
+        cube.GetComponent<UnityARHitTestExample>().enabled = false;
+        particles.SetActive(false);
+        ParticleSystem.Particle[] system = new ParticleSystem.Particle[0];
+        particles.GetComponent<PointCloudParticleExample>().currentPS.SetParticles(system, 0);
+        particles.GetComponent<PointCloudParticleExample>().enabled = false;
+    }
 
     void OnFrameUpdate(UnityARCamera arCamera)
     {
@@ -121,19 +142,8 @@ public class WorldMapManager : MonoBehaviour
 
     private void startExperiment()
     {
-        Color color = planesMaterial.color;
-        color.a = 0;
-        planesMaterial.color = color;
-        color = particlesMaterial.color;
-        color.a = 0;
-        particlesMaterial.color = color;
-        GameObject.Find("HitCube").GetComponent<UnityARHitTestExample>().enabled = false;
-        GameObject.Find("GeneratePlanes").gameObject.SetActive(false);
+        cube.SetActive(true);
         GameObject.Find("Canvas").SetActive(false);
-        GameObject.Find("PointCloudParticleExample").SetActive(false);
-        UnityARSessionNativeInterface.ARAnchorAddedEvent -= FindObjectOfType<UnityARGeneratePlane>().unityARAnchorManager.AddAnchor;
-        UnityARSessionNativeInterface.ARAnchorUpdatedEvent -= FindObjectOfType<UnityARGeneratePlane>().unityARAnchorManager.UpdateAnchor;
-        UnityARSessionNativeInterface.ARAnchorRemovedEvent -= FindObjectOfType<UnityARGeneratePlane>().unityARAnchorManager.RemoveAnchor;
         FindObjectOfType<GeneratorRunner>().isRunning = true;
     }
 }
