@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Logic;
 using UnityEngine;
 using UnityEngine.XR.iOS;
 
@@ -142,8 +143,11 @@ public class WorldMapManager : MonoBehaviour
 
     private void startExperiment()
     {
-        cube.SetActive(true);
         GameObject.Find("Canvas").SetActive(false);
+        FindObjectOfType<GlobalAround>().XAroundOnly = cube.transform.position.x;
+        FindObjectOfType<GlobalAround>().YAroundOnly = cube.transform.position.y;
+        FindObjectOfType<GlobalAround>().ZAroundOnly = cube.transform.position.z;
+        cube.SetActive(true);
         FindObjectOfType<GeneratorRunner>().isRunning = true;
     }
 }

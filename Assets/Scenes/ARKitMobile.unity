@@ -408,8 +408,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb899351e3de4aeb95ca0c1f98f95a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trayHolder: {fileID: 0}
-  notificationsHolder: {fileID: 0}
+  trayHolder: {fileID: 6458541884227280155, guid: 426728455e0444e30bf095440088b16f,
+    type: 3}
+  notificationsHolder: {fileID: 6458541884227280155, guid: 426728455e0444e30bf095440088b16f,
+    type: 3}
 --- !u!114 &25
 MonoBehaviour:
   m_ObjectHideFlags: 0

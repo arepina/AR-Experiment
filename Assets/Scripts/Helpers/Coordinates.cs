@@ -13,5 +13,10 @@
 
         public Triple Position { get { return position; } }
         public Triple Rotation { get { return rotation; } }
+
+        public override string ToString()
+        {
+            return "Position: " + Position.ToString() + " Rotation: " + Rotation.ToString();
+        }
     }
 }

@@ -388,7 +388,7 @@ MonoBehaviour:
     type: 3}
   trayNotification: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
     type: 3}
-  typeName: AroundSticker
+  typeName: AroundStickers
   notificationsInColumn: 3
   notificationColumns: 5
   notificationsInColumnTray: 5
@@ -408,8 +408,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb899351e3de4aeb95ca0c1f98f95a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trayHolder: {fileID: 0}
-  notificationsHolder: {fileID: 0}
+  trayHolder: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
+    type: 3}
+  notificationsHolder: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
+    type: 3}
 --- !u!114 &25
 MonoBehaviour:
   m_ObjectHideFlags: 0

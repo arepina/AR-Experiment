@@ -7,6 +7,7 @@ namespace Logic
     {
         public static List<Coordinates> formInFrontOfMobileCoordinatesArray()
         {
+            Debug.Log("formInFrontOfMobileCoordinatesArray");
             float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Triple(0f, -1.1f, distanceFromCamera), new Triple(0, 0, 0)));
@@ -17,6 +18,7 @@ namespace Logic
 
         public static List<Coordinates> formInFrontOfStickerCoordinatesArray()
         {
+            Debug.Log("formInFrontOfStickerCoordinatesArray");
             float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Triple(0f, -1.6f, distanceFromCamera), new Triple(0, 0, 0)));
@@ -27,6 +29,7 @@ namespace Logic
 
         public static List<Coordinates> formAroundMobileCoordinatesArray()
         {
+            Debug.Log("formAroundMobileCoordinatesArray");
             GlobalAround globalAround = FindObjectOfType<GlobalAround>();
             Triple center = new Triple(globalAround.XAroundOnly, globalAround.YAroundOnly, globalAround.ZAroundOnly);
             GlobalCommon global = FindObjectOfType<GlobalCommon>();
@@ -58,6 +61,7 @@ namespace Logic
 
         public static List<Coordinates> formAroundStickerCoordinatesArray()
         {
+            Debug.Log("formAroundStickerCoordinatesArray");
             GlobalAround globalAround = FindObjectOfType<GlobalAround>();
             Triple center = new Triple(globalAround.XAroundOnly, globalAround.YAroundOnly, globalAround.ZAroundOnly);
             GlobalCommon global = FindObjectOfType<GlobalCommon>();
@@ -89,6 +93,7 @@ namespace Logic
 
         public static List<Coordinates> formTrayCoordinatesArrayMobile()
         {
+            Debug.Log("formTrayCoordinatesArrayMobile");
             float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Triple(0f, -2.2f, distanceFromCamera), new Triple(0, 0, 0)));
@@ -143,6 +148,7 @@ namespace Logic
 
         public static List<Coordinates> formTrayCoordinatesArraySticker()
         {
+            Debug.Log("formTrayCoordinatesArraySticker");
             float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Triple(0f, -3.2f, distanceFromCamera), new Triple(0, 0, 0)));

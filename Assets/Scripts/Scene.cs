@@ -127,6 +127,7 @@ namespace Logic
                     if (i < FindObjectOfType<GlobalCommon>().notificationsInColumn && !trayHolder.activeSelf) // usual case
                     {
                         bool doesHaveGroupIcon = i == 0;
+                        Debug.Log(coordinates[usualCoordinatesIndex].Position);
                         Vector3 position = new Vector3(coordinates[usualCoordinatesIndex].Position.X, coordinates[usualCoordinatesIndex].Position.Y, coordinates[usualCoordinatesIndex].Position.Z);
                         Quaternion rotation = Quaternion.Euler(90, 0, 0); //todo
                         Vector3 scale = new Vector3(1, 1, 1);
