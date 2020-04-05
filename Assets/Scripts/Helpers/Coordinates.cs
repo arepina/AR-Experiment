@@ -1,18 +1,20 @@
-﻿namespace Logic
+﻿using UnityEngine;
+
+namespace Logic
 {
     public class Coordinates
     {
-        private Triple position;
-        private Triple rotation;
+        private Vector3 position;
+        private Quaternion rotation;
 
-        public Coordinates(Triple position, Triple rotation)
+        public Coordinates(Vector3 position, Quaternion rotation)
         {
             this.position = position;
             this.rotation = rotation;
         }
 
-        public Triple Position { get { return position; } }
-        public Triple Rotation { get { return rotation; } }
+        public Vector3 Position { get { return position; } }
+        public Quaternion Rotation { get { return rotation; } }
 
         public override string ToString()
         {

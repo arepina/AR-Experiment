@@ -4,8 +4,7 @@ namespace Logic
 {
     public class GlobalAround : MonoBehaviour
     {
-        public float XAroundOnly;
-        public float YAroundOnly;
-        public float ZAroundOnly;
+        public Vector3 position;
+        public Quaternion rotation;
     }
 }

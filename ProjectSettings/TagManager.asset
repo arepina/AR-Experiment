@@ -12,6 +12,7 @@ TagManager:
   - HideAll
   - Tray
   - Wave
+  - Text
   layers:
   - Default
   - TransparentFX
