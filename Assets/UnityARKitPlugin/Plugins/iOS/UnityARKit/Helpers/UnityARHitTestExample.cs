@@ -10,8 +10,9 @@ namespace UnityEngine.XR.iOS
 		public LayerMask collisionLayer = 1 << 10;  //ARKitPlane layer
 
         bool HitTestWithResultType (ARPoint point, ARHitTestResultType resultTypes)
-        {
-            List<ARHitTestResult> hitResults = UnityARSessionNativeInterface.GetARSessionNativeInterface ().HitTest (point, resultTypes);
+		{
+			Debug.Log("HitTestWithResultType");
+			List<ARHitTestResult> hitResults = UnityARSessionNativeInterface.GetARSessionNativeInterface ().HitTest (point, resultTypes);
             if (hitResults.Count > 0) {
                 foreach (var hitResult in hitResults) {
                     Debug.Log ("Got hit!");
@@ -26,6 +27,7 @@ namespace UnityEngine.XR.iOS
 		
 		// Update is called once per frame
 		void Update () {
+			Debug.Log("HIT Update");
 			#if UNITY_EDITOR   //we will only use this script on the editor side, though there is nothing that would prevent it from working on device
 			if (Input.GetMouseButtonDown (0)) {
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);

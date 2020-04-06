@@ -205,35 +205,31 @@ namespace Logic
             GameObject notificationObject = Instantiate(prefabToCreate, position, rotation) as GameObject;
             if (doesHaveGroupIcon)
             {
-                notificationObject.transform.Find("GroupIcon").localScale = new Vector3(0.5f, 0.05f, 0.5f);
-                notificationObject.transform.Find("GroupIcon")
-                              .transform.Find("Icon")
-                              .GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/" + notification.SourceImage);
+                notificationObject.GetComponentsInChildren<MeshRenderer>()[10].gameObject.transform.localScale = new Vector3(0.5f, 0.05f, 0.5f);
+                notificationObject.GetComponentsInChildren<SpriteRenderer>()[2].sprite = Resources.Load<Sprite>("Sprites/" + notification.SourceImage);
             }
             else
             {
-                notificationObject.transform.Find("GroupIcon").localScale = new Vector3(0, 0, 0);
+                notificationObject.GetComponentsInChildren<MeshRenderer>()[10].gameObject.transform.localScale = new Vector3(0, 0, 0);
             }
-            notificationObject.transform.Find("Text").GetComponent<TextMeshPro>().text = notification.Text;
-            notificationObject.transform.Find("Author").GetComponent<TextMeshPro>().text = notification.Author;
-            notificationObject.transform.Find("Source").GetComponent<TextMeshPro>().text = notification.SourceName;
-            notificationObject.transform.Find("Id").GetComponent<TextMeshPro>().text = notification.Id;
+            notificationObject.GetComponentsInChildren<TextMeshPro>()[0].text = notification.Text;
+            notificationObject.GetComponentsInChildren<TextMeshPro>()[1].text = notification.Author;
+            notificationObject.GetComponentsInChildren<TextMeshPro>()[2].text = notification.SourceName;
+            notificationObject.GetComponentsInChildren<TextMeshPro>()[4].text = notification.Id;
             DateTime currentTime = DateTime.Now;
             double minutes = currentTime.Subtract(new DateTime(notification.Timestamp)).TotalMinutes;
             double seconds = currentTime.Subtract(new DateTime(notification.Timestamp)).TotalSeconds;
-            notificationObject.transform.Find("Timestamp").GetComponent<TextMeshPro>().text = minutes < 1 ? seconds < 1 ? "Just now" :
+            notificationObject.GetComponentsInChildren<TextMeshPro>()[3].text = minutes < 1 ? seconds < 1 ? "Just now" :
                                                                                                                       string.Format("{0:00}s ago", seconds) :
                                                                                                         string.Format("{0:00}m ago", minutes);
-            notificationObject.transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/" + notification.Icon);
+            notificationObject.GetComponentsInChildren<SpriteRenderer>()[1].sprite = Resources.Load<Sprite>("Sprites/" + notification.Icon);
             notificationObject.transform.localScale = scale;
-            notificationObject.transform.Find("GroupIcon").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
-            notificationObject.transform.Find("GroupIcon").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
-            notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
-            notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
-            notificationObject.transform.Find("MarkAsRead").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", markAsReadColor);
-            notificationObject.transform.Find("Hide").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", hideColor);
-            notificationObject.transform.Find("GroupIcon").Find("MarkAsReadGroup").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", markAsReadColor);
-            notificationObject.transform.Find("GroupIcon").Find("HideGroup").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", hideColor);
+            notificationObject.GetComponentsInChildren<MeshRenderer>()[10].material.SetColor("_Color", notification.Color);
+            notificationObject.GetComponentsInChildren<MeshRenderer>()[10].material.SetFloat("_Glossiness", 1f);
+            notificationObject.GetComponentsInChildren<SpriteRenderer>(true)[8].material.SetColor("_Color", markAsReadColor);
+            notificationObject.GetComponentsInChildren<SpriteRenderer>(true)[10].material.SetColor("_Color", hideColor);
+            notificationObject.GetComponentsInChildren<SpriteRenderer>(true)[4].material.SetColor("_Color", markAsReadColor);
+            notificationObject.GetComponentsInChildren<SpriteRenderer>(true)[6].material.SetColor("_Color", hideColor);
             return notificationObject;
         }
 
@@ -242,25 +238,23 @@ namespace Logic
                                            bool doesHaveGroupIcon)
         {
             GameObject notificationObject = Instantiate(prefabToCreate, position, rotation) as GameObject;
-            Debug.Log(notificationObject.transform.Find("Text"));
-            notificationObject.transform.Find("Text").GetComponent<TextMeshPro>().text = notification.Text;
-            notificationObject.transform.Find("Author").GetComponent<TextMeshPro>().text = notification.Author;
-            notificationObject.transform.Find("Source").GetComponent<TextMeshPro>().text = notification.SourceName;
-            notificationObject.transform.Find("Id").GetComponent<TextMeshPro>().text = notification.Id;
+            notificationObject.GetComponentsInChildren<TextMeshPro>()[0].text = notification.Text;
+            notificationObject.GetComponentsInChildren<TextMeshPro>()[1].text = notification.Author;
+            notificationObject.GetComponentsInChildren<TextMeshPro>()[4].text = notification.SourceName;
+            notificationObject.GetComponentsInChildren<TextMeshPro>()[3].text = notification.Id;
             DateTime currentTime = DateTime.Now;
             double minutes = currentTime.Subtract(new DateTime(notification.Timestamp)).TotalMinutes;
             double seconds = currentTime.Subtract(new DateTime(notification.Timestamp)).TotalSeconds;
-            notificationObject.transform.Find("Timestamp").GetComponent<TextMeshPro>().text = minutes < 1 ? seconds < 1 ? "Just now" :
+            notificationObject.GetComponentsInChildren<TextMeshPro>()[2].text = minutes < 1 ? seconds < 1 ? "Just now" :
                                                                                                                       string.Format("{0:00}s ago", seconds) :
                                                                                                         string.Format("{0:00}m ago", minutes);
-            notificationObject.transform.Find("Icon")
-                          .GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/" + notification.Icon);
+            notificationObject.GetComponentsInChildren<SpriteRenderer>()[0].sprite = Resources.Load<Sprite>("Sprites/" + notification.Icon);
             notificationObject.transform.localScale = scale;
-            notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", notification.Color);
-            notificationObject.transform.Find("IconBackground").gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Glossiness", 1f);
-            notificationObject.transform.Find("MarkAsRead").Find("Blue").GetComponent<SpriteRenderer>().material.SetColor("_Color", markAsReadColor);
-            notificationObject.transform.Find("Hide").Find("Red").GetComponent<SpriteRenderer>().material.SetColor("_Color", hideColor);
-            notificationObject.transform.Find("Box").GetComponent<SpriteRenderer>().material.SetColor("_Color", notification.Color);
+            notificationObject.GetComponentsInChildren<MeshRenderer>()[9].material.SetColor("_Color", notification.Color);
+            notificationObject.GetComponentsInChildren<MeshRenderer>()[9].material.SetFloat("_Glossiness", 1f);
+            notificationObject.GetComponentsInChildren<SpriteRenderer>()[1].material.SetColor("_Color", notification.Color);
+            notificationObject.GetComponentsInChildren<SpriteRenderer>(true)[3].material.SetColor("_Color", markAsReadColor);
+            notificationObject.GetComponentsInChildren<SpriteRenderer>(true)[5].material.SetColor("_Color", hideColor);
             return notificationObject;
         }
     }
