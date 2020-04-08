@@ -107,7 +107,7 @@ namespace Logic
                 Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
                 int usualCoordinatesIndex = groupIndex * FindObjectOfType<GlobalCommon>().notificationsInColumn;
                 for (int i = 0; i < groupNotifications.Count; i++)
-                {
+                {                   
                     Notification notification = groupNotifications.ToArray()[i];
                     if (usualCoordinatesIndex < maxNotificationsInTray) // tray case
                     {
@@ -127,7 +127,6 @@ namespace Logic
                     if (i < FindObjectOfType<GlobalCommon>().notificationsInColumn && !trayHolder.activeSelf) // usual case
                     {
                         bool doesHaveGroupIcon = i == 0;
-                        Debug.Log(coordinates[usualCoordinatesIndex].Position);
                         Vector3 position = new Vector3(coordinates[usualCoordinatesIndex].Position.x, coordinates[usualCoordinatesIndex].Position.y, coordinates[usualCoordinatesIndex].Position.z);
                         Quaternion rotation = Quaternion.Euler(coordinates[usualCoordinatesIndex].Rotation.x, coordinates[usualCoordinatesIndex].Rotation.y, coordinates[usualCoordinatesIndex].Rotation.z);
                         Vector3 scale = new Vector3(1, 1, 1);

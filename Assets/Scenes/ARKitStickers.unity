@@ -272,10 +272,10 @@ MonoBehaviour:
   subjectNumber: 1
   trialNumber: 1
   timeInSeconds: 15
-  notificationsNumber: 5
+  notificationsNumber: 10
   notificationSource: YouTube
   notificationAuthor: "\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440"
-  numberOfHaveToActNotifications: 2
+  numberOfHaveToActNotifications: 3
 --- !u!1 &16
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,9 +369,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbaa7a5c8d43f4f429839e388125bf62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XAroundOnly: 0
-  YAroundOnly: 0
-  ZAroundOnly: 0
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 45, y: 0, z: 0, w: 0}
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,10 +407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb899351e3de4aeb95ca0c1f98f95a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trayHolder: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
-    type: 3}
-  notificationsHolder: {fileID: 4152187826527866884, guid: 34b613c1d3be54a3ca11cdd62137ec12,
-    type: 3}
+  trayHolder: {fileID: 1366459647}
+  notificationsHolder: {fileID: 1981874298}
 --- !u!114 &25
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,6 +1280,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319645973}
   m_CullTransparentMesh: 0
+--- !u!1 &1366459647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1366459649}
+  - component: {fileID: 1366459648}
+  m_Layer: 0
+  m_Name: TrayHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1366459648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366459647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720c545b55e1843298064ac126f3e35a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 9}
+--- !u!4 &1366459649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366459647}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1587227111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1541,6 +1582,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841742996}
   m_CullTransparentMesh: 0
+--- !u!1 &1981874298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1981874299}
+  m_Layer: 0
+  m_Name: NotificationsHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1981874299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981874298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2073111659
 GameObject:
   m_ObjectHideFlags: 0

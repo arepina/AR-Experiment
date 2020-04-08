@@ -7,7 +7,6 @@ namespace Logic
     {
         public static List<Coordinates> formInFrontOfMobileCoordinatesArray()
         {
-            Debug.Log("formInFrontOfMobileCoordinatesArray");
             float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Vector3(0f, -1.1f, distanceFromCamera), new Quaternion(0, 0, 0, 0)));
@@ -18,7 +17,6 @@ namespace Logic
 
         public static List<Coordinates> formInFrontOfStickerCoordinatesArray()
         {
-            Debug.Log("formInFrontOfStickerCoordinatesArray");
             float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Vector3(0f, -1.6f, distanceFromCamera), new Quaternion(0, 0, 0, 0)));
@@ -29,69 +27,68 @@ namespace Logic
 
         public static List<Coordinates> formAroundMobileCoordinatesArray()
         {
-            Debug.Log("formAroundMobileCoordinatesArray");
+            float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             GlobalAround globalAround = FindObjectOfType<GlobalAround>();
             Vector3 center = globalAround.position;
             Quaternion rotation = globalAround.rotation;
             List<Coordinates> coordinates = new List<Coordinates>();
             float xDist = -2.4f;
-            float zDist = -1.2f;
-            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + zDist), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + zDist * 2), rotation));
+            float yDist = -1.2f;
+            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + distanceFromCamera), rotation));
 
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y, center.z), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y, center.z + zDist), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y, center.z + zDist * 2), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + yDist, center.z + distanceFromCamera), rotation));
 
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y, center.z), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y, center.z + zDist), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y, center.z + zDist * 2), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + 2 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + 2 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + 2 * yDist, center.z + distanceFromCamera), rotation));
 
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y, center.z), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y, center.z + zDist), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y, center.z + zDist * 2), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + 3 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + 3 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + 3 * yDist, center.z + distanceFromCamera), rotation));
 
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y, center.z), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y, center.z + zDist), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y, center.z + zDist * 2), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + 4 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + 4 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + 4 * yDist, center.z + distanceFromCamera), rotation));
             return coordinates;
         }
 
         public static List<Coordinates> formAroundStickerCoordinatesArray()
         {
-            Debug.Log("formAroundStickerCoordinatesArray");
+            float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             GlobalAround globalAround = FindObjectOfType<GlobalAround>();
             Vector3 center = globalAround.position;
             Quaternion rotation = globalAround.rotation;
             List<Coordinates> coordinates = new List<Coordinates>();
             float xDist = -1.7f;
-            float zDist = -2f;
-            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + zDist), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + zDist * 2), rotation));
+            float yDist = -1.2f;
+            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + distanceFromCamera), rotation));
 
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y, center.z), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y, center.z + zDist), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y, center.z + zDist * 2), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + yDist, center.z + distanceFromCamera), rotation));
 
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y, center.z), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y, center.z + zDist), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y, center.z + zDist * 2), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + 2 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + 2 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + 2 * yDist, center.z + distanceFromCamera), rotation));
 
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y, center.z), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y, center.z + zDist), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y, center.z + zDist * 2), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + 3 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + 3 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + 3 * yDist, center.z + distanceFromCamera), rotation));
 
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y, center.z), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y, center.z + zDist), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y, center.z + zDist * 2), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + 4 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + 4 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + 4 * yDist, center.z + distanceFromCamera), rotation));
             return coordinates;
         }
 
         public static List<Coordinates> formTrayCoordinatesArrayMobile()
         {
-            Debug.Log("formTrayCoordinatesArrayMobile");
             float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Vector3(0f, -2.2f, distanceFromCamera), new Quaternion(0, 0, 0, 0)));
@@ -146,7 +143,6 @@ namespace Logic
 
         public static List<Coordinates> formTrayCoordinatesArraySticker()
         {
-            Debug.Log("formTrayCoordinatesArraySticker");
             float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Vector3(0f, -3.2f, distanceFromCamera), new Quaternion(0, 0, 0, 0)));
