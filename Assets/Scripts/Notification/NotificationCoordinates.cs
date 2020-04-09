@@ -32,27 +32,28 @@ namespace Logic
             Vector3 center = globalAround.position;
             Quaternion rotation = globalAround.rotation;
             List<Coordinates> coordinates = new List<Coordinates>();
-            float xDist = -2.4f;
-            float yDist = -1.2f;
+            float xDist = -2.6f;
+            float yDist = -0.9f;
+            float y2Dist = -1.8f;
             coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x, center.y + yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x, center.y + y2Dist, center.z + distanceFromCamera), rotation));
 
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y, center.z + distanceFromCamera), rotation));
             coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + y2Dist, center.z + distanceFromCamera), rotation));
 
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + 2 * yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + 2 * yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + 2 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + y2Dist, center.z + distanceFromCamera), rotation));
 
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + 3 * yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + 3 * yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + 3 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + y2Dist, center.z + distanceFromCamera), rotation));
 
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + 4 * yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + 4 * yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + 4 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + y2Dist, center.z + distanceFromCamera), rotation));
             return coordinates;
         }
 
@@ -64,26 +65,27 @@ namespace Logic
             Quaternion rotation = globalAround.rotation;
             List<Coordinates> coordinates = new List<Coordinates>();
             float xDist = -1.7f;
-            float yDist = -1.2f;
+            float yDist = -1.3f;
+            float y2Dist = -2.7f;
             coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x, center.y + yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x, center.y + y2Dist, center.z + distanceFromCamera), rotation));
 
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y, center.z + distanceFromCamera), rotation));
             coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + y2Dist, center.z + distanceFromCamera), rotation));
 
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + 2 * yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + 2 * yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + 2 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + y2Dist, center.z + distanceFromCamera), rotation));
 
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + 3 * yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + 3 * yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + 3 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + y2Dist, center.z + distanceFromCamera), rotation));
 
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + 4 * yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + 4 * yDist, center.z + distanceFromCamera), rotation));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + 4 * yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + yDist, center.z + distanceFromCamera), rotation));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + y2Dist, center.z + distanceFromCamera), rotation));
             return coordinates;
         }
 

@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9a5660d20324da9b4e35783d6b0aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRunning: 0
+  isRunning: 1
 --- !u!114 &468268830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,7 +435,7 @@ MonoBehaviour:
   notificationColumns: 5
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
-  distanceFromCamera: 6
+  distanceFromCamera: 20
   angle: 0
   waitForActionToBeAcceptedPeriod: 2
 --- !u!114 &468268837
@@ -450,9 +450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbaa7a5c8d43f4f429839e388125bf62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XAroundOnly: 0
-  YAroundOnly: 0
-  ZAroundOnly: 0
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 45, y: 0, z: 0, w: 0}
 --- !u!114 &468268838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,10 +467,10 @@ MonoBehaviour:
   subjectNumber: 1
   trialNumber: 1
   timeInSeconds: 15
-  notificationsNumber: 5
+  notificationsNumber: 10
   notificationSource: YouTube
   notificationAuthor: "\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440"
-  numberOfHaveToActNotifications: 2
+  numberOfHaveToActNotifications: 3
 --- !u!114 &468268839
 MonoBehaviour:
   m_ObjectHideFlags: 0

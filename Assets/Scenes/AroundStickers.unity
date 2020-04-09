@@ -512,7 +512,7 @@ MonoBehaviour:
   notificationColumns: 5
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
-  distanceFromCamera: 15
+  distanceFromCamera: 20
   angle: 0
   waitForActionToBeAcceptedPeriod: 2
 --- !u!114 &1071713899
@@ -543,11 +543,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subjectNumber: 1
   trialNumber: 1
-  timeInSeconds: 15
-  notificationsNumber: 5
+  timeInSeconds: 30
+  notificationsNumber: 15
   notificationSource: YouTube
   notificationAuthor: "\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440"
-  numberOfHaveToActNotifications: 2
+  numberOfHaveToActNotifications: 3
 --- !u!114 &1071713901
 MonoBehaviour:
   m_ObjectHideFlags: 0
