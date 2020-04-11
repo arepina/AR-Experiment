@@ -40,6 +40,7 @@ namespace Logic
 
         private void localActionButtonsShow(PointerEventData eventData)
         {
+            Debug.Log("localActionButtonsShow");
             try
             {
                 if (!FindObjectOfType<GlobalCommon>().typeName.Contains("Sticker"))

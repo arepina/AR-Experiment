@@ -599,7 +599,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720c545b55e1843298064ac126f3e35a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 48691102}
+  Camera: {fileID: 48691092}
+  DistanceFromCamera: 0.75
+  Track: {fileID: 48691102}
+  SimulateInertia: 1
+  PositionLerpSpeed: 5
+  RotationLerpSpeed: 5
+  Pitch: 10
+  Yaw: 0
+  _rotationMode: 1
+  MotionNum: 5
+  TimeThreshold: 0.25
+  DistanceThreshold: 0.2
 --- !u!1 &1882206793
 GameObject:
   m_ObjectHideFlags: 0

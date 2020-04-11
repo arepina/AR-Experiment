@@ -98,14 +98,4 @@ public class HeadReferencedContent : MonoBehaviour
             }
         }
     }
-
-    public void SetDistanceFromCamera(float value)
-    {
-        DistanceFromCamera = value;
-    }
-
-    public void SetParallelToTheGround(bool value)
-    {
-        ParallelToTheGround = value;
-    }
 }
