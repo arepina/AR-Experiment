@@ -8,7 +8,6 @@ public class ARPositioner : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("OB" + GameObjectToPlace.transform.position);
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 

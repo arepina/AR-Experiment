@@ -31,28 +31,27 @@ namespace Logic
             Vector3 center = globalAround.position;
             Quaternion rotation = globalAround.rotation;
             List<Coordinates> coordinates = new List<Coordinates>();
-            float xDist = -2.6f;
-            float yDist = -0.9f;
-            float y2Dist = -1.8f;
+            float xDist = -0.15f;
+            float zDist = 0.05f;
             coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x, center.y + yDist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x, center.y + y2Dist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x, center.y , center.z - zDist), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x, center.y , center.z - zDist * 2), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
 
             coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + yDist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + y2Dist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y , center.z - zDist), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y , center.z - zDist * 2), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
 
             coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + yDist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + y2Dist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y , center.z - zDist), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y , center.z - zDist * 2), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
 
             coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + yDist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + y2Dist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y , center.z - zDist), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y , center.z - zDist * 2), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
 
             coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + yDist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + y2Dist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y , center.z - zDist), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y , center.z - zDist * 2), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
             return coordinates;
         }
 
@@ -63,27 +62,26 @@ namespace Logic
             Quaternion rotation = globalAround.rotation;
             List<Coordinates> coordinates = new List<Coordinates>();
             float xDist = -0.1f;
-            float yDist = -0.1f;
-            float y2Dist = -0.2f;
+            float zDist = 0.09f;
             coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x, center.y + yDist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x, center.y + y2Dist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z - zDist), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x, center.y, center.z - zDist * 2), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
 
             coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + yDist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y + y2Dist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y, center.z - zDist), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist, center.y, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
 
             coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + yDist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y + y2Dist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y, center.z - zDist), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 2, center.y, center.z - zDist * 2), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
 
             coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + yDist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y + y2Dist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y, center.z - zDist), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 3, center.y, center.z - zDist * 2), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
 
             coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + yDist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
-            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y + y2Dist, center.z), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y, center.z - zDist), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
+            coordinates.Add(new Coordinates(new Vector3(center.x + xDist * 4, center.y, center.z - zDist * 2), rotation, new Vector3(0.05f, 0.05f, 0.05f)));
             return coordinates;
         }
 
