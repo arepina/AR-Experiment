@@ -76,9 +76,9 @@ namespace Logic
                             indexPosition % FindObjectOfType<GlobalCommon>().notificationsInColumn == (FindObjectOfType<GlobalCommon>().notificationsInColumn - 1);
                         if (indexPosition < maxNotificationsInTray)
                         {
-                            Vector3 position = new Vector3(coordinates[indexPosition].Position.x, coordinates[indexPosition].Position.y, coordinates[indexPosition].Position.z);
+                            Vector3 position = coordinates[indexPosition].Position;
                             Quaternion rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.x, coordinates[indexPosition].Rotation.y, coordinates[indexPosition].Rotation.z);
-                            Vector3 scale = new Vector3(1, 1, 1);
+                            Vector3 scale = coordinates[indexPosition].Scale;
                             GameObject trayN = notificationGenerator(FindObjectOfType<GlobalCommon>().trayNotification, notification, position, scale, rotation, doesHaveGroupIcon);
                             trayN.transform.parent = trayHolder.transform;
                             indexPosition += 1;
@@ -112,9 +112,9 @@ namespace Logic
                     if (usualCoordinatesIndex < maxNotificationsInTray) // tray case
                     {
                         bool doesHaveGroupIconTray = i == groupNotifications.Count - 1 || trayCoordinatesIndex == FindObjectOfType<GlobalCommon>().notificationsInColumnTray - 1;
-                        Vector3 position = new Vector3(trayCoordinates[trayCoordinatesIndex].Position.x, trayCoordinates[trayCoordinatesIndex].Position.y, trayCoordinates[trayCoordinatesIndex].Position.z);
+                        Vector3 position = trayCoordinates[trayCoordinatesIndex].Position;
                         Quaternion rotation = Quaternion.Euler(trayCoordinates[trayCoordinatesIndex].Rotation.x, trayCoordinates[trayCoordinatesIndex].Rotation.y, trayCoordinates[trayCoordinatesIndex].Rotation.z);
-                        Vector3 scale = new Vector3(1, 1, 1);
+                        Vector3 scale = trayCoordinates[trayCoordinatesIndex].Scale;
                         GameObject trayN = notificationGenerator(FindObjectOfType<GlobalCommon>().trayNotification,
                                               notification,
                                               position,
@@ -127,9 +127,9 @@ namespace Logic
                     if (i < FindObjectOfType<GlobalCommon>().notificationsInColumn && !trayHolder.activeSelf) // usual case
                     {
                         bool doesHaveGroupIcon = i == 0;
-                        Vector3 position = new Vector3(coordinates[usualCoordinatesIndex].Position.x, coordinates[usualCoordinatesIndex].Position.y, coordinates[usualCoordinatesIndex].Position.z);
+                        Vector3 position = coordinates[usualCoordinatesIndex].Position;
                         Quaternion rotation = Quaternion.Euler(coordinates[usualCoordinatesIndex].Rotation.x, coordinates[usualCoordinatesIndex].Rotation.y, coordinates[usualCoordinatesIndex].Rotation.z);
-                        Vector3 scale = new Vector3(1, 1, 1);
+                        Vector3 scale = coordinates[usualCoordinatesIndex].Scale;
                         GameObject n = notificationGenerator(FindObjectOfType<GlobalCommon>().notification,
                                               notification,
                                               position,
@@ -166,9 +166,9 @@ namespace Logic
                     if (usualCoordinatesIndex < maxNotificationsInTray) // tray case
                     {
                         bool doesHaveGroupIconTray = i == groupNotifications.Count - 1 || trayCoordinatesIndex == FindObjectOfType<GlobalCommon>().notificationsInColumnTray - 1;
-                        Vector3 position = new Vector3(trayCoordinates[trayCoordinatesIndex].Position.x, trayCoordinates[trayCoordinatesIndex].Position.y, trayCoordinates[trayCoordinatesIndex].Position.z);
+                        Vector3 position = trayCoordinates[trayCoordinatesIndex].Position;
                         Quaternion rotation = Quaternion.Euler(trayCoordinates[trayCoordinatesIndex].Rotation.x, trayCoordinates[trayCoordinatesIndex].Rotation.y, trayCoordinates[trayCoordinatesIndex].Rotation.z);
-                        Vector3 scale = new Vector3(1, 1, 1);
+                        Vector3 scale = trayCoordinates[trayCoordinatesIndex].Scale;
                         GameObject trayN = notificationGenerator(FindObjectOfType<GlobalCommon>().trayNotification,
                                               notification,
                                               position,
@@ -181,9 +181,9 @@ namespace Logic
                     if (usualCoordinatesIndex < maxNotifications && !trayHolder.activeSelf) // usual case 
                     {
                         bool doesHaveGroupIcon = i == groupNotifications.Count - 1 || usualCoordinatesIndex == FindObjectOfType<GlobalCommon>().notificationsInColumn - 1;
-                        Vector3 position = new Vector3(coordinates[usualCoordinatesIndex].Position.x, coordinates[usualCoordinatesIndex].Position.y, coordinates[usualCoordinatesIndex].Position.z);
+                        Vector3 position = coordinates[usualCoordinatesIndex].Position;
                         Quaternion rotation = Quaternion.Euler(coordinates[usualCoordinatesIndex].Rotation.x, coordinates[usualCoordinatesIndex].Rotation.y, coordinates[usualCoordinatesIndex].Rotation.z);
-                        Vector3 scale = new Vector3(1, 1, 1);
+                        Vector3 scale = coordinates[usualCoordinatesIndex].Scale;
                         GameObject n = notificationGenerator(FindObjectOfType<GlobalCommon>().notification,
                                              notification,
                                              position,
