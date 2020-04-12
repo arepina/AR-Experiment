@@ -6,28 +6,13 @@ public class TorsoReferencedContent : MonoBehaviour
     public GameObject Camera;
 
     [Tooltip("The distance from the camera that this object should be placed")]
-    public float DistanceFromCamera = 0.75f;
-
-    public Transform Track;
+    public float DistanceFromCamera = 10f;
 
     [Tooltip("If checked, makes objecta move smoothly")]
     public bool SimulateInertia = false;
 
     [Tooltip("The speed at which this object changes its position, if the inertia effect is enabled")]
-    public float PositionLerpSpeed = 5f;
-
-    [Tooltip("The speed at which this object changes its rotation, if the inertia effect is enabled")]
-    public float RotationLerpSpeed = 5f;
-
-    public float Pitch = 10f;
-
-    public float Yaw = 0f;
-
-    public int MotionNum = 5;
-
-    public float TimeThreshold = 0.25f;
-
-    public float DistanceThreshold = 0.2f;
+    public float LerpSpeed = 5f;
 
     void OnEnable()
     {
@@ -64,9 +49,9 @@ public class TorsoReferencedContent : MonoBehaviour
 
         if (SimulateInertia)
         {
-            float posSpeed = Time.deltaTime * PositionLerpSpeed;
+            float posSpeed = Time.deltaTime * LerpSpeed;
             transform.position = Vector3.SlerpUnclamped(transform.position, posTo, posSpeed);
-            float rotSpeed = Time.deltaTime * PositionLerpSpeed;
+            float rotSpeed = Time.deltaTime * LerpSpeed;
             transform.rotation = Quaternion.Slerp(transform.rotation, rotTo, rotSpeed);
         }
         else
