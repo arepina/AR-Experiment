@@ -19,9 +19,9 @@ namespace Logic
         {
             float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
-            coordinates.Add(new Coordinates(new Vector3(0f, -1.6f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, -1.8f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
             coordinates.Add(new Coordinates(new Vector3(0f, 0f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 1.6f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 1.8f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
             return coordinates;
         }
 
