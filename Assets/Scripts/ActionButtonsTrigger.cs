@@ -9,51 +9,36 @@ namespace Logic
     {
         private long startTime;
         private Logger myLogger = new Logger(new LogHandler());
+        public GameObject markAsRead;
+        public GameObject hide;
+        public GameObject markAsReadAll;
+        public GameObject hideAll;
+        public GameObject notification;
 
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
+            Debug.Log(eventData.pointerEnter.tag);
             startTime = DateTime.Now.Ticks;
-            if (eventData.pointerEnter.tag.Equals("GroupIcon"))
+            if (eventData.pointerEnter.tag.Equals("GroupIcon")
+                || eventData.pointerEnter.tag.Equals("HideAll")
+                || eventData.pointerEnter.tag.Equals("MarkAsReadAll"))
             {
-                groupActionButtonsShow(eventData);
+                hide.SetActive(false);
+                markAsRead.SetActive(false);
+                hideAll.SetActive(true);
+                markAsReadAll.SetActive(true);
             }
-            else
-            {
-                localActionButtonsShow(eventData);
-            }
-        }
-
-        private void groupActionButtonsShow(PointerEventData eventData)
-        {
-            try
-            {
-                eventData.pointerEnter.transform.parent.transform.Find("Hide").gameObject.SetActive(false);
-                eventData.pointerEnter.transform.parent.transform.Find("MarkAsRead").gameObject.SetActive(false);
-                eventData.pointerEnter.transform.Find("HideGroup").gameObject.SetActive(true);
-                eventData.pointerEnter.transform.Find("MarkAsReadGroup").gameObject.SetActive(true);
-            }
-            catch (NullReferenceException e)
-            {
-                myLogger.LogError("Error", e);
-            }
-        }
-
-        private void localActionButtonsShow(PointerEventData eventData)
-        {
-            Debug.Log("localActionButtonsShow");
-            try
+            if (eventData.pointerEnter.tag.Equals("Notification")
+                || eventData.pointerEnter.tag.Equals("Hide")
+                || eventData.pointerEnter.tag.Equals("MarkAsRead"))
             {
                 if (!FindObjectOfType<GlobalCommon>().typeName.Contains("Sticker"))
                 {
-                    eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").transform.Find("HideGroup").gameObject.SetActive(false);
-                    eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").transform.Find("MarkAsReadGroup").gameObject.SetActive(false);
+                    hideAll.SetActive(false);
+                    markAsReadAll.SetActive(false);
                 }
-                eventData.pointerEnter.transform.parent.transform.Find("Hide").gameObject.SetActive(true);
-                eventData.pointerEnter.transform.parent.transform.Find("MarkAsRead").gameObject.SetActive(true);
-            }
-            catch (NullReferenceException e)
-            {
-                myLogger.LogError("Error", e);
+                hide.SetActive(true);
+                markAsRead.SetActive(true);
             }
         }
 
@@ -61,40 +46,16 @@ namespace Logic
         {
             if (eventData.pointerEnter.tag.Equals("GroupIcon"))
             {
-                groupActionButtonsHide(eventData);
+                hideAll.SetActive(false);
+                markAsReadAll.SetActive(false);
             }
-            else
+            if (eventData.pointerEnter.tag.Equals("Notification"))
             {
-                localActionButtonsHide(eventData);
+                hide.SetActive(false);
+                markAsRead.SetActive(false);
             }
             long duration = (long)TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
             processReticleEvent(eventData, duration);
-        }
-
-        private void groupActionButtonsHide(PointerEventData eventData)
-        {
-            try
-            {
-                eventData.pointerEnter.transform.Find("HideGroup").gameObject.SetActive(false);
-                eventData.pointerEnter.transform.Find("MarkAsReadGroup").gameObject.SetActive(false);
-            }
-            catch (NullReferenceException e)
-            {
-                myLogger.LogError("Error", e);
-            }
-        }
-
-        private void localActionButtonsHide(PointerEventData eventData)
-        {
-            try
-            {
-                eventData.pointerEnter.transform.parent.transform.Find("Hide").gameObject.SetActive(false);
-                eventData.pointerEnter.transform.parent.transform.Find("MarkAsRead").gameObject.SetActive(false);
-            }
-            catch (NullReferenceException e)
-            {
-                myLogger.LogError("Error", e);
-            }
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -109,46 +70,46 @@ namespace Logic
             {
                 if (tag.Equals("Notification"))
                 {
-                    actionOpenSourceApplication(eventData);
+                    actionOpenSourceApplication();
                 }
                 else
                 {
                     if (tag.Equals("Hide") || tag.Equals("MarkAsRead"))
                     {
-                        actionProcessLocalAction(eventData);
+                        actionProcessLocalAction();
                     }
                     else 
                     {
-                        actionProcessGroup(eventData);
+                        actionProcessGroup();
                     }
                 }
             }
         }
 
-        private void actionOpenSourceApplication(PointerEventData eventData)
+        private void actionOpenSourceApplication()
         {
             try
             {
-                string id = eventData.pointerEnter.transform.parent.transform.Find("Id").GetComponent<TextMeshPro>().text;
+                string id = notification.transform.Find("Id").GetComponent<TextMeshPro>().text;
                 Color groupColor;
                 string sourceName;
                 string author;
                 string creationTime;
                 if (!FindObjectOfType<GlobalCommon>().typeName.Contains("Sticker"))
                 {
-                    groupColor = eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
+                    groupColor = notification.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
                     sourceName = groupColor.Equals(Color.gray) ? GlobalCommon.silentGroupKey :
-                        eventData.pointerEnter.transform.parent.transform.Find("Source").GetComponent<TextMeshPro>().text;
-                    author = eventData.pointerEnter.transform.parent.transform.Find("Author").GetComponent<TextMeshPro>().text;
-                    creationTime = eventData.pointerEnter.transform.parent.transform.Find("Timestamp").GetComponent<TextMeshPro>().text;
+                        notification.transform.Find("Source").GetComponent<TextMeshPro>().text;
+                    author = notification.transform.Find("Author").GetComponent<TextMeshPro>().text;
+                    creationTime = notification.transform.Find("Timestamp").GetComponent<TextMeshPro>().text;
                 }
                 else
                 {
-                    groupColor = eventData.pointerEnter.transform.parent.transform.Find("Box").GetComponent<SpriteRenderer>().material.color;
+                    groupColor = notification.transform.Find("Box").GetComponent<SpriteRenderer>().material.color;
                     sourceName = groupColor.Equals(Color.gray) ? GlobalCommon.silentGroupKey :
-                        eventData.pointerEnter.transform.parent.transform.Find("Source").GetComponent<TextMeshPro>().text;
-                    author = eventData.pointerEnter.transform.parent.transform.Find("Author").GetComponent<TextMeshPro>().text;
-                    creationTime = eventData.pointerEnter.transform.parent.transform.Find("Timestamp").GetComponent<TextMeshPro>().text;
+                        notification.transform.Find("Source").GetComponent<TextMeshPro>().text;
+                    author = notification.transform.Find("Author").GetComponent<TextMeshPro>().text;
+                    creationTime = notification.transform.Find("Timestamp").GetComponent<TextMeshPro>().text;
                 }
                 processExperimentData(id, sourceName);
                 processHideAndMarkAsRead(id, sourceName, tag);
@@ -159,23 +120,23 @@ namespace Logic
             }
         }
 
-        private void actionProcessLocalAction(PointerEventData eventData)
+        private void actionProcessLocalAction()
         {
             try
             {
-                string id = eventData.pointerEnter.transform.parent.transform.Find("Id").GetComponent<TextMeshPro>().text;
+                string id = notification.transform.Find("Id").GetComponent<TextMeshPro>().text;
                 Color groupColor;
                 if (!FindObjectOfType<GlobalCommon>().typeName.Contains("Sticker"))
                 {
-                    groupColor = eventData.pointerEnter.transform.parent.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
+                    groupColor = notification.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
                 }
                 else
                 {
-                    groupColor = eventData.pointerEnter.transform.parent.transform.Find("Box").GetComponent<SpriteRenderer>().material.color;
+                    groupColor = notification.transform.Find("Box").GetComponent<SpriteRenderer>().material.color;
                 }
                 string sourceName = groupColor.Equals(Color.gray) ? GlobalCommon.silentGroupKey :
-                    eventData.pointerEnter.transform.parent.Find("Source").GetComponent<TextMeshPro>().text;
-                string creationTime = eventData.pointerEnter.transform.parent.Find("Timestamp").GetComponent<TextMeshPro>().text;
+                    notification.transform.Find("Source").GetComponent<TextMeshPro>().text;
+                string creationTime = notification.transform.Find("Timestamp").GetComponent<TextMeshPro>().text;
                 processExperimentData(id, sourceName);
                 processHideAndMarkAsRead(id, sourceName, tag);
             }
@@ -185,15 +146,15 @@ namespace Logic
             }
         }
 
-        private void actionProcessGroup(PointerEventData eventData)
+        private void actionProcessGroup()
         {
             try
             {
-                Color groupColor = eventData.pointerEnter.transform.parent.GetComponent<MeshRenderer>().material.color;
+                Color groupColor = notification.transform.GetComponent<MeshRenderer>().material.color;
                 string sourceName = groupColor.Equals(Color.gray) ? GlobalCommon.silentGroupKey :
-                    eventData.pointerEnter.transform.parent.transform.parent.Find("Source").GetComponent<TextMeshPro>().text;
-                string creationTime = eventData.pointerEnter.transform.parent.transform.parent.Find("Timestamp").GetComponent<TextMeshPro>().text;
-                string id = eventData.pointerEnter.transform.parent.transform.parent.Find("Id").GetComponent<TextMeshPro>().text;
+                    notification.transform.Find("Source").GetComponent<TextMeshPro>().text;
+                string creationTime = notification.transform.Find("Timestamp").GetComponent<TextMeshPro>().text;
+                string id = notification.transform.Find("Id").GetComponent<TextMeshPro>().text;
                 processExperimentData(id, sourceName);
                 processHideAndMarkAsReadAll(sourceName, tag);
             }

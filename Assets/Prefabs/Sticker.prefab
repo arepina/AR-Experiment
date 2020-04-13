@@ -1060,8 +1060,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3500140073779959212}
   - component: {fileID: 557485952676242215}
-  - component: {fileID: 1523609391734538869}
-  - component: {fileID: 2246065266859960407}
   m_Layer: 5
   m_Name: Box
   m_TagString: Notification
@@ -1132,31 +1130,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &1523609391734538869
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2588631504468654066}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 20, y: 10, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2246065266859960407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2588631504468654066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 793cb70c0bc0e404f91b078abdadd365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3284001158447520618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,6 +1189,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793cb70c0bc0e404f91b078abdadd365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  markAsRead: {fileID: 3284001158447520618}
+  hide: {fileID: 8505733856712700309}
+  markAsReadAll: {fileID: 0}
+  hideAll: {fileID: 0}
+  notification: {fileID: 4152187826527866884}
 --- !u!1 &3775469484812057372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,6 +1284,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4843361616803761793}
   - component: {fileID: 2718163581562676893}
+  - component: {fileID: 4818918038004294857}
+  - component: {fileID: 9184916360070458280}
   m_Layer: 0
   m_Name: Sticker
   m_TagString: Notification
@@ -1380,6 +1360,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &4818918038004294857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4152187826527866884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793cb70c0bc0e404f91b078abdadd365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  markAsRead: {fileID: 3284001158447520618}
+  hide: {fileID: 8505733856712700309}
+  markAsReadAll: {fileID: 0}
+  hideAll: {fileID: 0}
+  notification: {fileID: 4152187826527866884}
+--- !u!65 &9184916360070458280
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4152187826527866884}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6, y: 1.7, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4579682179086220987
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,3 +2130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793cb70c0bc0e404f91b078abdadd365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  markAsRead: {fileID: 3284001158447520618}
+  hide: {fileID: 8505733856712700309}
+  markAsReadAll: {fileID: 0}
+  hideAll: {fileID: 0}
+  notification: {fileID: 4152187826527866884}

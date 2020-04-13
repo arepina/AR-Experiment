@@ -227,8 +227,8 @@ namespace Logic
             notificationObject.GetComponentsInChildren<MeshRenderer>()[10].material.SetFloat("_Glossiness", 1f);
             notificationObject.GetComponentsInChildren<SpriteRenderer>(true)[8].material.SetColor("_Color", markAsReadColor);
             notificationObject.GetComponentsInChildren<SpriteRenderer>(true)[10].material.SetColor("_Color", hideColor);
-            notificationObject.GetComponentsInChildren<SpriteRenderer>(true)[4].material.SetColor("_Color", markAsReadColor);
-            notificationObject.GetComponentsInChildren<SpriteRenderer>(true)[6].material.SetColor("_Color", hideColor);
+            notificationObject.GetComponentsInChildren<SpriteRenderer>(true)[6].material.SetColor("_Color", markAsReadColor);
+            notificationObject.GetComponentsInChildren<SpriteRenderer>(true)[4].material.SetColor("_Color", hideColor);
             return notificationObject;
         }
 

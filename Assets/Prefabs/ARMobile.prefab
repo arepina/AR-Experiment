@@ -393,6 +393,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793cb70c0bc0e404f91b078abdadd365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  markAsRead: {fileID: 1912829739534278498}
+  hide: {fileID: 8541762286380870768}
+  markAsReadAll: {fileID: 1648214199033301819}
+  hideAll: {fileID: 7577368096875589772}
+  notification: {fileID: 6458541884227280155}
 --- !u!1 &1316063112298277326
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +490,6 @@ GameObject:
   - component: {fileID: 4876008482749493244}
   - component: {fileID: 2738359152100690018}
   - component: {fileID: 7757737918870633422}
-  - component: {fileID: 3204132637911381372}
   m_Layer: 1
   m_Name: MarkAsReadGroup
   m_TagString: MarkAsReadAll
@@ -542,18 +546,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793cb70c0bc0e404f91b078abdadd365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3204132637911381372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648214199033301819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be345353a59eb4667accf81e44389620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  markAsRead: {fileID: 1912829739534278498}
+  hide: {fileID: 8541762286380870768}
+  markAsReadAll: {fileID: 1648214199033301819}
+  hideAll: {fileID: 7577368096875589772}
+  notification: {fileID: 6458541884227280155}
 --- !u!1 &1679545809711028220
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +643,6 @@ GameObject:
   - component: {fileID: 7752672326164959106}
   - component: {fileID: 7384092508928813842}
   - component: {fileID: 2891012534488542162}
-  - component: {fileID: 8706218979873891742}
   m_Layer: 0
   m_Name: MarkAsRead
   m_TagString: MarkAsRead
@@ -703,18 +699,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793cb70c0bc0e404f91b078abdadd365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8706218979873891742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912829739534278498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be345353a59eb4667accf81e44389620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  markAsRead: {fileID: 1912829739534278498}
+  hide: {fileID: 8541762286380870768}
+  markAsReadAll: {fileID: 1648214199033301819}
+  hideAll: {fileID: 7577368096875589772}
+  notification: {fileID: 6458541884227280155}
 --- !u!1 &2342050918970129585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,8 +1054,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3612265268742080067}
   - component: {fileID: 4232957529602326352}
-  - component: {fileID: 6200624952481925246}
-  - component: {fileID: 4995469471184448659}
   m_Layer: 0
   m_Name: Box
   m_TagString: Notification
@@ -1137,31 +1124,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6200624952481925246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3436404766070259482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 793cb70c0bc0e404f91b078abdadd365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &4995469471184448659
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3436404766070259482}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 20, y: 10, z: 0.01}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4281446433978330605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,6 +1672,8 @@ GameObject:
   - component: {fileID: 1750132976640797706}
   - component: {fileID: 8637137038051541034}
   - component: {fileID: 8356249087720206733}
+  - component: {fileID: 2608814865625347761}
+  - component: {fileID: 7145859565865386949}
   m_Layer: 5
   m_Name: ARMobile
   m_TagString: Notification
@@ -1802,6 +1766,36 @@ MonoBehaviour:
   collisionLayer:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &2608814865625347761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6458541884227280155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793cb70c0bc0e404f91b078abdadd365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  markAsRead: {fileID: 1912829739534278498}
+  hide: {fileID: 8541762286380870768}
+  markAsReadAll: {fileID: 1648214199033301819}
+  hideAll: {fileID: 7577368096875589772}
+  notification: {fileID: 6458541884227280155}
+--- !u!65 &7145859565865386949
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6458541884227280155}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4, y: 0.7, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6541844481463593765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,7 +2291,6 @@ GameObject:
   - component: {fileID: 1974851384685029102}
   - component: {fileID: 8557918578828524665}
   - component: {fileID: 5791381953543266880}
-  - component: {fileID: 6193889853699893840}
   m_Layer: 1
   m_Name: HideGroup
   m_TagString: HideAll
@@ -2354,18 +2347,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793cb70c0bc0e404f91b078abdadd365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6193889853699893840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7577368096875589772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be345353a59eb4667accf81e44389620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  markAsRead: {fileID: 1912829739534278498}
+  hide: {fileID: 8541762286380870768}
+  markAsReadAll: {fileID: 1648214199033301819}
+  hideAll: {fileID: 7577368096875589772}
+  notification: {fileID: 6458541884227280155}
 --- !u!1 &7646681562578602600
 GameObject:
   m_ObjectHideFlags: 0
@@ -2785,7 +2771,6 @@ GameObject:
   - component: {fileID: 5026917070600657761}
   - component: {fileID: 7844725742983206086}
   - component: {fileID: 6314560932506201744}
-  - component: {fileID: 2373802446133656083}
   m_Layer: 0
   m_Name: Hide
   m_TagString: Hide
@@ -2842,15 +2827,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793cb70c0bc0e404f91b078abdadd365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2373802446133656083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8541762286380870768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be345353a59eb4667accf81e44389620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  markAsRead: {fileID: 1912829739534278498}
+  hide: {fileID: 8541762286380870768}
+  markAsReadAll: {fileID: 1648214199033301819}
+  hideAll: {fileID: 7577368096875589772}
+  notification: {fileID: 6458541884227280155}
