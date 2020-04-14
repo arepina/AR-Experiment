@@ -352,7 +352,7 @@ MonoBehaviour:
   notificationColumns: 1
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
-  distanceFromCamera: 20
+  distanceFromCamera: 10
   angle: 0
   waitForActionToBeAcceptedPeriod: 2
 --- !u!114 &48691105
