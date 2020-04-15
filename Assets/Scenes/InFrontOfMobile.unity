@@ -352,7 +352,6 @@ MonoBehaviour:
   notificationColumns: 1
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
-  distanceFromCamera: 10
   angle: 0
   waitForActionToBeAcceptedPeriod: 2
 --- !u!114 &48691105
@@ -596,7 +595,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1051663579}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 720c545b55e1843298064ac126f3e35a, type: 3}
+  m_Script: {fileID: 11500000, guid: d1e0478a2dcaa4fb6b04bf538c4b5499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 48691092}
@@ -719,7 +718,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889803567}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -732,15 +731,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889803567}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fcb7dc8fd7f449d2a050e0249de3e0d, type: 3}
+  m_Script: {fileID: 11500000, guid: 32fcb77e99ecc49dea306844974fb193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 48691092}
-  DistanceFromCamera: 0.75
+  DistanceFromCamera: 10
   SimulateInertia: 0
-  AllowMotionAlongZAxis: 1
-  PositionLerpSpeed: 5
-  RotationLerpSpeed: 5
-  ParallelToTheGround: 1
+  LerpSpeed: 5
+  DownBarier: 1
+  UpBarier: 1

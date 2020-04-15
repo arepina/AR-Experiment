@@ -17,7 +17,6 @@ namespace Logic
 
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
-            Debug.Log(eventData.pointerEnter.tag);
             startTime = DateTime.Now.Ticks;
             if (eventData.pointerEnter.tag.Equals("GroupIcon")
                 || eventData.pointerEnter.tag.Equals("HideAll")

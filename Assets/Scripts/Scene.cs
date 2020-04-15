@@ -17,7 +17,8 @@ namespace Logic
                                             Vector3 position, Vector3 scale, Quaternion rotation,
                                             bool doesHaveGroupIcon);
 
-        public delegate List<Coordinates> Coordinate();        
+        public delegate List<Coordinates> Coordinate(float distanceFromCamera);
+        public delegate List<Coordinates> AroundCoordinate();
 
         private void clearScene()
         {
@@ -51,7 +52,7 @@ namespace Logic
             Notification n = orderedNotifications.Values.First().Storage.Peek();
             if (!n.isSilent && !trayHolder.activeSelf)
             {
-                Vector3 position = new Vector3(FindObjectOfType<GlobalWave>().leftXWave, FindObjectOfType<GlobalWave>().YWave, FindObjectOfType<GlobalCommon>().distanceFromCamera);
+                Vector3 position = new Vector3(FindObjectOfType<GlobalWave>().leftXWave, FindObjectOfType<GlobalWave>().YWave, FindObjectOfType<WaveHolderReferencedContent>().DistanceFromCamera);
                 Quaternion rotation = Quaternion.Euler(0, 0, 0);
                 GameObject prefabToCreate = FindObjectOfType<GlobalCommon>().notification;
                 GameObject wave = Instantiate(prefabToCreate, position, rotation) as GameObject;
@@ -59,11 +60,12 @@ namespace Logic
                 c.a = 0.5f;
                 wave.transform.Find("Image").gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", c);
                 wave.transform.Find("Image").gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_Glossiness", 1f);
+                wave.transform.parent = notificationsHolder.transform;
             }
             if(trayHolder.activeSelf)
             {
                 clearScene();
-                List<Coordinates> coordinates = traysCoordinates();
+                List<Coordinates> coordinates = traysCoordinates(trayHolder.GetComponentInChildren<TrayHolderReferencedContent>(true).DistanceFromCamera);
                 int indexPosition = 0;
                 int maxNotificationsInTray = FindObjectOfType<GlobalCommon>().notificationsInColumnTray * FindObjectOfType<GlobalCommon>().notificationColumnsTray;
                 foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
@@ -92,13 +94,13 @@ namespace Logic
             }
         }
 
-        public void buildAround(Generator notificationGenerator, Coordinate notificationCoordinates, Coordinate traysCoordinates)
+        public void buildAround(Generator notificationGenerator, AroundCoordinate notificationCoordinates, Coordinate traysCoordinates)
         {
             var storage = gameObject.GetComponent<Storage>();
             Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
             clearScene();
             List<Coordinates> coordinates = notificationCoordinates();
-            List<Coordinates> trayCoordinates = traysCoordinates();
+            List<Coordinates> trayCoordinates = traysCoordinates(trayHolder.GetComponentInChildren<TrayHolderReferencedContent>(true).DistanceFromCamera);
             int trayCoordinatesIndex = 0;
             int maxNotificationsInTray = FindObjectOfType<GlobalCommon>().notificationsInColumnTray * FindObjectOfType<GlobalCommon>().notificationColumnsTray;
             int groupIndex = 0;
@@ -151,8 +153,8 @@ namespace Logic
             var storage = gameObject.GetComponent<Storage>();
             Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
             clearScene();
-            List<Coordinates> coordinates = notificationCoordinates();
-            List<Coordinates> trayCoordinates = traysCoordinates();
+            List<Coordinates> coordinates = notificationCoordinates(notificationsHolder.GetComponentInChildren<NotificationsHodlerReferencedContent>(true).DistanceFromCamera);
+            List<Coordinates> trayCoordinates = traysCoordinates(trayHolder.GetComponentInChildren<TrayHolderReferencedContent>(true).DistanceFromCamera);
             int usualCoordinatesIndex = 0;
             int trayCoordinatesIndex = 0;
             int maxNotifications = FindObjectOfType<GlobalCommon>().notificationsInColumn * FindObjectOfType<GlobalCommon>().notificationColumns;

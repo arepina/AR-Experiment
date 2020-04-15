@@ -5,9 +5,8 @@ namespace Logic
 {
     public class NotificationCoordinates : MonoBehaviour
     {
-        public static List<Coordinates> formInFrontOfMobileCoordinatesArray()
+        public static List<Coordinates> formInFrontOfMobileCoordinatesArray(float distanceFromCamera)
         {
-            float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Vector3(0f, -1.1f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
             coordinates.Add(new Coordinates(new Vector3(0f, 0f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
@@ -15,9 +14,8 @@ namespace Logic
             return coordinates;
         }
 
-        public static List<Coordinates> formInFrontOfStickerCoordinatesArray()
+        public static List<Coordinates> formInFrontOfStickerCoordinatesArray(float distanceFromCamera)
         {
-            float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Vector3(0f, -1.8f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
             coordinates.Add(new Coordinates(new Vector3(0f, 0f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
@@ -85,9 +83,8 @@ namespace Logic
             return coordinates;
         }
 
-        public static List<Coordinates> formTrayCoordinatesArrayMobile()
+        public static List<Coordinates> formTrayCoordinatesArrayMobile(float distanceFromCamera)
         {
-            float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Vector3(0f, -2.2f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
             coordinates.Add(new Coordinates(new Vector3(0f, -1.1f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
@@ -139,9 +136,8 @@ namespace Logic
             return coordinates;
         }
 
-        public static List<Coordinates> formTrayCoordinatesArraySticker()
+        public static List<Coordinates> formTrayCoordinatesArraySticker(float distanceFromCamera)
         {
-            float distanceFromCamera = FindObjectOfType<GlobalCommon>().distanceFromCamera;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Vector3(0f, -3.2f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
             coordinates.Add(new Coordinates(new Vector3(0f, -1.6f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));

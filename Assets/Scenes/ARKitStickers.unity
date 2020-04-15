@@ -203,7 +203,7 @@ Camera:
     width: 0.5
     height: 1
   near clip plane: 0.1
-  far clip plane: 30
+  far clip plane: 2000
   field of view: 40
   orthographic: 0
   orthographic size: 100
@@ -214,7 +214,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
+  m_TargetEye: 1
   m_HDR: 0
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
@@ -393,7 +393,6 @@ MonoBehaviour:
   notificationColumns: 5
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
-  distanceFromCamera: 0
   angle: 0
   waitForActionToBeAcceptedPeriod: 2
 --- !u!114 &24
@@ -1296,7 +1295,6 @@ MonoBehaviour:
   notificationColumns: 5
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
-  distanceFromCamera: 0
   angle: 0
   waitForActionToBeAcceptedPeriod: 2
 --- !u!114 &1199519908
@@ -1655,13 +1653,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1366459647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 720c545b55e1843298064ac126f3e35a, type: 3}
+  m_Script: {fileID: 11500000, guid: d1e0478a2dcaa4fb6b04bf538c4b5499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 7}
   DistanceFromCamera: 10
   SimulateInertia: 0
   LerpSpeed: 5
+  DownBarier: -1
+  UpBarier: 1
 --- !u!4 &1366459649
 Transform:
   m_ObjectHideFlags: 0
@@ -2106,6 +2106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1981874299}
+  - component: {fileID: 1981874300}
   m_Layer: 0
   m_Name: NotificationsHolder
   m_TagString: Untagged
@@ -2121,12 +2122,30 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981874298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1981874300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981874298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32fcb77e99ecc49dea306844974fb193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 7}
+  DistanceFromCamera: 10
+  SimulateInertia: 0
+  LerpSpeed: 5
+  DownBarier: 1
+  UpBarier: 1
 --- !u!1 &2073111659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2214,7 +2233,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 30
+  far clip plane: 2000
   field of view: 40
   orthographic: 0
   orthographic size: 5
@@ -2225,7 +2244,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
+  m_TargetEye: 2
   m_HDR: 0
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
