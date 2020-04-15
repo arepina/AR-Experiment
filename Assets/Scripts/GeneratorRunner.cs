@@ -39,6 +39,7 @@ public class GeneratorRunner : MonoBehaviour
         uint pause = experiment.timeInSeconds / experiment.notificationsNumber;        
         if (experiment.notificationsNumber > 0 && notificationIndex < experiment.notificationsNumber)
         {
+            Debug.Log("Generator");
             bool generateHaveToAct = notificationIndex % atWhichToGenerateHaveToActNotification == 0 && alreadyCorrect < experiment.numberOfHaveToActNotifications;
             if (generateHaveToAct)
             {

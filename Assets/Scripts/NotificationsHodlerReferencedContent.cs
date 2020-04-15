@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Logic;
+using UnityEngine;
 
 public class NotificationsHodlerReferencedContent : MonoBehaviour
 {
@@ -14,11 +15,11 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
     [Tooltip("The speed at which this object changes its position, if the inertia effect is enabled")]
     public float LerpSpeed = 5f;
 
-    [Tooltip("Height of the holder lower which the hodler's height will not be changed")]
-    public float DownBarier = -1f;
+    [Tooltip("Angle to the horizon")]
+    public float AngleToTheHorizon = -0.03f;
 
-    [Tooltip("Height of the holder upper which the hodler's height will not be changed")]
-    public float UpBarier = 1f;
+    [Tooltip("Angle when tray should be shown")]
+    public float TrayShowAngle = 3f;
 
     void OnEnable()
     {
@@ -32,37 +33,17 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Camera.transform.position.y + " " + Camera.transform.rotation.eulerAngles.y + " " + Camera.transform.rotation.y + " " + transform.position.y + " " + Camera.transform.rotation.eulerAngles.y);
-        float alpha = -Camera.transform.rotation.eulerAngles.y + 90;
-        if (alpha > 360)
+        Vector3 posTo = Camera.transform.position + Camera.transform.forward * DistanceFromCamera;
+        if (posTo.y < AngleToTheHorizon)
         {
-            alpha = alpha - 360;
+            posTo.y = AngleToTheHorizon;
         }
-        float a = Mathf.Pow(transform.position.x - Camera.transform.position.x, 2);
-        float c = Mathf.Pow(transform.position.z - Camera.transform.position.z, 2);
-        float r = Mathf.Sqrt(a + c);
-        float cos = Mathf.Cos(alpha * Mathf.Deg2Rad);
-        float sin = Mathf.Sin(alpha * Mathf.Deg2Rad);
-        if (alpha == 90.0 || alpha == 270.0)
+        if (posTo.y >= TrayShowAngle)
         {
-            cos = 0;
+            EventManager.Broadcast(EVENT.ShowTray);
+            return;
         }
-        if (alpha == 0 || alpha == 180.0)
-        {
-            sin = 0;
-        }
-        float x2 = Camera.transform.position.x + r * cos;
-        float y2 = Camera.transform.position.y;
-        float z2 = Camera.transform.position.z + r * sin;
-        if(y2 < DownBarier)
-        {
-            y2 = DownBarier;
-        }
-        if (y2 > UpBarier)
-        {
-            y2 = UpBarier;
-        }
-        Vector3 posTo = new Vector3(x2, y2, z2);
+
         Quaternion rotTo = Quaternion.LookRotation(transform.position - Camera.transform.position);
 
         if (SimulateInertia)

@@ -12,7 +12,6 @@ namespace Logic
         public int notificationsInColumnTray;
         public int notificationColumnsTray;
         public static string silentGroupKey = "_silent_";
-        public float angle;
         public float waitForActionToBeAcceptedPeriod;
     }
 }

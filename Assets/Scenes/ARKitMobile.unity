@@ -139,7 +139,6 @@ GameObject:
   - component: {fileID: 18}
   - component: {fileID: 15}
   - component: {fileID: 21}
-  - component: {fileID: 26}
   - component: {fileID: 22}
   - component: {fileID: 23}
   - component: {fileID: 25}
@@ -393,7 +392,6 @@ MonoBehaviour:
   notificationColumns: 5
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
-  angle: 0
   waitForActionToBeAcceptedPeriod: 2
 --- !u!114 &24
 MonoBehaviour:
@@ -421,21 +419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b62b7f57c19f461d96d077336a5e83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &26
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af196ab1b591e473cab8134ba8040d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isRunning: 0
-  trayHolder: {fileID: 467690068}
-  notificationsHolder: {fileID: 475933800}
 --- !u!108 &29
 Light:
   m_ObjectHideFlags: 0
@@ -855,10 +838,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 2142712159}
   DistanceFromCamera: 10
-  SimulateInertia: 0
+  SimulateInertia: 1
   LerpSpeed: 5
-  DownBarier: -1
-  UpBarier: 1
+  AngleToTheHorizon: -0.003
 --- !u!4 &467690070
 Transform:
   m_ObjectHideFlags: 0
@@ -882,7 +864,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 475933801}
-  - component: {fileID: 475933802}
   m_Layer: 0
   m_Name: NotificationsHolder
   m_TagString: Untagged
@@ -904,24 +885,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &475933802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475933800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32fcb77e99ecc49dea306844974fb193, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Camera: {fileID: 2142712159}
-  DistanceFromCamera: 10
-  SimulateInertia: 0
-  LerpSpeed: 5
-  DownBarier: 1
-  UpBarier: 1
 --- !u!1 &481742511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2089,7 +2052,6 @@ GameObject:
   - component: {fileID: 2142712168}
   - component: {fileID: 2142712167}
   - component: {fileID: 2142712166}
-  - component: {fileID: 2142712165}
   - component: {fileID: 2142712164}
   - component: {fileID: 2142712163}
   - component: {fileID: 2142712162}
@@ -2163,7 +2125,6 @@ MonoBehaviour:
   notificationColumns: 5
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
-  angle: 0
   waitForActionToBeAcceptedPeriod: 2
 --- !u!114 &2142712164
 MonoBehaviour:
@@ -2179,21 +2140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 90, y: 0, z: 0, w: 0}
---- !u!114 &2142712165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142712159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af196ab1b591e473cab8134ba8040d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isRunning: 0
-  trayHolder: {fileID: 467690068}
-  notificationsHolder: {fileID: 475933800}
 --- !u!114 &2142712166
 MonoBehaviour:
   m_ObjectHideFlags: 0

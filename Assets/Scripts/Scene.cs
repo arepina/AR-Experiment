@@ -20,6 +20,25 @@ namespace Logic
         public delegate List<Coordinates> Coordinate(float distanceFromCamera);
         public delegate List<Coordinates> AroundCoordinate();
 
+        public void Start()
+        {
+            EventManager.AddHandler(EVENT.NotificationCreated, rebuildScene);
+            EventManager.AddHandler(EVENT.ShowTray, showTray);
+            EventManager.AddHandler(EVENT.HideTray, hideTray);
+        }
+
+        private void showTray()
+        {
+            notificationsHolder.SetActive(false);
+            trayHolder.SetActive(true);
+        }
+
+        private void hideTray()
+        {
+            trayHolder.SetActive(false);
+            notificationsHolder.SetActive(true);
+        }
+
         private void clearScene()
         {
             GameObject[] notificationsObjects = GameObject.FindGameObjectsWithTag("Notification");

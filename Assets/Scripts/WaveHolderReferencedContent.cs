@@ -1,4 +1,5 @@
 ﻿
+using Logic;
 using UnityEngine;
 
 public class WaveHolderReferencedContent : MonoBehaviour
@@ -8,6 +9,9 @@ public class WaveHolderReferencedContent : MonoBehaviour
 
     [Tooltip("The distance from the camera that this object should be placed")]
     public float DistanceFromCamera = 10f;
+
+    [Tooltip("Angle when tray should be shown")]
+    public float TrayShowAngle = 3f;
 
     void OnEnable()
     {
@@ -21,29 +25,15 @@ public class WaveHolderReferencedContent : MonoBehaviour
 
     void Update()
     {
-        float alpha = -Camera.transform.rotation.eulerAngles.y + 90;
-        if (alpha > 360)
+        Vector3 posTo = Camera.transform.position + Camera.transform.forward * DistanceFromCamera;
+        if (posTo.y >= TrayShowAngle)
         {
-            alpha = alpha - 360;
+            EventManager.Broadcast(EVENT.ShowTray);
+            return;
         }
-        float a = Mathf.Pow(transform.position.x - Camera.transform.position.x, 2);
-        float c = Mathf.Pow(transform.position.z - Camera.transform.position.z, 2);
-        float r = Mathf.Sqrt(a + c);
-        float cos = Mathf.Cos(alpha * Mathf.Deg2Rad);
-        float sin = Mathf.Sin(alpha * Mathf.Deg2Rad);
-        if (alpha == 90.0 || alpha == 270.0)
-        {
-            cos = 0;
-        }
-        if (alpha == 0 || alpha == 180.0)
-        {
-            sin = 0;
-        }
-        float x2 = Camera.transform.position.x + r * cos;
-        float y2 = Camera.transform.position.y;
-        float z2 = Camera.transform.position.z + r * sin;
-        Vector3 posTo = new Vector3(x2, y2, z2);
+
         Quaternion rotTo = Quaternion.LookRotation(transform.position - Camera.transform.position);
+   
         transform.position = posTo;
         transform.rotation = rotTo;
     }

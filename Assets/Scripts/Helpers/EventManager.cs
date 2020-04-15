@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Logic
 {
-    public enum EVENT { NotificationCreated };
+    public enum EVENT { NotificationCreated, ShowTray, HideTray };
     public class EventManager
     {
         // Stores the delegates that get called when an event is fired
