@@ -843,6 +843,15 @@ public abstract class GvrBasePointer : MonoBehaviour, IGvrControllerInputDeviceR
 
             if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.L) || Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
             {
+                Debug.Log("GVR Input");
+                if (Input.GetButton("Fire1"))
+                {
+                    Debug.Log("Fire1");
+                }
+                if (Input.GetButton("Fire2"))
+                {
+                    Debug.Log("Fire2");
+                }
                 buttonDown |= GvrControllerButton.TouchPadButton;
             }
 

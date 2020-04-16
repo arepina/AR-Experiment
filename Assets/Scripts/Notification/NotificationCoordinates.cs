@@ -83,109 +83,109 @@ namespace Logic
             return coordinates;
         }
 
-        public static List<Coordinates> formTrayCoordinatesArrayMobile(float distanceFromCamera)
+        public static List<Coordinates> formTrayCoordinatesArrayMobile(float distanceFromCamera, float trayHeight)
         {
             List<Coordinates> coordinates = new List<Coordinates>();
-            coordinates.Add(new Coordinates(new Vector3(0f, -2.2f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, -1.1f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 0f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 1.1f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 2.2f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, -2.2f + trayHeight, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, -1.1f + trayHeight, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 0f + trayHeight, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 1.1f + trayHeight, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 2.2f + trayHeight, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
 
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, -2.2f, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, -1.1f, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, 0f, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, 1.1f, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, 2.2f, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, -2.2f + trayHeight, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, -1.1f + trayHeight, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, 0f + trayHeight, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, 1.1f + trayHeight, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, 2.2f + trayHeight, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
 
-            coordinates.Add(new Coordinates(new Vector3(3.5f, -2.2f, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, -1.1f, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, 0f, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, 1.1f, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, 2.2f, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, -2.2f + trayHeight, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, -1.1f + trayHeight, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, 0f + trayHeight, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, 1.1f + trayHeight, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, 2.2f + trayHeight, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
 
-            coordinates.Add(new Coordinates(new Vector3(-5f, -2.2f, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-5f, -1.1f, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-5f, 0f, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-5f, 1.1f, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-5f, 2.2f, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-5f, -2.2f + trayHeight, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-5f, -1.1f + trayHeight, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-5f, 0f + trayHeight, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-5f, 1.1f + trayHeight, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-5f, 2.2f + trayHeight, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
 
-            coordinates.Add(new Coordinates(new Vector3(5f, -2.2f, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(5f, -1.1f, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(5f, 0f, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(5f, 1.1f, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(5f, 2.2f, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(5f, -2.2f + trayHeight, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(5f, -1.1f + trayHeight, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(5f, 0f + trayHeight, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(5f, 1.1f + trayHeight, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(5f, 2.2f + trayHeight, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
 
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, -2.2f, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, -1.1f, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, 0f, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, 1.1f, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, 2.2f, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, -2.2f + trayHeight, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, -1.1f + trayHeight, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, 0f + trayHeight, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, 1.1f + trayHeight, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, 2.2f + trayHeight, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
 
-            coordinates.Add(new Coordinates(new Vector3(3.5f, -2.2f, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, -1.1f, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, 0f, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, 1.1f, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, 2.2f, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, -2.2f + trayHeight, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, -1.1f + trayHeight, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, 0f + trayHeight, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, 1.1f + trayHeight, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, 2.2f + trayHeight, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
 
-            coordinates.Add(new Coordinates(new Vector3(0f, -2.2f, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, -1.1f, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 0f, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 1.1f, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 2.2f, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, -2.2f + trayHeight, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, -1.1f + trayHeight, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 0f + trayHeight, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 1.1f + trayHeight, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 2.2f + trayHeight, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
             return coordinates;
         }
 
-        public static List<Coordinates> formTrayCoordinatesArraySticker(float distanceFromCamera)
+        public static List<Coordinates> formTrayCoordinatesArraySticker(float distanceFromCamera, float trayHeight)
         {
             List<Coordinates> coordinates = new List<Coordinates>();
-            coordinates.Add(new Coordinates(new Vector3(0f, -3.2f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, -1.6f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 0f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 1.6f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 3.2f, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, -3.6f + trayHeight, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, -1.8f + trayHeight, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 0f + trayHeight, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 1.8f + trayHeight, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 3.6f + trayHeight, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
 
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, -3.2f, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, -1.6f, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, 0f, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, 1.6f, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, 3.2f, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, -3.6f + trayHeight, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, -1.8f + trayHeight, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, 0f + trayHeight, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, 1.8f + trayHeight, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, 3.6f + trayHeight, distanceFromCamera), new Quaternion(0, 315, 0, 0), new Vector3(1f, 1f, 1f)));
 
-            coordinates.Add(new Coordinates(new Vector3(3.5f, -3.2f, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, -1.6f, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, 0f, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, 1.6f, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, 3.2f, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, -3.6f + trayHeight, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, -1.8f + trayHeight, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, 0f + trayHeight, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, 1.8f + trayHeight, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, 3.6f + trayHeight, distanceFromCamera), new Quaternion(0, 45, 0, 0), new Vector3(1f, 1f, 1f)));
 
-            coordinates.Add(new Coordinates(new Vector3(-5f, -3.2f, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-5f, -1.6f, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-5f, 0f, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-5f, 1.6f, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-5f, 3.2f, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-5f, -3.6f + trayHeight, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-5f, -1.8f + trayHeight, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-5f, 0f + trayHeight, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-5f, 1.8f + trayHeight, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-5f, 3.6f + trayHeight, 0), new Quaternion(0, 270, 0, 0), new Vector3(1f, 1f, 1f)));
 
-            coordinates.Add(new Coordinates(new Vector3(5f, -3.2f, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(5f, -1.6f, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(5f, 0f, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(5f, 1.6f, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(5f, 3.2f, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(5f, -3.6f + trayHeight, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(5f, -1.8f + trayHeight, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(5f, 0f + trayHeight, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(5f, 1.8f + trayHeight, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(5f, 3.6f + trayHeight, 0), new Quaternion(0, 90, 0, 0), new Vector3(1f, 1f, 1f)));
 
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, -3.2f, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, -1.6f, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, 0f, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, 1.6f, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(-3.5f, 3.2f, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, -3.6f + trayHeight, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, -1.8f + trayHeight, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, 0f + trayHeight, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, 1.8f + trayHeight, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(-3.5f, 3.6f + trayHeight, -distanceFromCamera), new Quaternion(0, 225, 0, 0), new Vector3(1f, 1f, 1f)));
 
-            coordinates.Add(new Coordinates(new Vector3(3.5f, -3.2f, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, -1.6f, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, 0f, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, 1.6f, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(3.5f, 3.2f, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, -3.6f + trayHeight, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, -1.8f + trayHeight, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, 0f + trayHeight, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, 1.8f + trayHeight, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(3.5f, 3.6f + trayHeight, -distanceFromCamera), new Quaternion(0, 135, 0, 0), new Vector3(1f, 1f, 1f)));
 
-            coordinates.Add(new Coordinates(new Vector3(0f, -3.2f, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, -1.6f, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 0f, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 1.6f, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 3.2f, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, -3.6f + trayHeight, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, -1.8f + trayHeight, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 0f + trayHeight, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 1.8f + trayHeight, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 3.6f + trayHeight, -distanceFromCamera), new Quaternion(0, 180, 0, 0), new Vector3(1f, 1f, 1f)));
             return coordinates;
         }
     }

@@ -3,12 +3,14 @@ using Logic;
 using UnityEngine;
 
 public class WaveMover : MonoBehaviour
-{
+{ 
     void Start()
     {
-        Vector3 startPos = new Vector3(FindObjectOfType<GlobalWave>().leftXWave, FindObjectOfType<GlobalWave>().YWave, FindObjectOfType<WaveHolderReferencedContent>().DistanceFromCamera);
-        Vector3 finishPos = new Vector3(FindObjectOfType<GlobalWave>().rightXWave, FindObjectOfType<GlobalWave>().YWave, FindObjectOfType<WaveHolderReferencedContent>().DistanceFromCamera);
-        StartCoroutine(DeleteObject(gameObject, FindObjectOfType<GlobalWave>().durationWave));
+        GlobalWave waves = FindObjectOfType<GlobalWave>();
+        WaveHolderReferencedContent waveHolder = FindObjectOfType<WaveHolderReferencedContent>();
+        Vector3 startPos = new Vector3(waves.leftXWave, waves.YWave, waveHolder.DistanceFromCamera);
+        Vector3 finishPos = new Vector3(waves.rightXWave, waves.YWave, waveHolder.DistanceFromCamera);
+        StartCoroutine(DeleteObject(gameObject, waves.durationWave));
         StartCoroutine(PingPong(transform, startPos, finishPos));
     }
 

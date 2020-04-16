@@ -31,6 +31,7 @@ public class WaveHolderReferencedContent : MonoBehaviour
             EventManager.Broadcast(EVENT.ShowTray);
             return;
         }
+        posTo.y = Camera.transform.position.y;
 
         Quaternion rotTo = Quaternion.LookRotation(transform.position - Camera.transform.position);
    

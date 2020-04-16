@@ -8,14 +8,17 @@ public class TrayHolderReferencedContent : MonoBehaviour
     [Tooltip("The distance from the camera that this object should be placed")]
     public float DistanceFromCamera = 10f;
 
+    [Tooltip("The height at which tray is located")]
+    public float TrayHeight = 10f;
+
     [Tooltip("If checked, makes objecta move smoothly")]
     public bool SimulateInertia = false;
 
     [Tooltip("The speed at which this object changes its position, if the inertia effect is enabled")]
-    public float LerpSpeed = 5f;
+    public float LerpSpeed = 0.06f;
 
-    [Tooltip("Angle to the horizon")]
-    public float AngleToTheHorizon = -0.003f;
+    [Tooltip("Fixed tray location angle to the horizon")]
+    public float FixedAngleToTheHorizon = -0.003f;
 
     void OnEnable()
     {
@@ -30,9 +33,9 @@ public class TrayHolderReferencedContent : MonoBehaviour
     void Update()
     {
         Vector3 posTo = Camera.transform.position + Camera.transform.forward * DistanceFromCamera;
-        if (posTo.y < AngleToTheHorizon)
+        if (posTo.y != FixedAngleToTheHorizon)
         {
-            posTo.y = AngleToTheHorizon;
+            posTo.y = FixedAngleToTheHorizon;
         }
 
         if (SimulateInertia)

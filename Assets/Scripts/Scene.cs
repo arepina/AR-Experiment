@@ -18,6 +18,7 @@ namespace Logic
                                             bool doesHaveGroupIcon);
 
         public delegate List<Coordinates> Coordinate(float distanceFromCamera);
+        public delegate List<Coordinates> TrayCoordinate(float distanceFromCamera, float trayHeight);
         public delegate List<Coordinates> AroundCoordinate();
 
         public void Start()
@@ -35,6 +36,9 @@ namespace Logic
 
         private void hideTray()
         {
+            Vector3 trayPosBefore = trayHolder.transform.position;
+            trayPosBefore.y = trayHolder.GetComponentInChildren<TrayHolderReferencedContent>(true).TrayHeight;
+            trayHolder.transform.position = trayPosBefore;
             trayHolder.SetActive(false);
             notificationsHolder.SetActive(true);
         }
@@ -64,7 +68,7 @@ namespace Logic
             }
         }
 
-        public void buildHiddenWaves(Generator notificationGenerator, Coordinate traysCoordinates)
+        public void buildHiddenWaves(Generator notificationGenerator, TrayCoordinate traysCoordinates)
         {
             var storage = gameObject.GetComponent<Storage>();
             Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
@@ -84,7 +88,7 @@ namespace Logic
             if(trayHolder.activeSelf)
             {
                 clearScene();
-                List<Coordinates> coordinates = traysCoordinates(trayHolder.GetComponentInChildren<TrayHolderReferencedContent>(true).DistanceFromCamera);
+                List<Coordinates> coordinates = traysCoordinates(trayHolder.GetComponentInChildren<TrayHolderReferencedContent>(true).DistanceFromCamera, trayHolder.GetComponentInChildren<TrayHolderReferencedContent>(true).TrayHeight);
                 int indexPosition = 0;
                 int maxNotificationsInTray = FindObjectOfType<GlobalCommon>().notificationsInColumnTray * FindObjectOfType<GlobalCommon>().notificationColumnsTray;
                 foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
@@ -113,13 +117,13 @@ namespace Logic
             }
         }
 
-        public void buildAround(Generator notificationGenerator, AroundCoordinate notificationCoordinates, Coordinate traysCoordinates)
+        public void buildAround(Generator notificationGenerator, AroundCoordinate notificationCoordinates, TrayCoordinate traysCoordinates)
         {
             var storage = gameObject.GetComponent<Storage>();
             Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
             clearScene();
             List<Coordinates> coordinates = notificationCoordinates();
-            List<Coordinates> trayCoordinates = traysCoordinates(trayHolder.GetComponentInChildren<TrayHolderReferencedContent>(true).DistanceFromCamera);
+            List<Coordinates> trayCoordinates = traysCoordinates(trayHolder.GetComponentInChildren<TrayHolderReferencedContent>(true).DistanceFromCamera, trayHolder.GetComponentInChildren<TrayHolderReferencedContent>(true).TrayHeight);
             int trayCoordinatesIndex = 0;
             int maxNotificationsInTray = FindObjectOfType<GlobalCommon>().notificationsInColumnTray * FindObjectOfType<GlobalCommon>().notificationColumnsTray;
             int groupIndex = 0;
@@ -167,13 +171,13 @@ namespace Logic
             }
         }
 
-        public void buildInFrontOf(Generator notificationGenerator, Coordinate notificationCoordinates, Coordinate traysCoordinates)
+        public void buildInFrontOf(Generator notificationGenerator, Coordinate notificationCoordinates, TrayCoordinate traysCoordinates)
         {
             var storage = gameObject.GetComponent<Storage>();
             Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
             clearScene();
             List<Coordinates> coordinates = notificationCoordinates(notificationsHolder.GetComponentInChildren<NotificationsHodlerReferencedContent>(true).DistanceFromCamera);
-            List<Coordinates> trayCoordinates = traysCoordinates(trayHolder.GetComponentInChildren<TrayHolderReferencedContent>(true).DistanceFromCamera);
+            List<Coordinates> trayCoordinates = traysCoordinates(trayHolder.GetComponentInChildren<TrayHolderReferencedContent>(true).DistanceFromCamera, trayHolder.GetComponentInChildren<TrayHolderReferencedContent>(true).TrayHeight);
             int usualCoordinatesIndex = 0;
             int trayCoordinatesIndex = 0;
             int maxNotifications = FindObjectOfType<GlobalCommon>().notificationsInColumn * FindObjectOfType<GlobalCommon>().notificationColumns;
@@ -211,7 +215,9 @@ namespace Logic
                                              scale,
                                              rotation,
                                              doesHaveGroupIcon);
+                        Debug.Log("0 " + n.transform.position + " " + n.transform.rotation);
                         n.transform.parent = notificationsHolder.transform;
+                        Debug.Log("1 " + n.transform.position + " " + n.transform.rotation);
                         usualCoordinatesIndex += 1;
                     }
                 }

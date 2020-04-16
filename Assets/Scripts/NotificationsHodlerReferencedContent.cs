@@ -13,7 +13,7 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
     public bool SimulateInertia = false;
 
     [Tooltip("The speed at which this object changes its position, if the inertia effect is enabled")]
-    public float LerpSpeed = 5f;
+    public float LerpSpeed = 1f;
 
     [Tooltip("Angle to the horizon")]
     public float AngleToTheHorizon = -0.03f;
