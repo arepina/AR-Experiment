@@ -160,9 +160,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb899351e3de4aeb95ca0c1f98f95a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  red: {fileID: 2100000, guid: 938f5f3fdd19a4be3b09ab9bd63ed1ce, type: 2}
+  blue: {fileID: 2100000, guid: fb2252c0d24a84135aa4942dcc379161, type: 2}
+  yellow: {fileID: 2100000, guid: 3a71047eab6ac4bda8ace83bb44390d4, type: 2}
+  green: {fileID: 2100000, guid: e379d1526190f4d08aeba20aced74ab4, type: 2}
+  grey: {fileID: 2100000, guid: 309ec36c9686841489c2c8f3384886d6, type: 2}
   trayHolder: {fileID: 1051663579}
   notificationsHolder: {fileID: 1889803567}
-  camera: {fileID: 48691092}
 --- !u!114 &48691094
 MonoBehaviour:
   m_ObjectHideFlags: 0

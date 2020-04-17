@@ -9,6 +9,7 @@ public class WaveMover : MonoBehaviour
     void Start()
     {
         Vector3 startPos = transform.position;
+        startPos.y = Screen.currentResolution.height;
         Vector3 finishPos = startPos;
         finishPos.x = startPos.x + Screen.currentResolution.width;
         StartCoroutine(DeleteObject(gameObject, durationWave));

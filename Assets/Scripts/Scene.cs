@@ -11,6 +11,11 @@ namespace Logic
     {
         private Color markAsReadColor = new Color32(0, 0, 194, 255);
         private Color hideColor = new Color32(255, 36, 0, 255);
+        public Material red;
+        public Material blue;
+        public Material yellow;
+        public Material green;
+        public Material grey;
         public GameObject trayHolder;
         public GameObject notificationsHolder;
 
@@ -80,10 +85,13 @@ namespace Logic
                 GameObject wave = Instantiate(prefabToCreate) as GameObject;
                 Color c = n.Color;
                 c.a = 0.5f;
-                wave.GetComponents<Image>()[0].material.SetColor("_Color", c);
+                if (n.SourceName == "YouTube") wave.GetComponents<Image>()[0].material = red;
+                if (n.SourceName == "Telegram") wave.GetComponents<Image>()[0].material = blue;
+                if (n.SourceName == "Яндекс.Почта") wave.GetComponents<Image>()[0].material = yellow;
+                if (n.SourceName == "WhatsApp") wave.GetComponents<Image>()[0].material = green;
+                if (n.SourceName == GlobalCommon.silentGroupKey) wave.GetComponents<Image>()[0].material = grey;
                 wave.GetComponents<Image>()[0].material.SetFloat("_Glossiness", 1f);
                 wave.transform.parent = notificationsHolder.transform;
-                Debug.Log(wave.transform.position);
             }
             if(trayHolder.activeSelf)
             {
