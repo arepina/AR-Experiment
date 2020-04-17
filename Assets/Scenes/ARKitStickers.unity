@@ -407,6 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trayHolder: {fileID: 1366459647}
   notificationsHolder: {fileID: 1981874298}
+  camera: {fileID: 7}
 --- !u!114 &25
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,6 +1339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trayHolder: {fileID: 1366459647}
   notificationsHolder: {fileID: 1981874298}
+  camera: {fileID: 1302995780}
 --- !u!114 &1302995783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1687,9 +1689,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 7}
   DistanceFromCamera: 10
+  TrayHeight: 10
   SimulateInertia: 1
   LerpSpeed: 5
-  AngleToTheHorizon: -0.003
+  FixedAngleToTheHorizon: -0.003
 --- !u!4 &1366459649
 Transform:
   m_ObjectHideFlags: 0

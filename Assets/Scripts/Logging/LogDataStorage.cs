@@ -60,7 +60,9 @@ namespace Logic
 
         public bool IsThereUnsavedData()
         {
-            return (_storedLogData.Count > 0);
+            if(_storedLogData != null)
+                return _storedLogData.Count > 0;
+            return false;
         }
 
         public void NextLog(string Notification)

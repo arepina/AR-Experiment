@@ -353,6 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trayHolder: {fileID: 600461539}
   notificationsHolder: {fileID: 52981605}
+  camera: {fileID: 710828786}
 --- !u!114 &710828793
 MonoBehaviour:
   m_ObjectHideFlags: 0

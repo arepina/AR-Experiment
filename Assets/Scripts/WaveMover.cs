@@ -1,16 +1,17 @@
 ﻿using System.Collections;
-using Logic;
 using UnityEngine;
 
 public class WaveMover : MonoBehaviour
-{ 
+{
+    public float speedWave;
+    public float durationWave;
+
     void Start()
     {
-        GlobalWave waves = FindObjectOfType<GlobalWave>();
-        WaveHolderReferencedContent waveHolder = FindObjectOfType<WaveHolderReferencedContent>();
-        Vector3 startPos = new Vector3(waves.leftXWave, waves.YWave, waveHolder.DistanceFromCamera);
-        Vector3 finishPos = new Vector3(waves.rightXWave, waves.YWave, waveHolder.DistanceFromCamera);
-        StartCoroutine(DeleteObject(gameObject, waves.durationWave));
+        Vector3 startPos = transform.position;
+        Vector3 finishPos = startPos;
+        finishPos.x = startPos.x + Screen.currentResolution.width;
+        StartCoroutine(DeleteObject(gameObject, durationWave));
         StartCoroutine(PingPong(transform, startPos, finishPos));
     }
 
@@ -40,7 +41,7 @@ public class WaveMover : MonoBehaviour
             yield break;
         while (true)
         { 
-            float distCovered = (Time.time - startTime) * FindObjectOfType<GlobalWave>().speedWave;
+            float distCovered = (Time.time - startTime) * speedWave;
             float fracJourney = distCovered / journeyLength;
             targetObject.position = Vector3.Lerp(startPos, toPosition, fracJourney);
             if (fracJourney >= 1)

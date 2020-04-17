@@ -60,7 +60,9 @@ namespace Logic
 
         public bool IsThereUnsavedData()
         {
-            return (_storedTrialData.Count > 0);
+            if (_storedTrialData != null)
+                return _storedTrialData.Count > 0;
+            return false;
         }
 
         public void NextTrialExperiment(uint SubjectNumber, string Design, uint TrialNumber, float Time,

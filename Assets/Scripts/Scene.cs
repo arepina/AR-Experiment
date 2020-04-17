@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Logic
 {
@@ -75,15 +76,14 @@ namespace Logic
             Notification n = orderedNotifications.Values.First().Storage.Peek();
             if (!n.isSilent && !trayHolder.activeSelf)
             {
-                Vector3 position = new Vector3(FindObjectOfType<GlobalWave>().leftXWave, FindObjectOfType<GlobalWave>().YWave, FindObjectOfType<WaveHolderReferencedContent>().DistanceFromCamera);
-                Quaternion rotation = Quaternion.Euler(0, 0, 0);
                 GameObject prefabToCreate = FindObjectOfType<GlobalCommon>().notification;
-                GameObject wave = Instantiate(prefabToCreate, position, rotation) as GameObject;
+                GameObject wave = Instantiate(prefabToCreate) as GameObject;
                 Color c = n.Color;
                 c.a = 0.5f;
-                wave.transform.Find("Image").gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", c);
-                wave.transform.Find("Image").gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_Glossiness", 1f);
+                wave.GetComponents<Image>()[0].material.SetColor("_Color", c);
+                wave.GetComponents<Image>()[0].material.SetFloat("_Glossiness", 1f);
                 wave.transform.parent = notificationsHolder.transform;
+                Debug.Log(wave.transform.position);
             }
             if(trayHolder.activeSelf)
             {
