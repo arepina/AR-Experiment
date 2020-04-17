@@ -98,7 +98,7 @@ namespace Logic
                     {
                         Notification notification = groupNotifications.ToArray()[i];
                         bool doesHaveGroupIcon = i == groupNotifications.Count - 1 ||
-                            indexPosition % FindObjectOfType<GlobalCommon>().notificationsInColumn == (FindObjectOfType<GlobalCommon>().notificationsInColumn - 1);
+                            indexPosition % FindObjectOfType<GlobalCommon>().notificationsInColumnTray == (FindObjectOfType<GlobalCommon>().notificationsInColumnTray - 1);
                         if (indexPosition < maxNotificationsInTray)
                         {
                             Vector3 position = coordinates[indexPosition].Position;

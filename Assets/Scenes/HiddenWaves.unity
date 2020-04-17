@@ -428,6 +428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1268189765}
+  - component: {fileID: 1268189766}
   m_Layer: 5
   m_Name: WavesHolder
   m_TagString: Untagged
@@ -454,6 +455,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -778.99994}
   m_SizeDelta: {x: 0, y: -1558.0001}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1268189766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268189764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7245d635b0c04fb8b121497c36ec5df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 70485782}
+  TrayShowAngle: 0.03
 --- !u!1 &1320142537
 GameObject:
   m_ObjectHideFlags: 0
