@@ -1157,6 +1157,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 723926960, guid: 60270cf52a5e94998a5a335989159738, type: 3}
+      propertyPath: overridePointerCamera
+      value: 
+      objectReference: {fileID: 427683005}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60270cf52a5e94998a5a335989159738, type: 3}
 --- !u!4 &1187703710 stripped
@@ -1366,9 +1370,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 427682992}
-  TrayHeight: 20
   SimulateInertia: 1
   LerpSpeed: 5
+  TrayHideAngle: -0.03
 --- !u!4 &1457189456
 Transform:
   m_ObjectHideFlags: 0
