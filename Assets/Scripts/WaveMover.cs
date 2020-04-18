@@ -8,6 +8,7 @@ public class WaveMover : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(Screen.currentResolution);
         Vector3 startPos = transform.position;
         startPos.y = Screen.currentResolution.height;
         Vector3 finishPos = startPos;

@@ -28,7 +28,7 @@ public class WorldMapManager : MonoBehaviour
     void OnARInterrupted()
     {
         Debug.Log("OnARInterrupted");
-        FindObjectOfType<UnityARGeneratePlane>().unityARAnchorManager.Destroy();
+        //FindObjectOfType<UnityARGeneratePlane>().unityARAnchorManager.Destroy();
         Color color = planesMaterial.color;
         color.a = 0;
         planesMaterial.color = color;

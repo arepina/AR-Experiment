@@ -786,8 +786,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 70485782}
-  DistanceFromCamera: 10
-  TrayHeight: 10
+  TrayHeight: 0
   SimulateInertia: 1
-  LerpSpeed: 1
-  FixedAngleToTheHorizon: -0.003
+  LerpSpeed: 0.1

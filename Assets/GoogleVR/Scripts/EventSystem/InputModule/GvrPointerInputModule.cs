@@ -222,6 +222,10 @@ public class GvrPointerInputModule : BaseInputModule, IGvrInputModuleController
     [SuppressMemoryAllocationError(IsWarning = true, Reason = "Pending documentation.")]
     public override bool ShouldActivateModule()
     {
+        if(Impl == null)
+        {
+            return false;
+        }
         return Impl.ShouldActivateModule();
     }
 
@@ -243,7 +247,10 @@ public class GvrPointerInputModule : BaseInputModule, IGvrInputModuleController
     public override void Process()
     {
         UpdateImplProperties();
-        Impl.Process();
+        if (Impl != null)
+        {
+            Impl.Process();
+        }
     }
 
     /// <summary>Whether the module should be activated.</summary>

@@ -117,11 +117,14 @@ namespace Logic
                 else
                 {
                     // Yepp, we will do this one by one
-                    _storedTrialData.Dequeue();
-                    if (IsThereUnsavedData())
-                        StartCoroutine(TryToSaveToGoogleSheets());
-                    else
-                        ClearLocalStorage();
+                    if (_storedTrialData.Count > 0)
+                    {
+                        _storedTrialData.Dequeue();
+                        if (IsThereUnsavedData())
+                            StartCoroutine(TryToSaveToGoogleSheets());
+                        else
+                            ClearLocalStorage();
+                    }                
                 }
             }
         }

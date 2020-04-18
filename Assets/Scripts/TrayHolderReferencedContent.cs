@@ -1,15 +1,10 @@
-﻿using UnityEngine;
+﻿using Logic;
+using UnityEngine;
 
 public class TrayHolderReferencedContent : MonoBehaviour
 {
     [Tooltip("The camera is needed to emulate a torso reference frame")]
     public GameObject Camera;
-
-    [Tooltip("The distance from the camera that this object should be placed")]
-    public float DistanceFromCamera = 10f;
-
-    [Tooltip("The height at which tray is located")]
-    public float TrayHeight = 10f;
 
     [Tooltip("If checked, makes objecta move smoothly")]
     public bool SimulateInertia = false;
@@ -17,8 +12,8 @@ public class TrayHolderReferencedContent : MonoBehaviour
     [Tooltip("The speed at which this object changes its position, if the inertia effect is enabled")]
     public float LerpSpeed = 0.06f;
 
-    [Tooltip("Fixed tray location angle to the horizon")]
-    public float FixedAngleToTheHorizon = -0.003f;
+    [Tooltip("Angle when tray should be hiden")]
+    public float TrayHideAngle = -0.03f;
 
     void OnEnable()
     {
@@ -32,10 +27,13 @@ public class TrayHolderReferencedContent : MonoBehaviour
 
     void Update()
     {
-        Vector3 posTo = Camera.transform.position + Camera.transform.forward * DistanceFromCamera;
-        if (posTo.y != FixedAngleToTheHorizon)
+        Debug.Log("Tray " + Camera.transform.position + " " + transform.position + " " + Camera.transform.rotation + " " + transform.rotation);
+        Vector3 posTo = Camera.transform.position;
+        if (posTo.y <= TrayHideAngle)
         {
-            posTo.y = FixedAngleToTheHorizon;
+            Debug.Log("HIDE Tray " + Camera.transform.position + " " + transform.position + " " + Camera.transform.rotation + " " + transform.rotation);
+            EventManager.Broadcast(EVENT.HideTray);
+            return;
         }
 
         if (SimulateInertia)

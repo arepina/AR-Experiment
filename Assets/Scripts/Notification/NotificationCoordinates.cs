@@ -83,8 +83,10 @@ namespace Logic
             return coordinates;
         }
 
-        public static List<Coordinates> formTrayCoordinatesArrayMobile(float distanceFromCamera, float trayHeight)
+        public static List<Coordinates> formTrayCoordinatesArrayMobile()
         {
+            float distanceFromCamera = 10;
+            float trayHeight = 10;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Vector3(0f, -2.2f + trayHeight, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
             coordinates.Add(new Coordinates(new Vector3(0f, -1.1f + trayHeight, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
@@ -136,8 +138,10 @@ namespace Logic
             return coordinates;
         }
 
-        public static List<Coordinates> formTrayCoordinatesArraySticker(float distanceFromCamera, float trayHeight)
+        public static List<Coordinates> formTrayCoordinatesArraySticker()
         {
+            float distanceFromCamera = 10;
+            float trayHeight = 10;
             List<Coordinates> coordinates = new List<Coordinates>();
             coordinates.Add(new Coordinates(new Vector3(0f, -3.6f + trayHeight, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
             coordinates.Add(new Coordinates(new Vector3(0f, -1.8f + trayHeight, distanceFromCamera), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));

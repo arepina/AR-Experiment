@@ -1,11 +1,10 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Logic
 {
-    public class ActionButtonsTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    public class ActionButtonsTrigger : MonoBehaviour
     {
         private long startTime;
         private Logger myLogger = new Logger(new LogHandler());
@@ -15,73 +14,82 @@ namespace Logic
         public GameObject hideAll;
         public GameObject notification;
 
-        public virtual void OnPointerEnter(PointerEventData eventData)
+        public void groupEnter()
+        {
+            markAsReadAll.SetActive(true);
+            hideAll.SetActive(true);
+            hide.SetActive(false);
+            markAsRead.SetActive(false);
+        }
+
+        public void groupExit()
+        {
+            markAsReadAll.SetActive(false);
+            hideAll.SetActive(false);
+            hide.SetActive(false);
+            markAsRead.SetActive(false);
+        }
+
+        public void baseEnter()
+        {
+            if (markAsReadAll) // stickers do not have these btns
+            {
+                if (!hideAll.activeSelf && !markAsReadAll.activeSelf)
+                {                    
+                    markAsReadAll.SetActive(false);
+                    hideAll.SetActive(false);
+                }
+            }
+            hide.SetActive(true);
+            markAsRead.SetActive(true);
+        }
+
+        public void baseExit()
+        {
+            if (markAsReadAll) // stickers do not have these btns
+            {
+                markAsReadAll.SetActive(false);
+                hideAll.SetActive(false);
+            }
+            hide.SetActive(false);
+            markAsRead.SetActive(false);
+        }
+
+        public void baseClick()
+        {
+            actionOpenSourceApplication();
+        }
+
+        public void anyButtonEnter()
         {
             startTime = DateTime.Now.Ticks;
-            if (eventData.pointerEnter.tag.Equals("GroupIcon")
-                || eventData.pointerEnter.tag.Equals("HideAll")
-                || eventData.pointerEnter.tag.Equals("MarkAsReadAll"))
-            {
-                hide.SetActive(false);
-                markAsRead.SetActive(false);
-                hideAll.SetActive(true);
-                markAsReadAll.SetActive(true);
-            }
-            if (eventData.pointerEnter.tag.Equals("Notification")
-                || eventData.pointerEnter.tag.Equals("Hide")
-                || eventData.pointerEnter.tag.Equals("MarkAsRead"))
-            {
-                if (!FindObjectOfType<GlobalCommon>().typeName.Contains("Sticker"))
-                {
-                    hideAll.SetActive(false);
-                    markAsReadAll.SetActive(false);
-                }
-                hide.SetActive(true);
-                markAsRead.SetActive(true);
-            }
         }
 
-        public virtual void OnPointerExit(PointerEventData eventData)
+        public void allClick()
         {
-            if (eventData.pointerEnter.tag.Equals("GroupIcon"))
-            {
-                hideAll.SetActive(false);
-                markAsReadAll.SetActive(false);
-            }
-            if (eventData.pointerEnter.tag.Equals("Notification"))
-            {
-                hide.SetActive(false);
-                markAsRead.SetActive(false);
-            }
+            actionProcessGroup(tag);
+        }
+
+        public void allExit()
+        {
             long duration = (long)TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
-            processReticleEvent(eventData, duration);
-        }
-
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            processReticleEvent(eventData, FindObjectOfType<GlobalCommon>().waitForActionToBeAcceptedPeriod);
-        }
-
-        private void processReticleEvent(PointerEventData eventData, float duration)
-        {
-            string tag = eventData.pointerEnter.tag;
             if (duration >= FindObjectOfType<GlobalCommon>().waitForActionToBeAcceptedPeriod)
             {
-                if (tag.Equals("Notification"))
-                {
-                    actionOpenSourceApplication();
-                }
-                else
-                {
-                    if (tag.Equals("Hide") || tag.Equals("MarkAsRead"))
-                    {
-                        actionProcessLocalAction();
-                    }
-                    else 
-                    {
-                        actionProcessGroup();
-                    }
-                }
+                actionProcessGroup(tag);
+            }
+        }
+
+        public void localClick()
+        {
+            actionProcessLocalAction(tag);
+        }
+
+        public void localExit()
+        {
+            long duration = (long)TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
+            if (duration >= FindObjectOfType<GlobalCommon>().waitForActionToBeAcceptedPeriod)
+            {
+                actionProcessLocalAction(tag);
             }
         }
 
@@ -119,7 +127,7 @@ namespace Logic
             }
         }
 
-        private void actionProcessLocalAction()
+        private void actionProcessLocalAction(string tag)
         {
             try
             {
@@ -145,7 +153,7 @@ namespace Logic
             }
         }
 
-        private void actionProcessGroup()
+        private void actionProcessGroup(string tag)
         {
             try
             {

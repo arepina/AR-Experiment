@@ -33,6 +33,7 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Notifications " + Camera.transform.position + " " + transform.position + " " + Camera.transform.rotation + " " + transform.rotation);
         Vector3 posTo = Camera.transform.position + Camera.transform.forward * DistanceFromCamera;
         if (posTo.y < AngleToTheHorizon)
         {
@@ -40,6 +41,7 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
         }
         if (posTo.y >= TrayShowAngle)
         {
+            Debug.Log("Tray SHOW " + Camera.transform.position + " " + transform.position + " " + Camera.transform.rotation + " " + transform.rotation);
             EventManager.Broadcast(EVENT.ShowTray);
             return;
         }

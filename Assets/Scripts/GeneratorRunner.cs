@@ -29,7 +29,14 @@ public class GeneratorRunner : MonoBehaviour
         if (isRunning)
         {
             StartCoroutine(Wait());
+            //StartCoroutine(TestPause());
         }
+    }
+
+    IEnumerator TestPause()
+    {
+        yield return new WaitForSeconds(5);
+        StartCoroutine(Wait());
     }
 
     public IEnumerator Wait()
