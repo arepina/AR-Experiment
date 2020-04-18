@@ -1346,6 +1346,7 @@ GameObject:
   - component: {fileID: 4818918038004294857}
   - component: {fileID: 9184916360070458280}
   - component: {fileID: 4087953281166448783}
+  - component: {fileID: 7127742553707501715}
   m_Layer: 0
   m_Name: Sticker
   m_TagString: Notification
@@ -1508,6 +1509,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &7127742553707501715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4152187826527866884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d3b886519be46ebb352b8b9e5485b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideTimeOfTheNotificationAfterArrival: 10
 --- !u!1 &4579682179086220987
 GameObject:
   m_ObjectHideFlags: 0

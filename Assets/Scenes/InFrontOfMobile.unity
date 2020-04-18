@@ -342,6 +342,7 @@ MonoBehaviour:
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
   waitForActionToBeAcceptedPeriod: 2
+  hideTimeOfTheNotificationAfterArrival: 5
 --- !u!114 &48691105
 MonoBehaviour:
   m_ObjectHideFlags: 0
