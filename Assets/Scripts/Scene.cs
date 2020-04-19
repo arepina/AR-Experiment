@@ -36,6 +36,10 @@ namespace Logic
         {
             notificationsHolder.SetActive(false);
             trayHolder.SetActive(true);
+            if (FindObjectOfType<GlobalCommon>().typeName == "HidenWaves")
+            {
+                rebuildScene();
+            }
         }
 
         private void hideTray()
@@ -92,7 +96,6 @@ namespace Logic
                 if (n.SourceName == GlobalCommon.silentGroupKey) wave.GetComponents<Image>()[0].material = grey;
                 wave.GetComponents<Image>()[0].material.SetFloat("_Glossiness", 1f);
                 wave.transform.parent = notificationsHolder.transform;
-                //todo add to tray
             }
             if(trayHolder.activeSelf)
             {
