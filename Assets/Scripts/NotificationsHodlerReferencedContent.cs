@@ -7,7 +7,7 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
     public GameObject Camera;
 
     [Tooltip("The distance from the camera that this object should be placed")]
-    public float DistanceFromCamera = 10f;
+    private float DistanceFromCamera = 10f;
 
     [Tooltip("If checked, makes objecta move smoothly")]
     public bool SimulateInertia = false;
@@ -33,7 +33,6 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log("Notifications " + Camera.transform.position + " " + transform.position + " " + Camera.transform.rotation + " " + transform.rotation);
         Vector3 posTo = Camera.transform.position + Camera.transform.forward * DistanceFromCamera;
         if (posTo.y < AngleToTheHorizon)
         {
@@ -41,7 +40,6 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
         }
         if (posTo.y >= TrayShowAngle)
         {
-            Debug.Log("Tray SHOW " + Camera.transform.position + " " + transform.position + " " + Camera.transform.rotation + " " + transform.rotation);
             EventManager.Broadcast(EVENT.ShowTray);
             return;
         }

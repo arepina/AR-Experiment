@@ -23,9 +23,7 @@ namespace Logic
                                             Vector3 position, Vector3 scale, Quaternion rotation,
                                             bool doesHaveGroupIcon);
 
-        public delegate List<Coordinates> Coordinate(float distanceFromCamera);
-        public delegate List<Coordinates> TrayCoordinate();
-        public delegate List<Coordinates> AroundCoordinate();
+        public delegate List<Coordinates> Coordinate();
 
         public void Start()
         {
@@ -75,7 +73,7 @@ namespace Logic
             //EventManager.Broadcast(EVENT.SceneRebuild);
         }
 
-        public void buildHiddenWaves(Generator notificationGenerator, TrayCoordinate traysCoordinates)
+        public void buildHiddenWaves(Generator notificationGenerator, Coordinate traysCoordinates)
         {
             var storage = gameObject.GetComponent<Storage>();
             Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
@@ -115,6 +113,8 @@ namespace Logic
                             Vector3 scale = coordinates[indexPosition].Scale;
                             GameObject trayN = notificationGenerator(FindObjectOfType<GlobalCommon>().trayNotification, notification, position, scale, rotation, doesHaveGroupIcon);
                             trayN.transform.parent = trayHolder.transform;
+                            trayN.transform.localPosition = position;
+                            trayN.transform.localRotation = rotation;
                             indexPosition += 1;
                         }
                         else
@@ -126,7 +126,7 @@ namespace Logic
             }
         }
 
-        public void buildAround(Generator notificationGenerator, AroundCoordinate notificationCoordinates, TrayCoordinate traysCoordinates)
+        public void buildAround(Generator notificationGenerator, Coordinate notificationCoordinates, Coordinate traysCoordinates)
         {
             var storage = gameObject.GetComponent<Storage>();
             Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
@@ -143,7 +143,7 @@ namespace Logic
                 for (int i = 0; i < groupNotifications.Count; i++)
                 {                   
                     Notification notification = groupNotifications.ToArray()[i];
-                    if (usualCoordinatesIndex < maxNotificationsInTray) // tray case
+                    if (trayCoordinatesIndex < maxNotificationsInTray) // tray case
                     {
                         bool doesHaveGroupIconTray = i == groupNotifications.Count - 1 || trayCoordinatesIndex == FindObjectOfType<GlobalCommon>().notificationsInColumnTray - 1;
                         Vector3 position = trayCoordinates[trayCoordinatesIndex].Position;
@@ -156,6 +156,8 @@ namespace Logic
                                               rotation,
                                               doesHaveGroupIconTray);
                         trayN.transform.parent = trayHolder.transform;
+                        trayN.transform.localPosition = position;
+                        trayN.transform.localRotation = rotation;
                         trayCoordinatesIndex += 1;
                     }
                     if (i < FindObjectOfType<GlobalCommon>().notificationsInColumn && !trayHolder.activeSelf) // usual case
@@ -174,6 +176,8 @@ namespace Logic
                         if (!notification.isMarkedAsRead)
                         {
                             n.transform.parent = notificationsHolder.transform;
+                            n.transform.localPosition = position;
+                            n.transform.localRotation = rotation;
                         }
                         else
                         {
@@ -187,12 +191,12 @@ namespace Logic
             }
         }
 
-        public void buildInFrontOf(Generator notificationGenerator, Coordinate notificationCoordinates, TrayCoordinate traysCoordinates)
+        public void buildInFrontOf(Generator notificationGenerator, Coordinate notificationCoordinates, Coordinate traysCoordinates)
         {
             var storage = gameObject.GetComponent<Storage>();
             Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
             clearScene();
-            List<Coordinates> coordinates = notificationCoordinates(notificationsHolder.GetComponentInChildren<NotificationsHodlerReferencedContent>(true).DistanceFromCamera);
+            List<Coordinates> coordinates = notificationCoordinates();
             List<Coordinates> trayCoordinates = traysCoordinates();
             int usualCoordinatesIndex = 0;
             int trayCoordinatesIndex = 0;
@@ -204,7 +208,7 @@ namespace Logic
                 for (int i = 0; i < groupNotifications.Count; i++)
                 {
                     Notification notification = groupNotifications.ToArray()[i];
-                    if (usualCoordinatesIndex < maxNotificationsInTray) // tray case
+                    if (trayCoordinatesIndex < maxNotificationsInTray) // tray case
                     {
                         bool doesHaveGroupIconTray = i == groupNotifications.Count - 1 || trayCoordinatesIndex == FindObjectOfType<GlobalCommon>().notificationsInColumnTray - 1;
                         Vector3 position = trayCoordinates[trayCoordinatesIndex].Position;
@@ -217,6 +221,8 @@ namespace Logic
                                               rotation,
                                               doesHaveGroupIconTray);
                         trayN.transform.parent = trayHolder.transform;
+                        trayN.transform.localPosition = position;
+                        trayN.transform.localRotation = rotation;
                         trayCoordinatesIndex += 1;
                     }
                     if (usualCoordinatesIndex < maxNotifications && !trayHolder.activeSelf) // usual case 
@@ -234,11 +240,13 @@ namespace Logic
                         if (!notification.isMarkedAsRead)
                         {
                             n.transform.parent = notificationsHolder.transform;
+                            n.transform.localPosition = position;
+                            n.transform.localRotation = rotation;
                         }
                         else
                         {
                             Destroy(n);
-                        }
+                        }                        
                         usualCoordinatesIndex += 1;
                     }
                 }
