@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Logic
 {
-    public enum EVENT { NotificationCreated, ShowTray, HideTray };
+    public enum EVENT { NotificationCreated, ShowTray, HideTray, SceneRebuild };
     public class EventManager
     {
         // Stores the delegates that get called when an event is fired
@@ -20,7 +20,16 @@ namespace Logic
         // Fires the event
         public static void Broadcast(EVENT evnt)
         {
-            if (eventTable.Count != 0 && eventTable[evnt] != null) eventTable[evnt]();
+            try
+            {
+                if (eventTable.Count != 0 && eventTable[evnt] != null)
+                {
+                    eventTable[evnt]();
+                }
+            }catch (KeyNotFoundException)
+            {
+
+            }
         }
     }
 }

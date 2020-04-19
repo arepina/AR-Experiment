@@ -72,6 +72,7 @@ namespace Logic
                 case "AroundStickers": { buildAround(addStickerNotification, NotificationCoordinates.formAroundStickerCoordinatesArray, NotificationCoordinates.formTrayCoordinatesArraySticker); break; }
                 case "AroundMobile": { buildAround(addMobileNotification, NotificationCoordinates.formAroundMobileCoordinatesArray, NotificationCoordinates.formTrayCoordinatesArrayMobile); break; }
             }
+            //EventManager.Broadcast(EVENT.SceneRebuild);
         }
 
         public void buildHiddenWaves(Generator notificationGenerator, TrayCoordinate traysCoordinates)

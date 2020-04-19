@@ -1,9 +1,10 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Logic
 {
-    public class ActionButtonsTrigger : MonoBehaviour
+    public class ActionButtonsTrigger : MonoBehaviour, IPointerExitHandler
     {
         private long startTime;
         public GameObject markAsRead;
@@ -11,6 +12,18 @@ namespace Logic
         public GameObject markAsReadAll;
         public GameObject hideAll;
         public GameObject notification;
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            if(eventData.pointerEnter.tag == "MarkAsRead" || eventData.pointerEnter.tag == "Hide")
+            {
+                localExit(eventData.pointerEnter.tag);
+            }
+            if(eventData.pointerEnter.tag == "MarkAsReadAll" || eventData.pointerEnter.tag == "HideAll")
+            {
+                allExit(eventData.pointerEnter.tag);
+            }
+        }
 
         public void groupEnter()
         {
@@ -68,7 +81,7 @@ namespace Logic
             FindObjectOfType<ActionsProcessor>().actionProcessGroup(notification, tag);
         }
 
-        public void allExit()
+        public void allExit(string tag)
         {
             long duration = (long)TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
             if (duration >= FindObjectOfType<GlobalCommon>().waitForActionToBeAcceptedPeriod)
@@ -82,7 +95,7 @@ namespace Logic
             FindObjectOfType<ActionsProcessor>().actionProcessLocalAction(notification, tag);
         }
 
-        public void localExit()
+        public void localExit(string tag)
         {
             long duration = (long)TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
             if (duration >= FindObjectOfType<GlobalCommon>().waitForActionToBeAcceptedPeriod)
