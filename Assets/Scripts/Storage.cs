@@ -25,7 +25,7 @@ namespace Logic
             createOrderedStorage(sourceName);
         }
 
-        internal void removeFromStorage(string id, string sourceName)
+        public void removeFromStorage(string id, string sourceName)
         {
             NotificationsStorage newStorage = orderedNotifications[sourceName];
             Stack<Notification> newNotificationsStorage = new Stack<Notification>();
@@ -41,7 +41,7 @@ namespace Logic
             createOrderedStorage(sourceName);
         }
 
-        internal Notification getFromStorage(string id, string sourceName)
+        public Notification getFromStorage(string id, string sourceName)
         {
             foreach (Notification notification in orderedNotifications[sourceName].Storage)
             {
@@ -53,7 +53,7 @@ namespace Logic
             return null;
         }
 
-        internal void removeAllFromStorage(string sourceName)
+        public void removeAllFromStorage(string sourceName)
         {
             orderedNotifications.Remove(sourceName);
             sourceName = null;

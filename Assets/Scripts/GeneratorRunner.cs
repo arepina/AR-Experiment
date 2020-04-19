@@ -5,7 +5,6 @@ using UnityEngine;
 public class GeneratorRunner : MonoBehaviour
 {
     private NotificationsGenerator notificationsGenerator = new NotificationsGenerator();
-    private Logger myLogger = new Logger(new LogHandler());
     public bool isRunning;
     private uint atWhichToGenerateHaveToActNotification = 0;
     private int notificationIndex;
@@ -15,13 +14,13 @@ public class GeneratorRunner : MonoBehaviour
     {
         atWhichToGenerateHaveToActNotification = FindObjectOfType<ExperimentData>().notificationsNumber / FindObjectOfType<ExperimentData>().numberOfHaveToActNotifications; // 0 - correct, 1 - incorrect
         notificationIndex = 0;
-        myLogger.Log("Started");
+        Debug.Log("Started");
     }
 
     public void Stop()
     {
         isRunning = false;
-        myLogger.Log("Stopped");
+        Debug.Log("Stopped");
     }
 
     public void Update()

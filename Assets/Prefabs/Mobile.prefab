@@ -1841,6 +1841,7 @@ GameObject:
   - component: {fileID: 4071977889910469958}
   - component: {fileID: 621224275347411979}
   - component: {fileID: 4654523067881845524}
+  - component: {fileID: 7602777138094771718}
   m_Layer: 5
   m_Name: Mobile
   m_TagString: Notification
@@ -2017,6 +2018,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hideTimeOfTheNotificationAfterArrival: 10
+--- !u!114 &7602777138094771718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6458541884227280155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65db9bbe53da04fb0a7c05868e131797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6541844481463593765
 GameObject:
   m_ObjectHideFlags: 0

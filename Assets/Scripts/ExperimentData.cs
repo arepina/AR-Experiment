@@ -12,9 +12,9 @@ namespace Logic
         public string notificationAuthor;
         public uint numberOfHaveToActNotifications;
 
-        internal uint numberOfNonIgnoredHaveToActNotifications;
-        internal float sumOfReactionTimeToNonIgnoredHaveToActNotifications;
+        public uint numberOfNonIgnoredHaveToActNotifications;
+        public float sumOfReactionTimeToNonIgnoredHaveToActNotifications;
 
-        internal uint numberOfInCorrectlyActedNotifications;
+        public uint numberOfInCorrectlyActedNotifications;
     }
 }

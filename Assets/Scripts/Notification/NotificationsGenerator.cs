@@ -6,7 +6,6 @@ namespace Logic
     public class NotificationsGenerator : MonoBehaviour
     {
         private System.Random random = new System.Random();
-        private Logger myLogger = new Logger(new LogHandler());
         private const int sourcesNumber = 4;
 
         private int mapNameToIndex()
@@ -90,7 +89,7 @@ namespace Logic
             }
             long timestamp = DateTime.Now.Ticks;
             Notification notification = new Notification(id, sourceImage, sourceName, author, icon, text, timestamp, isSilent, sourceColor, generateHaveToAct);
-            myLogger.Log(string.Format("Notification which is {0} and has the following data: {1} was created", generateHaveToAct ? "correct" : "incorrect", notification));
+            Debug.Log(string.Format("Notification which is {0} and has the following data: {1} was created", generateHaveToAct ? "correct" : "incorrect", notification));
             return notification;
         }
     }

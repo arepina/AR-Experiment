@@ -14,6 +14,7 @@ namespace Logic
         private Color color;
         private string id;
         private bool correct;
+        private bool markedAsRead;
 
         public Notification(string id, string sourceImage, string sourceName, string author, string icon, string text, long timestamp, bool silent, Color color, bool correct) { 
             this.sourceImage = sourceImage;
@@ -26,6 +27,7 @@ namespace Logic
             this.icon = icon;
             this.id = id;
             this.correct = correct;
+            this.markedAsRead = false;
         }
 
         public override string ToString()
@@ -117,6 +119,14 @@ namespace Logic
             get
             {
                 return correct;
+            }
+        }
+
+        public bool isMarkedAsRead
+        {
+            get
+            {
+                return markedAsRead;
             }
         }
     }
