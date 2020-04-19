@@ -78,7 +78,7 @@ namespace Logic
         {
             Debug.Log(string.Format("Notification with id {0} from source {1} was chosen to {2}", id, sourceName, tag));
             var storage = FindObjectOfType<Storage>();
-            storage.removeFromStorage(id, sourceName);
+            storage.removeFromStorage(id, sourceName, tag);
             var scene = FindObjectOfType<Scene>();
             scene.rebuildScene();
         }
@@ -87,7 +87,7 @@ namespace Logic
         {
             Debug.Log(string.Format("Notifications from source {0} were chosen to {1}", sourceName, tag));
             var storage = FindObjectOfType<Storage>();
-            storage.removeAllFromStorage(sourceName);
+            storage.removeAllFromStorage(sourceName, tag);
             var scene = FindObjectOfType<Scene>();
             scene.rebuildScene();
         }

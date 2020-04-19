@@ -27,7 +27,7 @@ public class TrayHolderReferencedContent : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Tray " + Camera.transform.position + " " + transform.position + " " + Camera.transform.rotation + " " + transform.rotation);
+        //Debug.Log("Tray " + Camera.transform.position + " " + transform.position + " " + Camera.transform.rotation + " " + transform.rotation);
         Vector3 posTo = Camera.transform.position;
         if (posTo.y <= TrayHideAngle)
         {

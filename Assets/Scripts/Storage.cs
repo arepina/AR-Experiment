@@ -25,7 +25,7 @@ namespace Logic
             createOrderedStorage(sourceName);
         }
 
-        public void removeFromStorage(string id, string sourceName)
+        public void removeFromStorage(string id, string sourceName, string tag)
         {
             NotificationsStorage newStorage = orderedNotifications[sourceName];
             Stack<Notification> newNotificationsStorage = new Stack<Notification>();
@@ -34,6 +34,14 @@ namespace Logic
                 if (!notification.Id.Equals(id))
                 {
                     newNotificationsStorage.Push(notification);
+                }
+                else
+                {
+                    if (tag.Contains("MarkAsRead"))
+                    {
+                        notification.isMarkedAsRead = true;
+                        newNotificationsStorage.Push(notification);
+                    }
                 }
             }
             newStorage.Storage = newNotificationsStorage;
@@ -53,11 +61,27 @@ namespace Logic
             return null;
         }
 
-        public void removeAllFromStorage(string sourceName)
+        public void removeAllFromStorage(string sourceName, string tag)
         {
-            orderedNotifications.Remove(sourceName);
-            sourceName = null;
-            createOrderedStorage(sourceName);
+            if (!tag.Contains("MarkAsRead"))
+            {
+                orderedNotifications.Remove(sourceName);
+                sourceName = null;
+                createOrderedStorage(sourceName);
+            }
+            else
+            {
+                NotificationsStorage newStorage = orderedNotifications[sourceName];
+                Stack<Notification> newNotificationsStorage = new Stack<Notification>();
+                foreach (Notification notification in newStorage.Storage)
+                {
+                    notification.isMarkedAsRead = true;
+                    newNotificationsStorage.Push(notification);
+                }
+                newStorage.Storage = newNotificationsStorage;
+                orderedNotifications[sourceName] = newStorage;
+                createOrderedStorage(sourceName);
+            }
         }
 
         private void createOrderedStorage(string sourceName)

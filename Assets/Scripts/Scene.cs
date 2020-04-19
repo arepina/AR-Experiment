@@ -170,7 +170,14 @@ namespace Logic
                                               rotation,
                                               doesHaveGroupIcon);
                         GameObject trayN = Instantiate(n);
-                        n.transform.parent = notificationsHolder.transform;
+                        if (!notification.isMarkedAsRead)
+                        {
+                            n.transform.parent = notificationsHolder.transform;
+                        }
+                        else
+                        {
+                            Destroy(n);
+                        }
                         trayN.transform.parent = trayHolder.transform;
                         usualCoordinatesIndex += 1;
                     }
@@ -223,9 +230,14 @@ namespace Logic
                                              scale,
                                              rotation,
                                              doesHaveGroupIcon);
-                        Debug.Log("0 " + n.transform.position + " " + n.transform.rotation);
-                        n.transform.parent = notificationsHolder.transform;
-                        Debug.Log("1 " + n.transform.position + " " + n.transform.rotation);
+                        if (!notification.isMarkedAsRead)
+                        {
+                            n.transform.parent = notificationsHolder.transform;
+                        }
+                        else
+                        {
+                            Destroy(n);
+                        }
                         usualCoordinatesIndex += 1;
                     }
                 }

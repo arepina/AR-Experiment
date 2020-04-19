@@ -124,6 +124,10 @@ namespace Logic
 
         public bool isMarkedAsRead
         {
+            set
+            {
+                markedAsRead = value;
+            }
             get
             {
                 return markedAsRead;
