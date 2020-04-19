@@ -19,7 +19,7 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
     public float AngleToTheHorizon = -0.03f;
 
     [Tooltip("Angle when tray should be shown")]
-    public float TrayShowAngle = 3f;
+    public float TrayShowAngle = 0.03f;
 
     void OnEnable()
     {
@@ -34,12 +34,10 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
     void Update()
     {
         Vector3 posTo = Camera.transform.position + Camera.transform.forward * DistanceFromCamera;
-        if (posTo.y < AngleToTheHorizon)
+        posTo.y = AngleToTheHorizon;
+        if (Camera.transform.position.y >= TrayShowAngle)
         {
-            posTo.y = AngleToTheHorizon;
-        }
-        if (posTo.y >= TrayShowAngle)
-        {
+            Debug.Log("Tray show " + Camera.transform.position + " " + transform.position + " " + Camera.transform.rotation + " " + transform.rotation);
             EventManager.Broadcast(EVENT.ShowTray);
             return;
         }

@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Logic
 {
-    public class ActionButtonsTrigger : MonoBehaviour, IPointerExitHandler
+    public class ActionButtonsTrigger : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
     {
         private long startTime;
         public GameObject markAsRead;
@@ -12,6 +12,11 @@ namespace Logic
         public GameObject markAsReadAll;
         public GameObject hideAll;
         public GameObject notification;
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            startTime = DateTime.Now.Ticks;
+        }
 
         public void OnPointerExit(PointerEventData eventData)
         {
