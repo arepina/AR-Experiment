@@ -33,28 +33,31 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
 
     void Update()
     {
-        Vector3 posTo = Camera.transform.position + Camera.transform.forward * DistanceFromCamera;
+        Vector3 posTo = Camera.transform.position;
         posTo.y = AngleToTheHorizon;
         if (Camera.transform.position.y >= TrayShowAngle)
         {
-            Debug.Log("Tray show " + Camera.transform.position + " " + transform.position + " " + Camera.transform.rotation + " " + transform.rotation);
             EventManager.Broadcast(EVENT.ShowTray);
             return;
         }
 
-        Quaternion rotTo = Quaternion.LookRotation(transform.position - Camera.transform.position);
+        if (transform.childCount == 0)
+        {
+            posTo = Camera.transform.position + Camera.transform.forward * DistanceFromCamera;
+            Quaternion rotTo = Quaternion.LookRotation(transform.position - Camera.transform.position);
+            transform.rotation = rotTo;
+            transform.position = posTo;
+            return;
+        }
 
         if (SimulateInertia)
         {
             float posSpeed = Time.deltaTime * LerpSpeed;
             transform.position = Vector3.SlerpUnclamped(transform.position, posTo, posSpeed);
-            float rotSpeed = Time.deltaTime * LerpSpeed;
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotTo, rotSpeed);
         }
         else
         {
             transform.position = posTo;
-            transform.rotation = rotTo;
         }
     }
 }

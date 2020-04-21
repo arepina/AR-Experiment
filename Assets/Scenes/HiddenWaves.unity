@@ -790,5 +790,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 70485782}
   SimulateInertia: 1
-  LerpSpeed: 0.4
+  LerpSpeed: 2
   TrayHideAngle: -0.03

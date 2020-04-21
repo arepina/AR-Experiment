@@ -10,7 +10,7 @@ public class TrayHolderReferencedContent : MonoBehaviour
     public bool SimulateInertia = false;
 
     [Tooltip("The speed at which this object changes its position, if the inertia effect is enabled")]
-    public float LerpSpeed = 0.06f;
+    public float LerpSpeed = 2f;
 
     [Tooltip("Angle when tray should be hiden")]
     public float TrayHideAngle = -0.03f;
@@ -30,7 +30,6 @@ public class TrayHolderReferencedContent : MonoBehaviour
         Vector3 posTo = Camera.transform.position;
         if (posTo.y <= TrayHideAngle)
         {
-            Debug.Log("Tray hide " + Camera.transform.position + " " + transform.position + " " + Camera.transform.rotation + " " + transform.rotation);
             EventManager.Broadcast(EVENT.HideTray);
             return;
         }

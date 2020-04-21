@@ -8,18 +8,18 @@ namespace Logic
         public static List<Coordinates> formInFrontOfMobileCoordinatesArray()
         {
             List<Coordinates> coordinates = new List<Coordinates>();
-            coordinates.Add(new Coordinates(new Vector3(0f, -1.1f, 0), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 0f, 0), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 1.1f, 0), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, -1.1f, 10), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 0f, 10), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 1.1f, 10), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
             return coordinates;
         }
 
         public static List<Coordinates> formInFrontOfStickerCoordinatesArray()
         {
             List<Coordinates> coordinates = new List<Coordinates>();
-            coordinates.Add(new Coordinates(new Vector3(0f, -1.8f, 0), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 0f, 0), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
-            coordinates.Add(new Coordinates(new Vector3(0f, 1.8f, 0), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, -1.8f, 10), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 0f, 10), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
+            coordinates.Add(new Coordinates(new Vector3(0f, 1.8f, 10), new Quaternion(0, 0, 0, 0), new Vector3(1f, 1f, 1f)));
             return coordinates;
         }
 

@@ -213,7 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 710828786}
   SimulateInertia: 1
-  LerpSpeed: 0.1
+  LerpSpeed: 2
   TrayHideAngle: -0.03
 --- !u!1 &710828786
 GameObject:

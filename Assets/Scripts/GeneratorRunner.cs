@@ -12,7 +12,11 @@ public class GeneratorRunner : MonoBehaviour
 
     public void Start()
     {
-        atWhichToGenerateHaveToActNotification = FindObjectOfType<ExperimentData>().notificationsNumber / FindObjectOfType<ExperimentData>().numberOfHaveToActNotifications; // 0 - correct, 1 - incorrect
+        if(FindObjectOfType<ExperimentData>().numberOfHaveToActNotifications > FindObjectOfType<ExperimentData>().notificationsNumber)
+        {
+            throw new System.Exception("Illegal arguments: numberOfHaveToActNotifications should be <= then notificationsNumber");
+        }
+        atWhichToGenerateHaveToActNotification = FindObjectOfType<ExperimentData>().notificationsNumber / FindObjectOfType<ExperimentData>().numberOfHaveToActNotifications; 
         notificationIndex = 0;
         Debug.Log("Started");
     }
@@ -28,14 +32,7 @@ public class GeneratorRunner : MonoBehaviour
         if (isRunning)
         {
             StartCoroutine(Wait());
-            //StartCoroutine(TestPause());
         }
-    }
-
-    IEnumerator TestPause()
-    {
-        yield return new WaitForSeconds(5);
-        StartCoroutine(Wait());
     }
 
     public IEnumerator Wait()

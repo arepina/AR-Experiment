@@ -14,7 +14,7 @@ namespace Logic
         private Color color;
         private string id;
         private bool correct;
-        private bool markedAsRead;
+        private bool markedAsRead; // also used for those notifications which was hiden after n seconds in the notifications hodler and no reaction
 
         public Notification(string id, string sourceImage, string sourceName, string author, string icon, string text, long timestamp, bool silent, Color color, bool correct) { 
             this.sourceImage = sourceImage;
