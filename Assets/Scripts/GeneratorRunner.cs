@@ -42,7 +42,6 @@ public class GeneratorRunner : MonoBehaviour
         uint pause = experiment.timeInSeconds / experiment.notificationsNumber;        
         if (experiment.notificationsNumber > 0 && notificationIndex < experiment.notificationsNumber)
         {
-            Debug.Log("Generator");
             bool generateHaveToAct = notificationIndex % atWhichToGenerateHaveToActNotification == 0 && alreadyCorrect < experiment.numberOfHaveToActNotifications;
             if (generateHaveToAct)
             {
@@ -68,8 +67,7 @@ public class GeneratorRunner : MonoBehaviour
     private void saveLogData(Notification notification)
     {
         string logInfo = notification.ToString(FindObjectOfType<ExperimentData>(), FindObjectOfType<GlobalCommon>().typeName, "CREATED", "-");
-        FindObjectOfType<LogDataStorage>().NextLog(logInfo);
-        FindObjectOfType<LogDataStorage>().SaveLogData();
+        CSVSaver.saveToFile(logInfo);
     }
 
     private void saveTrialData(ExperimentData experiment)

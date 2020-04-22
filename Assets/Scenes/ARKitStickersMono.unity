@@ -316,7 +316,6 @@ GameObject:
   - component: {fileID: 427683002}
   - component: {fileID: 427683001}
   - component: {fileID: 427683000}
-  - component: {fileID: 427682999}
   - component: {fileID: 427682998}
   - component: {fileID: 427682997}
   - component: {fileID: 427682996}
@@ -324,6 +323,7 @@ GameObject:
   - component: {fileID: 427682994}
   - component: {fileID: 427682993}
   - component: {fileID: 427683007}
+  - component: {fileID: 427682999}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -430,6 +430,9 @@ MonoBehaviour:
   notificationSource: YouTube
   notificationAuthor: "\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440"
   numberOfHaveToActNotifications: 5
+  numberOfNonIgnoredHaveToActNotifications: 0
+  sumOfReactionTimeToNonIgnoredHaveToActNotifications: 0
+  numberOfInCorrectlyActedNotifications: 0
 --- !u!114 &427682999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,7 +442,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 427682992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 812ce0828b5304076a26a46888304d07, type: 3}
+  m_Script: {fileID: 11500000, guid: 15ac0fdc9b25d430fa2ce4f02bcab808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &427683000
@@ -1502,7 +1505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 427682992}
   SimulateInertia: 1
-  LerpSpeed: 5
+  LerpSpeed: 2
   TrayHideAngle: -0.03
 --- !u!4 &1457189456
 Transform:

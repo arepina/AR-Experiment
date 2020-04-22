@@ -1523,6 +1523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hideTimeOfTheNotificationAfterArrival: 10
+  id: {fileID: 1897119431929098872}
 --- !u!114 &171317354130751945
 MonoBehaviour:
   m_ObjectHideFlags: 0

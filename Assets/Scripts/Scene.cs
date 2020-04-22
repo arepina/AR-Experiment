@@ -178,33 +178,25 @@ namespace Logic
                             columnIndex += 1;
                         }
                     }
-                    if (i < FindObjectOfType<GlobalCommon>().notificationsInColumn && !trayHolder.activeSelf) // usual case
+                    if (i < FindObjectOfType<GlobalCommon>().notificationsInColumn
+                        && !trayHolder.activeSelf
+                        && !notification.isMarkedAsRead) // usual case
                     {
-                        bool doesHaveGroupIcon = i == 0;
-                        Vector3 position = coordinates[usualCoordinatesIndex].Position;
-                        Quaternion rotation = Quaternion.Euler(coordinates[usualCoordinatesIndex].Rotation.x, coordinates[usualCoordinatesIndex].Rotation.y, coordinates[usualCoordinatesIndex].Rotation.z);
-                        Vector3 scale = coordinates[usualCoordinatesIndex].Scale;
-                        GameObject n = notificationGenerator(FindObjectOfType<GlobalCommon>().notification,
-                                              notification,
-                                              position,
-                                              scale,
-                                              rotation,
-                                              doesHaveGroupIcon);
-                        GameObject trayN = Instantiate(n);
-                        if (!notification.isMarkedAsRead)
-                        {
+                            bool doesHaveGroupIcon = i == 0;
+                            Vector3 position = coordinates[usualCoordinatesIndex].Position;
+                            Quaternion rotation = Quaternion.Euler(coordinates[usualCoordinatesIndex].Rotation.x, coordinates[usualCoordinatesIndex].Rotation.y, coordinates[usualCoordinatesIndex].Rotation.z);
+                            Vector3 scale = coordinates[usualCoordinatesIndex].Scale;
+                            GameObject n = notificationGenerator(FindObjectOfType<GlobalCommon>().notification,
+                                                  notification,
+                                                  position,
+                                                  scale,
+                                                  rotation,
+                                                  doesHaveGroupIcon);
+                            GameObject trayN = Instantiate(n);
                             n.transform.parent = notificationsHolder.transform;
                             n.transform.localPosition = position;
                             n.transform.localRotation = rotation;
-                        }
-                        else
-                        {
-                            Destroy(n);
-                        }
-                        trayN.transform.parent = trayHolder.transform;
-                        trayN.transform.localPosition = position;
-                        trayN.transform.localRotation = rotation;
-                        usualCoordinatesIndex += 1;
+                            usualCoordinatesIndex += 1;
                     }
                 }
                 groupIndex += 1;
@@ -254,7 +246,9 @@ namespace Logic
                         }
 
                     }
-                    if (usualCoordinatesIndex < maxNotifications && !trayHolder.activeSelf) // usual case 
+                    if (usualCoordinatesIndex < maxNotifications
+                        && !trayHolder.activeSelf
+                        && !notification.isMarkedAsRead) // usual case 
                     {
                         bool doesHaveGroupIcon = i == groupNotifications.Count - 1 || usualCoordinatesIndex == FindObjectOfType<GlobalCommon>().notificationsInColumn - 1;
                         Vector3 position = coordinates[usualCoordinatesIndex].Position;
@@ -265,17 +259,10 @@ namespace Logic
                                              position,
                                              scale,
                                              rotation,
-                                             doesHaveGroupIcon);
-                        if (!notification.isMarkedAsRead)
-                        {
-                            n.transform.parent = notificationsHolder.transform;
-                            n.transform.localPosition = position;
-                            n.transform.localRotation = rotation;
-                        }
-                        else
-                        {
-                            Destroy(n);
-                        }                        
+                                             doesHaveGroupIcon);                       
+                        n.transform.parent = notificationsHolder.transform;
+                        n.transform.localPosition = position;
+                        n.transform.localRotation = rotation;                        
                         usualCoordinatesIndex += 1;
                     }
                 }

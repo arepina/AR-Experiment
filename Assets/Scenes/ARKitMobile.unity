@@ -521,7 +521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 2142712159}
   SimulateInertia: 1
-  LerpSpeed: 5
+  LerpSpeed: 2
   TrayHideAngle: -0.03
 --- !u!4 &467690070
 Transform:
@@ -1724,7 +1724,6 @@ GameObject:
   - component: {fileID: 2142712172}
   - component: {fileID: 2142712171}
   - component: {fileID: 2142712170}
-  - component: {fileID: 2142712169}
   - component: {fileID: 2142712168}
   - component: {fileID: 2142712167}
   - component: {fileID: 2142712166}
@@ -1884,18 +1883,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15ac0fdc9b25d430fa2ce4f02bcab808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2142712169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142712159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 812ce0828b5304076a26a46888304d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2142712170

@@ -27,7 +27,15 @@ namespace Logic
 
         public void removeFromStorage(string id, string sourceName, string tag)
         {
-            NotificationsStorage newStorage = orderedNotifications[sourceName];
+            NotificationsStorage newStorage = null;
+            try
+            {
+                newStorage = orderedNotifications[sourceName];
+            }
+            catch (KeyNotFoundException e)
+            {
+                Debug.LogError(e);
+            }
             Stack<Notification> newNotificationsStorage = new Stack<Notification>();
             foreach (Notification notification in newStorage.Storage)
             {
@@ -51,7 +59,17 @@ namespace Logic
 
         public Notification getFromStorage(string id, string sourceName)
         {
-            foreach (Notification notification in orderedNotifications[sourceName].Storage)
+            if (orderedNotifications.ContainsKey(sourceName))
+            {
+                foreach (Notification notification in orderedNotifications[sourceName].Storage)
+                {
+                    if (notification.Id.Equals(id))
+                    {
+                        return notification;
+                    }
+                }
+            }
+            foreach (Notification notification in orderedNotifications[GlobalCommon.silentGroupKey].Storage)
             {
                 if (notification.Id.Equals(id))
                 {

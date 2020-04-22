@@ -32,13 +32,13 @@ namespace Logic
 
         public override string ToString()
         {
-            return string.Format("id: {0}, sourceImage: {1}, sourceName: {2}, author: {3}, icon: {4}, text : {5}, timestamp: {6}, silent: {7}, color: {8}, isCorrect: {9}",
+            return string.Format("id: {0}; sourceImage: {1}; sourceName: {2}; author: {3}; icon: {4}; text: {5}; timestamp: {6}; silent: {7}; color: {8}; isCorrect: {9}",
                                                                               id, sourceImage, sourceName, author, icon, text, timestamp, silent, color, isCorrect);
         }
 
         public string ToString(ExperimentData ex, string design, string status, string reactionTime)
         {
-            return string.Format("subjectNumber: {0}, design: {1}, trialNumber: {2}, id: {3}, sourceImage: {4}, sourceName: {5}, author: {6}, icon: {7}, text : {8}, creationTime: {9}, silent: {10}, color: {11}, isCorrect: {12}, status: {13}, reactionTime: {14}",
+            return string.Format("{0}; {1}; {2}; {3}; {4}; {5}; {6}; {7}; {8}; {9}; {10}; {11}; {12}; {13}; {14}",
                                                                               ex.subjectNumber, design, ex.trialNumber, id, sourceImage, sourceName, author, icon, text, timestamp, silent, color, isCorrect, status, reactionTime);
         }
 

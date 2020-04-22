@@ -6,6 +6,7 @@ using UnityEngine;
 public class NotificationHider : MonoBehaviour
 {
     public float hideTimeOfTheNotificationAfterArrival;
+    public GameObject id;
 
     void Start()
     {
@@ -18,10 +19,14 @@ public class NotificationHider : MonoBehaviour
     IEnumerator Destroyer()
     {
         yield return new WaitForSeconds(hideTimeOfTheNotificationAfterArrival);
-        string id = transform.Find("Id").GetComponent<TextMeshPro>().text;
         string sourceName = transform.Find("Source").GetComponent<TextMeshPro>().text;
         string tag = "MarkAsRead";
-        FindObjectOfType<Storage>().removeFromStorage(id, sourceName, tag);
+        Notification n = FindObjectOfType<Storage>().getFromStorage(id.GetComponent<TextMeshPro>().text, sourceName);
+        if (n.isSilent)
+        {
+            sourceName = GlobalCommon.silentGroupKey;
+        }
+        FindObjectOfType<Storage>().removeFromStorage(id.GetComponent<TextMeshPro>().text, sourceName, tag);
         Destroy(gameObject);
     }
 }

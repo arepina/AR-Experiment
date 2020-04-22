@@ -1840,6 +1840,8 @@ GameObject:
   - component: {fileID: 2608814865625347761}
   - component: {fileID: 7145859565865386949}
   - component: {fileID: 8042537623760199082}
+  - component: {fileID: 1243935901283958076}
+  - component: {fileID: 1701019756079788042}
   m_Layer: 5
   m_Name: ARMobile
   m_TagString: Notification
@@ -2003,6 +2005,33 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1243935901283958076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6458541884227280155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d3b886519be46ebb352b8b9e5485b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideTimeOfTheNotificationAfterArrival: 10
+  id: {fileID: 7434072145722171719}
+  sourceColorHolder: {fileID: 1276263996598276239}
+--- !u!114 &1701019756079788042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6458541884227280155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65db9bbe53da04fb0a7c05868e131797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6541844481463593765
 GameObject:
   m_ObjectHideFlags: 0

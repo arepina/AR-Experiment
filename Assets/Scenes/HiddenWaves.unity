@@ -197,7 +197,6 @@ GameObject:
   - component: {fileID: 70485783}
   - component: {fileID: 70485793}
   - component: {fileID: 70485795}
-  - component: {fileID: 70485797}
   - component: {fileID: 70485796}
   m_Layer: 0
   m_Name: ARCamera
@@ -395,8 +394,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subjectNumber: 1
   trialNumber: 1
-  timeInSeconds: 30
-  notificationsNumber: 6
+  timeInSeconds: 10
+  notificationsNumber: 2
   notificationSource: YouTube
   notificationAuthor: "\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440"
   numberOfHaveToActNotifications: 2
@@ -413,18 +412,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15ac0fdc9b25d430fa2ce4f02bcab808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &70485797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70485782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 812ce0828b5304076a26a46888304d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1268189764

@@ -1346,6 +1346,8 @@ GameObject:
   - component: {fileID: 9034777731155288382}
   - component: {fileID: 1631557376334478539}
   - component: {fileID: 5744815661599854476}
+  - component: {fileID: 2300747943486240417}
+  - component: {fileID: 1308582806559480437}
   m_Layer: 0
   m_Name: ARSticker
   m_TagString: Notification
@@ -1508,6 +1510,33 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &2300747943486240417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4152187826527866884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d3b886519be46ebb352b8b9e5485b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideTimeOfTheNotificationAfterArrival: 10
+  id: {fileID: 1897119431929098872}
+  sourceColorHolder: {fileID: 2588631504468654066}
+--- !u!114 &1308582806559480437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4152187826527866884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65db9bbe53da04fb0a7c05868e131797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4579682179086220987
 GameObject:
   m_ObjectHideFlags: 0

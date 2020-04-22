@@ -70,8 +70,7 @@ namespace Logic
                 FindObjectOfType<ExperimentData>().numberOfInCorrectlyActedNotifications += 1;
             }
             string logInfo = notification.ToString(FindObjectOfType<ExperimentData>(), FindObjectOfType<GlobalCommon>().typeName, "REACTED", reactionDuration.ToString());
-            FindObjectOfType<LogDataStorage>().NextLog(logInfo);
-            FindObjectOfType<LogDataStorage>().SaveLogData();
+            CSVSaver.saveToFile(logInfo);
         }
 
         internal void processHideAndMarkAsRead(string id, string sourceName, string tag)

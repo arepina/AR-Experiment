@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 11}
   - component: {fileID: 8}
   - component: {fileID: 14}
-  - component: {fileID: 19}
   - component: {fileID: 18}
   - component: {fileID: 15}
   - component: {fileID: 21}
@@ -321,18 +320,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15ac0fdc9b25d430fa2ce4f02bcab808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &19
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 812ce0828b5304076a26a46888304d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &20
@@ -1456,7 +1443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 7}
   SimulateInertia: 1
-  LerpSpeed: 5
+  LerpSpeed: 2
   TrayHideAngle: -0.03
 --- !u!4 &1366459649
 Transform:
