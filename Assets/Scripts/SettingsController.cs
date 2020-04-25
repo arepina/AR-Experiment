@@ -4,50 +4,28 @@ using UnityEngine.UI;
 
 public class SettingsController : MonoBehaviour
 {
-    public InputField SubjectCodeInputField;
+    public InputField Value;
     public Button MinusButton;
 
     void OnEnable()
     {
-        // Check whether everything in its place 
-        if (SubjectCodeInputField == null)
-        {
-            Debug.LogError("Error: The SubjectCodeInputField field cannot be left unassigned. Disabling the script");
-            enabled = false;
-            return;
-        }
-
-        if (MinusButton == null)
-        {
-            Debug.LogError("Error: The MinusButton field cannot be left unassigned. Disabling the script");
-            enabled = false;
-            return;
-        }
-
-        int currectSubjectNo = PlayerPrefs.GetInt("SubjectNo", 0);
-        SubjectCodeInputField.text = (++currectSubjectNo).ToString();
-
-        MinusButton.interactable = (currectSubjectNo > 1);
+        MinusButton.interactable = Int32.Parse(Value.text) > 1;
     }
 
-    public void IncreaseSubjectNo()
+    public void Increase()
     {
         if (!enabled) return;
-
-        int subjectNo = Int32.Parse(SubjectCodeInputField.text);
-        SubjectCodeInputField.text = (++subjectNo).ToString();
-
+        int temp = Int32.Parse(Value.text);
+        Value.text = (++temp).ToString();
         MinusButton.interactable = true;
     }
 
-    public void DecreaseSubjectNo()
+    public void Decrease()
     {
         if (!enabled) return;
-
-        int subjectNo = Int32.Parse(SubjectCodeInputField.text);
-        SubjectCodeInputField.text = (--subjectNo).ToString();
-
-        if (subjectNo == 1)
+        int temp = Int32.Parse(Value.text);
+        Value.text = (--temp).ToString();
+        if (temp == 1)
             MinusButton.interactable = false;
     }
 }

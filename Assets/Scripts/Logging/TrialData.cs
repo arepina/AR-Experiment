@@ -6,15 +6,15 @@ namespace Logic
     [Serializable]
     public class TrialData
     {
-        public uint SubjectNumber;
+        public int SubjectNumber;
         public string Design;
-        public uint TrialNumber;
+        public int TrialNumber;
         public float Time; // In seconds
-        public uint NotificationsNumber; 
-        public uint NumberOfHaveToActNotifications;
-        public uint NumberOfNonIgnoredHaveToActNotifications;
+        public int NotificationsNumber; 
+        public int NumberOfHaveToActNotifications;
+        public int NumberOfNonIgnoredHaveToActNotifications;
         public float SumOfReactionTimeToNonIgnoredHaveToActNotifications;
-        public uint NumberOfInCorrectlyActedNotifications;
+        public int NumberOfInCorrectlyActedNotifications;
 
         // Instructions were taken from here: https://youtu.be/z9b5aRfrz7M
         private static readonly string _formURI = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeMgJ_QKYVj_roNo8w9kyQv465foOt-ePB5z_4rV-srn6TxwA/formResponse";

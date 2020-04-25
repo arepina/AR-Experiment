@@ -36,10 +36,10 @@ namespace Logic
                                                                               id, sourceImage, sourceName, author, icon, text, timestamp, silent, color, isCorrect);
         }
 
-        public string ToString(ExperimentData ex, string design, string status, string reactionTime)
+        public string ToString(string design, string status, string reactionTime)
         {
             return string.Format("{0}; {1}; {2}; {3}; {4}; {5}; {6}; {7}; {8}; {9}; {10}; {11}; {12}; {13}; {14}",
-                                                                              ex.subjectNumber, design, ex.trialNumber, id, sourceImage, sourceName, author, icon, text, timestamp, silent, color, isCorrect, status, reactionTime);
+                                                                              ExperimentData.subjectNumber, design, ExperimentData.trialsNumber, id, sourceImage, sourceName, author, icon, text, timestamp, silent, color, isCorrect, status, reactionTime);
         }
 
         public string Id

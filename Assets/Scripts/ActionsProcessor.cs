@@ -62,14 +62,14 @@ namespace Logic
             long reactionDuration = DateTime.Now.Ticks - notification.Timestamp;
             if (notification.isCorrect)
             {
-                FindObjectOfType<ExperimentData>().numberOfNonIgnoredHaveToActNotifications += 1;
-                FindObjectOfType<ExperimentData>().sumOfReactionTimeToNonIgnoredHaveToActNotifications += reactionDuration;
+                ExperimentData.numberOfNonIgnoredHaveToActNotifications += 1;
+                ExperimentData.sumOfReactionTimeToNonIgnoredHaveToActNotifications += reactionDuration;
             }
             else
             {
-                FindObjectOfType<ExperimentData>().numberOfInCorrectlyActedNotifications += 1;
+                ExperimentData.numberOfInCorrectlyActedNotifications += 1;
             }
-            string logInfo = notification.ToString(FindObjectOfType<ExperimentData>(), FindObjectOfType<GlobalCommon>().typeName, "REACTED", reactionDuration.ToString());
+            string logInfo = notification.ToString(FindObjectOfType<GlobalCommon>().typeName, "REACTED", reactionDuration.ToString());
             CSVSaver.saveToFile(logInfo);
         }
 

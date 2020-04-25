@@ -1,4 +1,5 @@
 ﻿using System;
+using Logic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,43 +8,26 @@ public class MenuController : MonoBehaviour
 {
     public GameObject MainMenuPanel;
     public GameObject InfoMessage;
-    public InputField IMSubjectCodeInputField;
     public Text headerText;
-
-    void Start()
-    {
-        // Check whether everything in its place 
-        if (MainMenuPanel == null)
-        {
-            Debug.LogError("Error: The MainMenuPanel field can't be left unassigned. Disabling the script");
-            enabled = false;
-            return;
-        }
-
-        if (InfoMessage == null)
-        {
-            Debug.LogError("Error: The InfoMessage field can't be left unassigned. Disabling the script");
-            enabled = false;
-            return;
-        }
-
-        if (IMSubjectCodeInputField == null)
-        {
-            Debug.LogError("Error: The IMSubjectCodeInputField field can't be left unassigned. Disabling the script");
-            enabled = false;
-            return;
-        }
-    }
+    public InputField subjectNumber;
+    public InputField timeInSeconds;
+    public InputField notificationsNumber;
+    public InputField numberOfHaveToActNotifications;
+    public InputField notificationSource;
+    public InputField notificationAuthor;
+    public InputField trialsNumber;
 
     public void StartNewSession()
     {
         try
         {
-            //todo
-            //int subjectNo = Int32.Parse(ESSubjectCodeInputField.text);
-            //PlayerPrefs.SetInt("SubjectNo", subjectNo);
-            //PlayerPrefs.SetInt("ConditionNo", 0);
-            //PlayerPrefs.SetInt("TrialNo", 1);
+            Int32.TryParse(subjectNumber.text, out ExperimentData.subjectNumber);
+            Int32.TryParse(timeInSeconds.text, out ExperimentData.timeInSeconds);
+            Int32.TryParse(notificationsNumber.text, out ExperimentData.notificationsNumber);
+            Int32.TryParse(numberOfHaveToActNotifications.text, out ExperimentData.numberOfHaveToActNotifications);
+            Int32.TryParse(trialsNumber.text, out ExperimentData.trialsNumber);
+            ExperimentData.notificationSource = notificationSource.text;
+            ExperimentData.notificationAuthor = notificationAuthor.text;
             string text = headerText.text.Split(':')[1].Trim().Replace("\"", "");
             switch (text)
             {
@@ -83,26 +67,31 @@ public class MenuController : MonoBehaviour
 
     public void StartInFrontOfMobile()
     {
+        EventManager.Broadcast(EVENT.StartGenerator);
         SceneManager.LoadSceneAsync("InFrontOfMobile");
     }
 
     public void StartInFrontOfStickers()
     {
+        EventManager.Broadcast(EVENT.StartGenerator);
         SceneManager.LoadSceneAsync("InFrontOfStickers");
     }
 
     public void StartAroundMobile()
     {
+        EventManager.Broadcast(EVENT.StartGenerator);
         SceneManager.LoadSceneAsync("AroundMobile");
     }
 
     public void StartAroundStickers()
     {
+        EventManager.Broadcast(EVENT.StartGenerator);
         SceneManager.LoadSceneAsync("AroundStickers");
     }
 
     public void StartHiddenWaves()
     {
+        EventManager.Broadcast(EVENT.StartGenerator);
         SceneManager.LoadSceneAsync("HiddenWaves");
     }
 

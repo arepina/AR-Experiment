@@ -10,7 +10,7 @@ namespace Logic
 
         private int mapNameToIndex()
         {
-            string source = FindObjectOfType<ExperimentData>().notificationSource;
+            string source = ExperimentData.notificationSource;
             int index = 0;
             var eType = typeof(NotificationSource);
             foreach (NotificationSource notificationSource in Enum.GetValues(eType))
@@ -27,7 +27,7 @@ namespace Logic
 
         private int mapAuthorToIndex()
         {
-            string author = FindObjectOfType<ExperimentData>().notificationAuthor;
+            string author = ExperimentData.notificationAuthor;
             int index = 0;
             var eType = typeof(NotificationAuthor);
             foreach (NotificationAuthor notificationAuthor in Enum.GetValues(eType))
