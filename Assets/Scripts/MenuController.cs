@@ -44,7 +44,7 @@ public class MenuController : MonoBehaviour
             //PlayerPrefs.SetInt("SubjectNo", subjectNo);
             //PlayerPrefs.SetInt("ConditionNo", 0);
             //PlayerPrefs.SetInt("TrialNo", 1);
-            string text = headerText.text.Split(':')[1].Trim();
+            string text = headerText.text.Split(':')[1].Trim().Replace("\"", "");
             switch (text)
             {
                 case "Перед пользователем - мобильные":
@@ -56,7 +56,7 @@ public class MenuController : MonoBehaviour
                     {
                         StartInFrontOfStickers();
                         return;
-                    }
+                    }       
                 case "Вокруг пользователя - мобильные":
                     {
                         StartAroundMobile();
