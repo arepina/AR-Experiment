@@ -24,7 +24,9 @@ public class GeneratorRunner : MonoBehaviour
     public void Stop()
     {
         isRunning = false;
+        enabled = false;
         Debug.Log("Stopped");
+        return;
     }
 
     public void Update()
