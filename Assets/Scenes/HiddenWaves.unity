@@ -192,12 +192,8 @@ GameObject:
   - component: {fileID: 70485789}
   - component: {fileID: 70485788}
   - component: {fileID: 70485787}
-  - component: {fileID: 70485786}
-  - component: {fileID: 70485784}
   - component: {fileID: 70485783}
   - component: {fileID: 70485793}
-  - component: {fileID: 70485795}
-  - component: {fileID: 70485796}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: MainCamera
@@ -224,31 +220,6 @@ MonoBehaviour:
   grey: {fileID: 2100000, guid: 309ec36c9686841489c2c8f3384886d6, type: 2}
   trayHolder: {fileID: 2059424572}
   notificationsHolder: {fileID: 1268189764}
---- !u!114 &70485784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70485782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b62b7f57c19f461d96d077336a5e83f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &70485786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70485782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d9a5660d20324da9b4e35783d6b0aa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isRunning: 1
 --- !u!114 &70485787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,40 +351,6 @@ MonoBehaviour:
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
   waitForActionToBeAcceptedPeriod: 2
---- !u!114 &70485795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70485782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6aa362bd46964d7b8cd07bbb1c24de0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  subjectNumber: 1
-  trialNumber: 1
-  timeInSeconds: 10
-  notificationsNumber: 2
-  notificationSource: YouTube
-  notificationAuthor: "\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440"
-  numberOfHaveToActNotifications: 2
-  numberOfNonIgnoredHaveToActNotifications: 0
-  sumOfReactionTimeToNonIgnoredHaveToActNotifications: 0
-  numberOfInCorrectlyActedNotifications: 0
---- !u!114 &70485796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70485782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ac0fdc9b25d430fa2ce4f02bcab808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1268189764
 GameObject:
   m_ObjectHideFlags: 0

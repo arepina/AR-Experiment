@@ -316,14 +316,10 @@ GameObject:
   - component: {fileID: 427683002}
   - component: {fileID: 427683001}
   - component: {fileID: 427683000}
-  - component: {fileID: 427682998}
   - component: {fileID: 427682997}
   - component: {fileID: 427682996}
-  - component: {fileID: 427682995}
-  - component: {fileID: 427682994}
   - component: {fileID: 427682993}
   - component: {fileID: 427683007}
-  - component: {fileID: 427682999}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -350,31 +346,6 @@ MonoBehaviour:
   grey: {fileID: 2100000, guid: 309ec36c9686841489c2c8f3384886d6, type: 2}
   trayHolder: {fileID: 1457189454}
   notificationsHolder: {fileID: 1816283280}
---- !u!114 &427682994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427682992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b62b7f57c19f461d96d077336a5e83f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &427682995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427682992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d9a5660d20324da9b4e35783d6b0aa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isRunning: 0
 --- !u!114 &427682996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,40 +382,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 90, y: 0, z: 0, w: 0}
---- !u!114 &427682998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427682992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6aa362bd46964d7b8cd07bbb1c24de0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  subjectNumber: 1
-  trialNumber: 1
-  timeInSeconds: 60
-  notificationsNumber: 30
-  notificationSource: YouTube
-  notificationAuthor: "\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440"
-  numberOfHaveToActNotifications: 5
-  numberOfNonIgnoredHaveToActNotifications: 0
-  sumOfReactionTimeToNonIgnoredHaveToActNotifications: 0
-  numberOfInCorrectlyActedNotifications: 0
---- !u!114 &427682999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427682992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ac0fdc9b25d430fa2ce4f02bcab808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &427683000
 MonoBehaviour:
   m_ObjectHideFlags: 0

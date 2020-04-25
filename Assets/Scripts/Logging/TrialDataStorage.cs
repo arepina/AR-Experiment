@@ -65,9 +65,9 @@ namespace Logic
             return false;
         }
 
-        public void NextTrialExperiment(uint SubjectNumber, string Design, uint TrialNumber, float Time,
-            uint NotificationsNumber, uint NumberOfHaveToActNotifications, uint NumberOfNonIgnoredHaveToActNotifications,
-            float SumOfReactionTimeToNonIgnoredHaveToActNotifications, uint NumberOfInCorrectlyActedNotifications)
+        public void NextTrialExperiment(int SubjectNumber, string Design, int TrialNumber, float Time,
+            int NotificationsNumber, int NumberOfHaveToActNotifications, int NumberOfNonIgnoredHaveToActNotifications,
+            float SumOfReactionTimeToNonIgnoredHaveToActNotifications, int NumberOfInCorrectlyActedNotifications)
         {
             // Fool proffing
             if (_currentTrialData != null)

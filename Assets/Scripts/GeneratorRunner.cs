@@ -1,83 +1,98 @@
-﻿using System.Collections;
-using Logic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GeneratorRunner : MonoBehaviour
+namespace Logic
 {
-    private NotificationsGenerator notificationsGenerator = new NotificationsGenerator();
-    public bool isRunning;
-    private uint atWhichToGenerateHaveToActNotification = 0;
-    private int notificationIndex;
-    private int alreadyCorrect = 0;
-
-    public void Start()
+    public class GeneratorRunner : MonoBehaviour
     {
-        if(FindObjectOfType<ExperimentData>().numberOfHaveToActNotifications > FindObjectOfType<ExperimentData>().notificationsNumber)
+        private NotificationsGenerator notificationsGenerator = new NotificationsGenerator();
+        private int notificationIndex = 0;
+        private int alreadyCorrect = 0;
+        private bool isRunning = false;
+        private float pause = 0;
+
+        public void Start()
         {
-            throw new System.Exception("Illegal arguments: numberOfHaveToActNotifications should be <= then notificationsNumber");
+            EventManager.AddHandler(EVENT.StartGenerator, EnableGenerator);
         }
-        atWhichToGenerateHaveToActNotification = FindObjectOfType<ExperimentData>().notificationsNumber / FindObjectOfType<ExperimentData>().numberOfHaveToActNotifications; 
-        notificationIndex = 0;
-        Debug.Log("Started");
-    }
 
-    public void Stop()
-    {
-        isRunning = false;
-        enabled = false;
-        Debug.Log("Stopped");
-        return;
-    }
-
-    public void Update()
-    {
-        if (isRunning)
+        public void Stop()
         {
-            StartCoroutine(Wait());
+            StopAllCoroutines();
+            enabled = false;
+            ReturnToMainMenu();
         }
-    }
 
-    public IEnumerator Wait()
-    {
-        isRunning = false;
-        ExperimentData experiment = FindObjectOfType<ExperimentData>();
-        uint pause = experiment.timeInSeconds / experiment.notificationsNumber;        
-        if (experiment.notificationsNumber > 0 && notificationIndex < experiment.notificationsNumber)
+        private void ReturnToMainMenu()
         {
-            bool generateHaveToAct = notificationIndex % atWhichToGenerateHaveToActNotification == 0 && alreadyCorrect < experiment.numberOfHaveToActNotifications;
-            if (generateHaveToAct)
+            UnityEngine.SceneManagement.Scene mainMenuScene = SceneManager.GetSceneByName("MainMenu");
+            if (mainMenuScene.isLoaded)
+                SceneManager.SetActiveScene(mainMenuScene);
+            else
+                SceneManager.LoadScene("MainMenu");
+            SceneManager.UnloadSceneAsync("ExperimentSession");
+        }
+
+        public void Update()
+        {
+            if (isRunning)
             {
-                alreadyCorrect += 1;
+                pause = ExperimentData.timeInSeconds / ExperimentData.notificationsNumber;
+                StartCoroutine(Generator());
             }
-            Notification notification = notificationsGenerator.getNotification(generateHaveToAct);
-            var storage = FindObjectOfType<Storage>();
-            storage.addToStorage(notification);
-            EventManager.Broadcast(EVENT.NotificationCreated);
-            saveLogData(notification);
-            notificationIndex += 1;
-            yield return new WaitForSeconds(pause);
+        }
+
+        private void EnableGenerator()
+        {
             isRunning = true;
         }
-        else
+
+        private IEnumerator Generator()
         {
-            saveTrialData(experiment);
-            yield return new WaitForSeconds(pause);
-            Stop();
+        	isRunning = false;
+            Debug.Log(DateTime.Now);
+            int atWhichToGenerateHaveToActNotification = ExperimentData.notificationsNumber / ExperimentData.numberOfHaveToActNotifications;
+            if (ExperimentData.notificationsNumber > 0 && notificationIndex < ExperimentData.notificationsNumber)
+            {
+                bool generateHaveToAct = notificationIndex % atWhichToGenerateHaveToActNotification == 0 && alreadyCorrect < ExperimentData.numberOfHaveToActNotifications;
+                if (generateHaveToAct)
+                {
+                    alreadyCorrect += 1;
+                }
+                Notification notification = notificationsGenerator.getNotification(generateHaveToAct);
+                var storage = FindObjectOfType<Storage>();
+                storage.addToStorage(notification);
+                EventManager.Broadcast(EVENT.NotificationCreated);
+                SaveLogData(notification);
+                notificationIndex += 1;
+                yield return new WaitForSeconds(pause);
+                isRunning = true;
+            }
+            else
+            {
+                SaveTrialData();
+                yield return new WaitForSeconds(pause);
+                Stop();
+            }    
         }
-    }
 
-    private void saveLogData(Notification notification)
-    {
-        string logInfo = notification.ToString(FindObjectOfType<ExperimentData>(), FindObjectOfType<GlobalCommon>().typeName, "CREATED", "-");
-        CSVSaver.saveToFile(logInfo);
-    }
+        private void SaveLogData(Notification notification)
+        {
+            //todo
+            //string logInfo = notification.ToString(FindObjectOfType<GlobalCommon>().typeName, "CREATED", "-");
+            //CSVSaver.saveToFile(logInfo);
+        }
 
-    private void saveTrialData(ExperimentData experiment)
-    {
-        FindObjectOfType<TrialDataStorage>().NextTrialExperiment(experiment.subjectNumber, FindObjectOfType<GlobalCommon>().typeName, experiment.trialNumber,
-                experiment.timeInSeconds, experiment.notificationsNumber,
-                experiment.numberOfHaveToActNotifications, experiment.numberOfNonIgnoredHaveToActNotifications,
-                experiment.sumOfReactionTimeToNonIgnoredHaveToActNotifications, experiment.numberOfInCorrectlyActedNotifications);
-        FindObjectOfType<TrialDataStorage>().SaveExperimentData();
+        private void SaveTrialData()
+        {
+            //todo
+            //FindObjectOfType<TrialDataStorage>().NextTrialExperiment(ExperimentData.subjectNumber, FindObjectOfType<GlobalCommon>().typeName, ExperimentData.trialsNumber,
+            //        ExperimentData.timeInSeconds, ExperimentData.notificationsNumber,
+            //        ExperimentData.numberOfHaveToActNotifications, ExperimentData.numberOfNonIgnoredHaveToActNotifications,
+            //        ExperimentData.sumOfReactionTimeToNonIgnoredHaveToActNotifications, ExperimentData.numberOfInCorrectlyActedNotifications);
+            //FindObjectOfType<TrialDataStorage>().SaveExperimentData();
+        }
     }
 }

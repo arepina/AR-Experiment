@@ -144,9 +144,8 @@ public class WorldMapManager : MonoBehaviour
     private void startExperiment()
     {
         GameObject.Find("Canvas").SetActive(false);
-        Debug.Log("Cube: " + cube.transform.position);
         FindObjectOfType<GlobalAround>().position = cube.transform.position;
         cube.SetActive(false);
-        FindObjectOfType<GeneratorRunner>().isRunning = true;
+        EventManager.Broadcast(EVENT.StartGenerator);
     }
 }

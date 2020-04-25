@@ -134,12 +134,8 @@ GameObject:
   - component: {fileID: 48691099}
   - component: {fileID: 48691098}
   - component: {fileID: 48691097}
-  - component: {fileID: 48691096}
   - component: {fileID: 48691104}
-  - component: {fileID: 48691094}
   - component: {fileID: 48691093}
-  - component: {fileID: 48691103}
-  - component: {fileID: 48691105}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: MainCamera
@@ -166,31 +162,6 @@ MonoBehaviour:
   grey: {fileID: 2100000, guid: 309ec36c9686841489c2c8f3384886d6, type: 2}
   trayHolder: {fileID: 1051663579}
   notificationsHolder: {fileID: 1889803567}
---- !u!114 &48691094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48691092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b62b7f57c19f461d96d077336a5e83f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &48691096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48691092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d9a5660d20324da9b4e35783d6b0aa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isRunning: 1
 --- !u!114 &48691097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,28 +271,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &48691103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48691092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6aa362bd46964d7b8cd07bbb1c24de0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  subjectNumber: 1
-  trialNumber: 1
-  timeInSeconds: 10
-  notificationsNumber: 3
-  notificationSource: YouTube
-  notificationAuthor: "\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440"
-  numberOfHaveToActNotifications: 1
-  numberOfNonIgnoredHaveToActNotifications: 0
-  sumOfReactionTimeToNonIgnoredHaveToActNotifications: 0
-  numberOfInCorrectlyActedNotifications: 0
 --- !u!114 &48691104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,18 +293,6 @@ MonoBehaviour:
   notificationsInColumnTray: 5
   notificationColumnsTray: 8
   waitForActionToBeAcceptedPeriod: 2
---- !u!114 &48691105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48691092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ac0fdc9b25d430fa2ce4f02bcab808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &56755482
 PrefabInstance:
   m_ObjectHideFlags: 0
