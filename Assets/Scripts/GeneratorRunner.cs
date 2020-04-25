@@ -75,7 +75,7 @@ namespace Logic
                 SaveTrialData();
                 yield return new WaitForSeconds(pause);
                 Stop();
-            }    
+            }
         }
 
         private void SaveLogData(Notification notification)
