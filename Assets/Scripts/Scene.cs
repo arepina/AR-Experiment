@@ -16,8 +16,6 @@ namespace Logic
         public Material yellow;
         public Material green;
         public Material grey;
-        public GameObject trayHolder;
-        public GameObject notificationsHolder;
 
         public delegate GameObject Generator(GameObject prefabToCreate, Notification notification,
                                             Vector3 position, Vector3 scale, Quaternion rotation,
@@ -34,8 +32,8 @@ namespace Logic
 
         private void showTray()
         {
-            notificationsHolder.SetActive(false);
-            trayHolder.SetActive(true);
+            FindObjectOfType<GlobalCommon>().notificationsHolder.SetActive(false);
+            FindObjectOfType<GlobalCommon>().trayHolder.SetActive(true);
             if (FindObjectOfType<GlobalCommon>().typeName == "HidenWaves")
             {
                 rebuildScene();
@@ -44,11 +42,11 @@ namespace Logic
 
         private void hideTray()
         {
-            Vector3 trayPosBefore = trayHolder.transform.position;
+            Vector3 trayPosBefore = FindObjectOfType<GlobalCommon>().trayHolder.transform.position;
             trayPosBefore.y = 10;
-            trayHolder.transform.position = trayPosBefore;
-            trayHolder.SetActive(false);
-            notificationsHolder.SetActive(true);
+            FindObjectOfType<GlobalCommon>().trayHolder.transform.position = trayPosBefore;
+            FindObjectOfType<GlobalCommon>().trayHolder.SetActive(false);
+            FindObjectOfType<GlobalCommon>().notificationsHolder.SetActive(true);
         }
 
         private void clearScene()
@@ -58,7 +56,7 @@ namespace Logic
             {
                 Destroy(notification);
             }
-            foreach (Transform childTransform in trayHolder.transform)
+            foreach (Transform childTransform in FindObjectOfType<GlobalCommon>().trayHolder.transform)
             {
                 Destroy(childTransform.gameObject);
             }
@@ -83,7 +81,7 @@ namespace Logic
             Notification n = orderedNotifications.Values.First().Storage.Peek();
             int columnIndex = 1;
             int notificationsInColumn = 0;
-            if (!n.isSilent && !trayHolder.activeSelf)
+            if (!n.isSilent && !FindObjectOfType<GlobalCommon>().trayHolder.activeSelf)
             {
                 GameObject prefabToCreate = FindObjectOfType<GlobalCommon>().notification;
                 GameObject wave = Instantiate(prefabToCreate) as GameObject;
@@ -95,9 +93,9 @@ namespace Logic
                 if (n.SourceName == "WhatsApp") wave.GetComponents<Image>()[0].material = green;
                 if (n.SourceName == GlobalCommon.silentGroupKey) wave.GetComponents<Image>()[0].material = grey;
                 wave.GetComponents<Image>()[0].material.SetFloat("_Glossiness", 1f);
-                wave.transform.parent = notificationsHolder.transform;
+                wave.transform.parent = FindObjectOfType<GlobalCommon>().notificationsHolder.transform;
             }
-            if(trayHolder.activeSelf)
+            if (FindObjectOfType<GlobalCommon>().trayHolder.activeSelf)
             {
                 clearScene();
                 List<Coordinates> coordinates = traysCoordinates();
@@ -116,7 +114,7 @@ namespace Logic
                             Quaternion rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.x, coordinates[indexPosition].Rotation.y, coordinates[indexPosition].Rotation.z);
                             Vector3 scale = coordinates[indexPosition].Scale;
                             GameObject trayN = notificationGenerator(FindObjectOfType<GlobalCommon>().trayNotification, notification, position, scale, rotation, doesHaveGroupIconTray);
-                            trayN.transform.parent = trayHolder.transform;
+                            trayN.transform.parent = FindObjectOfType<GlobalCommon>().trayHolder.transform;
                             trayN.transform.localPosition = position;
                             trayN.transform.localRotation = rotation;
                             indexPosition += 1;
@@ -167,7 +165,7 @@ namespace Logic
                                               scale,
                                               rotation,
                                               doesHaveGroupIconTray);
-                        trayN.transform.parent = trayHolder.transform;
+                        trayN.transform.parent = FindObjectOfType<GlobalCommon>().trayHolder.transform;
                         trayN.transform.localPosition = position;
                         trayN.transform.localRotation = rotation;
                         trayCoordinatesIndex += 1;
@@ -179,7 +177,7 @@ namespace Logic
                         }
                     }
                     if (i < FindObjectOfType<GlobalCommon>().notificationsInColumn
-                        && !trayHolder.activeSelf
+                        && !FindObjectOfType<GlobalCommon>().trayHolder.activeSelf
                         && !notification.isMarkedAsRead) // usual case
                     {
                             bool doesHaveGroupIcon = i == 0;
@@ -193,7 +191,7 @@ namespace Logic
                                                   rotation,
                                                   doesHaveGroupIcon);
                             GameObject trayN = Instantiate(n);
-                            n.transform.parent = notificationsHolder.transform;
+                            n.transform.parent = FindObjectOfType<GlobalCommon>().notificationsHolder.transform;
                             n.transform.localPosition = position;
                             n.transform.localRotation = rotation;
                             usualCoordinatesIndex += 1;
@@ -234,7 +232,7 @@ namespace Logic
                                               scale,
                                               rotation,
                                               doesHaveGroupIconTray);
-                        trayN.transform.parent = trayHolder.transform;
+                        trayN.transform.parent = FindObjectOfType<GlobalCommon>().trayHolder.transform;
                         trayN.transform.localPosition = position;
                         trayN.transform.localRotation = rotation;
                         trayCoordinatesIndex += 1;
@@ -247,7 +245,7 @@ namespace Logic
 
                     }
                     if (usualCoordinatesIndex < maxNotifications
-                        && !trayHolder.activeSelf
+                        && !FindObjectOfType<GlobalCommon>().trayHolder.activeSelf
                         && !notification.isMarkedAsRead) // usual case 
                     {
                         bool doesHaveGroupIcon = i == groupNotifications.Count - 1 || usualCoordinatesIndex == FindObjectOfType<GlobalCommon>().notificationsInColumn - 1;
@@ -260,7 +258,7 @@ namespace Logic
                                              scale,
                                              rotation,
                                              doesHaveGroupIcon);                       
-                        n.transform.parent = notificationsHolder.transform;
+                        n.transform.parent = FindObjectOfType<GlobalCommon>().notificationsHolder.transform;
                         n.transform.localPosition = position;
                         n.transform.localRotation = rotation;                        
                         usualCoordinatesIndex += 1;

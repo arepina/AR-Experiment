@@ -6,6 +6,8 @@ namespace Logic
     {
         public GameObject notification;
         public GameObject trayNotification;
+        public GameObject notificationsHolder;
+        public GameObject trayHolder;
         public string typeName;
         public int notificationsInColumn;
         public int notificationColumns;
