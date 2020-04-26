@@ -44,12 +44,14 @@ namespace Logic
         {
             for (int k = 0; k < ExperimentData.trialsNumber; k++)
             {
+                Debug.Log("Trial: " + (k + 1));
                 for (int i = 0; i < ExperimentData.notificationsNumber; i++)
                 {
                     Generator();
                     yield return new WaitForSeconds(pause);
                 }
                 SaveTrialData();
+                FindObjectOfType<Storage>().removeAllFromStorage();
                 yield return new WaitForSeconds(GlobalCommon.pauseBetweenTrials);
             }
             Stop();

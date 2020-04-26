@@ -8,7 +8,7 @@ namespace Logic
         public static int notificationColumnsTray = 8;
         public static string silentGroupKey = "_silent_";
         public static float waitForActionToBeAcceptedPeriod = 2f;
-        public static float pauseBetweenTrials = 10f;
+        public static float pauseBetweenTrials = 20f;
 
         internal static string currentTypeName;
     }

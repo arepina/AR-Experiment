@@ -69,11 +69,14 @@ namespace Logic
                     }
                 }
             }
-            foreach (Notification notification in orderedNotifications[GlobalCommon.silentGroupKey].Storage)
+            if (orderedNotifications.ContainsKey(GlobalCommon.silentGroupKey))
             {
-                if (notification.Id.Equals(id))
+                foreach (Notification notification in orderedNotifications[GlobalCommon.silentGroupKey].Storage)
                 {
-                    return notification;
+                    if (notification.Id.Equals(id))
+                    {
+                        return notification;
+                    }
                 }
             }
             return null;

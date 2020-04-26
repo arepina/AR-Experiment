@@ -22,12 +22,15 @@ public class NotificationHider : MonoBehaviour
         string sourceName = transform.Find("Source").GetComponent<TextMeshPro>().text;
         string tag = "MarkAsRead";
         Notification n = FindObjectOfType<Storage>().getFromStorage(id.GetComponent<TextMeshPro>().text, sourceName);
-        if (n.isSilent)
+        if (n != null)
         {
-            sourceName = GlobalCommon.silentGroupKey;
+            if (n.isSilent)
+            {
+                sourceName = GlobalCommon.silentGroupKey;
+            }
+            FindObjectOfType<Storage>().removeFromStorage(id.GetComponent<TextMeshPro>().text, sourceName, tag);
+            rebuildSwitcher();
         }
-        FindObjectOfType<Storage>().removeFromStorage(id.GetComponent<TextMeshPro>().text, sourceName, tag);
-        rebuildSwitcher();
     }
 
     private void rebuildSwitcher()

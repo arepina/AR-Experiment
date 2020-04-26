@@ -2017,9 +2017,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d3b886519be46ebb352b8b9e5485b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hideTimeOfTheNotificationAfterArrival: 10
+  hideTimeOfTheNotificationAfterArrival: 5
   id: {fileID: 7434072145722171719}
-  sourceColorHolder: {fileID: 1276263996598276239}
 --- !u!114 &1701019756079788042
 MonoBehaviour:
   m_ObjectHideFlags: 0
