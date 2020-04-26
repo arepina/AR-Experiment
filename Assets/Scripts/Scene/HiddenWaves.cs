@@ -83,7 +83,7 @@ namespace Logic
             Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
             Notification n = orderedNotifications.Values.First().Storage.Peek();
             int columnIndex = 1;
-            int notificationsInColumn = 0;
+            int notififcationsNumberInTraysColumnNow = 0;
             if (!n.isSilent && !trayHolder.activeSelf)
             {
                 GameObject prefabToCreate = notification;
@@ -121,10 +121,10 @@ namespace Logic
                             trayN.transform.localPosition = position;
                             trayN.transform.localRotation = rotation;
                             indexPosition += 1;
-                            notificationsInColumn += 1;
-                            if (notificationsInColumn == GlobalCommon.notificationsInColumnTray)
+                            notififcationsNumberInTraysColumnNow += 1;
+                            if (notififcationsNumberInTraysColumnNow == GlobalCommon.notificationsInColumnTray)
                             {
-                                notificationsInColumn = 0;
+                                notififcationsNumberInTraysColumnNow = 0;
                                 columnIndex += 1;
                             }
                         }

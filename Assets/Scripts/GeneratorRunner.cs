@@ -35,7 +35,7 @@ namespace Logic
             if (isRunning)
             {
                 pause = ExperimentData.timeInSeconds / ExperimentData.notificationsNumber;
-                StartCoroutine(Generator());
+                StartCoroutine(Generator()); //todo fix the coroutines
             }
         }
 

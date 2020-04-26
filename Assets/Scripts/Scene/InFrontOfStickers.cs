@@ -86,6 +86,7 @@ namespace Logic
             int usualCoordinatesIndex = 0;
             int trayCoordinatesIndex = 0;
             int columnIndex = 1;
+            int notififcationsNumberInTraysColumnNow = 0;
             int maxNotifications = notificationsInColumn * notificationColumns;
             int maxNotificationsInTray = GlobalCommon.notificationsInColumnTray * GlobalCommon.notificationColumnsTray;
             foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
@@ -110,10 +111,10 @@ namespace Logic
                         trayN.transform.localPosition = position;
                         trayN.transform.localRotation = rotation;
                         trayCoordinatesIndex += 1;
-                        notificationsInColumn += 1;
-                        if (notificationsInColumn == GlobalCommon.notificationsInColumnTray)
+                        notififcationsNumberInTraysColumnNow += 1;
+                        if (notififcationsNumberInTraysColumnNow == GlobalCommon.notificationsInColumnTray)
                         {
-                            notificationsInColumn = 0;
+                            notififcationsNumberInTraysColumnNow = 0;
                             columnIndex += 1;
                         }
 

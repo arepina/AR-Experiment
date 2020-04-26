@@ -27,6 +27,38 @@ public class NotificationHider : MonoBehaviour
             sourceName = GlobalCommon.silentGroupKey;
         }
         FindObjectOfType<Storage>().removeFromStorage(id.GetComponent<TextMeshPro>().text, sourceName, tag);
-        Destroy(gameObject);
+        rebuildSwitcher();
+    }
+
+    private void rebuildSwitcher()
+    {
+        switch (GlobalCommon.currentTypeName)
+        {
+            case "InFrontOfMobile":
+                {
+                    FindObjectOfType<InFrontOfMobile>().rebuildScene();
+                    break;
+                }
+            case "InFrontOfStickers":
+                {
+                    FindObjectOfType<InFrontOfStickers>().rebuildScene();
+                    break;
+                }
+            case "AroundMobile":
+                {
+                    FindObjectOfType<AroundMobile>().rebuildScene();
+                    break;
+                }
+            case "AroundStickers":
+                {
+                    FindObjectOfType<AroundStickers>().rebuildScene();
+                    break;
+                }
+            case "HiddenWaves":
+                {
+                    FindObjectOfType<HiddenWaves>().rebuildScene();
+                    break;
+                }
+        }
     }
 }
