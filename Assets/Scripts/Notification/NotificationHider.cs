@@ -10,7 +10,7 @@ public class NotificationHider : MonoBehaviour
 
     void Start()
     {
-        if (transform.parent.name != "TrayHolder")
+        if (transform.parent != null && transform.parent.name != "TrayHolder")
         {
             StartCoroutine(Destroyer());
         }

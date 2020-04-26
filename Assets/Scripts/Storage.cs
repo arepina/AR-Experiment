@@ -102,6 +102,11 @@ namespace Logic
             }
         }
 
+        public void removeAllFromStorage()
+        {
+            orderedNotifications = new Dictionary<string, NotificationsStorage>();
+        }
+
         private void createOrderedStorage(string sourceName)
         {
             NotificationsStorage silentGroup = null;

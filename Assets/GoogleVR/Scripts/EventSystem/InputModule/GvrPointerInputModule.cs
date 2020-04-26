@@ -233,7 +233,10 @@ public class GvrPointerInputModule : BaseInputModule, IGvrInputModuleController
     [SuppressMemoryAllocationError(IsWarning = true, Reason = "Pending documentation.")]
     public override void DeactivateModule()
     {
-        Impl.DeactivateModule();
+        if (Impl != null)
+        {
+            Impl.DeactivateModule();
+        }
     }
 
     /// <inheritdoc/>

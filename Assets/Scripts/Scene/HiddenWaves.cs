@@ -33,7 +33,7 @@ namespace Logic
             EventManager.AddHandler(EVENT.NotificationCreated, rebuildScene);
             EventManager.AddHandler(EVENT.ShowTray, showTray);
             EventManager.AddHandler(EVENT.HideTray, hideTray);
-            GeneratorRunner.isRunning = true;
+            FindObjectOfType<GeneratorRunner>().isRunning = true;
         }
 
         public void Stop()

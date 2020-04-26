@@ -10,7 +10,7 @@ namespace Logic
         private NotificationsGenerator notificationsGenerator = new NotificationsGenerator();
         private int notificationIndex = 0;
         private int alreadyCorrect = 0;
-        internal static bool isRunning = false;
+        internal bool isRunning = false;
         private float pause = 0;
 
         public void Stop()
@@ -26,7 +26,7 @@ namespace Logic
             if (mainMenuScene.isLoaded)
                 SceneManager.SetActiveScene(mainMenuScene);
             else
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("MainMenu"); //todo fix the unloading and duplicating the MainMenus
             SceneManager.UnloadSceneAsync(GlobalCommon.currentTypeName);
         }
 

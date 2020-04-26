@@ -26,6 +26,7 @@ public class MenuController : MonoBehaviour
     {
         try
         {
+            FindObjectOfType<Storage>().removeAllFromStorage();
             Int32.TryParse(subjectNumber.text, out ExperimentData.subjectNumber);
             Int32.TryParse(timeInSeconds.text, out ExperimentData.timeInSeconds);
             Int32.TryParse(notificationsNumber.text, out ExperimentData.notificationsNumber);
