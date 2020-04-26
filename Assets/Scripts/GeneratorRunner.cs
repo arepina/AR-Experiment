@@ -27,7 +27,7 @@ namespace Logic
                 SceneManager.SetActiveScene(mainMenuScene);
             else
                 SceneManager.LoadScene("MainMenu");
-            SceneManager.UnloadSceneAsync("ExperimentSession");
+            SceneManager.UnloadSceneAsync(GlobalCommon.currentTypeName);
         }
 
         public void Update()
