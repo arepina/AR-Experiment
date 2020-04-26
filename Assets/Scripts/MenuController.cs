@@ -1,5 +1,6 @@
 ﻿using System;
 using Logic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,8 +14,8 @@ public class MenuController : MonoBehaviour
     public InputField timeInSeconds;
     public InputField notificationsNumber;
     public InputField numberOfHaveToActNotifications;
-    public InputField notificationSource;
-    public InputField notificationAuthor;
+    public GameObject notificationSource;
+    public GameObject notificationAuthor;
     public InputField trialsNumber;
 
     public void Start()
@@ -32,8 +33,9 @@ public class MenuController : MonoBehaviour
             Int32.TryParse(notificationsNumber.text, out ExperimentData.notificationsNumber);
             Int32.TryParse(numberOfHaveToActNotifications.text, out ExperimentData.numberOfHaveToActNotifications);
             Int32.TryParse(trialsNumber.text, out ExperimentData.trialsNumber);
-            ExperimentData.notificationSource = notificationSource.text;
-            ExperimentData.notificationAuthor = notificationAuthor.text;
+            //todo fix 
+            //ExperimentData.notificationSource = notificationSource.GetComponent<Text>().text;
+            //ExperimentData.notificationAuthor = notificationAuthor.GetComponent<Text>().text;
             string text = headerText.text.Split(':')[1].Trim().Replace("\"", "");
             switch (text)
             {
