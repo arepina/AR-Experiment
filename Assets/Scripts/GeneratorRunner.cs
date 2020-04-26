@@ -34,38 +34,42 @@ namespace Logic
         {
             if (isRunning)
             {
+                isRunning = false;
                 pause = ExperimentData.timeInSeconds / ExperimentData.notificationsNumber;
-                StartCoroutine(Generator()); //todo fix the coroutines
+                StartCoroutine(Runner());
             }
         }
 
-        private IEnumerator Generator()
+        private IEnumerator Runner()
         {
-        	isRunning = false;
+            for (int k = 0; k < ExperimentData.trialsNumber; k++)
+            {
+                for (int i = 0; i < ExperimentData.notificationsNumber; i++)
+                {
+                    Generator();
+                    yield return new WaitForSeconds(pause);
+                }
+                SaveTrialData();
+                yield return new WaitForSeconds(GlobalCommon.pauseBetweenTrials);
+            }
+            Stop();
+        }
+
+        private void Generator()
+        {
             Debug.Log(DateTime.Now);
             int atWhichToGenerateHaveToActNotification = ExperimentData.notificationsNumber / ExperimentData.numberOfHaveToActNotifications;
-            if (ExperimentData.notificationsNumber > 0 && notificationIndex < ExperimentData.notificationsNumber)
+            bool generateHaveToAct = notificationIndex % atWhichToGenerateHaveToActNotification == 0 && alreadyCorrect < ExperimentData.numberOfHaveToActNotifications;
+            if (generateHaveToAct)
             {
-                bool generateHaveToAct = notificationIndex % atWhichToGenerateHaveToActNotification == 0 && alreadyCorrect < ExperimentData.numberOfHaveToActNotifications;
-                if (generateHaveToAct)
-                {
-                    alreadyCorrect += 1;
-                }
-                Notification notification = notificationsGenerator.getNotification(generateHaveToAct);
-                var storage = FindObjectOfType<Storage>();
-                storage.addToStorage(notification);
-                EventManager.Broadcast(EVENT.NotificationCreated);
-                SaveLogData(notification);
-                notificationIndex += 1;
-                yield return new WaitForSeconds(pause);
-                isRunning = true;
+                alreadyCorrect += 1;
             }
-            else
-            {
-                SaveTrialData();
-                yield return new WaitForSeconds(pause);
-                Stop();
-            }
+            Notification notification = notificationsGenerator.getNotification(generateHaveToAct);
+            var storage = FindObjectOfType<Storage>();
+            storage.addToStorage(notification);
+            EventManager.Broadcast(EVENT.NotificationCreated);
+            SaveLogData(notification);
+            notificationIndex += 1;
         }
 
         private void SaveLogData(Notification notification)
