@@ -76,21 +76,44 @@ namespace Logic
         internal void processHideAndMarkAsRead(string id, string sourceName, string tag)
         {
             Debug.Log(string.Format("Notification with id {0} from source {1} was chosen to {2}", id, sourceName, tag));
-            //todo
-            //var storage = FindObjectOfType<Storage>();
-            //storage.removeFromStorage(id, sourceName, tag);
-            //var scene = FindObjectOfType<Scene>();
-            //scene.rebuildScene();
+            var storage = FindObjectOfType<Storage>();
+            storage.removeFromStorage(id, sourceName, tag);
+            rebuildSwitcher();
         }
 
         internal void processHideAndMarkAsReadAll(string sourceName, string tag)
         {
             Debug.Log(string.Format("Notifications from source {0} were chosen to {1}", sourceName, tag));
-            //todo
-            //var storage = FindObjectOfType<Storage>();
-            //storage.removeAllFromStorage(sourceName, tag);
-            //var scene = FindObjectOfType<Scene>();
-            //scene.rebuildScene();
+            var storage = FindObjectOfType<Storage>();
+            storage.removeAllFromStorage(sourceName, tag);
+            rebuildSwitcher();
+        }
+
+        private void rebuildSwitcher()
+        {
+            switch (GlobalCommon.currentTypeName)
+            {
+                case "InFrontOfMobile": {
+                        FindObjectOfType<InFrontOfMobile>().rebuildScene();
+                        break;
+                    }
+                case "InFrontOfStickers": {
+                        FindObjectOfType<InFrontOfStickers>().rebuildScene();
+                        break;
+                    }
+                case "AroundMobile": {
+                        FindObjectOfType<AroundMobile>().rebuildScene();
+                        break;
+                    }
+                case "AroundStickers": {
+                        FindObjectOfType<AroundStickers>().rebuildScene();
+                        break;
+                    }
+                case "HiddenWaves": {
+                        FindObjectOfType<HiddenWaves>().rebuildScene();
+                        break;
+                    }
+            }
         }
     }
 }

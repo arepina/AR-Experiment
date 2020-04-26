@@ -70,19 +70,17 @@ namespace Logic
 
         private void SaveLogData(Notification notification)
         {
-            //todo
-            //string logInfo = notification.ToString(FindObjectOfType<GlobalCommon>().typeName, "CREATED", "-");
-            //CSVSaver.saveToFile(logInfo);
+            string logInfo = notification.ToString(GlobalCommon.currentTypeName, "CREATED", "-");
+            CSVSaver.saveToFile(logInfo);
         }
 
         private void SaveTrialData()
         {
-            //todo
-            //FindObjectOfType<TrialDataStorage>().NextTrialExperiment(ExperimentData.subjectNumber, FindObjectOfType<GlobalCommon>().typeName, ExperimentData.trialsNumber,
-            //        ExperimentData.timeInSeconds, ExperimentData.notificationsNumber,
-            //        ExperimentData.numberOfHaveToActNotifications, ExperimentData.numberOfNonIgnoredHaveToActNotifications,
-            //        ExperimentData.sumOfReactionTimeToNonIgnoredHaveToActNotifications, ExperimentData.numberOfInCorrectlyActedNotifications);
-            //FindObjectOfType<TrialDataStorage>().SaveExperimentData();
+            FindObjectOfType<TrialDataStorage>().NextTrialExperiment(ExperimentData.subjectNumber, GlobalCommon.currentTypeName, ExperimentData.trialsNumber,
+                    ExperimentData.timeInSeconds, ExperimentData.notificationsNumber,
+                    ExperimentData.numberOfHaveToActNotifications, ExperimentData.numberOfNonIgnoredHaveToActNotifications,
+                    ExperimentData.sumOfReactionTimeToNonIgnoredHaveToActNotifications, ExperimentData.numberOfInCorrectlyActedNotifications);
+            FindObjectOfType<TrialDataStorage>().SaveExperimentData();
         }
     }
 }
