@@ -136,8 +136,8 @@ GameObject:
   - component: {fileID: 8}
   - component: {fileID: 14}
   - component: {fileID: 22}
-  - component: {fileID: 23}
   - component: {fileID: 26}
+  - component: {fileID: 15}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -253,6 +253,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce437cef046e841aabd6070890e79d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &15
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f745b8d89214dc3b2d3f4d2c81a9a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notification: {fileID: 4152187826527866884, guid: e4dff0a2bd5bf465692987eeffafed59,
+    type: 3}
+  trayNotification: {fileID: 4152187826527866884, guid: e4dff0a2bd5bf465692987eeffafed59,
+    type: 3}
+  notificationsHolder: {fileID: 1981874298}
+  trayHolder: {fileID: 1366459647}
+  red: {fileID: 2100000, guid: 938f5f3fdd19a4be3b09ab9bd63ed1ce, type: 2}
+  blue: {fileID: 2100000, guid: fb2252c0d24a84135aa4942dcc379161, type: 2}
+  yellow: {fileID: 2100000, guid: 3a71047eab6ac4bda8ace83bb44390d4, type: 2}
+  green: {fileID: 2100000, guid: e379d1526190f4d08aeba20aced74ab4, type: 2}
+  grey: {fileID: 2100000, guid: 309ec36c9686841489c2c8f3384886d6, type: 2}
 --- !u!1 &16
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,30 +334,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 90, y: 0, z: 0, w: 0}
---- !u!114 &23
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34bbcf2dd24c7460b8b26a5f8926a680, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  notification: {fileID: 4152187826527866884, guid: e4dff0a2bd5bf465692987eeffafed59,
-    type: 3}
-  trayNotification: {fileID: 4152187826527866884, guid: e4dff0a2bd5bf465692987eeffafed59,
-    type: 3}
-  notificationsHolder: {fileID: 1981874298}
-  trayHolder: {fileID: 1366459647}
-  typeName: AroundStickers
-  notificationsInColumn: 3
-  notificationColumns: 5
-  notificationsInColumnTray: 5
-  notificationColumnsTray: 8
-  waitForActionToBeAcceptedPeriod: 2
 --- !u!114 &26
 MonoBehaviour:
   m_ObjectHideFlags: 0

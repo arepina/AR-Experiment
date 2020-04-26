@@ -10,24 +10,19 @@ namespace Logic
         private NotificationsGenerator notificationsGenerator = new NotificationsGenerator();
         private int notificationIndex = 0;
         private int alreadyCorrect = 0;
-        private bool isRunning = false;
+        internal static bool isRunning = false;
         private float pause = 0;
-
-        public void Start()
-        {
-            EventManager.AddHandler(EVENT.StartGenerator, EnableGenerator);
-        }
 
         public void Stop()
         {
             StopAllCoroutines();
-            enabled = false;
+            isRunning = false;
             ReturnToMainMenu();
         }
 
         private void ReturnToMainMenu()
         {
-            UnityEngine.SceneManagement.Scene mainMenuScene = SceneManager.GetSceneByName("MainMenu");
+            Scene mainMenuScene = SceneManager.GetSceneByName("MainMenu");
             if (mainMenuScene.isLoaded)
                 SceneManager.SetActiveScene(mainMenuScene);
             else
@@ -42,11 +37,6 @@ namespace Logic
                 pause = ExperimentData.timeInSeconds / ExperimentData.notificationsNumber;
                 StartCoroutine(Generator());
             }
-        }
-
-        private void EnableGenerator()
-        {
-            isRunning = true;
         }
 
         private IEnumerator Generator()

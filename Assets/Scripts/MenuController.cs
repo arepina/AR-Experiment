@@ -17,6 +17,11 @@ public class MenuController : MonoBehaviour
     public InputField notificationAuthor;
     public InputField trialsNumber;
 
+    public void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void StartNewSession()
     {
         try
@@ -67,31 +72,31 @@ public class MenuController : MonoBehaviour
 
     public void StartInFrontOfMobile()
     {
-        EventManager.Broadcast(EVENT.StartGenerator);
+        GlobalCommon.currentTypeName = "InFrontOfMobile";
         SceneManager.LoadSceneAsync("InFrontOfMobile");
     }
 
     public void StartInFrontOfStickers()
     {
-        EventManager.Broadcast(EVENT.StartGenerator);
+        GlobalCommon.currentTypeName = "InFrontOfStickers";
         SceneManager.LoadSceneAsync("InFrontOfStickers");
     }
 
     public void StartAroundMobile()
     {
-        EventManager.Broadcast(EVENT.StartGenerator);
+        GlobalCommon.currentTypeName = "AroundMobile";
         SceneManager.LoadSceneAsync("AroundMobile");
     }
 
     public void StartAroundStickers()
     {
-        EventManager.Broadcast(EVENT.StartGenerator);
+        GlobalCommon.currentTypeName = "AroundStickers";
         SceneManager.LoadSceneAsync("AroundStickers");
     }
 
     public void StartHiddenWaves()
     {
-        EventManager.Broadcast(EVENT.StartGenerator);
+        GlobalCommon.currentTypeName = "HiddenWaves";
         SceneManager.LoadSceneAsync("HiddenWaves");
     }
 

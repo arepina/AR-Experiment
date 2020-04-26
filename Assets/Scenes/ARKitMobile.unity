@@ -1725,8 +1725,8 @@ GameObject:
   - component: {fileID: 2142712171}
   - component: {fileID: 2142712170}
   - component: {fileID: 2142712164}
-  - component: {fileID: 2142712163}
   - component: {fileID: 2142712165}
+  - component: {fileID: 2142712161}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1750,7 +1750,7 @@ Transform:
   m_Father: {fileID: 1441587257}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2142712163
+--- !u!114 &2142712161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1759,7 +1759,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2142712159}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34bbcf2dd24c7460b8b26a5f8926a680, type: 3}
+  m_Script: {fileID: 11500000, guid: 755773de824c443feb4b32630f2fe623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   notification: {fileID: 6458541884227280155, guid: fd2f4b3e2aaef424488f5197c0bc2e6b,
@@ -1768,12 +1768,11 @@ MonoBehaviour:
     type: 3}
   notificationsHolder: {fileID: 475933800}
   trayHolder: {fileID: 467690068}
-  typeName: AroundStickers
-  notificationsInColumn: 3
-  notificationColumns: 5
-  notificationsInColumnTray: 5
-  notificationColumnsTray: 8
-  waitForActionToBeAcceptedPeriod: 2
+  red: {fileID: 2100000, guid: 938f5f3fdd19a4be3b09ab9bd63ed1ce, type: 2}
+  blue: {fileID: 2100000, guid: fb2252c0d24a84135aa4942dcc379161, type: 2}
+  yellow: {fileID: 2100000, guid: 3a71047eab6ac4bda8ace83bb44390d4, type: 2}
+  green: {fileID: 2100000, guid: e379d1526190f4d08aeba20aced74ab4, type: 2}
+  grey: {fileID: 2100000, guid: 309ec36c9686841489c2c8f3384886d6, type: 2}
 --- !u!114 &2142712164
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ namespace Logic
     {
         private Dictionary<string, NotificationsStorage> orderedNotifications = new Dictionary<string, NotificationsStorage>();
 
-        internal Dictionary<string, NotificationsStorage> getStorage()
+        public Dictionary<string, NotificationsStorage> getStorage()
         {
             return orderedNotifications;
         }

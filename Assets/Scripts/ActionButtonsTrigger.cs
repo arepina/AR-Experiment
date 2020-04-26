@@ -89,7 +89,7 @@ namespace Logic
         public void allExit(string tag)
         {
             long duration = (long)TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
-            if (duration >= FindObjectOfType<GlobalCommon>().waitForActionToBeAcceptedPeriod)
+            if (duration >= GlobalCommon.waitForActionToBeAcceptedPeriod)
             {
                 FindObjectOfType<ActionsProcessor>().actionProcessGroup(notification, tag);
             }
@@ -103,7 +103,7 @@ namespace Logic
         public void localExit(string tag)
         {
             long duration = (long)TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
-            if (duration >= FindObjectOfType<GlobalCommon>().waitForActionToBeAcceptedPeriod)
+            if (duration >= GlobalCommon.waitForActionToBeAcceptedPeriod)
             {
                 FindObjectOfType<ActionsProcessor>().actionProcessLocalAction(notification, tag);
             }

@@ -11,7 +11,7 @@ namespace Logic
             string id = notification.transform.Find("Id").GetComponent<TextMeshPro>().text;
             Color groupColor;
             string sourceName;
-            if (!FindObjectOfType<GlobalCommon>().typeName.Contains("Sticker"))
+            if (!GlobalCommon.currentTypeName.Contains("Sticker"))
             {
                 groupColor = notification.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
                 sourceName = groupColor.Equals(Color.gray) ? GlobalCommon.silentGroupKey :
@@ -31,7 +31,7 @@ namespace Logic
         {
             string id = notification.transform.Find("Id").GetComponent<TextMeshPro>().text;
             Color groupColor;
-            if (!FindObjectOfType<GlobalCommon>().typeName.Contains("Sticker"))
+            if (!GlobalCommon.currentTypeName.Contains("Sticker"))
             {
                 groupColor = notification.transform.Find("GroupIcon").GetComponent<MeshRenderer>().material.color;
             }
@@ -69,26 +69,28 @@ namespace Logic
             {
                 ExperimentData.numberOfInCorrectlyActedNotifications += 1;
             }
-            string logInfo = notification.ToString(FindObjectOfType<GlobalCommon>().typeName, "REACTED", reactionDuration.ToString());
+            string logInfo = notification.ToString(GlobalCommon.currentTypeName, "REACTED", reactionDuration.ToString());
             CSVSaver.saveToFile(logInfo);
         }
 
         internal void processHideAndMarkAsRead(string id, string sourceName, string tag)
         {
             Debug.Log(string.Format("Notification with id {0} from source {1} was chosen to {2}", id, sourceName, tag));
-            var storage = FindObjectOfType<Storage>();
-            storage.removeFromStorage(id, sourceName, tag);
-            var scene = FindObjectOfType<Scene>();
-            scene.rebuildScene();
+            //todo
+            //var storage = FindObjectOfType<Storage>();
+            //storage.removeFromStorage(id, sourceName, tag);
+            //var scene = FindObjectOfType<Scene>();
+            //scene.rebuildScene();
         }
 
         internal void processHideAndMarkAsReadAll(string sourceName, string tag)
         {
             Debug.Log(string.Format("Notifications from source {0} were chosen to {1}", sourceName, tag));
-            var storage = FindObjectOfType<Storage>();
-            storage.removeAllFromStorage(sourceName, tag);
-            var scene = FindObjectOfType<Scene>();
-            scene.rebuildScene();
+            //todo
+            //var storage = FindObjectOfType<Storage>();
+            //storage.removeAllFromStorage(sourceName, tag);
+            //var scene = FindObjectOfType<Scene>();
+            //scene.rebuildScene();
         }
     }
 }
