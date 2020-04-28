@@ -2402,8 +2402,8 @@ MonoBehaviour:
   timeInSeconds: {fileID: 436990998}
   notificationsNumber: {fileID: 1195432628}
   numberOfHaveToActNotifications: {fileID: 462534548}
-  notificationSource: {fileID: 1617709874}
-  notificationAuthor: {fileID: 1538350916}
+  notificationSource: {fileID: 1617709876}
+  notificationAuthor: {fileID: 1538350918}
   trialsNumber: {fileID: 1977438626}
 --- !u!114 &412439086
 MonoBehaviour:
