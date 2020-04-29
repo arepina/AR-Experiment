@@ -62,14 +62,22 @@ namespace Logic
         private void clearScene()
         {
             GameObject[] notificationsObjects = GameObject.FindGameObjectsWithTag("Notification");
-            foreach (GameObject notification in notificationsObjects)
+            try
             {
-                Destroy(notification);
+                foreach (GameObject notification in notificationsObjects)
+                {
+                    Destroy(notification);
+                }
             }
-            foreach (Transform childTransform in trayHolder.transform)
+            catch (MissingReferenceException) { }
+            try
             {
-                Destroy(childTransform.gameObject);
+                foreach (Transform childTransform in trayHolder.transform)
+                {
+                    Destroy(childTransform.gameObject);
+                }
             }
+            catch (MissingReferenceException) { }
         }
 
         public void rebuildScene()
@@ -117,9 +125,13 @@ namespace Logic
                             Quaternion rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.x, coordinates[indexPosition].Rotation.y, coordinates[indexPosition].Rotation.z);
                             Vector3 scale = coordinates[indexPosition].Scale;
                             GameObject trayN = notificationGenerator(trayNotification, notification, position, scale, rotation, doesHaveGroupIconTray);
-                            trayN.transform.parent = trayHolder.transform;
-                            trayN.transform.localPosition = position;
-                            trayN.transform.localRotation = rotation;
+                            try
+                            {
+                                trayN.transform.parent = trayHolder.transform;
+                                trayN.transform.localPosition = position;
+                                trayN.transform.localRotation = rotation;
+                            }
+                            catch (MissingReferenceException) { }
                             indexPosition += 1;
                             notififcationsNumberInTraysColumnNow += 1;
                             if (notififcationsNumberInTraysColumnNow == GlobalCommon.notificationsInColumnTray)

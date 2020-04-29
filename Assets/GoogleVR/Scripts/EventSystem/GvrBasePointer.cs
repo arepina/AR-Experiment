@@ -841,21 +841,118 @@ public abstract class GvrBasePointer : MonoBehaviour, IGvrControllerInputDeviceR
             GvrControllerButton buttonDown = 0;
             GvrControllerButton buttonUp = 0;
 
-            if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.L) || Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
+            if (Input.GetButton("Fire1"))
             {
-                Debug.Log("GVR Input");
+                Debug.Log("1Fire1");
+            }
+            if (Input.GetButton("Fire2"))
+            {
+                Debug.Log("1Fire2");
+            }
+            if (Input.GetButton("Fire3"))
+            {
+                Debug.Log("1Fire3");
+            }
+            if (Input.GetButton("Jump"))
+            {
+                Debug.Log("1Jump");
+            }
+            if (Input.GetButton("Submit"))
+            {
+                Debug.Log("1Submit");
+            }
+            if (Input.GetButton("Cancel"))
+            {
+                Debug.Log("1Cancel");
+            }
+
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Debug.Log("2Fire1");
+            }
+            if (Input.GetButtonDown("Fire2"))
+            {
+                Debug.Log("2Fire2");
+            }
+            if (Input.GetButtonDown("Fire3"))
+            {
+                Debug.Log("2Fire3");
+            }
+            if (Input.GetButtonDown("Jump"))
+            {
+                Debug.Log("2Jump");
+            }
+            if (Input.GetButtonDown("Submit"))
+            {
+                Debug.Log("2Submit");
+            }
+            if (Input.GetButtonDown("Cancel"))
+            {
+                Debug.Log("2Cancel");
+            }
+
+
+            if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.L)
+                || Input.GetButton("Fire1")
+                || Input.GetButton("Fire3") || Input.GetButton("Jump"))
+            {
                 if (Input.GetButton("Fire1"))
                 {
-                    Debug.Log("Fire1");
+                    Debug.Log("1Fire1");
                 }
                 if (Input.GetButton("Fire2"))
                 {
-                    Debug.Log("Fire2");
+                    Debug.Log("1Fire2");
+                }
+                if (Input.GetButton("Fire3"))
+                {
+                    Debug.Log("1Fire3");
+                }
+                if (Input.GetButton("Jump"))
+                {
+                    Debug.Log("1Jump");
+                }
+                if (Input.GetButton("Submit"))
+                {
+                    Debug.Log("1Submit");
+                }
+                if (Input.GetButton("Cancel"))
+                {
+                    Debug.Log("1Cancel");
+                }
+
+
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    Debug.Log("2Fire1");
+                }
+                if (Input.GetButtonDown("Fire2"))
+                {
+                    Debug.Log("2Fire2");
+                }
+                if (Input.GetButtonDown("Fire3"))
+                {
+                    Debug.Log("2Fire3");
+                }
+                if (Input.GetButtonDown("Jump"))
+                {
+                    Debug.Log("2Jump");
+                }
+                if (Input.GetButtonDown("Submit"))
+                {
+                    Debug.Log("2Submit");
+                }
+                if (Input.GetButtonDown("Cancel"))
+                {
+                    Debug.Log("2Cancel");
                 }
                 buttonDown |= GvrControllerButton.TouchPadButton;
             }
 
-            if (Input.GetMouseButtonUp(0) || Input.GetKey(KeyCode.V) || Input.GetButtonUp("Fire1") || Input.GetButtonUp("Fire2"))
+            if (Input.GetMouseButtonUp(0) || Input.GetKey(KeyCode.V)
+                || Input.GetButton("Fire1")
+                || Input.GetButton("Fire3") || Input.GetButton("Jump"))
             {
                 buttonUp |= GvrControllerButton.TouchPadButton;
             }

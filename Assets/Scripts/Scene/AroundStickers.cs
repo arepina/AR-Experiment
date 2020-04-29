@@ -61,14 +61,22 @@ namespace Logic
         private void clearScene()
         {
             GameObject[] notificationsObjects = GameObject.FindGameObjectsWithTag("Notification");
-            foreach (GameObject notification in notificationsObjects)
+            try
             {
-                Destroy(notification);
+                foreach (GameObject notification in notificationsObjects)
+                {
+                    Destroy(notification);
+                }
             }
-            foreach (Transform childTransform in trayHolder.transform)
+            catch (MissingReferenceException) { }
+            try
             {
-                Destroy(childTransform.gameObject);
+                foreach (Transform childTransform in trayHolder.transform)
+                {
+                    Destroy(childTransform.gameObject);
+                }
             }
+            catch (MissingReferenceException) { }
         }
 
         public void rebuildScene()
@@ -107,9 +115,13 @@ namespace Logic
                                               scale,
                                               rotation,
                                               doesHaveGroupIconTray);
-                        trayN.transform.parent = trayHolder.transform;
-                        trayN.transform.localPosition = position;
-                        trayN.transform.localRotation = rotation;
+                        try
+                        { 
+                            trayN.transform.parent = trayHolder.transform;
+                            trayN.transform.localPosition = position;
+                            trayN.transform.localRotation = rotation;
+                        }
+                        catch (MissingReferenceException) { }
                         trayCoordinatesIndex += 1;
                         notififcationsNumberInTraysColumnNow += 1;
                         if (notififcationsNumberInTraysColumnNow == GlobalCommon.notificationsInColumnTray)
