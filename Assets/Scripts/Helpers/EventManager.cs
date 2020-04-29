@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Logic
 {
-    public enum EVENT { NotificationCreated, ShowTray, HideTray, SceneRebuild, StartGenerator };
+    public enum EVENT { NotificationCreated, ShowTray, HideTray, SceneRebuild };
     public class EventManager
     {
         // Stores the delegates that get called when an event is fired
