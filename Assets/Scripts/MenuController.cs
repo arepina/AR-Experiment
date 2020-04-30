@@ -18,16 +18,10 @@ public class MenuController : MonoBehaviour
     public TextMeshProUGUI notificationAuthor;
     public InputField trialsNumber;
 
-    public void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
     public void StartNewSession()
     {
         try
         {
-            FindObjectOfType<Storage>().removeAllFromStorage();
             Int32.TryParse(subjectNumber.text, out ExperimentData.subjectNumber);
             Int32.TryParse(timeInSeconds.text, out ExperimentData.timeInSeconds);
             Int32.TryParse(notificationsNumber.text, out ExperimentData.notificationsNumber);

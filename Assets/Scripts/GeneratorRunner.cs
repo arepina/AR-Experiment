@@ -26,7 +26,7 @@ namespace Logic
             if (mainMenuScene.isLoaded)
                 SceneManager.SetActiveScene(mainMenuScene);
             else
-                SceneManager.LoadScene("MainMenu"); //todo fix the unloading and duplicating the MainMenus
+                SceneManager.LoadScene("MainMenu");
             SceneManager.UnloadSceneAsync(GlobalCommon.currentTypeName);
         }
 

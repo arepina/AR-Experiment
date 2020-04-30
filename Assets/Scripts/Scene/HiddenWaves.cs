@@ -69,7 +69,7 @@ namespace Logic
                     Destroy(notification);
                 }
             }
-            catch (Exception e) { Debug.LogError(e.StackTrace); }
+            catch (Exception e) {  }
             try
             {
                 foreach (Transform childTransform in trayHolder.transform)
@@ -77,7 +77,7 @@ namespace Logic
                     Destroy(childTransform.gameObject);
                 }
             }
-            catch (Exception e) { Debug.LogError(e.StackTrace); }
+            catch (Exception e) { }
         }
 
         public void rebuildScene()
@@ -131,7 +131,7 @@ namespace Logic
                                 trayN.transform.localPosition = position;
                                 trayN.transform.localRotation = rotation;
                             }
-                            catch (Exception e) { Debug.LogError(e.StackTrace); }
+                            catch (Exception e) {  }
                             indexPosition += 1;
                             notififcationsNumberInTraysColumnNow += 1;
                             if (notififcationsNumberInTraysColumnNow == GlobalCommon.notificationsInColumnTray)
