@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +18,8 @@ namespace Logic
         {
             StopAllCoroutines();
             isRunning = false;
+            alreadyCorrect = 0;
+            notificationIndex = 0;
             ReturnToMainMenu();
         }
 
@@ -42,24 +45,36 @@ namespace Logic
 
         private IEnumerator Runner()
         {
+            Debug.Log("Started" + DateTime.Now);
+            HashSet<int> numbers = new HashSet<int>();
             for (int k = 0; k < ExperimentData.trialsNumber; k++)
             {
                 Debug.Log("Trial: " + (k + 1));
-                for (int i = 0; i < ExperimentData.notificationsNumber; i++)
+                for (int i = 0; i < ExperimentData.notificationsNumber; ++i)
                 {
-                    Generator();
-                    yield return new WaitForSeconds(pause);
+                    if (!numbers.Contains(i))
+                    {
+                        numbers.Add(i);
+                        Debug.Log(i);
+                        Generator();
+                        yield return new WaitForSeconds(pause);
+                    }
                 }
                 SaveTrialData();
                 FindObjectOfType<Storage>().removeAllFromStorage();
-                yield return new WaitForSeconds(GlobalCommon.pauseBetweenTrials);
+                if (k == ExperimentData.trialsNumber - 1) {
+                    yield return new WaitForSeconds(0);
+                }
+                else {
+                    yield return new WaitForSeconds(GlobalCommon.pauseBetweenTrials);
+                }
             }
+            Debug.Log("Stoped" + DateTime.Now);
             Stop();
         }
 
         private void Generator()
         {
-            Debug.Log(DateTime.Now);
             int atWhichToGenerateHaveToActNotification = ExperimentData.notificationsNumber / ExperimentData.numberOfHaveToActNotifications;
             bool generateHaveToAct = notificationIndex % atWhichToGenerateHaveToActNotification == 0 && alreadyCorrect < ExperimentData.numberOfHaveToActNotifications;
             if (generateHaveToAct)

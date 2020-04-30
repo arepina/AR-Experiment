@@ -19,6 +19,7 @@ public class NotificationHider : MonoBehaviour
     IEnumerator Destroyer()
     {
         yield return new WaitForSeconds(hideTimeOfTheNotificationAfterArrival);
+        Debug.Log("Destroy");
         string sourceName = transform.Find("Source").GetComponent<TextMeshPro>().text;
         string tag = "MarkAsRead";
         Notification n = FindObjectOfType<Storage>().getFromStorage(id.GetComponent<TextMeshPro>().text, sourceName);
