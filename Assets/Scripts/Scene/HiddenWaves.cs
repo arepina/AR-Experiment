@@ -36,13 +36,6 @@ namespace Logic
             FindObjectOfType<GeneratorRunner>().isRunning = true;
         }
 
-        public void Stop()
-        {
-            EventManager.RemoveHandler(EVENT.NotificationCreated, rebuildScene);
-            EventManager.RemoveHandler(EVENT.ShowTray, showTray);
-            EventManager.RemoveHandler(EVENT.HideTray, hideTray);
-        }
-
         private void showTray()
         {
             notificationsHolder.SetActive(false);
@@ -94,8 +87,7 @@ namespace Logic
             int notififcationsNumberInTraysColumnNow = 0;
             if (!n.isSilent && !trayHolder.activeSelf)
             {
-                GameObject prefabToCreate = notification;
-                GameObject wave = Instantiate(prefabToCreate) as GameObject;
+                GameObject wave = Instantiate(notification) as GameObject;
                 Color c = n.Color;
                 c.a = 0.5f;
                 if (n.SourceName == "YouTube") wave.GetComponents<Image>()[0].material = red;
@@ -131,7 +123,7 @@ namespace Logic
                                 trayN.transform.localPosition = position;
                                 trayN.transform.localRotation = rotation;
                             }
-                            catch (Exception e) {  }
+                            catch (Exception e) { }
                             indexPosition += 1;
                             notififcationsNumberInTraysColumnNow += 1;
                             if (notififcationsNumberInTraysColumnNow == GlobalCommon.notificationsInColumnTray)

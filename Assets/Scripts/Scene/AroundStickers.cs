@@ -35,13 +35,6 @@ namespace Logic
             EventManager.AddHandler(EVENT.HideTray, hideTray);
         }
 
-        public void Stop()
-        {
-            EventManager.RemoveHandler(EVENT.NotificationCreated, rebuildScene);
-            EventManager.RemoveHandler(EVENT.ShowTray, showTray);
-            EventManager.RemoveHandler(EVENT.HideTray, hideTray);
-        }
-
         private void showTray()
         {
             notificationsHolder.SetActive(false);

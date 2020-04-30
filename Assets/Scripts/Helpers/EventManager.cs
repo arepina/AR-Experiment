@@ -19,10 +19,9 @@ namespace Logic
         }
 
         // Removes a delegate to get called for a specific event
-        public static void RemoveHandler(EVENT evnt, Action action)
+        public static void RemoveHandlers()
         {
-            if (eventTable.ContainsKey(evnt))
-                eventTable[evnt] -= action;
+           eventTable = new Dictionary<EVENT, Action>();
         }
 
         // Fires the event

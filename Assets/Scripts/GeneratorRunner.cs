@@ -17,9 +17,17 @@ namespace Logic
         public void Stop()
         {
             StopAllCoroutines();
+            GameObject[] toClean = GameObject.FindGameObjectsWithTag("Notification");
+            Debug.Log("Clean:" + toClean.Length);
+            foreach (GameObject clean in toClean)
+            {
+                Destroy(clean);
+            }
             isRunning = false;
             alreadyCorrect = 0;
             notificationIndex = 0;
+            FindObjectOfType<Storage>().removeAllFromStorage();
+            EventManager.RemoveHandlers();
             ReturnToMainMenu();
         }
 
@@ -46,19 +54,13 @@ namespace Logic
         private IEnumerator Runner()
         {
             Debug.Log("Started" + DateTime.Now);
-            HashSet<int> numbers = new HashSet<int>();
             for (int k = 0; k < ExperimentData.trialsNumber; k++)
             {
                 Debug.Log("Trial: " + (k + 1));
                 for (int i = 0; i < ExperimentData.notificationsNumber; ++i)
                 {
-                    if (!numbers.Contains(i))
-                    {
-                        numbers.Add(i);
-                        Debug.Log(i);
-                        Generator();
-                        yield return new WaitForSeconds(pause);
-                    }
+                    Generator();
+                    yield return new WaitForSeconds(pause);
                 }
                 SaveTrialData();
                 FindObjectOfType<Storage>().removeAllFromStorage();
