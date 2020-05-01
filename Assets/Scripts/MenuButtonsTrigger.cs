@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Logic
 {
-    public class MenuButtonsTrigger : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
+    public class MenuButtonsTrigger : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler, IGvrPointerHoverHandler
     {
         private long startTime;
 
@@ -14,6 +14,15 @@ namespace Logic
         }
 
         public void OnPointerExit(PointerEventData eventData)
+        {
+            long duration = (long)TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
+            if (duration >= GlobalCommon.waitForActionToBeAcceptedPeriod)
+            {
+                ExecuteEvents.Execute<IPointerClickHandler>(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
+            }
+        }
+
+        public void OnGvrPointerHover(PointerEventData eventData)
         {
             long duration = (long)TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
             if (duration >= GlobalCommon.waitForActionToBeAcceptedPeriod)

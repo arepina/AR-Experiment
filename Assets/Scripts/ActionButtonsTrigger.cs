@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Logic
 {
-    public class ActionButtonsTrigger : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
+    public class ActionButtonsTrigger : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler, IGvrPointerHoverHandler
     {
         private long startTime;
         public GameObject markAsRead;
@@ -25,6 +25,18 @@ namespace Logic
                 localExit(eventData.pointerEnter.tag);
             }
             if(eventData.pointerEnter.tag == "MarkAsReadAll" || eventData.pointerEnter.tag == "HideAll")
+            {
+                allExit(eventData.pointerEnter.tag);
+            }
+        }
+
+        public void OnGvrPointerHover(PointerEventData eventData)
+        {
+            if (eventData.pointerEnter.tag == "MarkAsRead" || eventData.pointerEnter.tag == "Hide")
+            {
+                localExit(eventData.pointerEnter.tag);
+            }
+            if (eventData.pointerEnter.tag == "MarkAsReadAll" || eventData.pointerEnter.tag == "HideAll")
             {
                 allExit(eventData.pointerEnter.tag);
             }
