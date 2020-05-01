@@ -35,7 +35,6 @@ namespace UnityEngine.XR.iOS
 
 		public void RemoveAnchor(ARPlaneAnchor arPlaneAnchor)
 		{
-			Debug.Log("UnityARAnchorManager RemoveAnchor");
 			if (planeAnchorMap.ContainsKey (arPlaneAnchor.identifier)) {
 				ARPlaneAnchorGameObject arpag = planeAnchorMap [arPlaneAnchor.identifier];
 				GameObject.Destroy (arpag.gameObject);
@@ -45,7 +44,6 @@ namespace UnityEngine.XR.iOS
 
 		public void UpdateAnchor(ARPlaneAnchor arPlaneAnchor)
 		{
-			Debug.Log("UnityARAnchorManager UpdateAnchor");
 			if (planeAnchorMap.ContainsKey (arPlaneAnchor.identifier)) {
 				ARPlaneAnchorGameObject arpag = planeAnchorMap [arPlaneAnchor.identifier];
 				UnityARUtility.UpdatePlaneWithAnchorTransform (arpag.gameObject, arPlaneAnchor);
@@ -56,7 +54,6 @@ namespace UnityEngine.XR.iOS
 
         public void UnsubscribeEvents()
 		{
-			Debug.Log("UnityARAnchorManager UnsubscribeEvents");
 			UnityARSessionNativeInterface.ARAnchorAddedEvent -= AddAnchor;
             UnityARSessionNativeInterface.ARAnchorUpdatedEvent -= UpdateAnchor;
             UnityARSessionNativeInterface.ARAnchorRemovedEvent -= RemoveAnchor;
@@ -64,7 +61,6 @@ namespace UnityEngine.XR.iOS
 
         public void Destroy()
 		{
-			Debug.Log("UnityARAnchorManager Destroy");
 			foreach (ARPlaneAnchorGameObject arpag in GetCurrentPlaneAnchors()) {
                 GameObject.Destroy (arpag.gameObject);
             }

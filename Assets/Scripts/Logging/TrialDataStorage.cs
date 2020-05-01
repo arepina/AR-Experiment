@@ -42,7 +42,7 @@ namespace Logic
             }
             catch (Exception e)
             {
-                Debug.LogException(e);
+                Debug.Log(e);
                 _storedTrialData = new Queue<TrialData>();
             }
         }

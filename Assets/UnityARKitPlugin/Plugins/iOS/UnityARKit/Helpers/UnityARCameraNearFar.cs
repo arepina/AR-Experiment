@@ -20,8 +20,6 @@ public class UnityARCameraNearFar : MonoBehaviour {
 	{
 		currentNearZ = attachedCamera.nearClipPlane;
 		currentFarZ = attachedCamera.farClipPlane;
-		Debug.Log(currentNearZ);
-		Debug.Log(currentFarZ);
 		UnityARSessionNativeInterface.GetARSessionNativeInterface ().SetCameraClipPlanes (currentNearZ, currentFarZ);
 	}
 	

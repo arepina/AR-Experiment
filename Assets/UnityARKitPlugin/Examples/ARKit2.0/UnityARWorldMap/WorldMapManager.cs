@@ -113,6 +113,7 @@ public class WorldMapManager : MonoBehaviour
 
 	public void SaveSerialized()
 	{
+        Debug.Log("Save serialized");
 		session.GetCurrentWorldMapAsync(OnWorldMapSerialized);
 	}
 

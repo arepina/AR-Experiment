@@ -10,7 +10,6 @@ namespace UnityEngine.XR.iOS
 
 		// Use this for initialization
 		void Start () {
-            Debug.Log("UnityARGeneratePlane start");
             unityARAnchorManager = new UnityARAnchorManager();
 			UnityARUtility.InitializePlanePrefab (planePrefab);
 		}
@@ -22,7 +21,6 @@ namespace UnityEngine.XR.iOS
 
         void OnGUI()
         {
-            Debug.Log("UnityARGeneratePlane OnGUI");
             IEnumerable<ARPlaneAnchorGameObject> arpags = unityARAnchorManager.GetCurrentPlaneAnchors ();
 			foreach(var planeAnchor in arpags)
 			{
