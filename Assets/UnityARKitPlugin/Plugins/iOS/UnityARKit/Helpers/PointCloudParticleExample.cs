@@ -14,6 +14,7 @@ public class PointCloudParticleExample : MonoBehaviour
     // Use this for initialization
     void Start () 
     {
+        Debug.Log("PointCloudParticleExample Start");
         UnityARSessionNativeInterface.ARFrameUpdatedEvent += ARFrameUpdated;
         UnityARSessionNativeInterface.ARSessionInterruptedEvent += OnARInterrupted;
         currentPS = Instantiate (pointCloudParticlePrefab);
@@ -23,11 +24,13 @@ public class PointCloudParticleExample : MonoBehaviour
 
     public void OnARInterrupted()
     {
+        Debug.Log("PointCloudParticleExample OnARInterrupted");
         UnityARSessionNativeInterface.ARFrameUpdatedEvent -= ARFrameUpdated;
     }
 
     public void ARFrameUpdated(UnityARCamera camera)
     {
+        Debug.Log("PointCloudParticleExample ARFrameUpdated");
         if (camera.pointCloud != null)
         {
            m_PointCloudData = camera.pointCloud.Points;

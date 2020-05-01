@@ -11,7 +11,7 @@ namespace Logic
         private NotificationsGenerator notificationsGenerator = new NotificationsGenerator();
         private int notificationIndex = 0;
         private int alreadyCorrect = 0;
-        internal bool isRunning = false;
+        public bool isRunning = false;
         private float pause = 0;
 
         public void Stop()

@@ -14,6 +14,7 @@ namespace UnityEngine.XR.iOS
 
         public UnityARAnchorManager ()
 		{
+			Debug.Log("UnityARAnchorManager");
 			planeAnchorMap = new LinkedListDictionary<string,ARPlaneAnchorGameObject> ();
 			UnityARSessionNativeInterface.ARAnchorAddedEvent += AddAnchor;
 			UnityARSessionNativeInterface.ARAnchorUpdatedEvent += UpdateAnchor;
@@ -23,6 +24,7 @@ namespace UnityEngine.XR.iOS
 
 		public void AddAnchor(ARPlaneAnchor arPlaneAnchor)
 		{
+			Debug.Log("UnityARAnchorManager AddAnchor");
 			GameObject go = UnityARUtility.CreatePlaneInScene (arPlaneAnchor);
 			go.AddComponent<DontDestroyOnLoad> ();  //this is so these GOs persist across scene loads
 			ARPlaneAnchorGameObject arpag = new ARPlaneAnchorGameObject ();
@@ -33,6 +35,7 @@ namespace UnityEngine.XR.iOS
 
 		public void RemoveAnchor(ARPlaneAnchor arPlaneAnchor)
 		{
+			Debug.Log("UnityARAnchorManager RemoveAnchor");
 			if (planeAnchorMap.ContainsKey (arPlaneAnchor.identifier)) {
 				ARPlaneAnchorGameObject arpag = planeAnchorMap [arPlaneAnchor.identifier];
 				GameObject.Destroy (arpag.gameObject);
@@ -42,6 +45,7 @@ namespace UnityEngine.XR.iOS
 
 		public void UpdateAnchor(ARPlaneAnchor arPlaneAnchor)
 		{
+			Debug.Log("UnityARAnchorManager UpdateAnchor");
 			if (planeAnchorMap.ContainsKey (arPlaneAnchor.identifier)) {
 				ARPlaneAnchorGameObject arpag = planeAnchorMap [arPlaneAnchor.identifier];
 				UnityARUtility.UpdatePlaneWithAnchorTransform (arpag.gameObject, arPlaneAnchor);
@@ -51,15 +55,17 @@ namespace UnityEngine.XR.iOS
 		}
 
         public void UnsubscribeEvents()
-        {
-            UnityARSessionNativeInterface.ARAnchorAddedEvent -= AddAnchor;
+		{
+			Debug.Log("UnityARAnchorManager UnsubscribeEvents");
+			UnityARSessionNativeInterface.ARAnchorAddedEvent -= AddAnchor;
             UnityARSessionNativeInterface.ARAnchorUpdatedEvent -= UpdateAnchor;
             UnityARSessionNativeInterface.ARAnchorRemovedEvent -= RemoveAnchor;
         }
 
         public void Destroy()
-        {
-            foreach (ARPlaneAnchorGameObject arpag in GetCurrentPlaneAnchors()) {
+		{
+			Debug.Log("UnityARAnchorManager Destroy");
+			foreach (ARPlaneAnchorGameObject arpag in GetCurrentPlaneAnchors()) {
                 GameObject.Destroy (arpag.gameObject);
             }
 
