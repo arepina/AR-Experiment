@@ -17,8 +17,14 @@ namespace Logic
         public void Stop()
         {
             StopAllCoroutines();
+            Cleaner();
+            EventManager.RemoveHandlers();
+            ReturnToMainMenu();
+        }
+
+        private void Cleaner()
+        {
             GameObject[] toClean = GameObject.FindGameObjectsWithTag("Notification");
-            Debug.Log("Clean:" + toClean.Length);
             foreach (GameObject clean in toClean)
             {
                 Destroy(clean);
@@ -27,8 +33,6 @@ namespace Logic
             alreadyCorrect = 0;
             notificationIndex = 0;
             FindObjectOfType<Storage>().removeAllFromStorage();
-            EventManager.RemoveHandlers();
-            ReturnToMainMenu();
         }
 
         private void ReturnToMainMenu()
@@ -67,7 +71,10 @@ namespace Logic
                 if (k == ExperimentData.trialsNumber - 1) {
                     yield return new WaitForSeconds(0);
                 }
-                else {
+                else
+                {
+                    Cleaner();
+                    EventManager.Broadcast(EVENT.TimerShow);
                     yield return new WaitForSeconds(GlobalCommon.pauseBetweenTrials);
                 }
             }

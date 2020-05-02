@@ -11,6 +11,7 @@ namespace Logic
         public GameObject trayNotification;
         public GameObject notificationsHolder;
         public GameObject trayHolder;
+        public GameObject timer;
         internal string typeName = "AroundStickers";
         internal int notificationsInColumn = 3;
         internal int notificationColumns = 5;
@@ -33,6 +34,12 @@ namespace Logic
             EventManager.AddHandler(EVENT.NotificationCreated, rebuildScene);
             EventManager.AddHandler(EVENT.ShowTray, showTray);
             EventManager.AddHandler(EVENT.HideTray, hideTray);
+            EventManager.AddHandler(EVENT.TimerShow, showTimer);
+        }
+
+        private void showTimer()
+        {
+            timer.SetActive(true);
         }
 
         private void showTray()

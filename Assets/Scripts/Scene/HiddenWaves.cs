@@ -13,6 +13,7 @@ namespace Logic
         public GameObject trayNotification;
         public GameObject notificationsHolder;
         public GameObject trayHolder;
+        public GameObject timer;
         internal string typeName = "HiddenWaves";
         private Color markAsReadColor = new Color32(0, 0, 194, 255);
         private Color hideColor = new Color32(255, 36, 0, 255);
@@ -33,7 +34,13 @@ namespace Logic
             EventManager.AddHandler(EVENT.NotificationCreated, rebuildScene);
             EventManager.AddHandler(EVENT.ShowTray, showTray);
             EventManager.AddHandler(EVENT.HideTray, hideTray);
+            EventManager.AddHandler(EVENT.TimerShow, showTimer);
             FindObjectOfType<GeneratorRunner>().isRunning = true;
+        }
+
+        private void showTimer()
+        {
+            timer.SetActive(true);
         }
 
         private void showTray()
