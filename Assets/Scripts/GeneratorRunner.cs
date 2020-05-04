@@ -67,6 +67,7 @@ namespace Logic
                 }
                 EventManager.Broadcast(EVENT.TimerShow);
                 yield return new WaitForSeconds(GlobalCommon.pauseBetweenTrials);
+                EventManager.Broadcast(EVENT.TimerHide);
                 for (int i = 0; i < ExperimentData.notificationsNumber; ++i)
                 {
                     Generator();
@@ -101,7 +102,7 @@ namespace Logic
         private void SaveLogData(Notification notification)
         {
             string logInfo = notification.ToString(GlobalCommon.currentTypeName, "CREATED", "-");
-            CSVSaver.saveToFile(logInfo);
+            FileSaver.saveToFile(logInfo);
         }
 
         private void SaveTrialData()

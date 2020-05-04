@@ -70,7 +70,7 @@ namespace Logic
                 ExperimentData.numberOfInCorrectlyActedNotifications += 1;
             }
             string logInfo = notification.ToString(GlobalCommon.currentTypeName, "REACTED", reactionDuration.ToString());
-            CSVSaver.saveToFile(logInfo);
+            FileSaver.saveToFile(logInfo);
         }
 
         internal void processHideAndMarkAsRead(string id, string sourceName, string tag)

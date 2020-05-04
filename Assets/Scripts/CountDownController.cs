@@ -135,7 +135,6 @@ namespace Logic
 
         private void OnDisable()
         {
-            EventManager.Broadcast(EVENT.TimerHide);
             CancelInvoke();
         }
     }

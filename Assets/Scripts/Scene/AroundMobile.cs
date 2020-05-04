@@ -40,12 +40,12 @@ namespace Logic
 
         private void hideTimer()
         {
-            timer.SetActive(false);
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[14].SetActive(false);
         }
 
         private void showTimer()
         {
-            timer.SetActive(true);
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[14].SetActive(true);
         }
 
         private void showTray()
