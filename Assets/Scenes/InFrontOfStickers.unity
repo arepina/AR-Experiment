@@ -566,6 +566,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimerDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 850199756894252, guid: 76b1e62489dad7346822a1a2fc64890f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 850199756894253, guid: 76b1e62489dad7346822a1a2fc64890f, type: 3}
       propertyPath: TimeIsUp.m_PersistentCalls.m_Calls.Array.size
       value: 1

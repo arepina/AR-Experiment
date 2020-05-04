@@ -61,6 +61,12 @@ namespace Logic
             for (int k = 0; k < ExperimentData.trialsNumber; k++)
             {
                 Debug.Log("Trial: " + (k + 1));
+                if (k != 0)
+                {
+                    Cleaner();
+                }
+                EventManager.Broadcast(EVENT.TimerShow);
+                yield return new WaitForSeconds(GlobalCommon.pauseBetweenTrials);
                 for (int i = 0; i < ExperimentData.notificationsNumber; ++i)
                 {
                     Generator();
@@ -70,12 +76,6 @@ namespace Logic
                 FindObjectOfType<Storage>().removeAllFromStorage();
                 if (k == ExperimentData.trialsNumber - 1) {
                     yield return new WaitForSeconds(0);
-                }
-                else
-                {
-                    Cleaner();
-                    EventManager.Broadcast(EVENT.TimerShow);
-                    yield return new WaitForSeconds(GlobalCommon.pauseBetweenTrials);
                 }
             }
             Debug.Log("Stoped" + DateTime.Now);

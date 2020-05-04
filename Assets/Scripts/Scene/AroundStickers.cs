@@ -35,6 +35,12 @@ namespace Logic
             EventManager.AddHandler(EVENT.ShowTray, showTray);
             EventManager.AddHandler(EVENT.HideTray, hideTray);
             EventManager.AddHandler(EVENT.TimerShow, showTimer);
+            EventManager.AddHandler(EVENT.TimerHide, hideTimer);
+        }
+
+        private void hideTimer()
+        {
+            timer.SetActive(false);
         }
 
         private void showTimer()

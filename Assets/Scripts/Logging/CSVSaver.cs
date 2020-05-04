@@ -25,9 +25,13 @@ namespace Logic
             {
                 Debug.Log(e);
             }
-            #else
+#else
             try
             {
+                if (!Directory.Exists(Path.GetDirectoryName(iosPath)))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(iosPath));
+                }
                 if (!File.Exists(iosPath))
                 {
                     File.WriteAllText(iosPath, row, System.Text.Encoding.UTF8);
@@ -38,7 +42,7 @@ namespace Logic
             {
                 Debug.Log(e);
             }
-            #endif
+#endif
         }
     }
 }
