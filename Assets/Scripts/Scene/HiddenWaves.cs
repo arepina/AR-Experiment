@@ -98,7 +98,7 @@ namespace Logic
             Notification n = orderedNotifications.Values.First().Storage.Peek();
             int columnIndex = 1;
             int notififcationsNumberInTraysColumnNow = 0;
-            if (!n.isSilent && !trayHolder.activeSelf)
+            if (!n.isSilent && trayHolder != null && !trayHolder.activeSelf)
             {
                 GameObject wave = Instantiate(notification) as GameObject;
                 Color c = n.Color;
@@ -109,9 +109,13 @@ namespace Logic
                 if (n.SourceName == "WhatsApp") wave.GetComponents<Image>()[0].material = green;
                 if (n.SourceName == GlobalCommon.silentGroupKey) wave.GetComponents<Image>()[0].material = grey;
                 wave.GetComponents<Image>()[0].material.SetFloat("_Glossiness", 1f);
-                wave.transform.parent = notificationsHolder.transform;
+                try
+                {
+                    wave.transform.parent = notificationsHolder.transform;
+                }
+                catch (Exception e) { }
             }
-            if (trayHolder.activeSelf)
+            if (trayHolder != null && trayHolder.activeSelf)
             {
                 clearScene();
                 List<Coordinates> coordinates = traysCoordinates();
@@ -129,28 +133,28 @@ namespace Logic
                             Vector3 position = coordinates[indexPosition].Position;
                             Quaternion rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.x, coordinates[indexPosition].Rotation.y, coordinates[indexPosition].Rotation.z);
                             Vector3 scale = coordinates[indexPosition].Scale;
-                            GameObject trayN = notificationGenerator(trayNotification, notification, position, scale, rotation, doesHaveGroupIconTray);
-                            try
-                            {
-                                trayN.transform.parent = trayHolder.transform;
-                                trayN.transform.localPosition = position;
-                                trayN.transform.localRotation = rotation;
-                            }
-                            catch (Exception e) { }
-                            indexPosition += 1;
-                            notififcationsNumberInTraysColumnNow += 1;
-                            if (notififcationsNumberInTraysColumnNow == GlobalCommon.notificationsInColumnTray)
-                            {
-                                notififcationsNumberInTraysColumnNow = 0;
-                                columnIndex += 1;
-                            }
-                        }
+            GameObject trayN = notificationGenerator(trayNotification, notification, position, scale, rotation, doesHaveGroupIconTray);
+            try
+            {
+                trayN.transform.parent = trayHolder.transform;
+                trayN.transform.localPosition = position;
+                trayN.transform.localRotation = rotation;
+            }
+            catch (Exception e) { }
+            indexPosition += 1;
+            notififcationsNumberInTraysColumnNow += 1;
+            if (notififcationsNumberInTraysColumnNow == GlobalCommon.notificationsInColumnTray)
+            {
+                notififcationsNumberInTraysColumnNow = 0;
+                columnIndex += 1;
+            }
+        }
                         else
                         {
                             break;
                         }
                     }
-                }
+}
             }
         }
 

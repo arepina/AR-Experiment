@@ -27,6 +27,11 @@ public class WorldMapManager : MonoBehaviour
 
     void OnARInterrupted()
     {
+        processHide();
+    }
+
+    void processHide()
+    {
         Debug.Log("OnARInterrupted");
         Color color = planesMaterial.color;
         color.a = 0;
@@ -69,6 +74,7 @@ public class WorldMapManager : MonoBehaviour
         {
             worldMap.Save(path);
             Debug.LogFormat("ARWorldMap saved to {0}", path);
+            processHide();
         }
     }
 
@@ -107,7 +113,8 @@ public class WorldMapManager : MonoBehaviour
 			//we have an operator that converts a ARWorldMap to a serializableARWorldMap
 			serializedWorldMap = worldMap;
 			Debug.Log ("ARWorldMap serialized to serializableARWorldMap");
-		}
+            processHide();
+        }
 	}
 
 
