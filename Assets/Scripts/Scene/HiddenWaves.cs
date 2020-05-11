@@ -51,8 +51,8 @@ namespace Logic
 
         private void showTray()
         {
-            notificationsHolder.SetActive(false);
-            trayHolder.SetActive(true);
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[4].SetActive(false);
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[3].SetActive(true);
             rebuildScene();
         }
 
@@ -61,8 +61,8 @@ namespace Logic
             Vector3 trayPosBefore = trayHolder.transform.position;
             trayPosBefore.y = 10;
             trayHolder.transform.position = trayPosBefore;
-            trayHolder.SetActive(false);
-            notificationsHolder.SetActive(true);
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[3].SetActive(false);
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[4].SetActive(true);
         }
 
         private void clearScene()

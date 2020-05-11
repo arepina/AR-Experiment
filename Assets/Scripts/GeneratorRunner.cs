@@ -25,16 +25,17 @@ namespace Logic
 
         private void Cleaner()
         {
+            EventManager.Broadcast(EVENT.HideTray);
+            FindObjectOfType<Storage>().removeAllFromStorage();
+            isRunning = false;
+            alreadyCorrect = 0;
+            notificationIndex = 0;
+            runningNums = new HashSet<int>();
             GameObject[] toClean = GameObject.FindGameObjectsWithTag("Notification");
             foreach (GameObject clean in toClean)
             {
                 Destroy(clean);
             }
-            isRunning = false;
-            alreadyCorrect = 0;
-            notificationIndex = 0;
-            runningNums = new HashSet<int>();
-            FindObjectOfType<Storage>().removeAllFromStorage();
         }
 
         private void ReturnToMainMenu()
