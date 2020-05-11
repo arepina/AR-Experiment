@@ -110,6 +110,20 @@ namespace Logic
             orderedNotifications = new Dictionary<string, NotificationsStorage>();
         }
 
+        public Stack<Notification> getNotMarkAsRead(Stack<Notification> groupNotifications)
+        {
+            Stack<Notification> notMarkAsReadNotificationsInGroup = new Stack<Notification>();
+            for (int i = 0; i < groupNotifications.Count; i++)
+            {
+                Notification notificationInGroup = groupNotifications.ToArray()[i];
+                if (!notificationInGroup.isMarkedAsRead)
+                {
+                    notMarkAsReadNotificationsInGroup.Push(notificationInGroup);
+                }
+            }
+            return notMarkAsReadNotificationsInGroup;
+        }
+
         private void createOrderedStorage(string sourceName)
         {
             NotificationsStorage silentGroup = null;

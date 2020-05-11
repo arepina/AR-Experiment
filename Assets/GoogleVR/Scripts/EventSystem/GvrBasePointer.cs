@@ -838,57 +838,6 @@ public abstract class GvrBasePointer : MonoBehaviour, IGvrControllerInputDeviceR
                 allButtonsMask = LEFT_BUTTON_MASK_3DOF;
             }
 
-            if (Input.GetButton("Fire1"))
-            {
-                Debug.Log("1Fire1");
-            }
-            if (Input.GetButton("Fire2"))
-            {
-                Debug.Log("1Fire2");
-            }
-            if (Input.GetButton("Fire3"))
-            {
-                Debug.Log("1Fire3");
-            }
-            if (Input.GetButton("Jump"))
-            {
-                Debug.Log("1Jump");
-            }
-            if (Input.GetButton("Submit"))
-            {
-                Debug.Log("1Submit");
-            }
-            if (Input.GetButton("Cancel"))
-            {
-                Debug.Log("1Cancel");
-            }
-
-
-            if (Input.GetButtonDown("Fire1"))
-            {
-                Debug.Log("2Fire1");
-            }
-            if (Input.GetButtonDown("Fire2"))
-            {
-                Debug.Log("2Fire2");
-            }
-            if (Input.GetButtonDown("Fire3"))
-            {
-                Debug.Log("2Fire3");
-            }
-            if (Input.GetButtonDown("Jump"))
-            {
-                Debug.Log("2Jump");
-            }
-            if (Input.GetButtonDown("Submit"))
-            {
-                Debug.Log("2Submit");
-            }
-            if (Input.GetButtonDown("Cancel"))
-            {
-                Debug.Log("2Cancel");
-            }
-
             GvrControllerButton buttonDown = 0;
             GvrControllerButton buttonUp = 0;
 

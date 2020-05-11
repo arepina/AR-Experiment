@@ -103,6 +103,7 @@ namespace Logic
             long duration = (long)TimeSpan.FromTicks(DateTime.Now.Ticks - startTime).TotalSeconds;
             if (duration >= GlobalCommon.waitForActionToBeAcceptedPeriod)
             {
+                startTime = DateTime.Now.Ticks;
                 FindObjectOfType<ActionsProcessor>().actionProcessGroup(notification, tag);
             }
         }

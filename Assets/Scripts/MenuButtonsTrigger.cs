@@ -28,6 +28,7 @@ namespace Logic
             if (duration >= GlobalCommon.waitForActionToBeAcceptedPeriod)
             {
                 ExecuteEvents.Execute<IPointerClickHandler>(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
+                startTime = DateTime.Now.Ticks;
             }
         }
     }

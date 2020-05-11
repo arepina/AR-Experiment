@@ -144,7 +144,7 @@ namespace Logic
                         && !notificationInGroup.isMarkedAsRead
                         && !notificationInGroup.isSilent) // usual case 
                     {
-                        bool doesHaveGroupIcon = i == groupNotifications.Count - 1 || usualCoordinatesIndex == notificationsInColumn - 1;
+                        bool doesHaveGroupIcon = i == storage.getNotMarkAsRead(groupNotifications).Count - 1 || usualCoordinatesIndex == notificationsInColumn - 1;
                         Vector3 position = coordinates[usualCoordinatesIndex].Position;
                         Quaternion rotation = Quaternion.Euler(coordinates[usualCoordinatesIndex].Rotation.x, coordinates[usualCoordinatesIndex].Rotation.y, coordinates[usualCoordinatesIndex].Rotation.z);
                         Vector3 scale = coordinates[usualCoordinatesIndex].Scale;
