@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Logic
 {
-    public class NotificationsGenerator : MonoBehaviour
+    public class NotificationsGenerator
     {
         private System.Random random = new System.Random();
         private const int sourcesNumber = 4;

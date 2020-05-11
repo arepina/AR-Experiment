@@ -58,9 +58,16 @@ namespace Logic
 
         private void hideTray()
         {
-            Vector3 trayPosBefore = trayHolder.transform.position;
-            trayPosBefore.y = 10;
-            trayHolder.transform.position = trayPosBefore;
+            try
+            {
+                Vector3 trayPosBefore = trayHolder.transform.position;
+                trayPosBefore.y = 10;
+                trayHolder.transform.position = trayPosBefore;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+            }
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[3].SetActive(false);
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[4].SetActive(true);
         }

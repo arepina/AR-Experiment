@@ -16,10 +16,10 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
     public float LerpSpeed = 1f;
 
     [Tooltip("Angle to the horizon")]
-    public float AngleToTheHorizon = -0.03f;
+    public float AngleToTheHorizon = 0.01f;
 
     [Tooltip("Angle when tray should be shown")]
-    public float TrayShowAngle = 0.03f;
+    public float TrayShowAngle = 0.02f;
 
     void OnEnable()
     {
@@ -34,7 +34,7 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
     void Update()
     {
         Vector3 posTo = Camera.transform.position;
-        posTo.y = AngleToTheHorizon;
+        posTo.y = AngleToTheHorizon + 1;
         if (Camera.transform.position.y >= TrayShowAngle)
         {
             EventManager.Broadcast(EVENT.ShowTray);
@@ -50,7 +50,7 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
             return;
         }
 
-        if (SimulateInertia)
+        if (SimulateInertia && posTo.x != transform.position.x)
         {
             float posSpeed = Time.deltaTime * LerpSpeed;
             transform.position = Vector3.SlerpUnclamped(transform.position, posTo, posSpeed);

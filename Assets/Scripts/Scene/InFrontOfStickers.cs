@@ -23,9 +23,7 @@ namespace Logic
         public Material green;
         public Material grey;
 
-        public delegate GameObject Generator(GameObject prefabToCreate, Notification notification,
-                                          Vector3 position, Vector3 scale, Quaternion rotation,
-                                          bool doesHaveGroupIcon);
+        public delegate GameObject Generator(GameObject prefabToCreate, Notification notification, Vector3 scale, bool doesHaveGroupIcon);
 
         public delegate List<Coordinates> Coordinate();
 
@@ -57,9 +55,16 @@ namespace Logic
 
         private void hideTray()
         {
-            Vector3 trayPosBefore = trayHolder.transform.position;
-            trayPosBefore.y = 10;
-            trayHolder.transform.position = trayPosBefore;
+            try
+            {
+                Vector3 trayPosBefore = trayHolder.transform.position;
+                trayPosBefore.y = 10;
+                trayHolder.transform.position = trayPosBefore;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+            }
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[3].SetActive(false);
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[4].SetActive(true);
         }
@@ -117,9 +122,7 @@ namespace Logic
                         Vector3 scale = trayCoordinates[trayCoordinatesIndex].Scale;
                         GameObject trayN = notificationGenerator(trayNotification,
                                               notificationInGroup,
-                                              position,
                                               scale,
-                                              rotation,
                                               doesHaveGroupIconTray);
                         try
                         {
@@ -150,9 +153,7 @@ namespace Logic
                         Vector3 scale = coordinates[usualCoordinatesIndex].Scale;
                         GameObject n = notificationGenerator(notification,
                                              notificationInGroup,
-                                             position,
                                              scale,
-                                             rotation,
                                              doesHaveGroupIcon);
                         n.transform.parent = notificationsHolder.transform;
                         n.transform.localPosition = position;
@@ -163,11 +164,10 @@ namespace Logic
             }
         }
                
-        private GameObject addStickerNotification(GameObject prefabToCreate, Notification notification,
-                                           Vector3 position, Vector3 scale, Quaternion rotation,
+        private GameObject addStickerNotification(GameObject prefabToCreate, Notification notification, Vector3 scale, 
                                            bool doesHaveGroupIcon)
         {
-            GameObject notificationObject = Instantiate(prefabToCreate, position, rotation) as GameObject;
+            GameObject notificationObject = Instantiate(prefabToCreate) as GameObject;
             notificationObject.GetComponentsInChildren<TextMeshPro>()[0].text = notification.Text;
             notificationObject.GetComponentsInChildren<TextMeshPro>()[1].text = notification.Author;
             notificationObject.GetComponentsInChildren<TextMeshPro>()[4].text = notification.SourceName;
