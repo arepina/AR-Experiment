@@ -13,6 +13,7 @@ namespace Logic
         private int alreadyCorrect = 0;
         public bool isRunning = false;
         private float pause = 0;
+        private HashSet<int> runningNums = new HashSet<int>();
 
         public void Stop()
         {
@@ -32,6 +33,7 @@ namespace Logic
             isRunning = false;
             alreadyCorrect = 0;
             notificationIndex = 0;
+            runningNums = new HashSet<int>();
             FindObjectOfType<Storage>().removeAllFromStorage();
         }
 
@@ -70,7 +72,11 @@ namespace Logic
                 EventManager.Broadcast(EVENT.TimerHide);
                 for (int i = 0; i < ExperimentData.notificationsNumber; ++i)
                 {
-                    Generator();
+                    if (!runningNums.Contains(i))
+                    {
+                        runningNums.Add(i);
+                        Generator();                        
+                    }
                     yield return new WaitForSeconds(pause);
                 }
                 SaveTrialData();

@@ -1523,7 +1523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d3b886519be46ebb352b8b9e5485b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hideTimeOfTheNotificationAfterArrival: 10
+  hideTimeOfTheNotificationAfterArrival: 5
   id: {fileID: 1897119431929098872}
 --- !u!114 &1308582806559480437
 MonoBehaviour:
