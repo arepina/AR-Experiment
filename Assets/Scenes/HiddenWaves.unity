@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 70485782}
-  TrayShowAngle: 0.03
+  TrayShowAngle: 0.02
 --- !u!1 &1320142537
 GameObject:
   m_ObjectHideFlags: 0

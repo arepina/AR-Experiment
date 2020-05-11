@@ -7,7 +7,7 @@ public class WavesHolderReferencedContent : MonoBehaviour
     public GameObject Camera;
 
     [Tooltip("Angle when tray should be shown")]
-    public float TrayShowAngle = 3f;
+    public float TrayShowAngle = 0.02f;
 
     void OnEnable()
     {

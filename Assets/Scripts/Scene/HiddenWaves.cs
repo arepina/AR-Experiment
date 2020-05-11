@@ -51,6 +51,15 @@ namespace Logic
 
         private void showTray()
         {
+            GameObject[] notificationsObjects = GameObject.FindGameObjectsWithTag("Notification");
+            try
+            {
+                foreach (GameObject notification in notificationsObjects)
+                {
+                    Destroy(notification);
+                }
+            }
+            catch (Exception e) { }
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[4].SetActive(false);
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[3].SetActive(true);
             rebuildScene();
@@ -105,7 +114,8 @@ namespace Logic
             Notification n = orderedNotifications.Values.First().Storage.Peek();
             int columnIndex = 1;
             int notififcationsNumberInTraysColumnNow = 0;
-            if (!n.isSilent && trayHolder != null && !trayHolder.activeSelf)
+            Debug.Log("TRAY1:" + trayHolder);
+            if ((!n.isSilent && trayHolder == null) || (!n.isSilent  && trayHolder != null && !trayHolder.activeSelf)) 
             {
                 GameObject wave = Instantiate(notification) as GameObject;
                 Color c = n.Color;
@@ -118,10 +128,13 @@ namespace Logic
                 wave.GetComponents<Image>()[0].material.SetFloat("_Glossiness", 1f);
                 try
                 {
-                    wave.transform.parent = notificationsHolder.transform;
+                    wave.transform.SetParent(notificationsHolder.GetComponent<RectTransform>());
                 }
-                catch (Exception e) { }
+                catch (Exception e) {
+                    Debug.LogError(e);
+                }
             }
+            Debug.Log("TRAY2:" + trayHolder);
             if (trayHolder != null && trayHolder.activeSelf)
             {
                 clearScene();
@@ -140,28 +153,28 @@ namespace Logic
                             Vector3 position = coordinates[indexPosition].Position;
                             Quaternion rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.x, coordinates[indexPosition].Rotation.y, coordinates[indexPosition].Rotation.z);
                             Vector3 scale = coordinates[indexPosition].Scale;
-            GameObject trayN = notificationGenerator(trayNotification, notification, position, scale, rotation, doesHaveGroupIconTray);
-            try
-            {
-                trayN.transform.parent = trayHolder.transform;
-                trayN.transform.localPosition = position;
-                trayN.transform.localRotation = rotation;
-            }
-            catch (Exception e) { }
-            indexPosition += 1;
-            notififcationsNumberInTraysColumnNow += 1;
-            if (notififcationsNumberInTraysColumnNow == GlobalCommon.notificationsInColumnTray)
-            {
-                notififcationsNumberInTraysColumnNow = 0;
-                columnIndex += 1;
-            }
-        }
+                            GameObject trayN = notificationGenerator(trayNotification, notification, position, scale, rotation, doesHaveGroupIconTray);
+                            try
+                            {
+                                trayN.transform.parent = trayHolder.transform;
+                                trayN.transform.localPosition = position;
+                                trayN.transform.localRotation = rotation;
+                            }
+                            catch (Exception e) { }
+                            indexPosition += 1;
+                            notififcationsNumberInTraysColumnNow += 1;
+                            if (notififcationsNumberInTraysColumnNow == GlobalCommon.notificationsInColumnTray)
+                            {
+                                notififcationsNumberInTraysColumnNow = 0;
+                                columnIndex += 1;
+                            }
+                        }
                         else
                         {
                             break;
                         }
                     }
-}
+                }
             }
         }
 
