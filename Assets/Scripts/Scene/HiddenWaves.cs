@@ -36,6 +36,14 @@ namespace Logic
             EventManager.AddHandler(EVENT.HideTray, hideTray);
             EventManager.AddHandler(EVENT.TimerShow, showTimer);
             EventManager.AddHandler(EVENT.TimerHide, hideTimer);
+            if(notificationsHolder == null)
+            {
+                notificationsHolder = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[3];
+            }
+            if (trayHolder == null)
+            {
+                notificationsHolder = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[4];
+            }
             FindObjectOfType<GeneratorRunner>().isRunning = true;
         }
 
@@ -109,72 +117,78 @@ namespace Logic
 
         public void buildHiddenWaves(Generator notificationGenerator, Coordinate traysCoordinates)
         {
-            var storage = FindObjectOfType<Storage>();
-            Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
-            Notification n = orderedNotifications.Values.First().Storage.Peek();
-            int columnIndex = 1;
-            int notififcationsNumberInTraysColumnNow = 0;
-            Debug.Log("TRAY1:" + trayHolder);
-            if ((!n.isSilent && trayHolder == null) || (!n.isSilent  && trayHolder != null && !trayHolder.activeSelf)) 
+            try
             {
-                GameObject wave = Instantiate(notification) as GameObject;
-                Color c = n.Color;
-                c.a = 0.5f;
-                if (n.SourceName == "YouTube") wave.GetComponents<Image>()[0].material = red;
-                if (n.SourceName == "Telegram") wave.GetComponents<Image>()[0].material = blue;
-                if (n.SourceName == "Яндекс.Почта") wave.GetComponents<Image>()[0].material = yellow;
-                if (n.SourceName == "WhatsApp") wave.GetComponents<Image>()[0].material = green;
-                if (n.SourceName == GlobalCommon.silentGroupKey) wave.GetComponents<Image>()[0].material = grey;
-                wave.GetComponents<Image>()[0].material.SetFloat("_Glossiness", 1f);
-                try
+                var storage = FindObjectOfType<Storage>();
+                Dictionary<string, NotificationsStorage> orderedNotifications = storage.getStorage();
+                Notification n = orderedNotifications.Values.First().Storage.Peek();
+                int columnIndex = 1;
+                int notififcationsNumberInTraysColumnNow = 0;
+                if ((!n.isSilent && trayHolder == null) || (!n.isSilent && trayHolder != null && !trayHolder.activeSelf))
                 {
-                    wave.transform.SetParent(notificationsHolder.GetComponent<RectTransform>());
-                }
-                catch (Exception e) {
-                    Debug.LogError(e);
-                }
-            }
-            Debug.Log("TRAY2:" + trayHolder);
-            if (trayHolder != null && trayHolder.activeSelf)
-            {
-                clearScene();
-                List<Coordinates> coordinates = traysCoordinates();
-                int indexPosition = 0;
-                int maxNotificationsInTray = GlobalCommon.notificationsInColumnTray * GlobalCommon.notificationColumnsTray;
-                foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
-                {
-                    Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
-                    for (int i = 0; i < groupNotifications.Count; i++)
+                    GameObject wave = Instantiate(notification) as GameObject;
+                    Color c = n.Color;
+                    c.a = 0.5f;
+                    if (n.SourceName == "YouTube") wave.GetComponents<Image>()[0].material = red;
+                    if (n.SourceName == "Telegram") wave.GetComponents<Image>()[0].material = blue;
+                    if (n.SourceName == "Яндекс.Почта") wave.GetComponents<Image>()[0].material = yellow;
+                    if (n.SourceName == "WhatsApp") wave.GetComponents<Image>()[0].material = green;
+                    if (n.SourceName == GlobalCommon.silentGroupKey) wave.GetComponents<Image>()[0].material = grey;
+                    wave.GetComponents<Image>()[0].material.SetFloat("_Glossiness", 1f);
+                    try
                     {
-                        Notification notification = groupNotifications.ToArray()[i];
-                        bool doesHaveGroupIconTray = i == groupNotifications.Count - 1 || indexPosition == columnIndex * GlobalCommon.notificationsInColumnTray - 1;
-                        if (indexPosition < maxNotificationsInTray)
+                        wave.transform.SetParent(notificationsHolder.GetComponent<RectTransform>());
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.LogError(e);
+                    }
+                }
+                if (trayHolder != null && trayHolder.activeSelf)
+                {
+                    clearScene();
+                    List<Coordinates> coordinates = traysCoordinates();
+                    int indexPosition = 0;
+                    int maxNotificationsInTray = GlobalCommon.notificationsInColumnTray * GlobalCommon.notificationColumnsTray;
+                    foreach (KeyValuePair<string, NotificationsStorage> notificationGroup in orderedNotifications)
+                    {
+                        Stack<Notification> groupNotifications = notificationGroup.Value.Storage;
+                        for (int i = 0; i < groupNotifications.Count; i++)
                         {
-                            Vector3 position = coordinates[indexPosition].Position;
-                            Quaternion rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.x, coordinates[indexPosition].Rotation.y, coordinates[indexPosition].Rotation.z);
-                            Vector3 scale = coordinates[indexPosition].Scale;
-                            GameObject trayN = notificationGenerator(trayNotification, notification, position, scale, rotation, doesHaveGroupIconTray);
-                            try
+                            Notification notification = groupNotifications.ToArray()[i];
+                            bool doesHaveGroupIconTray = i == groupNotifications.Count - 1 || indexPosition == columnIndex * GlobalCommon.notificationsInColumnTray - 1;
+                            if (indexPosition < maxNotificationsInTray)
                             {
-                                trayN.transform.parent = trayHolder.transform;
-                                trayN.transform.localPosition = position;
-                                trayN.transform.localRotation = rotation;
+                                Vector3 position = coordinates[indexPosition].Position;
+                                Quaternion rotation = Quaternion.Euler(coordinates[indexPosition].Rotation.x, coordinates[indexPosition].Rotation.y, coordinates[indexPosition].Rotation.z);
+                                Vector3 scale = coordinates[indexPosition].Scale;
+                                GameObject trayN = notificationGenerator(trayNotification, notification, position, scale, rotation, doesHaveGroupIconTray);
+                                try
+                                {
+                                    trayN.transform.parent = trayHolder.transform;
+                                    trayN.transform.localPosition = position;
+                                    trayN.transform.localRotation = rotation;
+                                }
+                                catch (Exception e) { }
+                                indexPosition += 1;
+                                notififcationsNumberInTraysColumnNow += 1;
+                                if (notififcationsNumberInTraysColumnNow == GlobalCommon.notificationsInColumnTray)
+                                {
+                                    notififcationsNumberInTraysColumnNow = 0;
+                                    columnIndex += 1;
+                                }
                             }
-                            catch (Exception e) { }
-                            indexPosition += 1;
-                            notififcationsNumberInTraysColumnNow += 1;
-                            if (notififcationsNumberInTraysColumnNow == GlobalCommon.notificationsInColumnTray)
+                            else
                             {
-                                notififcationsNumberInTraysColumnNow = 0;
-                                columnIndex += 1;
+                                break;
                             }
-                        }
-                        else
-                        {
-                            break;
                         }
                     }
                 }
+            }
+            catch(Exception e)
+            {
+                Debug.LogError(e);
             }
         }
 

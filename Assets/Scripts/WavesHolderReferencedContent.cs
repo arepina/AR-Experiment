@@ -21,6 +21,7 @@ public class WavesHolderReferencedContent : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("-Y:" + Camera.transform.position.y);
         if (Camera.transform.position.y >= TrayShowAngle)
         {
             EventManager.Broadcast(EVENT.ShowTray);

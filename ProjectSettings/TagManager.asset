@@ -16,6 +16,8 @@ TagManager:
   - MainMenu
   - DataHolder
   - Timer
+  - NotificationsHolder
+  - TrayHolder
   layers:
   - Default
   - TransparentFX

@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 1268189766}
   m_Layer: 5
   m_Name: WavesHolder
-  m_TagString: Untagged
+  m_TagString: NotificationsHolder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -880,7 +880,7 @@ GameObject:
   - component: {fileID: 2059424574}
   m_Layer: 0
   m_Name: TrayHolder
-  m_TagString: Untagged
+  m_TagString: TrayHolder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
