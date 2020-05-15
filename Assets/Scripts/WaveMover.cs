@@ -8,11 +8,9 @@ public class WaveMover : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(Screen.currentResolution);
         Vector3 startPos = transform.position;
-        startPos.y = Screen.currentResolution.height;
         Vector3 finishPos = startPos;
-        finishPos.x = startPos.x + Screen.currentResolution.width;
+        finishPos.x = startPos.x + 2;
         StartCoroutine(DeleteObject(gameObject, durationWave));
         StartCoroutine(PingPong(transform, startPos, finishPos));
     }
@@ -45,6 +43,7 @@ public class WaveMover : MonoBehaviour
         { 
             float distCovered = (Time.time - startTime) * speedWave;
             float fracJourney = distCovered / journeyLength;
+            Debug.Log(startPos + " " + toPosition);
             targetObject.position = Vector3.Lerp(startPos, toPosition, fracJourney);
             if (fracJourney >= 1)
                 yield break;

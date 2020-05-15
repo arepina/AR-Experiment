@@ -7,7 +7,7 @@ public class WavesHolderReferencedContent : MonoBehaviour
     public GameObject Camera;
 
     [Tooltip("Angle when tray should be shown")]
-    public float TrayShowAngle = 0.02f;
+    public float TrayShowAngle = 12f;
 
     void OnEnable()
     {
@@ -21,11 +21,13 @@ public class WavesHolderReferencedContent : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("-Y:" + Camera.transform.position.y);
-        if (Camera.transform.position.y >= TrayShowAngle)
+        if (Camera.transform.rotation.eulerAngles.x > 180 && Mathf.Abs(Camera.transform.rotation.eulerAngles.x - 360) >= TrayShowAngle)
         {
             EventManager.Broadcast(EVENT.ShowTray);
             return;
         }
+
+        transform.position = Camera.transform.position + Camera.transform.forward * transform.position.z;
+        transform.rotation = Quaternion.LookRotation(transform.position - Camera.transform.position);
     }
 }

@@ -10,10 +10,12 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
     private float DistanceFromCamera = 10f;
 
     [Tooltip("Angle to the horizon")]
-    public float AngleToTheHorizon = 0.01f;
+    public float AngleToTheHorizon = 8f;
 
     [Tooltip("Angle when tray should be shown")]
-    public float TrayShowAngle = 0.02f;
+    public float TrayShowAngle = 12f;
+
+    private Transform oldCameraPosition;
 
     void OnEnable()
     {
@@ -35,9 +37,8 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
 
     void Update()
     {
-        Vector3 posTo = Camera.transform.position;
-        posTo.y = AngleToTheHorizon + 1;
-        if (Camera.transform.position.y >= TrayShowAngle)
+        Quaternion rotTo = Quaternion.LookRotation(transform.position - Camera.transform.position);
+        if (Camera.transform.rotation.eulerAngles.x > 180 && Mathf.Abs(Camera.transform.rotation.eulerAngles.x - 360) >= TrayShowAngle)
         {
             EventManager.Broadcast(EVENT.ShowTray);
             return;
@@ -45,13 +46,32 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
 
         if (transform.childCount == 0)
         {
-            posTo = Camera.transform.position + Camera.transform.forward * DistanceFromCamera;
-            Quaternion rotTo = Quaternion.LookRotation(transform.position - Camera.transform.position);
+            oldCameraPosition = Camera.transform;
+            Vector3 posTo = Camera.transform.position + Camera.transform.forward * DistanceFromCamera;
+            if (Camera.transform.rotation.eulerAngles.x > 180 && Mathf.Abs(Camera.transform.rotation.eulerAngles.x - 360) > AngleToTheHorizon)
+            {
+                posTo.y = DistanceFromCamera * Mathf.Tan(Mathf.Deg2Rad * AngleToTheHorizon);
+            }
             transform.rotation = rotTo;
             transform.position = posTo;
-            return;
         }
-
-        transform.position = posTo;
+        else
+        {
+            //Vector3 posTo = transform.position;
+            //Debug.Log(Camera.transform.rotation.eulerAngles.x);
+            //if (Camera.transform.rotation.eulerAngles.x > 180 && Mathf.Abs(Camera.transform.rotation.eulerAngles.x - 360) > AngleToTheHorizon)
+            //{
+            //    posTo.y = DistanceFromCamera * Mathf.Tan(Mathf.Deg2Rad * AngleToTheHorizon);
+            //    transform.position = posTo;
+            //}
+            //else
+            //{
+            //    float newAngle = Camera.transform.rotation.eulerAngles.x;
+            //    posTo.y = DistanceFromCamera * Mathf.Tan(Mathf.Deg2Rad * newAngle);
+            //    transform.position = posTo;
+            //    rotTo = Quaternion.LookRotation(transform.position - oldCameraPosition.position);
+            //    transform.rotation = rotTo;
+            //}
+        }
     }
 }
