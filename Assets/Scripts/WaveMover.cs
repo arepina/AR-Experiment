@@ -15,7 +15,7 @@ public class WaveMover : MonoBehaviour
         reachedEnd = false;
         startPos = transform.localPosition;
         finishPos = startPos;
-        finishPos.x = startPos.x + 40;
+        finishPos.x = startPos.x + 50;
         StartCoroutine(DeleteObject(gameObject, durationWave));
     }
 
