@@ -15,8 +15,6 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
     [Tooltip("Angle when tray should be shown")]
     public float TrayShowAngle = 12f;
 
-    private Transform oldCameraPosition;
-
     void OnEnable()
     {
         if (Camera == null)
@@ -47,7 +45,6 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
 
         if (transform.childCount == 0)
         {
-            oldCameraPosition = Camera.transform;
             Vector3 posTo = Camera.transform.position + Camera.transform.forward * DistanceFromCamera;
             if (Camera.transform.rotation.eulerAngles.x > 180 && Mathf.Abs(Camera.transform.rotation.eulerAngles.x - 360) > AngleToTheHorizon)
             {
@@ -58,21 +55,22 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
         }
         else
         {
-            //Vector3 posTo = transform.position;
-            //Debug.Log(Camera.transform.rotation.eulerAngles.x);
-            //if (Camera.transform.rotation.eulerAngles.x > 180 && Mathf.Abs(Camera.transform.rotation.eulerAngles.x - 360) > AngleToTheHorizon)
-            //{
-            //    posTo.y = DistanceFromCamera * Mathf.Tan(Mathf.Deg2Rad * AngleToTheHorizon);
-            //    transform.position = posTo;
-            //}
-            //else
-            //{
-            //    float newAngle = Camera.transform.rotation.eulerAngles.x;
-            //    posTo.y = DistanceFromCamera * Mathf.Tan(Mathf.Deg2Rad * newAngle);
-            //    transform.position = posTo;
-            //    rotTo = Quaternion.LookRotation(transform.position - oldCameraPosition.position);
-            //    transform.rotation = rotTo;
-            //}
+            Vector3 posTo = transform.position;
+            Quaternion oldRotTo = transform.rotation;
+            if (Camera.transform.rotation.eulerAngles.x > 180 && Mathf.Abs(Camera.transform.rotation.eulerAngles.x - 360) > AngleToTheHorizon)
+            {
+                posTo.y = DistanceFromCamera * Mathf.Tan(Mathf.Deg2Rad * AngleToTheHorizon);
+                transform.position = posTo;
+                transform.rotation = oldRotTo;
+            }
+            else
+            {
+                Vector3 posRealTo = Camera.transform.position + Camera.transform.forward * DistanceFromCamera;                
+                posTo.y = posRealTo.y;
+                transform.position = posTo;
+                oldRotTo.x = rotTo.x;
+                transform.rotation = oldRotTo;
+            }
         }
     }
 }
