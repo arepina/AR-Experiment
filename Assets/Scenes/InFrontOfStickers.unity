@@ -212,7 +212,7 @@ MonoBehaviour:
   Camera: {fileID: 710828786}
   SimulateInertia: 1
   LerpSpeed: 2
-  TrayHideAngle: -10
+  TrayHideAngle: -25
 --- !u!1 &710828786
 GameObject:
   m_ObjectHideFlags: 0

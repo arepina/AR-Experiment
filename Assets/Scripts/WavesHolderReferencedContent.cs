@@ -20,6 +20,7 @@ public class WavesHolderReferencedContent : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Ang: " + Camera.transform.rotation.eulerAngles.x);
         if (Camera.transform.rotation.eulerAngles.x > 180 && Mathf.Abs(Camera.transform.rotation.eulerAngles.x - 360) >= TrayShowAngle)
         {
             EventManager.Broadcast(EVENT.ShowTray);

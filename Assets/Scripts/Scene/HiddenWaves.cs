@@ -124,6 +124,7 @@ namespace Logic
                 Notification n = orderedNotifications.Values.First().Storage.Peek();
                 int columnIndex = 1;
                 int notififcationsNumberInTraysColumnNow = 0;
+                Debug.Log("TRAYHOLD1 " + trayHolder);
                 if ((!n.isSilent && trayHolder == null) || (!n.isSilent && trayHolder != null && !trayHolder.activeSelf))
                 {
                     GameObject wave = Instantiate(notification) as GameObject;
@@ -145,6 +146,7 @@ namespace Logic
                         Debug.LogError(e);
                     }
                 }
+                Debug.Log("TRAYHOLD2 " + trayHolder);
                 if (trayHolder != null && trayHolder.activeSelf)
                 {
                     clearScene();

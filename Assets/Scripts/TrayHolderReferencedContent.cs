@@ -13,7 +13,7 @@ public class TrayHolderReferencedContent : MonoBehaviour
     public float LerpSpeed = 2f;
 
     [Tooltip("Angle when tray should be hiden")]
-    public float TrayHideAngle = -10f;
+    public float TrayHideAngle = -25f;
 
     void OnEnable()
     {
@@ -27,6 +27,7 @@ public class TrayHolderReferencedContent : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Ang: " + Camera.transform.rotation.eulerAngles.x);
         Vector3 posTo = Camera.transform.position;
         if (Camera.transform.rotation.eulerAngles.x < 180 && Camera.transform.rotation.eulerAngles.x >= Mathf.Abs(TrayHideAngle))
         {

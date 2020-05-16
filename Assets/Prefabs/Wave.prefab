@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 8379581497776337541}
   m_Layer: 0
   m_Name: Wave
-  m_TagString: Untagged
+  m_TagString: Notification
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

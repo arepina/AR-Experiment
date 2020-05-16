@@ -37,6 +37,7 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Ang: " + Camera.transform.rotation.eulerAngles.x);
         Quaternion rotTo = Quaternion.LookRotation(transform.position - Camera.transform.position);
         if (Camera.transform.rotation.eulerAngles.x > 180 && Mathf.Abs(Camera.transform.rotation.eulerAngles.x - 360) >= TrayShowAngle)
         {
