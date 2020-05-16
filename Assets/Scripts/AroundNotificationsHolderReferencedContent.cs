@@ -1,8 +1,8 @@
 ﻿using Logic;
 using UnityEngine;
 
-public class WavesHolderReferencedContent : MonoBehaviour
-{   
+public class AroundNotificationsHolderReferencedContent : MonoBehaviour
+{
     [Tooltip("The camera is needed to emulate a torso reference frame")]
     public GameObject Camera;
 
@@ -13,8 +13,9 @@ public class WavesHolderReferencedContent : MonoBehaviour
     {
         if (Camera == null)
         {
-            Camera = GameObject.FindWithTag("MainCamera");
-            transform.GetComponentInChildren<Canvas>().worldCamera = Camera.GetComponent<Camera>();
+            Debug.LogError("Error: Camera is not set. Disabling the script.");
+            enabled = false;
+            return;
         }
     }
 
@@ -26,8 +27,6 @@ public class WavesHolderReferencedContent : MonoBehaviour
             EventManager.Broadcast(EVENT.ShowTray);
             return;
         }
-
-        transform.position = Camera.transform.position + Camera.transform.forward;
-        transform.rotation = Quaternion.LookRotation(transform.position - Camera.transform.position);
     }
 }
+

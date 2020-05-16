@@ -13,7 +13,7 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
     public float AngleToTheHorizon = 8f;
 
     [Tooltip("Angle when tray should be shown")]
-    public float TrayShowAngle = 12f;
+    public float TrayShowAngle = 20f;
 
     void OnEnable()
     {

@@ -732,7 +732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 48691092}
   AngleToTheHorizon: 8
-  TrayShowAngle: 12
+  TrayShowAngle: 20
 --- !u!1001 &2011608258
 PrefabInstance:
   m_ObjectHideFlags: 0

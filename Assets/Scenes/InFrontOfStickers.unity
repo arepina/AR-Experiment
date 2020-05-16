@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 710828786}
   AngleToTheHorizon: 8
-  TrayShowAngle: 12
+  TrayShowAngle: 20
 --- !u!1 &600461539
 GameObject:
   m_ObjectHideFlags: 0
