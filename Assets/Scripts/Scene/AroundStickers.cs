@@ -50,8 +50,9 @@ namespace Logic
 
         private void showTray()
         {
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[13].SetActive(false);
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[12].SetActive(true);
+            notificationsHolder.SetActive(false);
+            trayHolder.SetActive(true);
+            Debug.Log(trayHolder.activeSelf);
         }
 
         private void hideTray()
@@ -66,8 +67,8 @@ namespace Logic
             {
                 Debug.Log(e);
             }
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[12].SetActive(false);
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[13].SetActive(true);
+            trayHolder.SetActive(false);
+            notificationsHolder.SetActive(true);
         }
 
         private void clearScene()

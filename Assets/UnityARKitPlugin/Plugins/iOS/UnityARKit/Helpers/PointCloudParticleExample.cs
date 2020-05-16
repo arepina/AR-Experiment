@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Logic;
+using UnityEngine;
 using UnityEngine.XR.iOS;
 
 public class PointCloudParticleExample : MonoBehaviour 
@@ -6,15 +7,18 @@ public class PointCloudParticleExample : MonoBehaviour
     public ParticleSystem pointCloudParticlePrefab;
     public int maxPointsToShow;
     public float particleSize = 1.0f;
+    public GameObject sceneCamera;
+    public float trayShowAngle = 0.2f;
+    public float trayHideAngle = -0.2f;
     Vector3[] m_PointCloudData;
     bool frameUpdated = false;
     internal ParticleSystem currentPS;
     ParticleSystem.Particle [] particles;
+    private bool isTrayOn = false;
 
     // Use this for initialization
     void Start () 
     {
-        Debug.Log("PointCloudParticleExample Start");
         UnityARSessionNativeInterface.ARFrameUpdatedEvent += ARFrameUpdated;
         UnityARSessionNativeInterface.ARSessionInterruptedEvent += OnARInterrupted;
         currentPS = Instantiate (pointCloudParticlePrefab);
@@ -24,13 +28,26 @@ public class PointCloudParticleExample : MonoBehaviour
 
     public void OnARInterrupted()
     {
-        Debug.Log("PointCloudParticleExample OnARInterrupted");
         UnityARSessionNativeInterface.ARFrameUpdatedEvent -= ARFrameUpdated;
     }
 
     public void ARFrameUpdated(UnityARCamera camera)
     {
-        Debug.Log("PointCloudParticleExample ARFrameUpdated");
+        Debug.Log("PointCloudParticleExample ARFrameUpdated " + sceneCamera.transform.rotation.x);
+        if(sceneCamera.transform.rotation.x > trayShowAngle && !isTrayOn)
+        {
+            Debug.Log("SHOW");
+            isTrayOn = true;
+            EventManager.Broadcast(EVENT.ShowTray);
+            return;
+        }
+        if (sceneCamera.transform.rotation.x < trayShowAngle && isTrayOn)
+        {
+            Debug.Log("HIDE");
+            isTrayOn = false;
+            EventManager.Broadcast(EVENT.HideTray);
+            return;
+        }
         if (camera.pointCloud != null)
         {
            m_PointCloudData = camera.pointCloud.Points;
