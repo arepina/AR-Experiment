@@ -81,13 +81,13 @@ public class MenuController : MonoBehaviour
     public void StartAroundMobile()
     {
         GlobalCommon.currentTypeName = "AroundMobile";
-        SceneManager.LoadSceneAsync("AroundMobileMono");
+        SceneManager.LoadSceneAsync("AroundMobile");
     }
 
     public void StartAroundStickers()
     {
         GlobalCommon.currentTypeName = "AroundStickers";
-        SceneManager.LoadSceneAsync("AroundStickersMono");
+        SceneManager.LoadSceneAsync("AroundStickers");
     }
 
     public void StartHiddenWaves()
