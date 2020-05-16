@@ -13,7 +13,7 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
     public float AngleToTheHorizon = 8f;
 
     [Tooltip("Angle when tray should be shown")]
-    public float TrayShowAngle = 20f;
+    public float TrayShowAngle = 35f;
 
     void OnEnable()
     {
@@ -35,10 +35,10 @@ public class NotificationsHodlerReferencedContent : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Ang: " + Camera.transform.rotation.eulerAngles.x);
         Quaternion rotTo = Quaternion.LookRotation(transform.position - Camera.transform.position);
         if (Camera.transform.rotation.eulerAngles.x > 180 && Mathf.Abs(Camera.transform.rotation.eulerAngles.x - 360) >= TrayShowAngle)
         {
+            Debug.Log("ANGANG");
             EventManager.Broadcast(EVENT.ShowTray);
             return;
         }

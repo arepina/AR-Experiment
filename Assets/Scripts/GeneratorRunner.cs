@@ -40,12 +40,19 @@ namespace Logic
 
         private void ReturnToMainMenu()
         {
-            Scene mainMenuScene = SceneManager.GetSceneByName("MainMenu");
-            if (mainMenuScene.isLoaded)
-                SceneManager.SetActiveScene(mainMenuScene);
-            else
+            try
+            {
+                Scene mainMenuScene = SceneManager.GetSceneByName("MainMenu");
+                if (mainMenuScene.isLoaded)
+                    SceneManager.SetActiveScene(mainMenuScene);
+                else
+                    SceneManager.LoadScene("MainMenu");
+                SceneManager.UnloadSceneAsync(GlobalCommon.currentTypeName);
+            }catch(Exception e)
+            {
+                Debug.LogError(e);
                 SceneManager.LoadScene("MainMenu");
-            SceneManager.UnloadSceneAsync(GlobalCommon.currentTypeName);
+            }
         }
 
         public void Update()

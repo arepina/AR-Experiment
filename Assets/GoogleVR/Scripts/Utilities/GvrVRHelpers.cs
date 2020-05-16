@@ -77,7 +77,7 @@ public static class GvrVRHelpers
         }
 #else
         // Not running in editor:
-        return InputTracking.GetLocalRotation(XRNode.Head);
+        return UnityEngine.XR.InputTracking.GetLocalRotation(UnityEngine.XR.XRNode.Head);
 #endif // UNITY_EDITOR
     }
 
@@ -95,7 +95,7 @@ public static class GvrVRHelpers
 
         return GvrEditorEmulator.Instance.HeadPosition;
 #else
-        return InputTracking.GetLocalPosition(XRNode.Head);
+        return UnityEngine.XR.InputTracking.GetLocalPosition(UnityEngine.XR.XRNode.Head);
 #endif // UNITY_EDITOR
     }
 

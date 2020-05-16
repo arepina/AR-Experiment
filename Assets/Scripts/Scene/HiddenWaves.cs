@@ -68,8 +68,8 @@ namespace Logic
                 }
             }
             catch (Exception e) { }
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[4].SetActive(false);
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[3].SetActive(true);
+            trayHolder.SetActive(true);
+            notificationsHolder.SetActive(false);
             rebuildScene();
         }
 
@@ -85,8 +85,8 @@ namespace Logic
             {
                 Debug.Log(e);
             }
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[3].SetActive(false);
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[4].SetActive(true);
+            trayHolder.SetActive(false);
+            notificationsHolder.SetActive(true);
         }
 
         private void clearScene()
