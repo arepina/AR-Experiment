@@ -18,6 +18,7 @@ TagManager:
   - Timer
   - NotificationsHolder
   - TrayHolder
+  - WaveCanvas
   layers:
   - Default
   - TransparentFX

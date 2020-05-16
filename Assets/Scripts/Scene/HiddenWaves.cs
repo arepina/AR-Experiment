@@ -42,7 +42,7 @@ namespace Logic
             }
             if (trayHolder == null)
             {
-                notificationsHolder = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[4];
+                trayHolder = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()[4];
             }
             FindObjectOfType<GeneratorRunner>().isRunning = true;
         }
@@ -129,15 +129,16 @@ namespace Logic
                     GameObject wave = Instantiate(notification) as GameObject;
                     Color c = n.Color;
                     c.a = 0.5f;
-                    if (n.SourceName == "YouTube") wave.GetComponents<Image>()[0].material = red;
-                    if (n.SourceName == "Telegram") wave.GetComponents<Image>()[0].material = blue;
-                    if (n.SourceName == "Яндекс.Почта") wave.GetComponents<Image>()[0].material = yellow;
-                    if (n.SourceName == "WhatsApp") wave.GetComponents<Image>()[0].material = green;
-                    if (n.SourceName == GlobalCommon.silentGroupKey) wave.GetComponents<Image>()[0].material = grey;
-                    wave.GetComponents<Image>()[0].material.SetFloat("_Glossiness", 1f);
+                
+                    if (n.SourceName == "YouTube") wave.GetComponentInChildren<Image>().material = red;
+                    if (n.SourceName == "Telegram") wave.GetComponentInChildren<Image>().material = blue;
+                    if (n.SourceName == "Яндекс.Почта") wave.GetComponentInChildren<Image>().material = yellow;
+                    if (n.SourceName == "WhatsApp") wave.GetComponentInChildren<Image>().material = green;
+                    if (n.SourceName == GlobalCommon.silentGroupKey) wave.GetComponentInChildren<Image>().material = grey;
+                    wave.GetComponentInChildren<Image>().material.SetFloat("_Glossiness", 1f);
                     try
                     {
-                        wave.transform.SetParent(notificationsHolder.GetComponent<RectTransform>());
+                        wave.transform.SetParent(notificationsHolder.GetComponent<Transform>());
                     }
                     catch (Exception e)
                     {
@@ -186,7 +187,7 @@ namespace Logic
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.LogError(e);
             }

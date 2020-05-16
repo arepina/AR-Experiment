@@ -13,9 +13,8 @@ public class WavesHolderReferencedContent : MonoBehaviour
     {
         if (Camera == null)
         {
-            Debug.LogError("Error: Camera is not set. Disabling the script.");
-            enabled = false;
-            return;
+            Camera = GameObject.FindWithTag("MainCamera");
+            transform.GetComponentInChildren<Canvas>().worldCamera = Camera.GetComponent<Camera>();
         }
     }
 
@@ -27,7 +26,7 @@ public class WavesHolderReferencedContent : MonoBehaviour
             return;
         }
 
-        transform.position = Camera.transform.position + Camera.transform.forward * transform.position.z;
+        transform.position = Camera.transform.position + Camera.transform.forward;
         transform.rotation = Quaternion.LookRotation(transform.position - Camera.transform.position);
     }
 }
