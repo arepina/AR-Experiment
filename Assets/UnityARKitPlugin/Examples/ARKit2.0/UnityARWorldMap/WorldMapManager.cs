@@ -11,6 +11,8 @@ public class WorldMapManager : MonoBehaviour
     public Material particlesMaterial;
     public GameObject cube;
     public GameObject particles;
+    public GameObject load;
+    public GameObject save;
 
     ARWorldMap m_LoadedMap;
 
@@ -19,6 +21,8 @@ public class WorldMapManager : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        save.SetActive(true);
+        load.SetActive(false);
         UnityARSessionNativeInterface.ARFrameUpdatedEvent += OnFrameUpdate;
         UnityARSessionNativeInterface.ARSessionInterruptedEvent += OnARInterrupted;
     }
@@ -81,6 +85,8 @@ public class WorldMapManager : MonoBehaviour
     public void Save()
     {
         session.GetCurrentWorldMapAsync(OnWorldMap);
+        save.SetActive(false);
+        load.SetActive(true);
     }
 
     public void Load()
@@ -119,10 +125,11 @@ public class WorldMapManager : MonoBehaviour
 
 
 	public void SaveSerialized()
-	{
-        Debug.Log("Save serialized");
+	{        
 		session.GetCurrentWorldMapAsync(OnWorldMapSerialized);
-	}
+        save.SetActive(false);
+        load.SetActive(true);
+    }
 
 	public void LoadSerialized()
 	{

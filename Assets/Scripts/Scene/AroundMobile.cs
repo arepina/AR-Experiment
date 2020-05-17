@@ -50,14 +50,12 @@ namespace Logic
 
         private void showTray()
         {
-            Debug.Log("SHOWSHOW");
             notificationsHolder.SetActive(false);
             trayHolder.SetActive(true);
         }
 
         private void hideTray()
         {
-            Debug.Log("HIDEHIDE");
             try
             {
                 Vector3 trayPosBefore = trayHolder.transform.position;

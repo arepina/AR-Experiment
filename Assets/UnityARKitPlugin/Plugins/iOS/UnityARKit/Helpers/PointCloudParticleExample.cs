@@ -9,7 +9,7 @@ public class PointCloudParticleExample : MonoBehaviour
     public float particleSize = 1.0f;
     public GameObject sceneCamera;
     public float trayShowAngle = 0.2f;
-    public float trayHideAngle = -0.2f;
+    public float trayHideAngle = -0.35f;
     Vector3[] m_PointCloudData;
     bool frameUpdated = false;
     internal ParticleSystem currentPS;
@@ -33,17 +33,14 @@ public class PointCloudParticleExample : MonoBehaviour
 
     public void ARFrameUpdated(UnityARCamera camera)
     {
-        Debug.Log("PointCloudParticleExample ARFrameUpdated " + sceneCamera.transform.rotation.x);
         if(sceneCamera.transform.rotation.x > trayShowAngle && !isTrayOn)
         {
-            Debug.Log("SHOW");
             isTrayOn = true;
             EventManager.Broadcast(EVENT.ShowTray);
             return;
         }
-        if (sceneCamera.transform.rotation.x < trayShowAngle && isTrayOn)
+        if (sceneCamera.transform.rotation.x < trayHideAngle && isTrayOn)
         {
-            Debug.Log("HIDE");
             isTrayOn = false;
             EventManager.Broadcast(EVENT.HideTray);
             return;

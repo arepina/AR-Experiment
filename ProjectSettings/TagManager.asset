@@ -19,6 +19,8 @@ TagManager:
   - NotificationsHolder
   - TrayHolder
   - WaveCanvas
+  - LoadButton
+  - SaveButton
   layers:
   - Default
   - TransparentFX

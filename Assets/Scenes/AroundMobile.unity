@@ -516,13 +516,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 467690068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1e0478a2dcaa4fb6b04bf538c4b5499, type: 3}
+  m_Script: {fileID: 11500000, guid: 825c808e8de79425ba2e591a318fcffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 2142712159}
   SimulateInertia: 1
   LerpSpeed: 2
-  TrayHideAngle: -25
 --- !u!4 &467690070
 Transform:
   m_ObjectHideFlags: 0
@@ -531,7 +530,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467690068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 10}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -616,6 +615,7 @@ MonoBehaviour:
   particleSize: 0.01
   sceneCamera: {fileID: 2142712159}
   trayShowAngle: 0.2
+  trayHideAngle: -0.35
 --- !u!1 &520163593
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,6 +806,8 @@ MonoBehaviour:
   particlesMaterial: {fileID: 2100000, guid: f7cffc03fadd142ea81401e16399833e, type: 2}
   cube: {fileID: 1052679867}
   particles: {fileID: 481742511}
+  load: {fileID: 1841742996}
+  save: {fileID: 1587227111}
 --- !u!4 &744986761
 Transform:
   m_ObjectHideFlags: 0
@@ -1479,7 +1481,7 @@ GameObject:
   - component: {fileID: 1587227113}
   m_Layer: 5
   m_Name: Save button
-  m_TagString: Untagged
+  m_TagString: SaveButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1570,7 +1572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 5fb4b842964244a29920e9c90a08f71e, type: 2}
+  m_Material: {fileID: 2100000, guid: ab92553bc674346b59ab13c31aefe8d4, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1608,7 +1610,7 @@ GameObject:
   - component: {fileID: 1841742998}
   m_Layer: 5
   m_Name: Load button
-  m_TagString: Untagged
+  m_TagString: LoadButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1699,7 +1701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 5fb4b842964244a29920e9c90a08f71e, type: 2}
+  m_Material: {fileID: 2100000, guid: ab92553bc674346b59ab13c31aefe8d4, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:

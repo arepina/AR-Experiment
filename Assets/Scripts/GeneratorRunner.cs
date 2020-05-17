@@ -48,7 +48,8 @@ namespace Logic
                 else
                     SceneManager.LoadScene("MainMenu");
                 SceneManager.UnloadSceneAsync(GlobalCommon.currentTypeName);
-            }catch(Exception e)
+            }
+            catch(Exception e)
             {
                 Debug.LogError(e);
                 SceneManager.LoadScene("MainMenu");
