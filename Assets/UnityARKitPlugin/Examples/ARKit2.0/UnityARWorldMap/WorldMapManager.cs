@@ -18,6 +18,8 @@ public class WorldMapManager : MonoBehaviour
 
 	serializableARWorldMap serializedWorldMap;
 
+    ARTrackingStateReason m_LastReason;
+
     // Use this for initialization
     void Start ()
     {
@@ -27,7 +29,11 @@ public class WorldMapManager : MonoBehaviour
         UnityARSessionNativeInterface.ARSessionInterruptedEvent += OnARInterrupted;
     }
 
-    ARTrackingStateReason m_LastReason;
+    void OnDisable()
+    {
+        UnityARSessionNativeInterface.ARFrameUpdatedEvent -= OnFrameUpdate;
+        UnityARSessionNativeInterface.ARSessionInterruptedEvent -= OnARInterrupted;
+    }
 
     void OnARInterrupted()
     {
@@ -36,7 +42,6 @@ public class WorldMapManager : MonoBehaviour
 
     void processHide()
     {
-        Debug.Log("OnARInterrupted");
         Color color = planesMaterial.color;
         color.a = 0;
         planesMaterial.color = color;

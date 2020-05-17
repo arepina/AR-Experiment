@@ -26,6 +26,12 @@ public class PointCloudParticleExample : MonoBehaviour
         frameUpdated = false;
     }
 
+    void OnDisable()
+    {
+        UnityARSessionNativeInterface.ARFrameUpdatedEvent -= ARFrameUpdated;
+        UnityARSessionNativeInterface.ARSessionInterruptedEvent -= OnARInterrupted;
+    }
+
     public void OnARInterrupted()
     {
         UnityARSessionNativeInterface.ARFrameUpdatedEvent -= ARFrameUpdated;
